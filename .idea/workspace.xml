@@ -2,8 +2,135 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a2e4aa1-93ac-4a71-a04c-86b144ad4cb1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/welcome/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/welcome/index.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sample-test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sample-test.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ruby-version" beforeDir="false" afterPath="$PROJECT_DIR$/.ruby-version" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/bindex-0.6.0/ext/skiptrace/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/bindex-0.6.0/ext/skiptrace/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/bootsnap-1.4.2/ext/bootsnap/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/bootsnap-1.4.2/ext/bootsnap/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/byebug-11.0.1/ext/byebug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/byebug-11.0.1/ext/byebug/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/byebug-11.0.1/ext/byebug/breakpoint.o" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/byebug-11.0.1/ext/byebug/breakpoint.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/byebug-11.0.1/ext/byebug/byebug.o" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/byebug-11.0.1/ext/byebug/byebug.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/byebug-11.0.1/ext/byebug/byebug.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/byebug-11.0.1/ext/byebug/context.o" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/byebug-11.0.1/ext/byebug/context.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/byebug-11.0.1/ext/byebug/locker.o" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/byebug-11.0.1/ext/byebug/locker.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/byebug-11.0.1/ext/byebug/threads.o" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/byebug-11.0.1/ext/byebug/threads.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/byebug-11.0.1/lib/byebug/byebug.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/ffi-1.10.0/ext/ffi_c/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/ffi-1.10.0/ext/ffi_c/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/ffi-1.10.0/ext/ffi_c/libffi-x86_64-linux/.libs/libffi.la" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/ffi-1.10.0/ext/ffi_c/libffi-x86_64-linux/.libs/libffi.lai" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/ffi-1.10.0/ext/ffi_c/libffi-x86_64-linux/.libs/libffi.so.7" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/ffi-1.10.0/ext/ffi_c/libffi-x86_64-linux/.libs/libffi.so.7.1.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/ffi-1.10.0/ext/ffi_c/libffi-x86_64-linux/.libs/libffi_convenience.la" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/ffi-1.10.0/ext/ffi_c/libffi-x86_64-linux/Makefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/ffi-1.10.0/ext/ffi_c/libffi-x86_64-linux/a.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/ffi-1.10.0/ext/ffi_c/libffi-x86_64-linux/config.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/ffi-1.10.0/ext/ffi_c/libffi-x86_64-linux/config.status" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/ffi-1.10.0/ext/ffi_c/libffi-x86_64-linux/fficonfig.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/ffi-1.10.0/ext/ffi_c/libffi-x86_64-linux/include/Makefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/ffi-1.10.0/ext/ffi_c/libffi-x86_64-linux/include/ffi.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/ffi-1.10.0/ext/ffi_c/libffi-x86_64-linux/include/ffitarget.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/ffi-1.10.0/ext/ffi_c/libffi-x86_64-linux/libffi.la" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/ffi-1.10.0/ext/ffi_c/libffi-x86_64-linux/libffi.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/ffi-1.10.0/ext/ffi_c/libffi-x86_64-linux/libffi.pc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/ffi-1.10.0/ext/ffi_c/libffi-x86_64-linux/libffi_convenience.la" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/ffi-1.10.0/ext/ffi_c/libffi-x86_64-linux/libtool" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/ffi-1.10.0/ext/ffi_c/libffi-x86_64-linux/local.exp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/ffi-1.10.0/ext/ffi_c/libffi-x86_64-linux/man/Makefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/ffi-1.10.0/ext/ffi_c/libffi-x86_64-linux/src/.deps/.dirstamp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/ffi-1.10.0/ext/ffi_c/libffi-x86_64-linux/src/.dirstamp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/ffi-1.10.0/ext/ffi_c/libffi-x86_64-linux/src/closures.lo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/ffi-1.10.0/ext/ffi_c/libffi-x86_64-linux/src/java_raw_api.lo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/ffi-1.10.0/ext/ffi_c/libffi-x86_64-linux/src/prep_cif.lo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/ffi-1.10.0/ext/ffi_c/libffi-x86_64-linux/src/raw_api.lo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/ffi-1.10.0/ext/ffi_c/libffi-x86_64-linux/src/types.lo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/ffi-1.10.0/ext/ffi_c/libffi-x86_64-linux/src/x86/.deps/.dirstamp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/ffi-1.10.0/ext/ffi_c/libffi-x86_64-linux/src/x86/.dirstamp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/ffi-1.10.0/ext/ffi_c/libffi-x86_64-linux/src/x86/ffi64.lo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/ffi-1.10.0/ext/ffi_c/libffi-x86_64-linux/src/x86/ffiw64.lo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/ffi-1.10.0/ext/ffi_c/libffi-x86_64-linux/src/x86/unix64.lo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/ffi-1.10.0/ext/ffi_c/libffi-x86_64-linux/src/x86/win64.lo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/ffi-1.10.0/ext/ffi_c/libffi-x86_64-linux/stamp-h1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/ffi-1.10.0/ext/ffi_c/libffi-x86_64-linux/testsuite/Makefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/mini_racer-0.2.4/ext/mini_racer_extension/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/mini_racer-0.2.4/ext/mini_racer_extension/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/mini_racer-0.2.4/ext/mini_racer_extension/mini_racer_extension.o" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/mini_racer-0.2.4/ext/mini_racer_extension/mini_racer_extension.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/mini_racer-0.2.4/ext/mini_racer_extension/mini_racer_extension.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/msgpack-1.2.9/ext/msgpack/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/msgpack-1.2.9/ext/msgpack/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nio4r-2.3.1/ext/nio4r/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nio4r-2.3.1/ext/nio4r/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/html_document.o" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/html_document.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/html_element_description.o" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/html_element_description.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/html_entity_lookup.o" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/html_entity_lookup.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/html_sax_parser_context.o" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/html_sax_parser_context.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/html_sax_push_parser.o" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/html_sax_push_parser.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/nokogiri.o" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/nokogiri.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/nokogiri.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/xml_attr.o" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/xml_attr.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/xml_attribute_decl.o" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/xml_attribute_decl.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/xml_cdata.o" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/xml_cdata.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/xml_comment.o" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/xml_comment.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/xml_document.o" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/xml_document.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/xml_document_fragment.o" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/xml_document_fragment.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/xml_dtd.o" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/xml_dtd.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/xml_element_content.o" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/xml_element_content.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/xml_element_decl.o" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/xml_element_decl.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/xml_encoding_handler.o" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/xml_encoding_handler.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/xml_entity_decl.o" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/xml_entity_decl.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/xml_entity_reference.o" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/xml_entity_reference.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/xml_io.o" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/xml_io.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/xml_libxml2_hacks.o" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/xml_libxml2_hacks.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/xml_namespace.o" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/xml_namespace.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/xml_node.o" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/xml_node.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/xml_node_set.o" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/xml_node_set.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/xml_processing_instruction.o" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/xml_processing_instruction.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/xml_reader.o" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/xml_reader.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/xml_relax_ng.o" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/xml_relax_ng.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/xml_sax_parser.o" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/xml_sax_parser.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/xml_sax_parser_context.o" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/xml_sax_parser_context.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/xml_sax_push_parser.o" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/xml_sax_push_parser.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/xml_schema.o" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/xml_schema.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/xml_syntax_error.o" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/xml_syntax_error.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/xml_text.o" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/xml_text.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/xml_xpath_context.o" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/xml_xpath_context.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/xslt_stylesheet.o" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/ext/nokogiri/xslt_stylesheet.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.2/lib/nokogiri/nokogiri.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/puma-3.12.1/ext/puma_http11/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/puma-3.12.1/ext/puma_http11/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/puma-3.12.1/ext/puma_http11/http11_parser.o" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/puma-3.12.1/ext/puma_http11/http11_parser.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/puma-3.12.1/ext/puma_http11/io_buffer.o" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/puma-3.12.1/ext/puma_http11/io_buffer.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/puma-3.12.1/ext/puma_http11/mini_ssl.o" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/puma-3.12.1/ext/puma_http11/mini_ssl.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/puma-3.12.1/ext/puma_http11/puma_http11.o" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/puma-3.12.1/ext/puma_http11/puma_http11.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/puma-3.12.1/ext/puma_http11/puma_http11.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/puma-3.12.1/lib/puma/puma_http11.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/raindrops-0.19.0/ext/raindrops/extconf.h" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/raindrops-0.19.0/ext/raindrops/extconf.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/sqlite3-1.4.0/ext/sqlite3/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/sqlite3-1.4.0/ext/sqlite3/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/sqlite3-1.4.0/ext/sqlite3/aggregator.o" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/sqlite3-1.4.0/ext/sqlite3/aggregator.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/sqlite3-1.4.0/ext/sqlite3/backup.o" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/sqlite3-1.4.0/ext/sqlite3/backup.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/sqlite3-1.4.0/ext/sqlite3/database.o" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/sqlite3-1.4.0/ext/sqlite3/database.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/sqlite3-1.4.0/ext/sqlite3/exception.o" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/sqlite3-1.4.0/ext/sqlite3/exception.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/sqlite3-1.4.0/ext/sqlite3/sqlite3.o" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/sqlite3-1.4.0/ext/sqlite3/sqlite3.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/sqlite3-1.4.0/ext/sqlite3/sqlite3_native.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/sqlite3-1.4.0/ext/sqlite3/statement.o" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/sqlite3-1.4.0/ext/sqlite3/statement.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/sqlite3-1.4.0/lib/sqlite3/sqlite3_native.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/websocket-driver-0.7.0/ext/websocket-driver/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/websocket-driver-0.7.0/ext/websocket-driver/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/websocket-driver-0.7.0/ext/websocket-driver/websocket_mask.o" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/websocket-driver-0.7.0/ext/websocket-driver/websocket_mask.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/websocket-driver-0.7.0/ext/websocket-driver/websocket_mask.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/gems/websocket-driver-0.7.0/lib/websocket_mask.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/specifications/bindex-0.6.0.gemspec" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/specifications/bindex-0.6.0.gemspec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/specifications/bootsnap-1.4.2.gemspec" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/specifications/bootsnap-1.4.2.gemspec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/specifications/byebug-11.0.1.gemspec" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/specifications/byebug-11.0.1.gemspec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/specifications/ffi-1.10.0.gemspec" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/specifications/ffi-1.10.0.gemspec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/specifications/kgio-2.11.2.gemspec" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/specifications/kgio-2.11.2.gemspec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/specifications/mini_racer-0.2.4.gemspec" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/specifications/mini_racer-0.2.4.gemspec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/specifications/msgpack-1.2.9.gemspec" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/specifications/msgpack-1.2.9.gemspec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/specifications/nio4r-2.3.1.gemspec" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/specifications/nio4r-2.3.1.gemspec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/specifications/nokogiri-1.10.2.gemspec" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/specifications/nokogiri-1.10.2.gemspec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/specifications/puma-3.12.1.gemspec" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/specifications/puma-3.12.1.gemspec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/specifications/raindrops-0.19.0.gemspec" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/specifications/raindrops-0.19.0.gemspec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/specifications/sqlite3-1.4.0.gemspec" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/specifications/sqlite3-1.4.0.gemspec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/specifications/unicorn-5.5.0.gemspec" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/specifications/unicorn-5.5.0.gemspec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/specifications/websocket-driver-0.7.0.gemspec" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/specifications/websocket-driver-0.7.0.gemspec" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -21,29 +148,221 @@
     <session id="1760510460">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="6" />
+          <entry key="project.open.time.0" value="2" />
+          <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.3" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.open.time.6" value="3" />
+          <entry key="project.opened" value="7" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="Gemfile" value="1" />
+          <entry key="erb" value="1" />
+          <entry key="lock" value="2" />
+          <entry key="rake" value="4" />
+          <entry key="rb" value="10" />
+          <entry key="yml" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="PLAIN_TEXT" value="5" />
+          <entry key="RHTML" value="1" />
+          <entry key="Ruby" value="12" />
+          <entry key="YAML" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="Gemfile" value="22" />
+          <entry key="lock" value="8" />
+          <entry key="rake" value="2421" />
+          <entry key="rb" value="137" />
+          <entry key="yml" value="38" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="PLAIN_TEXT" value="12" />
+          <entry key="Ruby" value="2576" />
+          <entry key="YAML" value="38" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/welcome_controller.rb">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/views/welcome/index.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="9" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.36063492">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/controllers/welcome_controller.rb">
+              <provider selected="true" editor-type-id="text-editor" />
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/views/welcome/index.html.erb">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="51">
+                  <caret line="3" selection-start-line="3" selection-end-line="3" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/config/database.yml">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="408">
+                  <caret line="24" column="16" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/db/migrate/20190822223011_create_videos.rb">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="289">
+                  <caret line="17" column="3" lean-forward="true" selection-start-line="17" selection-start-column="3" selection-end-line="17" selection-end-column="3" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/models/application_record.rb">
+              <provider selected="true" editor-type-id="text-editor" />
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/db/migrate/20190822232910_create_tags.rb">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="187">
+                  <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/db/migrate/20190822225016_create_users.rb">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="102">
+                  <caret line="6" column="25" lean-forward="true" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/views/welcome/index.html.erb">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="51">
+                  <caret line="3" selection-start-line="3" selection-end-line="3" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Gemfile">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="272">
+                  <caret line="16" column="24" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/lib/tasks/task_database.rake">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="42">
+                  <caret line="189" column="67" selection-start-line="189" selection-start-column="67" selection-end-line="189" selection-end-column="67" />
+                  <folding>
+                    <element signature="e#140#630#0" />
+                    <element signature="e#2094#3236#0" />
+                    <element signature="e#2491#4078#0" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/models/user.rb">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="17">
+                  <caret line="1" column="18" selection-start-line="1" selection-start-column="18" selection-end-line="1" selection-end-column="18" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/controllers/videos_controller.rb">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="376">
+                  <caret line="71" column="51" selection-start-line="71" selection-start-column="51" selection-end-line="71" selection-end-column="51" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-831" />
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/models/video.rb">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="68">
+                  <caret line="4" selection-start-line="4" selection-end-line="4" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/models/tag.rb">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="17">
+                  <caret line="1" selection-start-line="1" selection-end-line="1" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$USER_HOME$/Downloads/igidai-master/lib/tasks/database.rake">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="160">
+                  <caret line="173" column="25" selection-start-line="173" selection-start-column="19" selection-end-line="173" selection-end-column="25" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Gemfile.lock">
+              <provider selected="true" editor-type-id="text-editor">
+                <state>
+                  <caret column="3" selection-start-column="3" selection-end-column="3" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>bundle update</find>
+      <find>BUNDLED</find>
+      <find>tzinfo</find>
+      <find>bundler</find>
+      <find>mysql</find>
+      <find>att</find>
+      <find>has_mb?</find>
+      <find>puts</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -52,6 +371,18 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/app/views/welcome/index.html.erb" />
+        <option value="$PROJECT_DIR$/Gemfile.lock" />
+        <option value="$PROJECT_DIR$/config/database.yml" />
+        <option value="$PROJECT_DIR$/lib/tasks/database.rake" />
+        <option value="$PROJECT_DIR$/Gemfile" />
+        <option value="$PROJECT_DIR$/app/models/user.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/videos_controller.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20190822223011_create_videos.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20190822232910_create_tags.rb" />
+        <option value="$PROJECT_DIR$/app/models/tag.rb" />
+        <option value="$PROJECT_DIR$/app/models/video.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20190822225016_create_users.rb" />
+        <option value="$PROJECT_DIR$/lib/tasks/task_database.rake" />
       </list>
     </option>
   </component>
@@ -61,15 +392,23 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths>
+      <path value="$PROJECT_DIR$/package.json" />
+    </packageJsonPaths>
+  </component>
   <component name="ProjectFrameBounds">
-    <option name="width" value="1682" />
-    <option name="height" value="1280" />
+    <option name="y" value="640" />
+    <option name="width" value="2048" />
+    <option name="height" value="640" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="RailsProjectView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -92,6 +431,12 @@
               <item name="sample-test" type="b2602c69:ProjectViewProjectNode" />
               <item name="sample-test" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sample-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sample-test" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -101,12 +446,37 @@
               <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="welcome" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="sample-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sample-test" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sample-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sample-test" type="462c0819:PsiDirectoryNode" />
+              <item name="db" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sample-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sample-test" type="462c0819:PsiDirectoryNode" />
+              <item name="db" type="462c0819:PsiDirectoryNode" />
+              <item name="migrate" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sample-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sample-test" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sample-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sample-test" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="tasks" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="RailsProjectView" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -232,6 +602,10 @@
       <item itemvalue="Rails.Development: sample-test" />
     </list>
   </component>
+  <component name="SpringUtil" SPRING_PRE_LOADER_OPTION="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="2a2e4aa1-93ac-4a71-a04c-86b144ad4cb1" name="Default Changelist" comment="" />
@@ -239,24 +613,26 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1566306840925</updated>
-      <workItem from="1566306843921" duration="20000" />
+      <workItem from="1566306843921" duration="602000" />
+      <workItem from="1566309338593" duration="658000" />
+      <workItem from="1566322506957" duration="3194000" />
+      <workItem from="1566471107242" duration="82000" />
+      <workItem from="1566471192182" duration="82000" />
+      <workItem from="1566471276787" duration="2224000" />
+      <workItem from="1566495536159" duration="21573000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20000" />
+    <option name="totallyTimeSpent" value="28415000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1682" height="1280" extended-state="0" />
+    <frame x="0" y="640" width="2048" height="640" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21684945" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -264,20 +640,149 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Database" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="12" visible="true" weight="0.0" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
     </layout>
   </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.rake" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="ruby-line">
+          <url>file://$PROJECT_DIR$/db/migrate/20190822232910_create_tags.rb</url>
+          <line>6</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="ruby-line">
+          <url>file://$PROJECT_DIR$/lib/tasks/task_database.rake</url>
+          <line>181</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/lib/tasks/database.rake" />
     <entry file="file://$PROJECT_DIR$/app/controllers/welcome_controller.rb">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/Gemfile.lock">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="3" selection-start-column="3" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/igidai-master/lib/tasks/database.rake">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="173" column="25" selection-start-line="173" selection-start-column="19" selection-end-line="173" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/database.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="16" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-831" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/videos_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="376">
+          <caret line="71" column="51" selection-start-line="71" selection-start-column="51" selection-end-line="71" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/application_record.rb">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/tag.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/video.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20190822232910_create_tags.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20190822223011_create_videos.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="3" lean-forward="true" selection-start-line="17" selection-start-column="3" selection-end-line="17" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/user.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="18" selection-start-line="1" selection-start-column="18" selection-end-line="1" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20190822225016_create_users.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="25" lean-forward="true" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Gemfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="24" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/welcome/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="9" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
+        <state relative-caret-position="51">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/tasks/task_database.rake">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="189" column="67" selection-start-line="189" selection-start-column="67" selection-end-line="189" selection-end-column="67" />
+          <folding>
+            <element signature="e#140#630#0" />
+            <element signature="e#2094#3236#0" />
+            <element signature="e#2491#4078#0" />
+          </folding>
         </state>
       </provider>
     </entry>
