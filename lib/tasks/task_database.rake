@@ -20,16 +20,38 @@ namespace :task_database do
       video = get_video(item_link)
 
       user = get_user("https://www.tiktok.com/@#{video[:user_unique_id]}")
-      @user = User.create(user)
+      unless User.find_by(user_official_id: user[:user_official_id]).nil?
+        puts "update user"
+        @user = User.find_by(user_official_id: user[:user_official_id])
+        @user.update(user)
+      else
+        @user = User.create(user)
+        puts "new user"
+      end
 
       video.delete(:user_official_id)
       video.delete(:user_unique_id)
       video.delete(:user_nickname)
-      @user.videos.create(video)
+      unless @user.videos.find_by(video_official_id: video[:video_official_id]).nil?
+        puts "update video"
+        @video = @user.videos.find_by(video_official_id: video[:video_official_id])
+        @video.update(video)
+      else
+        puts "new video"
+        @user.videos.create(video)
+      end
 
       video[:video_tags].drop(1).each do |tag_id|
         tag = get_tag("https://www.tiktok.com/tag/#{tag_id}?langCountry=ja")
-        Tag.create(tag)
+        unless Tag.find_by(tag_official_id: tag[:tag_official_id]).nil?
+          puts "update tag"
+          @tag = Tag.find_by(tag_official_id: tag[:tag_official_id])
+          @tag.update(tag)
+        else
+          puts "new tag"
+          Tag.create(tag)
+        end
+
       end
 
     end
