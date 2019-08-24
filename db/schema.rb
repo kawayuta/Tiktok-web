@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2019_08_22_232910) do
 
-  create_table "tags", force: :cascade do |t|
+  create_table "tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.text "tag_official_id"
     t.text "tag_title"
     t.text "tag_text"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2019_08_22_232910) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.text "user_official_id"
     t.text "user_nick_name"
     t.text "user_signature"
@@ -41,8 +41,8 @@ ActiveRecord::Schema.define(version: 2019_08_22_232910) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "videos", force: :cascade do |t|
-    t.integer "user_id"
+  create_table "videos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "user_id"
     t.text "video_source"
     t.text "video_official_id"
     t.text "video_title"

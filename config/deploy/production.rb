@@ -1,0 +1,64 @@
+# 共通の設定をconfig/deploy.rbで記述
+
+# config valid for current version and patch releases of Capistrano
+lock "~> 3.11.0"
+
+# 基本設定
+set :application, "sample-test"
+set :repo_url, "https://kawayuta@github.com/kawayuta/sample-test.git"
+
+set :deploy_to, '/var/www/sample-test'
+
+set :rbenv_type, :user
+set :rbenv_ruby, '2.6.2'
+set :rbenv_path, '/home/kawayuta/.rbenv'
+set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
+
+set :keep_releases, 5
+set :deploy_via, :remote_cache
+
+set :log_level, :debug
+set :pty, true
+
+
+set :linked_files, %w{config/database.yml config/secrets.yml}
+set :linked_dirs,  %w{bin log tmp/pids tmp/sockets tmp/cache vender/bundle}
+
+after 'deploy:publishing', 'deploy:restart'
+namespace :deploy do
+
+
+  desc 'Restart application'
+  task :restart do
+    on roles(:app), in: :sequence, wait: 5 do
+      execute :mkdir, '-p', release_path.join('tmp')
+      execute :touch, release_path.join('tmp/restart.txt')
+    end
+  end
+
+  desc 'upload important files'
+  task :upload do
+    on roles(:app) do |host|
+      execute :mkdir, '-p', "#{shared_path}/config"
+      upload!('config/database.yml',"#{shared_path}/config/database.yml")
+      upload!('config/secrets.yml',"#{shared_path}/config/secrets.yml")
+    end
+  end
+
+  after :restart, :clear_cache do
+    on roles(:web), in: :groups, limit: 3, wait: 10 do
+
+      within release_path do
+        execute :rm, '-rf', release_path.join('tmp/cache')
+      end
+    end
+  end
+
+  before :started,   'deploy:upload'
+  after  :finishing, 'deploy:cleanup'
+
+  desc 'Restart application'
+  task :restart do
+    invoke 'unicorn:restart'
+  end
+end

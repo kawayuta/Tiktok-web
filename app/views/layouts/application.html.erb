@@ -27,7 +27,7 @@
         <div class="pickup_trending_tag">
           <h2>人気急上昇中のタグ</h2>
           <ul>
-            <% @trending_tags.order("RANDOM()").limit(5).each do |tag| %>
+            <% @trending_tags.limit(5).each do |tag| %>
               <li>
                 <p class="video_content_meta_tag_side">
                   <%= link_to "##{tag.tag_title}", search_tags_path(keyword: tag.tag_title) %>
@@ -41,7 +41,7 @@
         <div class="pickup_trending_video">
           <h2>急上昇中の動画</h2>
           <ul>
-            <% @trending_videos.order("RANDOM()").limit(3).each do |video| %>
+            <% @trending_videos.limit(3).each do |video| %>
               <li>
                 <%= image_tag video.video_cover_image %>
               </li>

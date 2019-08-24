@@ -31,8 +31,8 @@ rubyhdrdir = $(includedir)/$(RUBY_VERSION_NAME)
 vendorarchdir = $(vendorlibdir)/$(sitearch)
 vendorlibdir = $(vendordir)/$(ruby_version)
 vendordir = $(rubylibprefix)/vendor_ruby
-sitearchdir = $(DESTDIR)./.gem.20190822-53725-kuu7wk
-sitelibdir = $(DESTDIR)./.gem.20190822-53725-kuu7wk
+sitearchdir = $(DESTDIR)./.gem.20190825-28329-een6vd
+sitelibdir = $(DESTDIR)./.gem.20190825-28329-een6vd
 sitedir = $(rubylibprefix)/site_ruby
 rubyarchdir = $(rubylibdir)/$(arch)
 rubylibdir = $(rubylibprefix)/$(ruby_version)
@@ -83,12 +83,12 @@ debugflags = -ggdb3
 warnflags = -Wall -Wextra -Wdeclaration-after-statement -Wdeprecated-declarations -Wdivision-by-zero -Wimplicit-function-declaration -Wimplicit-int -Wpointer-arith -Wshorten-64-to-32 -Wwrite-strings -Wmissing-noreturn -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wunused-variable -Wextra-tokens
 cppflags = 
 CCDLFLAGS = -fno-common
-CFLAGS   = $(CCDLFLAGS) $(cflags)  -pipe -DNO_SSL_MODE_SUPPORT  $(ARCH_FLAG)
+CFLAGS   = $(CCDLFLAGS) $(cflags)  -pipe -DNO_SSL_MODE_SUPPORT -Wno-bad-function-cast -Wno-conditional-uninitialized -Wno-covered-switch-default -Wno-declaration-after-statement -Wno-disabled-macro-expansion -Wno-documentation-unknown-command -Wno-missing-field-initializers -Wno-missing-variable-declarations -Wno-padded -Wno-reserved-id-macro -Wno-sign-conversion -Wno-static-in-inline -Wno-switch-enum -Wno-undef -Wno-unreachable-code -Wno-used-but-marked-unused $(ARCH_FLAG)
 INCFLAGS = -I. -I$(arch_hdrdir) -I$(hdrdir)/ruby/backward -I$(hdrdir) -I$(srcdir) -I/usr/local/Cellar/mysql@5.6/5.6.43/include/mysql
 DEFS     = 
 CPPFLAGS = -DHAVE_RB_ABSINT_SIZE -DHAVE_RB_ABSINT_SINGLEBIT_P -DHAVE_RB_WAIT_FOR_SINGLE_FD -DHAVE_MYSQL_H -DHAVE_ERRMSG_H -DHAVE_MYSQL_NET_VIO -DHAVE_ST_NET_VIO -DHAVE_CONST_MYSQL_ENABLE_CLEARTEXT_PLUGIN -DHAVE_CONST_SERVER_QUERY_NO_GOOD_INDEX_USED -DHAVE_CONST_SERVER_QUERY_NO_INDEX_USED -DHAVE_CONST_SERVER_QUERY_WAS_SLOW -DHAVE_CONST_MYSQL_OPTION_MULTI_STATEMENTS_ON -DHAVE_CONST_MYSQL_OPTION_MULTI_STATEMENTS_OFF -DHAVE_TYPE_MY_BOOL -I/Users/216q013/.rbenv/versions/2.6.2/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT $(DEFS) $(cppflags)
 CXXFLAGS = $(CCDLFLAGS) $(cxxflags) $(ARCH_FLAG)
-ldflags  = -L. -L/Users/216q013/.rbenv/versions/2.6.2/lib  -fstack-protector-strong -L/usr/local/lib
+ldflags  = -L/usr/local/opt/openssl/lib -Wl,-rpath,/usr/local/Cellar/mysql@5.6/5.6.43/lib
 dldflags = -L/Users/216q013/.rbenv/versions/2.6.2/lib  -Wl,-undefined,dynamic_lookup -Wl,-multiply_defined,suppress 
 ARCH_FLAG = 
 DLDFLAGS = $(ldflags) $(dldflags) $(ARCH_FLAG)
@@ -124,8 +124,8 @@ TOUCH = exit >
 #### End of system configuration section. ####
 
 preload = 
-libpath = . $(libdir) /usr/local/opt/openssl/lib --with-opt-include=-I/usr/local/opt/openssl/include /usr/local/Cellar/mysql@5.6/5.6.43/lib
-LIBPATH =  -L. -L$(libdir) -L"/usr/local/opt/openssl/lib --with-opt-include=-I/usr/local/opt/openssl/include" -L/usr/local/Cellar/mysql@5.6/5.6.43/lib
+libpath = . $(libdir)
+LIBPATH =  -L. -L$(libdir)
 DEFFILE = 
 
 CLEANFILES = mkmf.log
