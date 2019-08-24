@@ -11,8 +11,10 @@ namespace :task_database do
     options.add_argument('--headless')
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
-    driver = Selenium::WebDriver.for :chrome, options: options, http_client: client
-    driver = webdriver.Chrome('/usr/local/bin/chromedriver',chrome_options=chrome_options)
+    ua = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.116 Safari/537.36"
+
+    caps = Selenium::WebDriver::Remote::Capabilities.chrome("chromeOptions" => {binary: '/usr/local/bin/chromedriver', args: ["--headless", "--disable-gpu", "--user-agent=#{ua}", "window-size=1280x800"]})
+    driver = Selenium::WebDriver.for :chrome, options: options, http_client: client, desired_capabilities: caps
     driver.get "https://www.tiktok.com/ja/trending"
 
     doc = Nokogiri::HTML(driver.page_source)
