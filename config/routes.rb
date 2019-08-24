@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'sample' => 'welcome#index'
   resources :tags do
     collection do
       get :search
@@ -6,7 +7,6 @@ Rails.application.routes.draw do
   end
   resources :users
   resources :videos
-  get 'sample' => 'welcome#index'
   #
   # get 'tag/:keyword', to: 'tags#search'
   # post 'tag/:keyword', to: 'tags#search'
