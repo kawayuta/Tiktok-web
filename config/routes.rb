@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :users
   resources :videos
   get 'sample' => 'welcome#index'
+  get 'search' => 'tags#search'
   #
   # get 'tag/:keyword', to: 'tags#search'
   # post 'tag/:keyword', to: 'tags#search'
