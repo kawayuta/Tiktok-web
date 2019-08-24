@@ -9,6 +9,8 @@ namespace :task_database do
     client.read_timeout = 120 # seconds
     options = Selenium::WebDriver::Chrome::Options.new
     options.add_argument('--headless')
+    options.add_argument('--no-sandbox')
+    options.add_argument('--disable-dev-shm-usage')
     driver = Selenium::WebDriver.for :chrome, options: options, http_client: client
     driver.get "https://www.tiktok.com/ja/trending"
 
