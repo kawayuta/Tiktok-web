@@ -1,5 +1,6 @@
 class TagsController < ApplicationController
   before_action :set_tag, only: [:show, :edit, :update, :destroy]
+  before_action :search_params, only: [:search]
 
   # GET /tags
   # GET /tags.json
@@ -10,6 +11,10 @@ class TagsController < ApplicationController
   # GET /tags/1
   # GET /tags/1.json
   def show
+    @videos = []
+    Video.all.each do | video |
+      @videos.push(video) if video.video_tags.include?(@tag.tag_title)
+    end
   end
 
   # GET /tags/new
@@ -61,6 +66,18 @@ class TagsController < ApplicationController
     end
   end
 
+  def search
+    @tag = Tag.find_by(tag_title: search_params[:keyword])
+    if @tag.nil?
+      @tag_instance = Tag.new_tag(search_params[:keyword])
+      @tag = VideoJob.perform_later(@tag_instance)
+      redirect_to tag_path(@tag_instance.id)
+    else
+      redirect_to tag_path(@tag.id)
+    end
+
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_tag
@@ -70,5 +87,9 @@ class TagsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def tag_params
       params.require(:tag).permit(:user_official_id, :user_nick_named)
+    end
+
+    def search_params
+      params.permit(:keyword)
     end
 end

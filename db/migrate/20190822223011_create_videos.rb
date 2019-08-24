@@ -6,11 +6,12 @@ class CreateVideos < ActiveRecord::Migration[5.2]
       t.text :video_official_id
       t.text :video_title
       t.text :video_tags, array: true
-      t.text :video_comment_count
+      t.integer :video_comment_count
       t.integer :video_play_count
       t.integer :video_share_count
       t.text :video_cover_image
       t.text :video_url
+      t.boolean :video_trending
 
       t.timestamps
     end

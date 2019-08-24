@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2019_08_22_232910) do
     t.integer "tag_posts_count"
     t.integer "tag_views_count"
     t.text "tag_url"
+    t.boolean "tag_trending"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -46,11 +47,12 @@ ActiveRecord::Schema.define(version: 2019_08_22_232910) do
     t.text "video_official_id"
     t.text "video_title"
     t.text "video_tags"
-    t.text "video_comment_count"
+    t.integer "video_comment_count"
     t.integer "video_play_count"
     t.integer "video_share_count"
     t.text "video_cover_image"
     t.text "video_url"
+    t.boolean "video_trending"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_videos_on_user_id"

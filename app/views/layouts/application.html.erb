@@ -10,6 +10,29 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <div class="header-inner">
+        <div class="branding_logo">
+          <%= image_tag('tiktok_logo.svg') %>
+        </div>
+
+
+        <%= form_tag("search", method: "get") do %>
+          <%= label_tag(:keyword, "Search for:") %>
+          <%= text_field_tag(:keyword) %>
+          <%= submit_tag("Search") %>
+        <% end %>
+      </div>
+    </header>
+
+    <main>
+      <aside>
+      </aside>
+      <div class="container">
+        <section>
+          <%= yield %>
+        </section>
+      </div>
+    </main>
   </body>
 </html>

@@ -8,6 +8,7 @@ class CreateTags < ActiveRecord::Migration[5.2]
       t.integer :tag_posts_count
       t.integer :tag_views_count
       t.text :tag_url
+      t.boolean :tag_trending
 
       t.timestamps
     end
