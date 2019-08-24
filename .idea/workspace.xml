@@ -76,7 +76,7 @@
           <entry key="js" value="1199" />
           <entry key="lock" value="8" />
           <entry key="rake" value="2744" />
-          <entry key="rb" value="1696" />
+          <entry key="rb" value="1699" />
           <entry key="scss" value="2046" />
           <entry key="yml" value="38" />
         </counts>
@@ -88,7 +88,7 @@
           <entry key="JavaScript" value="1188" />
           <entry key="PLAIN_TEXT" value="12" />
           <entry key="RHTML" value="2500" />
-          <entry key="Ruby" value="4465" />
+          <entry key="Ruby" value="4468" />
           <entry key="SCSS" value="2046" />
           <entry key="YAML" value="38" />
         </counts>
@@ -151,7 +151,11 @@
           </file>
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/config/environments/production.rb">
-              <provider selected="true" editor-type-id="text-editor" />
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="173">
+                  <caret line="31" column="27" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="27" />
+                </state>
+              </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
@@ -292,6 +296,7 @@
       <find>driver</find>
       <find>inner</find>
       <find>vh</find>
+      <find>serve_static_files</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -329,6 +334,7 @@
         <option value="$PROJECT_DIR$/lib/tasks/task_database.rake" />
         <option value="$PROJECT_DIR$/app/controllers/users_controller.rb" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
+        <option value="$PROJECT_DIR$/config/environments/production.rb" />
       </list>
     </option>
   </component>
@@ -627,16 +633,15 @@
       <workItem from="1566471276787" duration="2224000" />
       <workItem from="1566495536159" duration="29199000" />
       <workItem from="1566556349627" duration="2166000" />
-      <workItem from="1566561149823" duration="39604000" />
+      <workItem from="1566561149823" duration="40206000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="77811000" />
+    <option name="totallyTimeSpent" value="78413000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-32" y="621" width="2048" height="659" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22083749" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -904,7 +909,11 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config/environments/production.rb">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="31" column="27" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="27" />
+        </state>
+      </provider>
     </entry>
   </component>
   <component name="masterDetails">
