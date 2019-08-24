@@ -366,45 +366,6 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="coffee-rails (vbundled(4.2.2)) [path][gem]" type="rubylib">
-        <properties>
-          <option name="version" value="3" />
-        </properties>
-        <CLASSES>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/coffee-rails-4.2.2/lib" />
-        </CLASSES>
-        <SOURCES>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/coffee-rails-4.2.2/lib" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library name="coffee-script (vbundled(2.4.1)) [path][gem]" type="rubylib">
-        <properties>
-          <option name="version" value="3" />
-        </properties>
-        <CLASSES>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/coffee-script-2.4.1/lib" />
-        </CLASSES>
-        <SOURCES>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/coffee-script-2.4.1/lib" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library name="coffee-script-source (vbundled(1.12.2)) [path][gem]" type="rubylib">
-        <properties>
-          <option name="version" value="3" />
-        </properties>
-        <CLASSES>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/coffee-script-source-1.12.2/lib" />
-        </CLASSES>
-        <SOURCES>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/coffee-script-source-1.12.2/lib" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
       <library name="concurrent-ruby (vbundled(1.1.5)) [path][gem]" type="rubylib">
         <properties>
           <option name="version" value="3" />
