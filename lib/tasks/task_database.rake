@@ -5,9 +5,11 @@ namespace :task_database do
   require 'selenium-webdriver'
 
   task :get_trending => :environment do
+    client = Selenium::WebDriver::Remote::Http::Default.new
+    client.read_timeout = 120 # seconds
     options = Selenium::WebDriver::Chrome::Options.new
     options.add_argument('--headless')
-    driver = Selenium::WebDriver.for :chrome, options: options
+    driver = Selenium::WebDriver.for :chrome, options: options, http_client: client
     driver.get "https://www.tiktok.com/ja/trending"
 
     doc = Nokogiri::HTML(driver.page_source)
