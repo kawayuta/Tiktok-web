@@ -1,3 +1,39 @@
 // Place all the styles related to the tags controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.canvas_heart_bubble
+{
+  text-align: left;
+  width: 340px;
+  position: absolute;
+  height: 200px;
+  z-index: 998;
+  & canvas {
+    width: 340px !important;
+    position: relative;
+    margin-left: 70px;
+    z-index: 997;
+    top: -70px;
+
+  }
+}
+
+.canvas_heart_bubble:before {
+  content: '';
+  color:white;
+  width:5px;
+  height:5px;
+  display:block;
+  position:absolute;
+  top:24px;
+  font-size:19px;
+  font-family: "Courier";
+  left:142px;
+  font-weight:bold;
+  opacity:0.2;
+  transform: rotate(0deg);
+  transform-origin: 6px 9px;
+  animation: fan 2s linear infinite;
+}

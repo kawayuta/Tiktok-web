@@ -4,11 +4,20 @@ class Video < ApplicationRecord
   belongs_to :user
 
   def self.get_video(url)
+    client = Selenium::WebDriver::Remote::Http::Default.new
+    client.read_timeout = 120 # seconds
     options = Selenium::WebDriver::Chrome::Options.new
     options.add_argument('--headless')
-    driver = Selenium::WebDriver.for :chrome, options: options
-    driver.get url
-    doc_item = Nokogiri::HTML(driver.page_source)
+    options.add_argument('--no-sandbox')
+    options.add_argument('--disable-dev-shm-usage')
+    ua = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.116 Safari/537.36"
+
+    caps = Selenium::WebDriver::Remote::Capabilities.chrome("chromeOptions" => {binary: '/usr/local/bin/chromedriver', args: ["--headless", "--disable-gpu", "--user-agent=#{ua}", "window-size=1280x800"]})
+    v_driver = Selenium::WebDriver.for :chrome, options: options, http_client: client, desired_capabilities: caps
+    v_driver.get url
+    doc_item = Nokogiri::HTML(v_driver.page_source)
+    v_driver.close
+    v_driver.quit
 
     tags = doc_item.css('._video_card_big_meta_info_challenge')
     @video_tags = tags.search("a").text.split('#')
@@ -44,9 +53,6 @@ class Video < ApplicationRecord
         "video_cover_image": @video_cover_image,
         "video_url": @video_url,
     }
-
-    driver.close
-    driver.quit
 
     return video
   end

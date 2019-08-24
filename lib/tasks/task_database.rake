@@ -23,7 +23,17 @@ namespace :task_database do
       video_urls.push('https://www.tiktok.com' + item.css('a')[0][:href])
     end
 
-    video_urls.uniq.each do |item_link|
+    Video.all.each do |v|
+      v.video_trending = false
+      v.save
+    end
+
+    Tag.all.each do |t|
+      t.tag_trending = false
+      t.save
+    end
+
+    Parallel.each(video_urls.uniq, in_processes: 5) do |item_link|
       video = Video.get_video(item_link)
 
       user = User.get_user("https://www.tiktok.com/@#{video[:user_unique_id]}")
@@ -42,7 +52,8 @@ namespace :task_database do
       unless @user.videos.find_by(video_official_id: video[:video_official_id]).nil?
         puts "update video"
         @video = @user.videos.find_by(video_official_id: video[:video_official_id])
-        video[:video_trending] = false
+
+        video[:video_trending] = true
         @video.update(video)
       else
         puts "new video"
@@ -55,7 +66,8 @@ namespace :task_database do
         unless Tag.find_by(tag_official_id: tag[:tag_official_id]).nil?
           puts "update tag"
           @tag = Tag.find_by(tag_official_id: tag[:tag_official_id])
-          tag[:tag_trending] = false
+
+          tag[:tag_trending] = true
           @tag.update(tag)
         else
           puts "new tag"

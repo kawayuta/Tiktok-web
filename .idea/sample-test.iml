@@ -122,6 +122,27 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
+      <library name="activerecord-refresh_connection (vbundled(0.0.5)) [path][gem]" type="rubylib">
+        <properties>
+          <option name="version" value="3" />
+        </properties>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/activerecord-refresh_connection-0.0.5/lib" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/activerecord-refresh_connection-0.0.5/spec" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/activerecord-refresh_connection-0.0.5/example" />
+        </CLASSES>
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/activerecord-refresh_connection-0.0.5/lib" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/activerecord-refresh_connection-0.0.5/spec" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/activerecord-refresh_connection-0.0.5/example" />
+        </SOURCES>
+        <excluded>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/activerecord-refresh_connection-0.0.5/spec" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/activerecord-refresh_connection-0.0.5/example" />
+        </excluded>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
       <library name="activestorage (vbundled(5.2.3)) [path][gem]" type="rubylib">
         <properties>
           <option name="version" value="3" />
@@ -468,6 +489,24 @@
         </SOURCES>
         <excluded>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/font-awesome-sass-5.4.1/assets" />
+        </excluded>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="get_process_mem (vbundled(0.2.4)) [path][gem]" type="rubylib">
+        <properties>
+          <option name="version" value="3" />
+        </properties>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/get_process_mem-0.2.4/lib" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/get_process_mem-0.2.4/test" />
+        </CLASSES>
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/get_process_mem-0.2.4/lib" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/get_process_mem-0.2.4/test" />
+        </SOURCES>
+        <excluded>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/get_process_mem-0.2.4/test" />
         </excluded>
       </library>
     </orderEntry>
@@ -1497,6 +1536,32 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/unicorn-5.5.1/examples" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/unicorn-5.5.1/Documentation" />
         </excluded>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="unicorn-rails (vbundled(2.2.1)) [path][gem]" type="rubylib">
+        <properties>
+          <option name="version" value="3" />
+        </properties>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/unicorn-rails-2.2.1/lib" />
+        </CLASSES>
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/unicorn-rails-2.2.1/lib" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="unicorn-worker-killer (vbundled(0.4.4)) [path][gem]" type="rubylib">
+        <properties>
+          <option name="version" value="3" />
+        </properties>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/unicorn-worker-killer-0.4.4/lib" />
+        </CLASSES>
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/unicorn-worker-killer-0.4.4/lib" />
+        </SOURCES>
       </library>
     </orderEntry>
     <orderEntry type="module-library">

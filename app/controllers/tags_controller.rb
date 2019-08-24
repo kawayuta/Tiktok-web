@@ -11,6 +11,10 @@ class TagsController < ApplicationController
   # GET /tags/1
   # GET /tags/1.json
   def show
+
+    @trending_videos = Video.where(video_trending: true)
+    @trending_tags = Tag.where(tag_trending: true)
+
     @videos = []
     Video.all.each do | video |
       @videos.push(video) if video.video_tags.include?(@tag.tag_title)
@@ -67,13 +71,31 @@ class TagsController < ApplicationController
   end
 
   def search
+
+    return redirect_to tag_path(1) if search_params[:keyword] == ""
+
     @tag = Tag.find_by(tag_title: search_params[:keyword])
     if @tag.nil?
-      @tag_instance = Tag.new_tag(search_params[:keyword])
-      @tag = VideoJob.perform_later(@tag_instance)
-      redirect_to tag_path(@tag_instance.id)
+
+      @tag = Tag.create(tag_title: search_params[:keyword])
+      @tag.updated_at = "2000-01-01"
+      @tag.tag_url = "https://www.tiktok.com/tag/#{search_params[:keyword]}?langCountry=ja"
+      @tag.save
+
+      TagJob.perform_later(search_params[:keyword])
+      VideoJob.perform_later(@tag)
+
+      redirect_to tag_path(@tag.id) and return
     else
-      redirect_to tag_path(@tag.id)
+      if @tag.updated_at.strftime("%Y-%m-%d") != Time.current.strftime("%Y-%m-%d")
+
+        TagJob.perform_later(search_params[:keyword])
+        VideoJob.perform_later(@tag)
+
+        redirect_to tag_path(@tag.id) and return
+      else
+        redirect_to tag_path(@tag.id) and return
+      end
     end
 
   end

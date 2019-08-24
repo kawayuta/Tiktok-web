@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Sample</title>
+    <title>TikTok Web</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,23 +10,44 @@
   </head>
 
   <body>
-    <header>
+  <header>
       <div class="header-inner">
         <div class="branding_logo">
           <%= image_tag('tiktok_logo.svg') %>
         </div>
 
-
-        <%= form_tag("search", method: "get") do %>
-          <%= label_tag(:keyword, "Search for:") %>
-          <%= text_field_tag(:keyword) %>
-          <%= submit_tag("Search") %>
+        <%= form_tag(search_tags_path, method: "get") do %>
+            <%= text_field_tag :keyword, '', class: 'form-control', placeholder: 'キーワードを入力してね' %>
+          <%= button_tag '<i class="fa fa-search"></i>'.html_safe, :type => "submit" %>
         <% end %>
       </div>
     </header>
-
     <main>
       <aside>
+        <div class="pickup_trending_tag">
+          <h2>人気急上昇中のタグ</h2>
+          <ul>
+            <% @trending_tags.order("RANDOM()").limit(5).each do |tag| %>
+              <li>
+                <p class="video_content_meta_tag_side">
+                  <%= link_to "##{tag.tag_title}", search_tags_path(keyword: tag.tag_title) %>
+                </p>
+              </li>
+          <% end %>
+          </ul>
+        </div>
+
+
+        <div class="pickup_trending_video">
+          <h2>急上昇中の動画</h2>
+          <ul>
+            <% @trending_videos.order("RANDOM()").limit(3).each do |video| %>
+              <li>
+                <%= image_tag video.video_cover_image %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
       </aside>
       <div class="container">
         <section>
@@ -34,5 +55,7 @@
         </section>
       </div>
     </main>
+
+
   </body>
 </html>

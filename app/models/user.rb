@@ -2,11 +2,20 @@ class User < ApplicationRecord
   has_many :videos
 
   def self.get_user(url)
+    client = Selenium::WebDriver::Remote::Http::Default.new
+    client.read_timeout = 120 # seconds
     options = Selenium::WebDriver::Chrome::Options.new
     options.add_argument('--headless')
-    driver = Selenium::WebDriver.for :chrome, options: options
-    driver.get url
-    doc_tag = Nokogiri::HTML(driver.page_source)
+    options.add_argument('--no-sandbox')
+    options.add_argument('--disable-dev-shm-usage')
+    ua = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.116 Safari/537.36"
+
+    caps = Selenium::WebDriver::Remote::Capabilities.chrome("chromeOptions" => {binary: '/usr/local/bin/chromedriver', args: ["--headless", "--disable-gpu", "--user-agent=#{ua}", "window-size=1280x800"]})
+    u_driver = Selenium::WebDriver.for :chrome, options: options, http_client: client, desired_capabilities: caps
+    u_driver.get url
+    doc_tag = Nokogiri::HTML(u_driver.page_source)
+    u_driver.close
+    u_driver.quit
 
     js = doc_tag.search('script')[13].text
     @user_os = js.split('os":')[1].split(',')[0].delete('"')
@@ -36,8 +45,6 @@ class User < ApplicationRecord
         "user_url": @user_url
     }
 
-    driver.close
-    driver.quit
 
     return user
 

@@ -35,6 +35,63 @@ header {
         height: auto;
       }
     }
+
+    & form {
+      &:before {
+        content: "#";
+        color:#888;
+        font-size: 35px;
+        position: absolute;
+        top: 29px;
+        left: 320px;
+        z-index: 999;
+      }
+    }
+    & input {
+      &[type="text"] {
+        width: 470px;
+        height: 50px;
+        margin-top: 22px;
+        margin-left: 85px;
+        border-radius: 30px;
+        border: none;
+        background-color: #3D3F42;
+        padding: 8px;
+        padding-left: 55px;
+        font-size: 20px;
+        color: #FFF;
+        &:focus {
+          outline: 0;
+        }
+      }
+    }
+    & button {
+
+      &[type="submit"] {
+        margin-left: 10px;
+        font-size: 20px;
+        width:100px;
+        height:50px;
+        position: relative;
+        top: -1px;
+        display: inline-block;
+        padding: 0.5em 1em;
+        text-decoration: none;
+        background: #EE1D52;/*ボタン色*/
+        color: #FFF;
+        border: none;
+        border-radius: 30px;
+        &:active {
+          -webkit-transform: translateY(4px);
+          transform: translateY(4px);/*下に動く*/
+          border-bottom: none;/*線を消す*/
+        }
+
+        &:focus {
+          outline: 0;
+        }
+      }
+    }
   }
 }
 
@@ -47,6 +104,87 @@ main {
     width: 300px;
     min-height: calc(100vh - 96px);
     background-color: #131217;
+
+    & .pickup_trending_tag {
+      & h2 {
+        font-size: 24px;
+        font-weight: bold;
+        text-align: left;
+
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 40px;
+        padding-bottom: 5px;
+      }
+      & ul {
+        width: 100%;
+        padding-top: 15px;
+        & li {
+          padding-left: 20px;
+
+          & p {
+
+            font-size: 17px;
+            line-height: 2em;
+            color: #555;
+            & a {
+              color: #555;
+              text-decoration:none;
+            }
+          }
+        }
+      }
+    }
+
+    & .pickup_trending_video {
+      & h2 {
+        font-size: 24px;
+        font-weight: bold;
+        text-align: left;
+
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 40px;
+        padding-bottom: 5px;
+      }
+      & ul {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        padding: 15px;
+        & li {
+          width: calc(89px - 10px);
+          height: 158px;
+          font-size: 17px;
+          line-height: 2em;
+          border-radius: 10px;
+          margin: 5px;
+          overflow: hidden;
+          background-color: #333333;
+
+          transition: 0.5s all ease 0s;
+          -webkit-filter: grayscale(100%);
+          -moz-filter: grayscale(100%);
+          -ms-filter: grayscale(100%);
+          -o-filter: grayscale(100%);
+          filter: grayscale(100%);
+
+          &:hover {
+            -webkit-filter: grayscale(0);
+            -moz-filter: grayscale(0);
+            -ms-filter: grayscale(0);
+            -o-filter: grayscale(0);
+            filter: grayscale(0);
+          }
+
+          & img {
+            width: calc(89px - 10px);
+            height: 158px;
+            object-fit: cover;
+          }
+        }
+      }
+    }
   }
   & .contents_wrap {
     width: 100%;
@@ -188,13 +326,23 @@ main {
             flex: 0 0 auto;
             margin-left: 20px;
             transition: 0.5s all ease 0s;
-            &:hover {
 
-            }
+            object-fit: cover;
           }
         }
       }
 
     }
   }
+}
+
+p, a, h1, h2, h3, h4, li {
+
+  position: relative;
+  z-index: 999;
+}
+header {
+  position: relative;
+  z-index: 999;
+
 }
