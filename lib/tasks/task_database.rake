@@ -12,6 +12,7 @@ namespace :task_database do
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
     driver = Selenium::WebDriver.for :chrome, options: options, http_client: client
+    driver = webdriver.Chrome('/usr/local/bin/chromedriver',chrome_options=chrome_options)
     driver.get "https://www.tiktok.com/ja/trending"
 
     doc = Nokogiri::HTML(driver.page_source)
