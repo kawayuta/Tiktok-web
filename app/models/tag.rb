@@ -47,7 +47,8 @@ class Tag < ApplicationRecord
     end
 
     begin
-      Parallel.each(video_urls.uniq, in_processes: 3) do |item_link|
+      video_urls.uniq.each do |item_link|
+        Thread.new do
         ActiveRecord::Base.connection_pool.with_connection do
         video = Video.get_video(item_link)
         user = User.get_user("https://www.tiktok.com/@#{video[:user_unique_id]}")
@@ -84,6 +85,7 @@ class Tag < ApplicationRecord
         #   end
         #
         # end
+        end
         end
       end
 
