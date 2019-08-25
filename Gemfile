@@ -19,6 +19,7 @@ gem 'parallel'
 gem 'font-awesome-sass', '~> 5.4.1'
 gem "jquery-rails"
 gem 'webdrivers'
+gem 'tor', :git => 'https://github.com/dryruby/tor.rb.git'
 
 # Use CoffeeScript for .coffee assets and views
 # gem 'coffee-rails', '~> 4.2'
