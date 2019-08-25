@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 worker_processes Integer(ENV["WEB_CONCURRENCY"] || 24)
-timeout 30
+timeout 300
 
 preload_app true
 

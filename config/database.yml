@@ -6,8 +6,8 @@
 #
 default: &default
   adapter: mysql2
-  pool: 30
-  timeout: 5000
+  pool: 5
+  timeout: 50000
   username: root
   password:
   socket: /tmp/mysql.sock
