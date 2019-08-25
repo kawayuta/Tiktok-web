@@ -20,7 +20,6 @@ class Tag < ApplicationRecord
       end
     end
 
-    self.get_tag_from_keyword(@tag)
     return @tag
   end
 
@@ -47,7 +46,6 @@ class Tag < ApplicationRecord
       video_urls.push('https://www.tiktok.com' + item.css('a')[0][:href])
     end
 
-    begin
       Parallel.each(video_urls.uniq, in_processes: video_urls.uniq.count) do |item_link|
         ActiveRecord::Base.connection_pool.with_connection do
         video = Video.get_video(item_link)
@@ -64,13 +62,17 @@ class Tag < ApplicationRecord
         video.delete(:user_official_id)
         video.delete(:user_unique_id)
         video.delete(:user_nickname)
-        unless @user.videos.find_by(video_official_id: video[:video_official_id]).nil?
-          puts "update video"
-          @video = @user.videos.find_by(video_official_id: video[:video_official_id])
-          @video.update(video)
-        else
-          puts "new video"
-          @user.videos.create(video)
+        begin
+          unless @user.videos.find_by(video_official_id: video[:video_official_id]).nil?
+            puts "update video"
+            @video = @user.videos.find_by(video_official_id: video[:video_official_id])
+            @video.update(video)
+          else
+            puts "new video"
+            @user.videos.create(video)
+          end
+        rescue
+          p "error"
         end
 
         # video[:video_tags].drop(1).each do |tag_id|
@@ -87,10 +89,6 @@ class Tag < ApplicationRecord
         # end
         end
       end
-
-    rescue
-      p "error"
-    end
     video_urls = []
 
   end
