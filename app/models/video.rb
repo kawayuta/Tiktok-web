@@ -10,6 +10,7 @@ class Video < ApplicationRecord
     options.add_argument('--headless')
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
+    options.add_argument('--proxy-server=%s' % "socks5://127.0.0.1:9150")
     ua = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.116 Safari/537.36"
 
     caps = Selenium::WebDriver::Remote::Capabilities.chrome("chromeOptions" => {binary: '/usr/local/bin/chromedriver', args: ["--headless", "--disable-gpu", "--user-agent=#{ua}", "window-size=1280x800"]})
@@ -26,7 +27,7 @@ class Video < ApplicationRecord
     title.search("a").each(&:remove)
     @video_title = title.text
 
-    js = doc_item.search('script')[11].text
+    js = doc_item.search('script').to_s
     @user_official_id = js.split('userId":')[1].split(',')[0].delete('"')
     @user_unique_id = js.split('uniqueId":')[1].split(',')[0].delete('"')
     @user_nickname = js.split('nickName":')[1].split(',')[0]
