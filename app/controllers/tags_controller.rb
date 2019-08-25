@@ -84,6 +84,7 @@ class TagsController < ApplicationController
 
       TagJob.perform_later(search_params[:keyword])
       Tag.get_tag_from_keyword(@tag)
+      # VideoJob.perform_later(@tag)
 
       redirect_to tag_path(@tag.id) and return
     else

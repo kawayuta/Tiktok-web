@@ -47,31 +47,29 @@ class Tag < ApplicationRecord
     end
 
     begin
-      Parallel.each(video_urls.uniq, in_processes: video_urls.uniq.count) do |item_link|
-        VideoJob.perform_later(item_link)
+      Parallel.each(video_urls.uniq, in_processes: 3) do |item_link|
+        video = Video.get_video(item_link)
+        user = User.get_user("https://www.tiktok.com/@#{video[:user_unique_id]}")
+        unless User.find_by(user_official_id: user[:user_official_id]).nil?
+          puts "update user"
+          @user = User.find_by(user_official_id: user[:user_official_id])
+          @user.update(user)
+        else
+          @user = User.create(user)
+          puts "new user"
+        end
 
-        # video = Video.get_video(item_link)
-        # user = User.get_user("https://www.tiktok.com/@#{video[:user_unique_id]}")
-        # unless User.find_by(user_official_id: user[:user_official_id]).nil?
-        #   puts "update user"
-        #   @user = User.find_by(user_official_id: user[:user_official_id])
-        #   @user.update(user)
-        # else
-        #   @user = User.create(user)
-        #   puts "new user"
-        # end
-        #
-        # video.delete(:user_official_id)
-        # video.delete(:user_unique_id)
-        # video.delete(:user_nickname)
-        # unless @user.videos.find_by(video_official_id: video[:video_official_id]).nil?
-        #   puts "update video"
-        #   @video = @user.videos.find_by(video_official_id: video[:video_official_id])
-        #   @video.update(video)
-        # else
-        #   puts "new video"
-        #   @user.videos.create(video)
-        # end
+        video.delete(:user_official_id)
+        video.delete(:user_unique_id)
+        video.delete(:user_nickname)
+        unless @user.videos.find_by(video_official_id: video[:video_official_id]).nil?
+          puts "update video"
+          @video = @user.videos.find_by(video_official_id: video[:video_official_id])
+          @video.update(video)
+        else
+          puts "new video"
+          @user.videos.create(video)
+        end
 
         # video[:video_tags].drop(1).each do |tag_id|
         #   tag = Tag.get_tag("https://www.tiktok.com/tag/#{tag_id}?langCountry=ja")
@@ -86,6 +84,7 @@ class Tag < ApplicationRecord
         #
         # end
         end
+
     rescue
       p "error"
     end
