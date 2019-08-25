@@ -20,6 +20,7 @@ class Tag < ApplicationRecord
       end
     end
 
+    self.get_tag_from_keyword(@tag)
     return @tag
   end
 
@@ -47,7 +48,7 @@ class Tag < ApplicationRecord
     end
 
     begin
-      Parallel.each(video_urls.uniq, in_processes: 5) do |item_link|
+      Parallel.each(video_urls.uniq, in_processes: video_urls.uniq.count) do |item_link|
         ActiveRecord::Base.connection_pool.with_connection do
         video = Video.get_video(item_link)
         user = User.get_user("https://www.tiktok.com/@#{video[:user_unique_id]}")
