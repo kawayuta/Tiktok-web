@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="2a2e4aa1-93ac-4a71-a04c-86b144ad4cb1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/app/controllers/tags_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/tags_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/jobs/video_job.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/jobs/video_job.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/tag.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/tag.rb" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -90,7 +88,7 @@
           <entry key="js" value="1410" />
           <entry key="lock" value="8" />
           <entry key="rake" value="2895" />
-          <entry key="rb" value="2752" />
+          <entry key="rb" value="2753" />
           <entry key="ru" value="3" />
           <entry key="scss" value="3407" />
           <entry key="yml" value="89" />
@@ -103,7 +101,7 @@
           <entry key="JavaScript" value="1399" />
           <entry key="PLAIN_TEXT" value="24" />
           <entry key="RHTML" value="3131" />
-          <entry key="Ruby" value="5713" />
+          <entry key="Ruby" value="5714" />
           <entry key="SCSS" value="3407" />
           <entry key="YAML" value="89" />
         </counts>
@@ -117,8 +115,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/controllers/tags_controller.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="473">
-                  <caret line="84" column="34" selection-start-line="84" selection-start-column="34" selection-end-line="84" selection-end-column="34" />
+                <state relative-caret-position="490">
+                  <caret line="85" selection-start-line="85" selection-end-line="85" />
                 </state>
               </provider>
             </entry>
@@ -687,12 +685,12 @@
       <workItem from="1566495536159" duration="29199000" />
       <workItem from="1566556349627" duration="2166000" />
       <workItem from="1566561149823" duration="41487000" />
-      <workItem from="1566662381155" duration="31609000" />
+      <workItem from="1566662381155" duration="31857000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="119325000" />
+    <option name="totallyTimeSpent" value="119573000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="109" y="386" width="2048" height="837" extended-state="0" />
@@ -1042,8 +1040,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/tags_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="473">
-          <caret line="84" column="34" selection-start-line="84" selection-start-column="34" selection-end-line="84" selection-end-column="34" />
+        <state relative-caret-position="490">
+          <caret line="85" selection-start-line="85" selection-end-line="85" />
         </state>
       </provider>
     </entry>

@@ -47,7 +47,8 @@ class Tag < ApplicationRecord
     end
 
     begin
-      Parallel.each(video_urls.uniq, in_processes: 3) do |item_link|
+      Parallel.each(video_urls.uniq, in_processes: 5) do |item_link|
+        ActiveRecord::Base.connection_pool.with_connection do
         video = Video.get_video(item_link)
         user = User.get_user("https://www.tiktok.com/@#{video[:user_unique_id]}")
         unless User.find_by(user_official_id: user[:user_official_id]).nil?
@@ -84,6 +85,7 @@ class Tag < ApplicationRecord
         #
         # end
         end
+      end
 
     rescue
       p "error"
