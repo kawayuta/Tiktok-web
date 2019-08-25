@@ -5,7 +5,8 @@ lock "~> 3.11.0"
 
 # 基本設定
 set :application, "sample-test"
-set :repo_url, "https://kawayuta@github.com/kawayuta/sample-test.git"
+set :repo_url,    "git@github.com:kawayuta/sample-test.git"
+set :user,        'kawayuta'
 
 set :deploy_to, '/var/www/sample-test'
 
@@ -33,6 +34,26 @@ namespace :deploy do
     on roles(:app), in: :sequence, wait: 5 do
       execute :mkdir, '-p', release_path.join('tmp')
       execute :touch, release_path.join('tmp/restart.txt')
+    end
+  end
+
+  task :task_input_trending do
+    on roles(:db) do |host|
+      within current_path do
+        with rails_env: fetch(:rails_env) do
+          execute :rake, 'task_database:get_trending'
+        end
+      end
+    end
+  end
+
+  task :migrate_rest do
+    on roles(:db) do |host|
+      within current_path do
+        with rails_env: fetch(:rails_env) do
+          execute :rake, 'RAILS_ENV=production db:migrate:reset DISABLE_DATABASE_ENVIRONMENT_CHECK=1'
+        end
+      end
     end
   end
 
