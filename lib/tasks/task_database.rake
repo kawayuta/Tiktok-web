@@ -3,6 +3,24 @@ namespace :task_database do
   require 'nokogiri'
   require 'open-uri'
   require 'selenium-webdriver'
+  require 'tor-privoxy'
+  require 'socksify/http'
+
+  task :get_tor => :environment do
+    torrc = Tor::Config.load("/etc/tor/torrc")
+    Tor::Config.open("/etc/tor/torrc") do |torrc|
+      puts "Tor SOCKS port: #{torrc['SOCKSPort']}"
+      puts "Tor control port: #{torrc['ControlPort']}"
+      puts "Tor exit policy:"
+      torrc.each('ExitPolicy') do |key, value|
+        puts "  #{value}"
+      end
+    end
+    Tor::Controller.connect(:port => 9050) do |tor|
+      puts "Tor version: #{tor.version}"
+      puts "Tor config file: #{tor.config_file}"
+    end
+  end
 
   task :get_trending => :environment do
     client = Selenium::WebDriver::Remote::Http::Default.new
@@ -11,7 +29,7 @@ namespace :task_database do
     options.add_argument('--headless')
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
-    options.add_argument('--proxy-server=%s' % "socks5://127.0.0.1:9150")
+    options.add_argument('--proxy-server=%s' % "socks5://127.0.0.1:9050")
     ua = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.116 Safari/537.36"
 
     caps = Selenium::WebDriver::Remote::Capabilities.chrome("chromeOptions" => {binary: '/usr/local/bin/chromedriver', args: ["--headless", "--disable-gpu", "--user-agent=#{ua}", "window-size=1280x800"]})

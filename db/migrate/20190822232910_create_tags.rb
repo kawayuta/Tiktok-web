@@ -5,8 +5,8 @@ class CreateTags < ActiveRecord::Migration[5.2]
       t.text :tag_title
       t.text :tag_text
       t.text :tag_cover_image
-      t.decimal :tag_posts_count
-      t.decimal :tag_views_count
+      t.text :tag_posts_count
+      t.text :tag_views_count
       t.text :tag_url
       t.boolean :tag_trending
 

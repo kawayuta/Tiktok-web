@@ -19,6 +19,10 @@ gem 'parallel'
 gem 'font-awesome-sass', '~> 5.4.1'
 gem "jquery-rails"
 gem 'webdrivers'
+gem 'tor'
+gem 'tor_requests'
+gem 'tor-privoxy'
+gem 'net-telnet'
 
 # Use CoffeeScript for .coffee assets and views
 # gem 'coffee-rails', '~> 4.2'
