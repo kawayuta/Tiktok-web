@@ -82,19 +82,15 @@ class TagsController < ApplicationController
       @tag.tag_url = "https://www.tiktok.com/tag/#{search_params[:keyword]}?langCountry=ja"
       @tag.save
 
-      Thread.new do
-        TagJob.perform_later(search_params[:keyword])
-        VideoJob.perform_later(@tag)
-      end
+      TagJob.perform_later(search_params[:keyword])
+      VideoJob.perform_later(@tag)
 
       redirect_to tag_path(@tag.id) and return
     else
       if @tag.updated_at.strftime("%Y-%m-%d") != Time.current.strftime("%Y-%m-%d")
 
-        Thread.new do
-          TagJob.perform_later(search_params[:keyword])
-          VideoJob.perform_later(@tag)
-        end
+        TagJob.perform_later(search_params[:keyword])
+        VideoJob.perform_later(@tag)
 
         redirect_to tag_path(@tag.id) and return
       else

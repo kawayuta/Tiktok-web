@@ -9,8 +9,8 @@ Bundler.require(*Rails.groups)
 module Sample
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    # config.middleware.insert_before ActionDispatch::Executor,
-    #                                 ActiveRecord::ConnectionAdapters::RefreshConnectionManagement
+    config.middleware.insert_before ActionDispatch::Executor,
+                                    ActiveRecord::ConnectionAdapters::RefreshConnectionManagement
     config.load_defaults 5.2
     config.active_record.default_timezone = :local
     config.time_zone = 'Tokyo'
