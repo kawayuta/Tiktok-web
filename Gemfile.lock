@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/dryruby/tor.rb.git
+  revision: 54b40ac4c8a37322a39e7c43efca1689a7e204b7
+  specs:
+    tor (0.1.4)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -261,6 +267,7 @@ DEPENDENCIES
   selenium-webdriver
   spring
   spring-watcher-listen (~> 2.0.0)
+  tor!
   turbolinks (~> 5)
   uglifier (>= 1.3.0)
   unicorn
