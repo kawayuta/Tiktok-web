@@ -25,14 +25,14 @@
       </div>
       <div class="video_content_meta_info">
         <p class="video_content_meta_info_play">
-          <i class="fas fa-heart"></i> <span class="video_play_count"><%= @videos.first.video_play_count.to_i.to_s(:delimited) %></span>
+          <i class="fas fa-heart"></i> <span class="video_play_count"><%= @videos.first.video_play_count. %></span>
         </p>
 
         <p class="video_content_meta_info_comment">
-          <i class="fas fa-comment"></i> <span class="video_comment_count"><%= @videos.first.video_comment_count.to_i.to_s(:delimited) %></span>
+          <i class="fas fa-comment"></i> <span class="video_comment_count"><%= @videos.first.video_comment_count %></span>
         </p>
         <p class="video_content_meta_info_share">
-          <i class="fas fa-share"></i> <span class="video_share_count"><%= @videos.first.video_share_count.to_i.to_s(:delimited) %></span>
+          <i class="fas fa-share"></i> <span class="video_share_count"><%= @videos.first.video_share_count %></span>
         </p>
       </div>
     </div>
@@ -64,11 +64,11 @@
       </div>
       <div class="video_content_tag_info_meta">
         <p class="video_content_tag_info_meta_post">
-          <%= @tag.tag_posts_count.to_s(:delimited) unless @tag.tag_posts_count.nil? %> <span>投稿</span>
+          <%= @tag.tag_posts_count unless @tag.tag_posts_count.nil? %> <span>投稿</span>
         </p>
 
         <p class="video_content_tag_info_meta_view">
-          <%= @tag.tag_views_count.to_s(:delimited) unless @tag.tag_views_count.nil? %> <span>回再生</span>
+          <%= @tag.tag_views_count unless @tag.tag_views_count.nil? %> <span>回再生</span>
         </p>
       </div>
     </section>
@@ -83,9 +83,9 @@
                                    video_index: i,
                                    video_title: video.video_title,
                                    video_tags: video.video_tags,
-                                   video_play_count: video.video_play_count.to_s(:delimited),
-                                   video_comment_count: video.video_comment_count.to_s(:delimited),
-                                   video_share_count: video.video_share_count.to_s(:delimited),
+                                   video_play_count: video.video_play_count,
+                                   video_comment_count: video.video_comment_count,
+                                   video_share_count: video.video_share_count,
                                    video_user_covers: video.user.user_covers,
                                    video_user_nick_name: video.user.user_nick_name,
                             } %>
