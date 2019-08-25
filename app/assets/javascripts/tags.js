@@ -50,16 +50,12 @@ $(document).on('turbolinks:load', function() {
 
   $(".video_data").hover(function() {
     $(this).css({
-      'width': 'calc(140px * 1.1)',
-      'height': 'calc(245px * 1.1)',
-      "top": "calc(-1 * calc(140px * 0.05))",
+      'transform': 'scale(1.1)'
     });
 
   }, function() {
     $(this).css({
-      'width': 'calc(140px * 1)',
-      'height': 'calc(245px * 1)',
-      "top": "calc(140px * 0)",
+      'transform': 'scale(1)'
     });
 
   });

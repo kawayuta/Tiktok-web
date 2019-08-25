@@ -326,7 +326,7 @@ main {
             flex: 0 0 auto;
             margin-left: 20px;
             transition: 0.5s all ease 0s;
-
+            transform-origin: 50% 50%;
             object-fit: cover;
           }
         }
