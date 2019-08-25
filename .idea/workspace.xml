@@ -54,7 +54,7 @@
           <entry key="lock" value="3" />
           <entry key="png" value="2" />
           <entry key="rake" value="6" />
-          <entry key="rb" value="54" />
+          <entry key="rb" value="55" />
           <entry key="ru" value="3" />
           <entry key="scss" value="4" />
           <entry key="svg" value="3" />
@@ -69,7 +69,7 @@
           <entry key="JavaScript" value="6" />
           <entry key="PLAIN_TEXT" value="7" />
           <entry key="RHTML" value="15" />
-          <entry key="Ruby" value="65" />
+          <entry key="Ruby" value="66" />
           <entry key="SCSS" value="4" />
           <entry key="SVG" value="3" />
           <entry key="YAML" value="4" />
@@ -86,7 +86,7 @@
           <entry key="js" value="1410" />
           <entry key="lock" value="8" />
           <entry key="rake" value="2895" />
-          <entry key="rb" value="2741" />
+          <entry key="rb" value="2744" />
           <entry key="ru" value="3" />
           <entry key="scss" value="3407" />
           <entry key="yml" value="89" />
@@ -99,7 +99,7 @@
           <entry key="JavaScript" value="1399" />
           <entry key="PLAIN_TEXT" value="24" />
           <entry key="RHTML" value="3131" />
-          <entry key="Ruby" value="5702" />
+          <entry key="Ruby" value="5705" />
           <entry key="SCSS" value="3407" />
           <entry key="YAML" value="89" />
         </counts>
@@ -120,19 +120,19 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Gemfile">
+            <entry file="file://$PROJECT_DIR$/app/views/tags/show.html.erb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="396">
-                  <caret line="63" column="64" selection-start-line="63" selection-start-column="64" selection-end-line="63" selection-end-column="64" />
+                <state relative-caret-position="462">
+                  <caret line="54" column="31" selection-start-line="54" selection-start-column="23" selection-end-line="54" selection-end-column="31" />
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/views/tags/show.html.erb">
+            <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="462">
-                  <caret line="54" column="31" selection-start-line="54" selection-start-column="23" selection-end-line="54" selection-end-column="31" />
+                <state relative-caret-position="461">
+                  <caret line="47" column="24" selection-start-line="47" selection-start-column="24" selection-end-line="47" selection-end-column="24" />
                 </state>
               </provider>
             </entry>
@@ -176,8 +176,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/models/tag.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="451">
-                  <caret line="51" column="42" lean-forward="true" selection-start-line="51" selection-start-column="42" selection-end-line="51" selection-end-column="42" />
+                <state relative-caret-position="266">
+                  <caret line="49" column="26" selection-start-line="49" selection-start-column="26" selection-end-line="49" selection-end-column="26" />
                 </state>
               </provider>
             </entry>
@@ -236,7 +236,7 @@
             <entry file="file://$PROJECT_DIR$/config/unicorn/production.rb">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="17">
-                  <caret line="1" column="52" selection-start-line="1" selection-start-column="52" selection-end-line="1" selection-end-column="52" />
+                  <caret line="1" column="53" selection-start-line="1" selection-start-column="51" selection-end-line="1" selection-end-column="53" />
                 </state>
               </provider>
             </entry>
@@ -358,10 +358,10 @@
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
         <option value="$PROJECT_DIR$/config/unicorn.rb" />
         <option value="$PROJECT_DIR$/app/views/tags/show.html.erb" />
-        <option value="$PROJECT_DIR$/app/models/tag.rb" />
         <option value="$PROJECT_DIR$/config/application.rb" />
         <option value="$PROJECT_DIR$/app/controllers/tags_controller.rb" />
         <option value="$PROJECT_DIR$/config/unicorn/production.rb" />
+        <option value="$PROJECT_DIR$/app/models/tag.rb" />
       </list>
     </option>
   </component>
@@ -679,12 +679,12 @@
       <workItem from="1566495536159" duration="29199000" />
       <workItem from="1566556349627" duration="2166000" />
       <workItem from="1566561149823" duration="41487000" />
-      <workItem from="1566662381155" duration="29866000" />
+      <workItem from="1566662381155" duration="30403000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="117582000" />
+    <option name="totallyTimeSpent" value="118119000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="109" y="386" width="2048" height="837" extended-state="0" />
@@ -830,13 +830,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="461">
-          <caret line="47" column="24" selection-start-line="47" selection-start-column="24" selection-end-line="47" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -1011,13 +1004,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/tag.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="451">
-          <caret line="51" column="42" lean-forward="true" selection-start-line="51" selection-start-column="42" selection-end-line="51" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/tags/show.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="462">
@@ -1025,17 +1011,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/config/unicorn/production.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="53" selection-start-line="1" selection-start-column="51" selection-end-line="1" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/tag.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="49" column="26" selection-start-line="49" selection-start-column="26" selection-end-line="49" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="461">
+          <caret line="47" column="24" selection-start-line="47" selection-start-column="24" selection-end-line="47" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/tags_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="246">
           <caret line="84" selection-start-line="84" selection-end-line="84" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/unicorn/production.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="52" selection-start-line="1" selection-start-column="52" selection-end-line="1" selection-end-column="52" />
         </state>
       </provider>
     </entry>
