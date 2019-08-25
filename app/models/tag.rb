@@ -43,11 +43,11 @@ class Tag < ApplicationRecord
     gt_driver.quit
 
     video_urls = []
-    doc.css('._video_feed_item').each do |item|
+    doc.css('._video_feed_item').first(5).each do |item|
       video_urls.push('https://www.tiktok.com' + item.css('a')[0][:href])
     end
 
-      Parallel.each(video_urls.uniq, in_processes: 20) do |item_link|
+      Parallel.each(video_urls.uniq, in_processes: 5) do |item_link|
         ActiveRecord::Base.connection_pool.with_connection do
         video = Video.get_video(item_link)
         user = User.get_user("https://www.tiktok.com/@#{video[:user_unique_id]}")
