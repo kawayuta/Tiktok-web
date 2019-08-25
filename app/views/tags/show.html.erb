@@ -51,7 +51,12 @@
 
     <section class="video_content_tag_info">
       <div class="video_content_tag_info_header">
-        <%= image_tag @tag.tag_cover_image, :onerror => "this.src='/assets/hash_default.svg'" unless @tag.tag_cover_image.nil? %>
+        <% unless @tag.tag_cover_image.nil? %>
+          <%= image_tag @tag.tag_cover_image %>
+        <% else %>
+          <%= image_tag('hash_default.svg') %>
+      <% end %>
+
         <h1>#<%= @tag.tag_title unless @tag.tag_title.nil? %></h1>
       </div>
       <div class="video_content_tag_info_meta">
