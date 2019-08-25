@@ -112,7 +112,7 @@ class Tag < ApplicationRecord
     g_driver.close
     g_driver.quit
 
-    js = doc_tag.search('script')[13].text
+    js = doc_tag.search('script')[7].text
     @tag_official_id = js.split('challengeId":')[1].split(',')[0].delete('"')
     @tag_title = js.split('challengeName":')[1].split(',')[0].delete('"')
     @tag_text = js.split('text":')[1].split(',')[0].delete('"')
