@@ -1,5 +1,6 @@
 
-worker_processes Integer(ENV["WEB_CONCURRENCY"] || 16)
+worker_processes Integer(ENV["WEB_CONCURRENCY"] || 24)
+
 timeout 15
 preload_app true
 pid "tmp/unicorn.pid"
