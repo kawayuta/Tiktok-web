@@ -33,4 +33,4 @@ production:
   database: deploy_app_production
   username: root
   password: Mirainoyuuta2116!
-  host: 118.27.24.77
+  host: 118.27.28.241
