@@ -51,11 +51,12 @@
 
     <section class="video_content_tag_info">
       <div class="video_content_tag_info_header">
-        <% unless @tag.tag_cover_image == "" %>
+
+        <% unless @tag.tag_cover_image.nil? %>
           <%= image_tag @tag.tag_cover_image %>
         <% else %>
-          <%= image_tag('hash.png') %>
-      <% end %>
+          <%= image_tag('hash_tag.png') %>
+        <% end %>
 
         <h1>#<%= @tag.tag_title unless @tag.tag_title.nil? %></h1>
       </div>
