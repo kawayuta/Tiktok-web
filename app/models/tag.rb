@@ -42,6 +42,7 @@ class Tag < ApplicationRecord
 
     @tag = Tag.find_by(tag_title: search)
 
+    if @tag.updated_at.strftime("%Y-%m-%d") != Time.current.strftime("%Y-%m-%d")
 
       elements.each do |el|
         @user_nick_name = el.split(' on TikTok:')[0].split('(@')[0]
@@ -121,6 +122,7 @@ class Tag < ApplicationRecord
               end
             end
           end
+      end
 
     end
 
