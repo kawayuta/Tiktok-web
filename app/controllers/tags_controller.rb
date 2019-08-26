@@ -74,33 +74,17 @@ class TagsController < ApplicationController
 
     return redirect_to tag_path(1) if search_params[:keyword] == ""
 
-    @tag = Tag.find_by(tag_title: search_params[:keyword])
-    if @tag.nil?
+    @tag = Tag.create(tag_title: search_params[:keyword])
+    @tag.updated_at = "2000-01-01"
+    @tag.tag_url = "https://www.tiktok.com/tag/#{search_params[:keyword]}?langCountry=ja"
+    @tag.save
 
-      @tag = Tag.create(tag_title: search_params[:keyword])
-      @tag.updated_at = "2000-01-01"
-      @tag.tag_url = "https://www.tiktok.com/tag/#{search_params[:keyword]}?langCountry=ja"
-      @tag.save
-
-      Thread.new do
-        TagJob.perform_later(search_params[:keyword])
-        VideoJob.perform_later(@tag)
-      end
-
-      redirect_to tag_path(@tag.id) and return
-    else
-      if @tag.updated_at.strftime("%Y-%m-%d") != Time.current.strftime("%Y-%m-%d")
-
-        Thread.new do
-          TagJob.perform_later(search_params[:keyword])
-          VideoJob.perform_later(@tag)
-        end
-
-        redirect_to tag_path(@tag.id) and return
-      else
-        redirect_to tag_path(@tag.id) and return
-      end
+    Thread.new do
+      TagJob.perform_later(search_params[:keyword])
+      VideoJob.perform_later(search_params[:keyword])
     end
+
+    redirect_to tag_path(@tag.id) and return
 
   end
 

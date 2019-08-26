@@ -1,30 +1,26 @@
 class Tag < ApplicationRecord
 
-
-  def self.new_tag(keyword)
-    ActiveRecord::Base.connection_pool.with_connection do
-      @tag = Tag.find_by(tag_title: keyword)
-      unless @tag.nil?
-        if @tag.updated_at.strftime("%Y-%m-%d") != Time.current.strftime("%Y-%m-%d")
+  def self.new_tag(search)
+    @tag = Tag.find_by(tag_title: search)
+    unless @tag.nil?
+      if @tag.updated_at.strftime("%Y-%m-%d") != Time.current.strftime("%Y-%m-%d")
+        ActiveRecord::Base.connection_pool.with_connection do
           puts "update tag"
-          tag = Tag.get_tag("https://www.tiktok.com/tag/#{keyword}?langCountry=ja")
+          tag = Tag.get_tag("https://www.tiktok.com/tag/#{search}?langCountry=ja")
           @tag = @tag.update(tag)
-        else
-          puts "load tag"
         end
-      else
+      end
+    else
+      ActiveRecord::Base.connection_pool.with_connection do
         puts "new tag"
-        url = "https://www.tiktok.com/tag/#{keyword}?langCountry=ja"
+        url = "https://www.tiktok.com/tag/#{search}?langCountry=ja"
         tag = Tag.get_tag(url)
         @tag = Tag.create(tag)
       end
     end
-
-    return @tag
   end
 
-  def self.get_tag_from_keyword(tag_instance)
-    puts "new tag video"
+  def self.get_tag_from_keyword(search)
     client = Selenium::WebDriver::Remote::Http::Default.new
     client.read_timeout = 120 # seconds
     options = Selenium::WebDriver::Chrome::Options.new
@@ -32,65 +28,103 @@ class Tag < ApplicationRecord
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
     options.add_argument('--proxy-server=%s' % "socks5://127.0.0.1:9050")
+
     ua = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.116 Safari/537.36"
 
     caps = Selenium::WebDriver::Remote::Capabilities.chrome("chromeOptions" => {binary: '/usr/local/bin/chromedriver', args: ["--headless", "--disable-gpu", "--user-agent=#{ua}", "window-size=1280x800"]})
-    gt_driver = Selenium::WebDriver.for :chrome, options: options, http_client: client, desired_capabilities: caps
-    gt_driver.get tag_instance.tag_url
+    driver = Selenium::WebDriver.for :chrome, options: options, http_client: client, desired_capabilities: caps
+    driver.get "https://www.tiktok.com/tag/#{search}?langCountry=ja"
 
-    doc = Nokogiri::HTML(gt_driver.page_source)
-    gt_driver.close
-    gt_driver.quit
+    doc = Nokogiri::HTML(driver.page_source)
+    elements = doc.search('script')[13].to_s.split('name":"').drop(1)
+    driver.close
+    driver.quit
 
-    video_urls = []
-    doc.css('._video_feed_item').first(5).each do |item|
-      video_urls.push('https://www.tiktok.com' + item.css('a')[0][:href])
-    end
+    @tag = Tag.find_by(tag_title: search)
 
-      Parallel.each(video_urls.uniq, in_processes: 5) do |item_link|
-        ActiveRecord::Base.connection_pool.with_connection do
-        video = Video.get_video(item_link)
-        user = User.get_user("https://www.tiktok.com/@#{video[:user_unique_id]}")
-        unless User.find_by(user_official_id: user[:user_official_id]).nil?
-          puts "update user"
-          @user = User.find_by(user_official_id: user[:user_official_id])
-          @user.update(user)
+    if @tag.updated_at.strftime("%Y-%m-%d") != Time.current.strftime("%Y-%m-%d")
+
+      elements.each do |el|
+        @user_nick_name = el.split(' on TikTok:')[0].split('(@')[0]
+
+        @video_source = el.split('contentUrl":"')[1].split('","')[0]
+        @video_cover_image = el.split('thumbnailUrl":["')[1].split('","')[0]
+        @video_title = el.split(' on TikTok: ')[1].split('has created a short video on TikTok with music Dirty Work.')[0].split('","')[0].split("#")[0]
+        @video_tags = el.split(' on TikTok: ')[1].split('has created a short video on TikTok with music Dirty Work.')[0].split('","')[0].split("#")
+        @video_comment_count = el.split('commentCount":"')[1].split('"')[0]
+        @video_interaction_count = el.split('interactionCount":"')[1].split('"')[0]
+        unless el.split('"url":"')[1].nil?
+          @video_url = el.split('"url":"')[1].split('","')[0]
+          @video_official_id = @video_url.split('/').last
+          @video_user_id = @video_url.split('/')[3]
+
+          @user_official_id = @video_user_id
         else
-          @user = User.create(user)
-          puts "new user"
+          @video_url = ""
+          @vide_id = ""
+          @vide_user_id = ""
         end
 
-        video.delete(:user_official_id)
-        video.delete(:user_unique_id)
-        video.delete(:user_nickname)
-        begin
-          unless @user.videos.find_by(video_official_id: video[:video_official_id]).nil?
-            puts "update video"
-            @video = @user.videos.find_by(video_official_id: video[:video_official_id])
-            @video.update(video)
+        user = {
+            "user_official_id": @user_official_id,
+            "user_nick_name": @user_nick_name
+        }
+
+        video = {
+            "user_official_id": @user_official_id,
+            "video_source": @video_source,
+            "video_official_id": @video_official_id,
+            "video_title": @video_title,
+            "video_tags": @video_tags,
+            "video_comment_count": @video_comment_count,
+            "video_play_count": @video_play_count,
+            "video_share_count": @video_share_count,
+            "video_interaction_count": @video_interaction_ount,
+            "video_cover_image": @video_cover_image,
+            "video_url": @video_url
+        }
+
+
+          unless User.find_by(user_official_id: user[:user_official_id]).nil?
+            puts "update user"
+            ActiveRecord::Base.connection_pool.with_connection do
+              @user = User.find_by(user_official_id: user[:user_official_id])
+              @user.update(user)
+            end
           else
-            puts "new video"
-            @user.videos.create(video)
+            ActiveRecord::Base.connection_pool.with_connection do
+              @user = User.create(user)
+              puts "new user"
+            end
           end
-        rescue
-          p "error"
-        end
 
-        # video[:video_tags].drop(1).each do |tag_id|
-        #   tag = Tag.get_tag("https://www.tiktok.com/tag/#{tag_id}?langCountry=ja")
-        #   unless Tag.find_by(tag_official_id: tag[:tag_official_id]).nil?
-        #     puts "update tag"
-        #     @tag = Tag.find_by(tag_official_id: tag[:tag_official_id])
-        #     @tag.update(tag)
-        #   else
-        #     puts "new tag"
-        #     Tag.create(tag)
-        #   end
-        #
-        # end
-        end
+          video.delete(:user_official_id)
+          unless @user.videos.find_by(video_official_id: video[:video_official_id]).nil?
+            ActiveRecord::Base.connection_pool.with_connection do
+              puts "update video"
+              @video = @user.videos.find_by(video_official_id: video[:video_official_id])
+              @video.update(video)
+            end
+
+          else
+            ActiveRecord::Base.connection_pool.with_connection do
+              puts "new video"
+              @user.videos.create(video)
+            end
+
+          end
+
+          video[:video_tags].each do |tag|
+            ActiveRecord::Base.connection_pool.with_connection do
+              @tag = tag.gsub(/[[:space:]]/, '')
+              if Tag.find_by(tag_title: @tag).nil?
+                Tag.create(tag_title: @tag, tag_url: "https://www.tiktok.com/tag/#{@tag}?langCountry=ja")
+              end
+            end
+          end
       end
-    video_urls = []
+
+    end
 
   end
 

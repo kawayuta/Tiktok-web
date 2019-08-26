@@ -23,6 +23,10 @@ namespace :task_database do
   end
 
   task :get_trending => :environment do
+    # agent = Mechanize.new
+    # page = agent.get("https://www.tiktok.com/ja/trending")
+    # elements = page.search('script')[8].to_s.split('name":"').drop(1)
+    #
     client = Selenium::WebDriver::Remote::Http::Default.new
     client.read_timeout = 120 # seconds
     options = Selenium::WebDriver::Chrome::Options.new
@@ -30,6 +34,7 @@ namespace :task_database do
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
     options.add_argument('--proxy-server=%s' % "socks5://127.0.0.1:9050")
+
     ua = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.116 Safari/537.36"
 
     caps = Selenium::WebDriver::Remote::Capabilities.chrome("chromeOptions" => {binary: '/usr/local/bin/chromedriver', args: ["--headless", "--disable-gpu", "--user-agent=#{ua}", "window-size=1280x800"]})
@@ -37,25 +42,50 @@ namespace :task_database do
     driver.get "https://www.tiktok.com/ja/trending"
 
     doc = Nokogiri::HTML(driver.page_source)
-    video_urls = []
-    doc.css('._video_feed_item').each do |item|
-      video_urls.push('https://www.tiktok.com' + item.css('a')[0][:href])
-    end
+    elements = doc.search('script')[13].to_s.split('name":"').drop(1)
+    driver.close
+    driver.quit
 
-    Video.all.each do |v|
-      v.video_trending = false
-      v.save
-    end
+    elements.each do |el|
+      @user_nick_name = el.split(' on TikTok:')[0].split('(@')[0]
 
-    Tag.all.each do |t|
-      t.tag_trending = false
-      t.save
-    end
+      @video_source = el.split('contentUrl":"')[1].split('","')[0]
+      @video_cover_image = el.split('thumbnailUrl":["')[1].split('","')[0]
+      @video_title = el.split(' on TikTok: ')[1].split('has created a short video on TikTok with music Dirty Work.')[0].split('","')[0].split("#")[0]
+      @video_tags = el.split(' on TikTok: ')[1].split('has created a short video on TikTok with music Dirty Work.')[0].split('","')[0].split("#")
+      @video_comment_count = el.split('commentCount":"')[1].split('"')[0]
+      @video_interaction_count = el.split('interactionCount":"')[1].split('"')[0]
+      unless el.split('"url":"')[1].nil?
+        @video_url = el.split('"url":"')[1].split('","')[0]
+        @video_official_id = @video_url.split('/').last
+        @video_user_id = @video_url.split('/')[3]
 
-    Parallel.each(video_urls.uniq, in_processes: 5) do |item_link|
-      video = Video.get_video(item_link)
+        @user_official_id = @video_user_id
+      else
+        @video_url = ""
+        @vide_id = ""
+        @vide_user_id = ""
+      end
 
-      user = User.get_user("https://www.tiktok.com/@#{video[:user_unique_id]}")
+    user = {
+        "user_official_id": @user_official_id,
+        "user_nick_name": @user_nick_name
+    }
+
+    video = {
+        "user_official_id": @user_official_id,
+        "video_source": @video_source,
+        "video_official_id": @video_official_id,
+        "video_title": @video_title,
+        "video_tags": @video_tags,
+        "video_comment_count": @video_comment_count,
+        "video_play_count": @video_play_count,
+        "video_share_count": @video_share_count,
+        "video_interaction_count": @video_interaction_ount,
+        "video_cover_image": @video_cover_image,
+        "video_url": @video_url
+    }
+
       unless User.find_by(user_official_id: user[:user_official_id]).nil?
         puts "update user"
         @user = User.find_by(user_official_id: user[:user_official_id])
@@ -66,37 +96,61 @@ namespace :task_database do
       end
 
       video.delete(:user_official_id)
-      video.delete(:user_unique_id)
-      video.delete(:user_nickname)
       unless @user.videos.find_by(video_official_id: video[:video_official_id]).nil?
         puts "update video"
         @video = @user.videos.find_by(video_official_id: video[:video_official_id])
-
-        video[:video_trending] = true
         @video.update(video)
       else
         puts "new video"
-        video[:video_trending] = true
         @user.videos.create(video)
       end
 
-      video[:video_tags].drop(1).each do |tag_id|
-        tag = Tag.get_tag("https://www.tiktok.com/tag/#{tag_id}?langCountry=ja")
-        unless Tag.find_by(tag_official_id: tag[:tag_official_id]).nil?
-          puts "update tag"
-          @tag = Tag.find_by(tag_official_id: tag[:tag_official_id])
-
-          tag[:tag_trending] = true
-          @tag.update(tag)
-        else
-          puts "new tag"
-          tag[:tag_trending] = true
-          Tag.create(tag)
+      video[:video_tags].each do |tag|
+        @tag = tag.gsub(/[[:space:]]/, '')
+        if Tag.find_by(tag_title: @tag).nil?
+          Tag.create(tag_title: @tag, tag_url: "https://www.tiktok.com/tag/#{@tag}?langCountry=ja")
         end
-
       end
 
     end
+
+    # client = Selenium::WebDriver::Remote::Http::Default.new
+    # client.read_timeout = 120 # seconds
+    # options = Selenium::WebDriver::Chrome::Options.new
+    # options.add_argument('--headless')
+    # options.add_argument('--no-sandbox')
+    # options.add_argument('--disable-dev-shm-usage')
+    #
+    # if Rails.env == 'production'
+    #   options.add_argument('--proxy-server=%s' % "socks5://127.0.0.1:9050")
+    # end
+    # ua = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.116 Safari/537.36"
+    #
+    # caps = Selenium::WebDriver::Remote::Capabilities.chrome("chromeOptions" => {binary: '/usr/local/bin/chromedriver', args: ["--headless", "--disable-gpu", "--user-agent=#{ua}", "window-size=1280x800"]})
+    # driver = Selenium::WebDriver.for :chrome, options: options, http_client: client, desired_capabilities: caps
+    # driver.get "https://www.tiktok.com/ja/trending"
+    #
+    # doc = Nokogiri::HTML(driver.page_source)
+    # driver.close
+    # driver.quit
+    # puts doc.search('script').to_s
+    # # Parallel.each(items.uniq.first(10), in_processes: 3) do |item|
+    #   # video = Video.get_video("https://www.tiktok.com#{item.css('a')[0][:href]}")
+    #
+    #
+    #
+    #   # video_cover = item.css('._avatar_').to_s.split('"')[3]
+    #   #
+    #   # user_name = item.css('a')[0][:href].split('/')[1]
+    #   # user_official_id = item.css('a')[0][:href].split('/')[3]
+    #   # user_covers = item.css('._avatar_').to_s.split('"')[3]
+    #   #
+    #   #
+    #   # puts image
+    #   # puts user_official_id
+    #
+    # end
+
   end
 
   task :get_trending_video => :environment do

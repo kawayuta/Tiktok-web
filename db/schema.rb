@@ -17,8 +17,8 @@ ActiveRecord::Schema.define(version: 2019_08_22_232910) do
     t.text "tag_title"
     t.text "tag_text"
     t.text "tag_cover_image"
-    t.decimal "tag_posts_count", precision: 10
-    t.decimal "tag_views_count", precision: 10
+    t.text "tag_posts_count"
+    t.text "tag_views_count"
     t.text "tag_url"
     t.boolean "tag_trending"
     t.datetime "created_at", null: false
@@ -30,10 +30,10 @@ ActiveRecord::Schema.define(version: 2019_08_22_232910) do
     t.text "user_nick_name"
     t.text "user_signature"
     t.text "user_covers"
-    t.decimal "user_following_count", precision: 10
-    t.decimal "user_fans_count", precision: 10
-    t.decimal "user_heart_count", precision: 10
-    t.decimal "user_video_count", precision: 10
+    t.text "user_following_count"
+    t.text "user_fans_count"
+    t.text "user_heart_count"
+    t.text "user_video_count"
     t.boolean "user_verified"
     t.text "user_region"
     t.text "user_url"
@@ -47,9 +47,10 @@ ActiveRecord::Schema.define(version: 2019_08_22_232910) do
     t.text "video_official_id"
     t.text "video_title"
     t.text "video_tags"
-    t.decimal "video_comment_count", precision: 10
-    t.decimal "video_play_count", precision: 10
-    t.decimal "video_share_count", precision: 10
+    t.text "video_comment_count"
+    t.text "video_play_count"
+    t.text "video_share_count"
+    t.text "video_interaction_count"
     t.text "video_cover_image"
     t.text "video_url"
     t.boolean "video_trending"

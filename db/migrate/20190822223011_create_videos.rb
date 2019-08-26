@@ -9,6 +9,7 @@ class CreateVideos < ActiveRecord::Migration[5.2]
       t.text :video_comment_count
       t.text :video_play_count
       t.text :video_share_count
+      t.text :video_interaction_count
       t.text :video_cover_image
       t.text :video_url
       t.boolean :video_trending
