@@ -2,12 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a2e4aa1-93ac-4a71-a04c-86b144ad4cb1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/javascripts/tags.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/javascripts/tags.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/tags_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/tags_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/tag.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/tag.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/tags/show.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/tags/show.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/tasks/task_database.rake" beforeDir="false" afterPath="$PROJECT_DIR$/lib/tasks/task_database.rake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/bundler/gems/tor.rb-54b40ac4c8a3" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/bundle/ruby/2.6.0/bundler/gems/tor.rb-54b40ac4c8a3" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
@@ -95,8 +89,8 @@
           <entry key="html" value="2" />
           <entry key="js" value="1424" />
           <entry key="lock" value="8" />
-          <entry key="rake" value="4673" />
-          <entry key="rb" value="4499" />
+          <entry key="rake" value="4687" />
+          <entry key="rb" value="4603" />
           <entry key="ru" value="3" />
           <entry key="scss" value="3414" />
           <entry key="yml" value="101" />
@@ -109,7 +103,7 @@
           <entry key="JavaScript" value="1413" />
           <entry key="PLAIN_TEXT" value="24" />
           <entry key="RHTML" value="3157" />
-          <entry key="Ruby" value="9260" />
+          <entry key="Ruby" value="9378" />
           <entry key="SCSS" value="3414" />
           <entry key="YAML" value="101" />
         </counts>
@@ -186,8 +180,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/lib/tasks/task_database.rake">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="493">
-                  <caret line="55" column="43" lean-forward="true" selection-start-line="55" selection-start-column="43" selection-end-line="55" selection-end-column="43" />
+                <state relative-caret-position="443">
+                  <caret line="53" column="34" selection-start-line="53" selection-start-column="34" selection-end-line="53" selection-end-column="34" />
                 </state>
               </provider>
             </entry>
@@ -235,8 +229,13 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/models/tag.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="317">
-                  <caret line="152" column="11" lean-forward="true" selection-start-line="152" selection-start-column="11" selection-end-line="152" selection-end-column="11" />
+                <state relative-caret-position="592">
+                  <caret line="300" lean-forward="true" selection-start-line="300" selection-end-line="300" />
+                  <folding>
+                    <element signature="e#2159#6316#0" />
+                    <element signature="e#2158#6477#0" />
+                    <element signature="e#5075#6841#0" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -392,8 +391,8 @@
         <option value="$PROJECT_DIR$/app/views/tags/show.html.erb" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/tags.js" />
         <option value="$PROJECT_DIR$/app/controllers/tags_controller.rb" />
-        <option value="$PROJECT_DIR$/app/models/tag.rb" />
         <option value="$PROJECT_DIR$/lib/tasks/task_database.rake" />
+        <option value="$PROJECT_DIR$/app/models/tag.rb" />
       </list>
     </option>
   </component>
@@ -707,12 +706,12 @@
       <workItem from="1566662381155" duration="33821000" />
       <workItem from="1566710277463" duration="12196000" />
       <workItem from="1566759604353" duration="7427000" />
-      <workItem from="1566894335145" duration="19817000" />
+      <workItem from="1566894335145" duration="20099000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="170789000" />
+    <option name="totallyTimeSpent" value="171071000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="430" width="2048" height="850" extended-state="0" />
@@ -1038,17 +1037,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/tag.rb">
+    <entry file="file://$PROJECT_DIR$/lib/tasks/task_database.rake">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="152" column="11" lean-forward="true" selection-start-line="152" selection-start-column="11" selection-end-line="152" selection-end-column="11" />
+        <state relative-caret-position="443">
+          <caret line="53" column="34" selection-start-line="53" selection-start-column="34" selection-end-line="53" selection-end-column="34" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/tasks/task_database.rake">
+    <entry file="file://$PROJECT_DIR$/app/models/tag.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="55" column="43" lean-forward="true" selection-start-line="55" selection-start-column="43" selection-end-line="55" selection-end-column="43" />
+        <state relative-caret-position="592">
+          <caret line="300" lean-forward="true" selection-start-line="300" selection-end-line="300" />
+          <folding>
+            <element signature="e#2159#6316#0" />
+            <element signature="e#2158#6477#0" />
+            <element signature="e#5075#6841#0" />
+          </folding>
         </state>
       </provider>
     </entry>

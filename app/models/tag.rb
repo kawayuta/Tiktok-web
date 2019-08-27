@@ -153,7 +153,10 @@ class Tag < ApplicationRecord
           }
           @tag = Tag.find_by(tag_title: tag[:tag_title])
           unless @tag.nil?
+            Tag.update(tag)
+          else
             Tag.create(tag)
+
           end
         end
       end
@@ -161,7 +164,7 @@ class Tag < ApplicationRecord
     end
 
   end
-  
+
   def self.get_video_from_embed(url)
     client = Selenium::WebDriver::Remote::Http::Default.new
     client.read_timeout = 120 # seconds
