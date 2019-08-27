@@ -25,7 +25,7 @@
       </div>
       <div class="video_content_meta_info">
         <p class="video_content_meta_info_play">
-          <i class="fas fa-heart"></i> <span class="video_play_count"><%= @videos.first.video_play_count %></span>
+          <i class="fas fa-heart"></i> <span class="video_play_count"><%= @videos.first.video_interaction_count %></span>
         </p>
 
         <p class="video_content_meta_info_comment">
@@ -64,11 +64,11 @@
       </div>
       <div class="video_content_tag_info_meta">
         <p class="video_content_tag_info_meta_post">
-          <%= @tag.tag_posts_count unless @tag.tag_posts_count.nil? %> <span>投稿</span>
+<!--          <%#= @tag.tag_posts_count unless @tag.tag_posts_count.nil? %> <span>投稿</span>-->
         </p>
 
         <p class="video_content_tag_info_meta_view">
-          <%= @tag.tag_views_count unless @tag.tag_views_count.nil? %> <span>回再生</span>
+<!--          <%#= @tag.tag_views_count unless @tag.tag_views_count.nil? %> <span>回再生</span>-->
         </p>
       </div>
     </section>
@@ -79,11 +79,11 @@
         <% @videos.each_with_index do |video, i| %>
           <li>
               <%= image_tag video.video_cover_image, class: "video_data video_index_#{i}",
-                            data: {video_source: video.video_source,
+                            data: {video_source: video.video_url,
                                    video_index: i,
                                    video_title: video.video_title,
                                    video_tags: video.video_tags,
-                                   video_play_count: video.video_play_count,
+                                   video_play_count: video.video_interaction_count,
                                    video_comment_count: video.video_comment_count,
                                    video_share_count: video.video_share_count,
                                    video_user_covers: video.user.user_covers,

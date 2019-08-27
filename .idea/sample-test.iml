@@ -122,6 +122,30 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
+      <library name="activerecord-import (vbundled(1.0.2)) [path][gem]" type="rubylib">
+        <properties>
+          <option name="version" value="3" />
+        </properties>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/activerecord-import-1.0.2/lib" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/activerecord-import-1.0.2/test" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/activerecord-import-1.0.2/gemfiles" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/activerecord-import-1.0.2/benchmarks" />
+        </CLASSES>
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/activerecord-import-1.0.2/lib" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/activerecord-import-1.0.2/test" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/activerecord-import-1.0.2/gemfiles" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/activerecord-import-1.0.2/benchmarks" />
+        </SOURCES>
+        <excluded>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/activerecord-import-1.0.2/test" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/activerecord-import-1.0.2/gemfiles" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/activerecord-import-1.0.2/benchmarks" />
+        </excluded>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
       <library name="activerecord-refresh_connection (vbundled(0.0.5)) [path][gem]" type="rubylib">
         <properties>
           <option name="version" value="3" />

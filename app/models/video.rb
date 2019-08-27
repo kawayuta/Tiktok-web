@@ -1,5 +1,6 @@
 class Video < ApplicationRecord
   serialize :video_tags
+  serialize :video_tags_official_ids
 
   belongs_to :user
 

@@ -3,8 +3,8 @@ class VideoJob < ApplicationJob
 
   def perform(args)
     puts "VIDEO ジョブが実行されたよ！＼(^o^)／"
-
     Tag.get_tag_from_keyword(args)
+
 
   end
 end

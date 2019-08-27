@@ -43,16 +43,15 @@ ActiveRecord::Schema.define(version: 2019_08_22_232910) do
 
   create_table "videos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "user_id"
-    t.text "video_source"
+    t.text "video_url"
     t.text "video_official_id"
     t.text "video_title"
     t.text "video_tags"
+    t.text "video_tags_official_ids"
     t.text "video_comment_count"
-    t.text "video_play_count"
     t.text "video_share_count"
     t.text "video_interaction_count"
     t.text "video_cover_image"
-    t.text "video_url"
     t.boolean "video_trending"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

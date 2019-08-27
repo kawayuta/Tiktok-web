@@ -23,7 +23,7 @@ gem 'tor'
 gem 'tor_requests'
 gem 'tor-privoxy'
 gem 'net-telnet'
-
+gem 'activerecord-import'
 # Use CoffeeScript for .coffee assets and views
 # gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks

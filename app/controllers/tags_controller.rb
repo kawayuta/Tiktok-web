@@ -17,6 +17,7 @@ class TagsController < ApplicationController
 
     @videos = []
     Video.all.each do | video |
+      puts
       @videos.push(video) if video.video_tags.include?(@tag.tag_title)
     end
   end
@@ -74,17 +75,27 @@ class TagsController < ApplicationController
 
     return redirect_to tag_path(1) if search_params[:keyword] == ""
 
-    @tag = Tag.create(tag_title: search_params[:keyword])
-    @tag.updated_at = "2000-01-01"
-    @tag.tag_url = "https://www.tiktok.com/tag/#{search_params[:keyword]}?langCountry=ja"
-    @tag.save
+    @tag = Tag.find_by(tag_title: search_params[:keyword])
 
-    Thread.new do
-      TagJob.perform_later(search_params[:keyword])
-      VideoJob.perform_later(search_params[:keyword])
+    if @tag.nil?
+      @tag = Tag.create(tag_title: search_params[:keyword])
+      @tag.updated_at = "2000-01-01"
+      @tag.tag_url = "https://www.tiktok.com/tag/#{search_params[:keyword]}?langCountry=ja"
+      @tag.save
     end
 
-    redirect_to tag_path(@tag.id) and return
+    if @tag.updated_at.strftime("%Y-%m-%d") != Time.current.strftime("%Y-%m-%d")
+      Thread.new do
+        # Tag.new_tag(search_params[:keyword])
+      end
+
+      Thread.new do
+        Tag.get_tag_from_keyword(search_params[:keyword])
+      end
+    end
+
+    redirect_to tag_path(@tag.id)
+
 
   end
 

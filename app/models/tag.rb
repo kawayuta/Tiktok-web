@@ -3,12 +3,10 @@ class Tag < ApplicationRecord
   def self.new_tag(search)
     @tag = Tag.find_by(tag_title: search)
     unless @tag.nil?
-      if @tag.updated_at.strftime("%Y-%m-%d") != Time.current.strftime("%Y-%m-%d")
-        ActiveRecord::Base.connection_pool.with_connection do
-          puts "update tag"
-          tag = Tag.get_tag("https://www.tiktok.com/tag/#{search}?langCountry=ja")
-          @tag = @tag.update(tag)
-        end
+      ActiveRecord::Base.connection_pool.with_connection do
+        puts "update tag"
+        tag = Tag.get_tag("https://www.tiktok.com/tag/#{search}?langCountry=ja")
+        @tag = @tag.update(tag)
       end
     else
       ActiveRecord::Base.connection_pool.with_connection do
@@ -27,7 +25,7 @@ class Tag < ApplicationRecord
     options.add_argument('--headless')
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
-    options.add_argument('--proxy-server=%s' % "socks5://127.0.0.1:9050")
+    # options.add_argument('--proxy-server=%s' % "socks5://127.0.0.1:9050")
 
     ua = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.116 Safari/537.36"
 
@@ -36,93 +34,126 @@ class Tag < ApplicationRecord
     driver.get "https://www.tiktok.com/tag/#{search}?langCountry=ja"
 
     doc = Nokogiri::HTML(driver.page_source)
-    elements = doc.search('script')[13].to_s.split('name":"').drop(1)
+    elements = doc.search('script').to_s.split('name":"').drop(1)
     driver.close
     driver.quit
 
     @tag = Tag.find_by(tag_title: search)
 
-    if @tag.updated_at.strftime("%Y-%m-%d") != Time.current.strftime("%Y-%m-%d")
+    urls = []
+    elements.each do |el|
+      unless el.split('"url":"')[1].nil?
+        @video_url = el.split('"url":"')[1].split('","')[0]
+        @video_official_id = @video_url.split('/').last
+        urls.push("https://www.tiktok.com/embed/#{@video_official_id}")
+      end
+    end
 
-      elements.each do |el|
-        @user_nick_name = el.split(' on TikTok:')[0].split('(@')[0]
+    urls.uniq.each do |u|
+      get_video_from_embed(u)
+    end
 
-        @video_source = el.split('contentUrl":"')[1].split('","')[0]
-        @video_cover_image = el.split('thumbnailUrl":["')[1].split('","')[0]
-        @video_title = el.split(' on TikTok: ')[1].split('has created a short video on TikTok with music Dirty Work.')[0].split('","')[0].split("#")[0]
-        @video_tags = el.split(' on TikTok: ')[1].split('has created a short video on TikTok with music Dirty Work.')[0].split('","')[0].split("#")
-        @video_comment_count = el.split('commentCount":"')[1].split('"')[0]
-        @video_interaction_count = el.split('interactionCount":"')[1].split('"')[0]
-        unless el.split('"url":"')[1].nil?
-          @video_url = el.split('"url":"')[1].split('","')[0]
-          @video_official_id = @video_url.split('/').last
-          @video_user_id = @video_url.split('/')[3]
+  end
 
-          @user_official_id = @video_user_id
-        else
-          @video_url = ""
-          @vide_id = ""
-          @vide_user_id = ""
+
+  def self.get_video_from_embed(url)
+    client = Selenium::WebDriver::Remote::Http::Default.new
+    client.read_timeout = 120 # seconds
+    options = Selenium::WebDriver::Chrome::Options.new
+    options.add_argument('--headless')
+    options.add_argument('--no-sandbox')
+    options.add_argument('--disable-dev-shm-usage')
+    # options.add_argument('--proxy-server=%s' % "socks5://127.0.0.1:9050")
+
+    ua = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.116 Safari/537.36"
+
+    caps = Selenium::WebDriver::Remote::Capabilities.chrome("chromeOptions" => {binary: '/usr/local/bin/chromedriver', args: ["--headless", "--disable-gpu", "--user-agent=#{ua}", "window-size=1280x800"]})
+    driver = Selenium::WebDriver.for :chrome, options: options, http_client: client, desired_capabilities: caps
+    driver.get url
+
+    doc = Nokogiri::HTML(driver.page_source)
+    driver.close
+    driver.quit
+
+    if doc.css('title').text != "TikTok"
+      a = doc.search('script').to_s
+      @video_official_id = a.split('"id":"')[1].split('","')[0]
+      # @video_user_official_id = a.split('"userId":"')[1].split('","')[0]
+      @video_interaction_count = a.split('"diggCount":')[1].split(',"')[0]
+      @video_share_count = a.split('"shareCount":')[1].split(',"')[0]
+      @video_comment_count = a.split('"commentCount":')[1].split(',"')[0]
+      @video_url = a.split('"url":["')[1].split('"],"')[0].split('","')[1]
+      @video_cover_url = a.split('"urlsOrigin":["')[1].split('"],"')[0]
+      # @video_music_official_id = a.split('"musicId":"')[1].split('"],"')[0]
+      @video_text_title = a.split('"text":"')[1].split('","')[0].split('#')[0]
+      @video_tags_title = a.split('"text":"')[1].split('","')[0].split('#').drop(1)
+      @video_user_official_id = a.split('"secUid":"')[1].split('","')[0]
+      @video_user_nick_name = a.split('"nickName":"')[1].split('","')[0]
+      @video_user_cover = a.split('"avatarUriOrigin":["')[1].split('"],"')[0]
+      # @video_music_name = a.split('musicName":"')[1].split('","')[0]
+      # @video_music_author_name = a.split('"authorName":"')[1].split('","')[0]
+      # @video_music_cover = a.split('"cover_hd":"')[1].split('","')[0]
+
+      user = {
+          "user_official_id": @video_user_official_id,
+          "user_nick_name": @video_user_nick_name,
+          "user_covers": @video_user_cover,
+      }
+
+      video = {
+          "video_url": @video_url,
+          "video_official_id": @video_official_id,
+          "video_title": @video_text_title,
+          "video_tags": @video_tags_title,
+          "video_comment_count": @video_comment_count,
+          "video_share_count": @video_share_count,
+          "video_interaction_count": @video_interaction_count,
+          "video_cover_image": @video_cover_url,
+          "video_trending": true
+      }
+
+      unless User.find_by(user_official_id: user[:user_official_id]).nil?
+        ActiveRecord::Base.connection_pool.with_connection do
+          puts "update user"
+          @user = User.find_by(user_official_id: user[:user_official_id])
+          @user.update(user)
+        end
+      else
+        ActiveRecord::Base.connection_pool.with_connection do
+          @user = User.create(user)
+          puts "new user"
         end
 
-        user = {
-            "user_official_id": @user_official_id,
-            "user_nick_name": @user_nick_name
-        }
-
-        video = {
-            "user_official_id": @user_official_id,
-            "video_source": @video_source,
-            "video_official_id": @video_official_id,
-            "video_title": @video_title,
-            "video_tags": @video_tags,
-            "video_comment_count": @video_comment_count,
-            "video_play_count": @video_play_count,
-            "video_share_count": @video_share_count,
-            "video_interaction_count": @video_interaction_ount,
-            "video_cover_image": @video_cover_image,
-            "video_url": @video_url
-        }
-
-
-          unless User.find_by(user_official_id: user[:user_official_id]).nil?
-            puts "update user"
-            ActiveRecord::Base.connection_pool.with_connection do
-              @user = User.find_by(user_official_id: user[:user_official_id])
-              @user.update(user)
-            end
-          else
-            ActiveRecord::Base.connection_pool.with_connection do
-              @user = User.create(user)
-              puts "new user"
-            end
-          end
-
-          video.delete(:user_official_id)
-          unless @user.videos.find_by(video_official_id: video[:video_official_id]).nil?
-            ActiveRecord::Base.connection_pool.with_connection do
-              puts "update video"
-              @video = @user.videos.find_by(video_official_id: video[:video_official_id])
-              @video.update(video)
-            end
-
-          else
-            ActiveRecord::Base.connection_pool.with_connection do
-              puts "new video"
-              @user.videos.create(video)
-            end
-
-          end
-
-          video[:video_tags].each do |tag|
-            ActiveRecord::Base.connection_pool.with_connection do
-              @tag = tag.gsub(/[[:space:]]/, '')
-              if Tag.find_by(tag_title: @tag).nil?
-                Tag.create(tag_title: @tag, tag_url: "https://www.tiktok.com/tag/#{@tag}?langCountry=ja")
-              end
-            end
-          end
       end
+
+      unless @user.videos.find_by(video_official_id: video[:video_official_id]).nil?
+        ActiveRecord::Base.connection_pool.with_connection do
+          puts "update video"
+          @video = @user.videos.find_by(video_official_id: video[:video_official_id])
+          @video.update(video)
+        end
+
+      else
+
+        ActiveRecord::Base.connection_pool.with_connection do
+          @video = @user.videos.create(video)
+        end
+      end
+
+      # @video_tags_title.each do |tag|
+      #   tag = {
+      #       "tag_title": tag,
+      #       "tag_url": "https://www.tiktok.com/tag/#{tag}?langCountry=ja",
+      #       "tag_trending": "true"
+      #   }
+      #
+      #   if Tag.find_by(tag_title: tag[:tag_title]).nil?
+      #     ActiveRecord::Base.connection_pool.with_connection do
+      #       puts "new tag"
+      #       Tag.create(tag)
+      #     end
+      #   end
+      # end
 
     end
 
@@ -135,7 +166,7 @@ class Tag < ApplicationRecord
     options.add_argument('--headless')
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
-    options.add_argument('--proxy-server=%s' % "socks5://127.0.0.1:9050")
+    # options.add_argument('--proxy-server=%s' % "socks5://127.0.0.1:9050")
     ua = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.116 Safari/537.36"
 
     caps = Selenium::WebDriver::Remote::Capabilities.chrome("chromeOptions" => {binary: '/usr/local/bin/chromedriver', args: ["--headless", "--disable-gpu", "--user-agent=#{ua}", "window-size=1280x800"]})
