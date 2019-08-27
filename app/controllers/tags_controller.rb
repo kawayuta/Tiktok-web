@@ -21,7 +21,27 @@ class TagsController < ApplicationController
         @videos.push(video) if video.video_tags.include?(@tag.tag_title)
       end
     end
-    @videos.shuffle!
+
+    unless @videos.nil?
+      @tags = @videos.pluck(:video_tags)
+
+      @add_videos = []
+      @tags.uniq.each do |tags|
+        tags.uniq.each do |tag|
+          Video.all.each do | video |
+            unless video.video_tags.nil?
+              @add_videos.push(video) if video.video_tags.include?(tag)
+            end
+          end
+        end
+
+      end
+
+      @videos.shuffle!
+      @add = @add_videos.uniq!.shuffle!.first(50)
+      @videos.concat(@add).uniq!
+    end
+
   end
 
   # GET /tags/new
@@ -95,6 +115,8 @@ class TagsController < ApplicationController
       Thread.new do
         Tag.get_tag_from_keyword(search_params[:keyword])
       end
+      @tag.updated_at = Time.current.strftime("%Y-%m-%d")
+      @tag.save!
     end
 
     redirect_to tag_path(@tag.id)

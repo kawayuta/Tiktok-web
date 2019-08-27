@@ -49,7 +49,6 @@ class Tag < ApplicationRecord
       end
     end
 
-    puts urls
     Parallel.map(urls.uniq, in_processes: 10) do |u|
       begin
         get_video_from_embed(u)
@@ -159,6 +158,8 @@ class Tag < ApplicationRecord
           else
             @tag = Tag.create(tag)
           end
+          @tag.updated_at = "2010-01-01"
+          @tag.save!
         end
       end
 
