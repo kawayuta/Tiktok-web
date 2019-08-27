@@ -17,9 +17,11 @@ class TagsController < ApplicationController
 
     @videos = []
     Video.all.each do | video |
-      puts
-      @videos.push(video) if video.video_tags.include?(@tag.tag_title)
+      unless video.video_tags.nil?
+        @videos.push(video) if video.video_tags.include?(@tag.tag_title)
+      end
     end
+    @videos.shuffle!
   end
 
   # GET /tags/new
@@ -81,6 +83,7 @@ class TagsController < ApplicationController
       @tag = Tag.create(tag_title: search_params[:keyword])
       @tag.updated_at = "2000-01-01"
       @tag.tag_url = "https://www.tiktok.com/tag/#{search_params[:keyword]}?langCountry=ja"
+      @tag.tag_trending = false
       @tag.save
     end
 

@@ -51,8 +51,12 @@ namespace :task_database do
       end
     end
 
-    urls.uniq.each do |u|
-      Tag.get_video_from_embed(u)
+    Parallel.map(urls.uniq, in_processes: 10) do |u|
+      begin
+        Tag.get_video_from_embed_task(u)
+      rescue => error
+        puts error
+      end
     end
   end
 
@@ -91,7 +95,6 @@ namespace :task_database do
       @video_comment_count = el.split('commentCount":"')[1].split('"')[0]
       @video_interaction_count = el.split('interactionCount":"')[1].split('"')[0]
       unless el.split('"url":"')[1].nil?
-        @video_url = el.split('"url":"')[1].split('","')[0]
         @video_official_id = @video_url.split('/').last
         @video_user_id = @video_url.split('/')[3]
 

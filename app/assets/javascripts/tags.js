@@ -4,7 +4,7 @@ $(document).on('turbolinks:load', function() {
   var video = $('#video');
   video.attr('src', $(".video_data").data('video-source'));
   video.load();
-  video.prop('muted', true);
+  video.prop('muted', false);
   video.get(0).play();
   video.on('ended',function(){
     video_index += 1;
