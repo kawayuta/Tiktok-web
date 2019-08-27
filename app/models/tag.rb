@@ -151,12 +151,13 @@ class Tag < ApplicationRecord
               "tag_url": "https://www.tiktok.com/tag/#{tag}?langCountry=ja",
               "tag_trending": "true"
           }
+
+          puts tag[:tag_title]
           @tag = Tag.find_by(tag_title: tag[:tag_title])
           unless @tag.nil?
-            Tag.update(tag)
+            @tag.update(tag)
           else
-            Tag.create(tag)
-
+            @tag = Tag.create(tag)
           end
         end
       end
