@@ -57,11 +57,7 @@ namespace :task_database do
     end
 
     Parallel.map(urls.uniq!, in_processes: 3) do |u|
-      begin
-        Tag.get_video_from_embed_task(u)
-      rescue => error
-        puts error
-      end
+      Tag.get_video_from_embed_task(u)
     end
   end
 

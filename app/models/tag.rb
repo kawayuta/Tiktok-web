@@ -56,11 +56,7 @@ class Tag < ApplicationRecord
     end
 
     Parallel.map(urls.uniq!, in_processes: 3) do |u|
-      begin
-        get_video_from_embed(u)
-      rescue => error
-        puts error
-      end
+      get_video_from_embed(u)
     end
 
   end
