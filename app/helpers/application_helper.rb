@@ -7,7 +7,7 @@ module ApplicationHelper
         reverse: true,
         charset: 'utf-8',
         description: 'description',
-        keywords: 'キーワード',
+        keywords: 'TikTok Pro,TikTok,ティックトック,ダウンロード,おもしろビデオ,TikTok Web',
         canonical: request.original_url,
         separator: '|',
         # icon: [

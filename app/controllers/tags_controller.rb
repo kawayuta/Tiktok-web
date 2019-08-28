@@ -22,7 +22,7 @@ class TagsController < ApplicationController
       end
     end
 
-
+    @videos.shuffle!
     @users = @videos.pluck(:user_id).uniq
 
   end
