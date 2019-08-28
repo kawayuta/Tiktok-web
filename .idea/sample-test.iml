@@ -348,6 +348,33 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
+      <library name="bullet (vbundled(6.0.2)) [path][gem]" type="rubylib">
+        <properties>
+          <option name="version" value="3" />
+        </properties>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/bullet-6.0.2/lib" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/bullet-6.0.2/perf" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/bullet-6.0.2/spec" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/bullet-6.0.2/rails" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/bullet-6.0.2/tasks" />
+        </CLASSES>
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/bullet-6.0.2/lib" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/bullet-6.0.2/perf" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/bullet-6.0.2/spec" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/bullet-6.0.2/rails" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/bullet-6.0.2/tasks" />
+        </SOURCES>
+        <excluded>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/bullet-6.0.2/perf" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/bullet-6.0.2/spec" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/bullet-6.0.2/rails" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/bullet-6.0.2/tasks" />
+        </excluded>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
       <library name="byebug (vbundled(11.0.1)) [path][gem]" type="rubylib">
         <properties>
           <option name="version" value="3" />
@@ -2150,6 +2177,24 @@
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/unicorn-worker-killer-0.4.4/lib" />
         </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="uniform_notifier (vbundled(1.12.1)) [path][gem]" type="rubylib">
+        <properties>
+          <option name="version" value="3" />
+        </properties>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/uniform_notifier-1.12.1/lib" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/uniform_notifier-1.12.1/spec" />
+        </CLASSES>
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/uniform_notifier-1.12.1/lib" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/uniform_notifier-1.12.1/spec" />
+        </SOURCES>
+        <excluded>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/uniform_notifier-1.12.1/spec" />
+        </excluded>
       </library>
     </orderEntry>
     <orderEntry type="module-library">

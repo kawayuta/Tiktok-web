@@ -100,13 +100,12 @@
 
     <section id="container">
       <% @users.each_with_index do | user, index |%>
-        <% @user = User.find_by(id: user) %>
+        <% @user = User.find(user) %>
         <div class="ball ball_<%= index %>">
           <%= image_tag @user.user_covers %>
         </div>
       <% end %>
     </section>
-
 
   </article>
 

@@ -16,35 +16,12 @@ class TagsController < ApplicationController
     @trending_tags = Tag.where(tag_trending: true)
 
     @videos = []
-    Video.all.each do | video |
+    Video.eager_load(:user).all.each do | video |
       unless video.video_tags.nil?
         @videos.push(video) if video.video_tags.include?(@tag.tag_title)
       end
     end
 
-    if @videos.count < 30
-      unless @videos.nil?
-        @tags = @videos.pluck(:video_tags)
-
-        @add_videos = []
-        @tags.uniq.each do |tags|
-          tags.uniq.each do |tag|
-            Video.all.each do | video |
-              unless video.video_tags.nil?
-                @add_videos.push(video) if video.video_tags.include?(tag)
-              end
-            end
-          end
-        end
-
-        unless @videos.nil? && @add_videos.nil?
-          @videos.shuffle!
-          @videos.concat(@add_videos.first(50)).uniq!
-        end
-
-      end
-
-    end
 
     @users = @videos.pluck(:user_id).uniq
 
