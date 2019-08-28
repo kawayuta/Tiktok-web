@@ -248,4 +248,98 @@ $(document).on('turbolinks:load', function() {
   scene.canvas.addEventListener('mousemove', trackMouse);
   scene.canvas.addEventListener('mouseleave', forgetMouse);
 
+
+
+  // Create a <div> that will be the bouncing
+  // ball.
+  function createBall(left, top, size, color) {
+    return $('<div class="ball"></div>')
+      .css("background-color", color)
+      .css("left", left)
+      .css("top", top)
+      .css("width", size)
+      .css("height", size)
+      .css("border-radius", size / 2);
+  }
+
+  function getRandomColor() {
+    return $.Color(getRandomInt(0, 255),
+      getRandomInt(0, 255),
+      getRandomInt(0, 255)).toHexString();
+  }
+
+  function getRandomBool() {
+    return Math.random() >= 0.5;
+  }
+
+  function getRandomInt(min, max) {
+    return min + Math.floor(Math.random() * (max - min));
+  }
+
+  function getRandomPath($container) {
+    // First, we'll decide if the ball should
+    // bounce from left to right or right to
+    // left.
+    var ltr = getRandomBool();
+
+    // The diameter will range from 10 to 50 pixels.
+    var size = getRandomInt(10, 50);
+
+    // We'll return an object with parameters that
+    // describe the ball and its bounce.
+    return {
+      color: getRandomColor(),
+      size: size,
+      left1: ltr ? -size : $container.width(),
+      left2: getRandomInt(0, $container.width() - size),
+      top: getRandomInt(-$container.height() * 2,
+        $container.height() / 2 - size),
+      duration: getRandomInt(500, 2000)
+    }
+  }
+
+  // Bouncing a ball consists of horizontal and
+  // vertical animations that run simultaneously.
+  // (The second animation uses "queue: false".)
+  var count = 0;
+
+  function startBounceAnimation() {
+    var $container = $("#container");
+    var path = getRandomPath($container);
+    var $div = $('.ball_' + count);
+    count += 1;
+    $div.animate({
+      "left": path.left2
+    }, {
+      duration: path.duration,
+      easing: 'swing'
+    });
+    $div.animate({
+      "top": $container.height() - $div.height()
+    }, {
+      duration: path.duration,
+      easing: 'easeOutBounce',
+      queue: false
+    });
+    return $div;
+  }
+
+  // Once jQuery is ready, we bounce a ball and
+  // set a random timeout period to start the
+  // next bouncing ball.
+  $('.ball').each(function(){
+    function bounceNextBall() {
+      var $div = startBounceAnimation();
+      setTimeout(bounceNextBall, getRandomInt(1, 1000));
+    }
+    bounceNextBall();
+  });
+
+
+
+
+
+
+
+
 });

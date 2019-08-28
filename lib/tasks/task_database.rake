@@ -43,12 +43,17 @@ namespace :task_database do
     end
 
     urls = []
-    elements.each do |el|
-      unless el.split('"url":"')[1].nil?
-        @video_url = el.split('"url":"')[1].split('","')[0]
-        @video_official_id = @video_url.split('/').last
-        urls.push("https://www.tiktok.com/embed/#{@video_official_id}")
-      end
+    # elements.each do |el|
+    #   unless el.split('"url":"')[1].nil?
+    #     @video_url = el.split('"url":"')[1].split('","')[0]
+    #     @video_official_id = @video_url.split('/').last
+    #     urls.push("https://www.tiktok.com/embed/#{@video_official_id}")
+    #   end
+    # end
+
+    doc.css('._video_feed_item').each do |item|
+      puts item.css('a')[0][:href].split('/').last
+      urls.push("https://www.tiktok.com/embed/#{item.css('a')[0][:href].split('/').last}")
     end
 
     Parallel.map(urls.uniq, in_processes: 10) do |u|

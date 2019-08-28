@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="jp">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <% set_meta_tags title: "「##{@tag.tag_title}」タグの人気動画をウェブで観よう！", description: "「##{@tag.tag_title}」タグの人気動画をウェブで観よう！ - TikTok（ティックトック）アプリがパソコンでも観れるようになりました！TikTok Webでは人気クリエイターや動画のランキングから人気タグの情報をお届けします！現在、開発中です。" %>
 </head>
 <body>
 
@@ -94,6 +94,17 @@
         <% end %>
       </ul>
     </section>
+
+
+    <section id="container">
+      <% @users.each_with_index do | user, index |%>
+        <% @user = User.find_by(id: user) %>
+        <div class="ball ball_<%= index %>">
+          <%= image_tag @user.user_covers %>
+        </div>
+      <% end %>
+    </section>
+
 
   </article>
 

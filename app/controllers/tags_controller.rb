@@ -22,25 +22,31 @@ class TagsController < ApplicationController
       end
     end
 
-    unless @videos.nil?
-      @tags = @videos.pluck(:video_tags)
+    if @videos.count < 30
+      unless @videos.nil?
+        @tags = @videos.pluck(:video_tags)
 
-      @add_videos = []
-      @tags.uniq.each do |tags|
-        tags.uniq.each do |tag|
-          Video.all.each do | video |
-            unless video.video_tags.nil?
-              @add_videos.push(video) if video.video_tags.include?(tag)
+        @add_videos = []
+        @tags.uniq.each do |tags|
+          tags.uniq.each do |tag|
+            Video.all.each do | video |
+              unless video.video_tags.nil?
+                @add_videos.push(video) if video.video_tags.include?(tag)
+              end
             end
           end
         end
 
+        unless @videos.nil? && @add_videos.nil?
+          @videos.shuffle!
+          @videos.concat(@add_videos.first(50)).uniq!
+        end
+
       end
 
-      @videos.shuffle!
-      @add = @add_videos.uniq!.shuffle!.first(50)
-      @videos.concat(@add).uniq!
     end
+
+    @users = @videos.pluck(:user_id).uniq
 
   end
 

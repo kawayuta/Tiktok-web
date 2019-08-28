@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
-  get 'sample' => 'welcome#index'
+  root to: 'welcome#index'
   resources :tags do
     collection do
       get :search
     end
   end
-  resources :users
-  resources :videos
+  # resources :users
+  # resources :videos
   #
   # get 'tag/:keyword', to: 'tags#search'
   # post 'tag/:keyword', to: 'tags#search'

@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TikTok Web</title>
+    <%= display_meta_tags(default_meta_tags) %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
   </head>
 
   <body>
   <header>
       <div class="header-inner">
         <div class="branding_logo">
-          <%= image_tag('tiktok_logo.svg') %>
+          <%= link_to image_tag('tiktok_logo.svg'), root_path %>
         </div>
 
         <%= form_tag(search_tags_path, method: "get") do %>
