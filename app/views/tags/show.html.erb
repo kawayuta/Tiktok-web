@@ -39,7 +39,9 @@
 
     <div class="video_content_profile">
       <div class="video_content_profile_image">
+        <% unless @videos.first.user.nil? %>
         <%= image_tag @videos.first.user.user_covers, class:"video_user_covers" %>
+          <% end %>
       </div>
       <p class="video_user_nick_name"><%= @videos.first.user.user_nick_name %></p>
     </div>
