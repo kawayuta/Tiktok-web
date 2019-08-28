@@ -96,10 +96,9 @@
     </section>
 
     <section id="container">
-      <% @users.each_with_index do | user, index |%>
-        <% @user = User.find(user) %>
+      <% @videos.each_with_index do | video, index |%>
         <div class="ball ball_<%= index %>">
-          <%= image_tag @user.user_covers %>
+          <%= image_tag video.user.user_covers %>
         </div>
       <% end %>
     </section>
