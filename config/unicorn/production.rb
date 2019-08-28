@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
-worker_processes Integer(ENV["WEB_CONCURRENCY"] || 24)
-timeout 300
+worker_processes Integer(ENV["WEB_CONCURRENCY"] || 5)
+timeout 600
 
 preload_app true
 
 app_path = '/var/www/sample-test/current'
 working_directory "#{app_path}"
 
-unicorn_backlog = ENV["UNICORN_BACKLOG"] || 2048
+unicorn_backlog = ENV["UNICORN_BACKLOG"] || 1024
 
 listen "/var/www/sample-test/shared/tmp/sockets/unicorn.sock", :backlog =>  Integer(unicorn_backlog)
 pid "/var/www/sample-test/shared/tmp/pids/unicorn.pid"
