@@ -55,7 +55,7 @@ class Tag < ApplicationRecord
       urls.push("https://www.tiktok.com/embed/#{item.css('a')[0][:href].split('/').last}")
     end
 
-    Parallel.map(urls.uniq, in_processes: 10) do |u|
+    Parallel.map(urls.uniq, in_processes: 3) do |u|
       begin
         get_video_from_embed(u)
       rescue => error
