@@ -15,5 +15,15 @@ class CreateVideos < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
+
+    add_index :videos, :video_official_id, :unique => true, type: :fulltext
+    add_index :videos, :video_title, type: :fulltext
+    add_index :videos, :video_tags, type: :fulltext
+    add_index :videos, :video_tags_official_ids, type: :fulltext
+    add_index :videos, :video_comment_count, type: :fulltext
+    add_index :videos, :video_share_count, type: :fulltext
+    add_index :videos, :video_interaction_count, type: :fulltext
+    add_index :videos, :video_cover_image, :unique => true, type: :fulltext
+    add_index :videos, :video_trending
   end
 end

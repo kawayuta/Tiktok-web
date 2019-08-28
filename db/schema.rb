@@ -23,6 +23,14 @@ ActiveRecord::Schema.define(version: 2019_08_22_232910) do
     t.boolean "tag_trending"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["tag_cover_image"], name: "index_tags_on_tag_cover_image", type: :fulltext
+    t.index ["tag_official_id"], name: "index_tags_on_tag_official_id", type: :fulltext
+    t.index ["tag_posts_count"], name: "index_tags_on_tag_posts_count", type: :fulltext
+    t.index ["tag_text"], name: "index_tags_on_tag_text", type: :fulltext
+    t.index ["tag_title"], name: "index_tags_on_tag_title", type: :fulltext
+    t.index ["tag_trending"], name: "index_tags_on_tag_trending"
+    t.index ["tag_url"], name: "index_tags_on_tag_url", type: :fulltext
+    t.index ["tag_views_count"], name: "index_tags_on_tag_views_count", type: :fulltext
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -39,6 +47,17 @@ ActiveRecord::Schema.define(version: 2019_08_22_232910) do
     t.text "user_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_covers"], name: "index_users_on_user_covers", type: :fulltext
+    t.index ["user_fans_count"], name: "index_users_on_user_fans_count", type: :fulltext
+    t.index ["user_following_count"], name: "index_users_on_user_following_count", type: :fulltext
+    t.index ["user_heart_count"], name: "index_users_on_user_heart_count", type: :fulltext
+    t.index ["user_nick_name"], name: "index_users_on_user_nick_name", type: :fulltext
+    t.index ["user_official_id"], name: "index_users_on_user_official_id", type: :fulltext
+    t.index ["user_region"], name: "index_users_on_user_region", type: :fulltext
+    t.index ["user_signature"], name: "index_users_on_user_signature", type: :fulltext
+    t.index ["user_url"], name: "index_users_on_user_url", type: :fulltext
+    t.index ["user_verified"], name: "index_users_on_user_verified"
+    t.index ["user_video_count"], name: "index_users_on_user_video_count", type: :fulltext
   end
 
   create_table "videos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -56,6 +75,15 @@ ActiveRecord::Schema.define(version: 2019_08_22_232910) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_videos_on_user_id"
+    t.index ["video_comment_count"], name: "index_videos_on_video_comment_count", type: :fulltext
+    t.index ["video_cover_image"], name: "index_videos_on_video_cover_image", type: :fulltext
+    t.index ["video_interaction_count"], name: "index_videos_on_video_interaction_count", type: :fulltext
+    t.index ["video_official_id"], name: "index_videos_on_video_official_id", type: :fulltext
+    t.index ["video_share_count"], name: "index_videos_on_video_share_count", type: :fulltext
+    t.index ["video_tags"], name: "index_videos_on_video_tags", type: :fulltext
+    t.index ["video_tags_official_ids"], name: "index_videos_on_video_tags_official_ids", type: :fulltext
+    t.index ["video_title"], name: "index_videos_on_video_title", type: :fulltext
+    t.index ["video_trending"], name: "index_videos_on_video_trending"
   end
 
 end

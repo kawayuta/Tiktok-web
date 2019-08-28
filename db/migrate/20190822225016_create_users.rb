@@ -15,5 +15,18 @@ class CreateUsers < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
+
+    add_index :users, :user_official_id, :unique => true, type: :fulltext
+    add_index :users, :user_nick_name, type: :fulltext
+    add_index :users, :user_signature, type: :fulltext
+    add_index :users, :user_covers, :unique => true, type: :fulltext
+    add_index :users, :user_following_count, type: :fulltext
+    add_index :users, :user_fans_count, type: :fulltext
+    add_index :users, :user_heart_count, type: :fulltext
+    add_index :users, :user_video_count, type: :fulltext
+    add_index :users, :user_verified
+    add_index :users, :user_region, type: :fulltext
+    add_index :users, :user_url, :unique => true, type: :fulltext
+
   end
 end
