@@ -125,7 +125,7 @@ class TagsController < ApplicationController
       @tag.save!
     end
 
-    redirect_to tag_url(@tag.id)
+    redirect_to tag_path(@tag.id)
 
 
   end

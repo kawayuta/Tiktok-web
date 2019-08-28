@@ -56,7 +56,7 @@ namespace :task_database do
       urls.push("https://www.tiktok.com/embed/#{item.css('a')[0][:href].split('/').last}")
     end
 
-    Parallel.map(urls.uniq, in_processes: 10) do |u|
+    Parallel.map(urls.uniq!, in_processes: 10) do |u|
       begin
         Tag.get_video_from_embed_task(u)
       rescue => error

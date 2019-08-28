@@ -1,5 +1,5 @@
 # Set the host name for URL creation
-SitemapGenerator::Sitemap.default_host = "https://www.bi-hack.com"
+SitemapGenerator::Sitemap.default_host = "https://tiktok-pro.com"
 
 SitemapGenerator::Sitemap.create do
   # Put links creation logic here.
