@@ -41,7 +41,7 @@ namespace :deploy do
     on roles(:db) do |host|
       within current_path do
         with rails_env: fetch(:rails_env) do
-          execute :rake, 'task_database:get_trending'
+          execute :rake, 'task_database:get_tr'
         end
       end
     end
