@@ -93,7 +93,8 @@ class Tag < ApplicationRecord
       @video_interaction_count = a.split('"diggCount":')[1].split(',"')[0]
       @video_share_count = a.split('"shareCount":')[1].split(',"')[0]
       @video_comment_count = a.split('"commentCount":')[1].split(',"')[0]
-      @video_url = a.split('"url":["')[1].split('"],"')[0].split('","')[1]
+      # @video_url = a.split('"url":["')[1].split('"],"')[0].split('","')[1]
+      @video_url = "https://tiktok.com#{doc.css('#tiktokVideo')[0][:src]}"
       @video_cover_url = a.split('"urlsOrigin":["')[1].split('"],"')[0]
       # @video_music_official_id = a.split('"musicId":"')[1].split('"],"')[0]
       @video_text_title = a.split('"text":"')[1].split('","')[0].split('#')[0]
@@ -199,7 +200,8 @@ class Tag < ApplicationRecord
       @video_interaction_count = a.split('"diggCount":')[1].split(',"')[0]
       @video_share_count = a.split('"shareCount":')[1].split(',"')[0]
       @video_comment_count = a.split('"commentCount":')[1].split(',"')[0]
-      @video_url = a.split('"url":["')[1].split('"],"')[0].split('","')[1]
+      # @video_url = a.split('"url":["')[1].split('"],"')[0].split('","')[1]
+      @video_url = "https://tiktok.com#{doc.css('#tiktokVideo')[0][:src]}"
       @video_cover_url = a.split('"urlsOrigin":["')[1].split('"],"')[0]
       # @video_music_official_id = a.split('"musicId":"')[1].split('"],"')[0]
       @video_text_title = a.split('"text":"')[1].split('","')[0].split('#')[0]
