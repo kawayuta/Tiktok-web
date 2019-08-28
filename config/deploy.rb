@@ -10,3 +10,5 @@ set :ssh_options, {
     password: 'Mirainoyuuta2116!',
     auth_methods: %w(password)
 }
+
+set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
