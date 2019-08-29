@@ -4,7 +4,6 @@ class WelcomeController < ApplicationController
     @trending_tags = Tag.where(tag_trending: true)
 
     @videos = Video.eager_load(:user).where(video_trending: true)
-    @videos.shuffle!
     @users = @videos.pluck(:user_id).uniq
   end
 end
