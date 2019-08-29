@@ -10,6 +10,10 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @trending_videos = Video.where(video_trending: true)
+    @trending_tags = Tag.where(tag_trending: true)
+
+    @videos = @user.videos
   end
 
   # GET /users/new

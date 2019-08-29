@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
   mount_roboto
   root to: 'welcome#index'
-  resources :tags do
+  resources :tags, only: :show do
     collection do
       get :search
     end
   end
-  # resources :users
+  resources :users, only: :show
   # resources :videos
   #
   # get 'tag/:keyword', to: 'tags#search'

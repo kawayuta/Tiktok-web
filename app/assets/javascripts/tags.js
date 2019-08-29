@@ -26,7 +26,8 @@ video.on('ended',function(){
   $('.video_play_count').text(next.data('video-play-count'));
   $('.video_comment_count').text(next.data('video-comment-count'));
   $('.video_share_count').text(next.data('video-share-count'));
-  $('.video_user_covers').attr('src', next.data('video-user-covers'));
+  $('.video_user_covers img').attr('src', next.data('video-user-covers'));
+  $('.video_user_covers').attr('href', '/users/' + next.data('video-user-id'));
   $('.video_user_nick_name').text(next.data('video-user-nick-name'));
 
   $('.video_content_item ul').animate({
@@ -84,7 +85,8 @@ $(".video_data").click(function(){
   $('.video_play_count').text(next.data('video-play-count'));
   $('.video_comment_count').text(next.data('video-comment-count'));
   $('.video_share_count').text(next.data('video-share-count'));
-  $('.video_user_covers').attr('src', next.data('video-user-covers'));
+  $('.video_user_covers img').attr('src', next.data('video-user-covers'));
+  $('.video_user_covers').attr('href', '/users/' + next.data('video-user-id'));
   $('.video_user_nick_name').text(next.data('video-user-nick-name'));
 
 

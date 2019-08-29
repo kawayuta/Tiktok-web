@@ -29,4 +29,7 @@ SitemapGenerator::Sitemap.create do
   Tag.find_each do |tag|
     add tag_path(tag), :lastmod => tag.updated_at, :changefreq => 'always'
   end
+  User.find_each do |user|
+    add user_path(user), :lastmod => user.updated_at, :changefreq => 'always'
+  end
 end

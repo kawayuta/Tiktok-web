@@ -49,7 +49,7 @@ header {
     }
     & input {
       &[type="text"] {
-        width: 470px;
+        width: 690px;
         height: 50px;
         margin-top: 22px;
         margin-left: 85px;
@@ -68,12 +68,12 @@ header {
     & button {
 
       &[type="submit"] {
-        margin-left: 10px;
         font-size: 20px;
         width:100px;
-        height:50px;
+        height:42px;
         position: relative;
-        top: -1px;
+        top: 0px;
+        left: -110px;
         display: inline-block;
         padding: 0.5em 1em;
         text-decoration: none;
@@ -191,12 +191,13 @@ main {
     display: flex;
     flex-wrap: nowrap;
   }
+
   & .video_content {
     width: 100%;
     max-width: 340px;
     min-height: calc(100vh - 96px);
     overflow: hidden;
-    & h2 {
+    & h3 {
       width: 100%;
       letter-spacing: 1px;
     }
@@ -269,19 +270,22 @@ main {
   & .video_content_main {
     width: 100%;
     min-height: calc(100vh - 96px);
-    background-color: #191B1F;
+    background-color: #151419;
     & .video_content_tag_info {
       & .video_content_tag_info_header {
         display: flex;
+        background-color: #090B0B;
         & img {
           width: 150px;
           height: 150px;
           padding: 30px;
+          border-radius: 50%;
         }
         & h1 {
           padding-top: 50px;
           font-size:40px;
           font-weight: bold;
+
         }
       }
       & .video_content_tag_info_meta {
@@ -307,7 +311,19 @@ main {
 
     & .video_content_item {
       width: calc(100vw - 640px);
-      padding-top: 20px;
+      & h2 {
+        font-size: 25px;
+        padding-left: 30px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        margin-top: 40px;
+        margin-bottom: 10px;
+        & i {
+          color:#14EDEC;
+        }
+      }
       & ul {
         display: flex;
         flex-wrap: nowrap;
@@ -334,6 +350,7 @@ main {
 
     }
   }
+
 }
 
 p, a, h1, h2, h3, h4, li {

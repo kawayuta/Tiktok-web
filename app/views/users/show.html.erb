@@ -1,14 +1,100 @@
-<p id="notice"><%= notice %></p>
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+  <meta charset="UTF-8">
+  <% set_meta_tags title: "", description: "TikTok（ティックトック）アプリがパソコンでも観れるようになりました！TikTok Webでは人気クリエイターや動画のランキングから人気タグの情報をお届けします！現在、開発中です。" %>
+</head>
+<body>
 
-<p>
-  <strong>User official:</strong>
-  <%= @user.user_official_id %>
-</p>
+<div class="contents_wrap">
 
-<p>
-  <strong>User nick named:</strong>
-  <%= @user.user_nick_named %>
-</p>
+  <section class="video_content">
+    <div class="video_player">
+      <div class="canvas_heart_bubble">
+        <%= video_tag "", muted: true, controls: true, id:"video" %>
+      </div>
+    </div>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+    <% if @videos.present? %>
+      <div class="video_content_meta">
+        <h3 class="video_title"><%= @videos.first.video_title %></h3>
+        <div class="video_content_meta_tags">
+          <% @videos.first.video_tags.drop(1).each do | tag | %>
+            <p class="video_content_meta_tag"><%= link_to "##{tag}", search_tags_path(keyword: tag) %></p>
+          <% end %>
+        </div>
+        <div class="video_content_meta_info">
+          <p class="video_content_meta_info_play">
+            <i class="fas fa-heart"></i> <span class="video_play_count"><%= @videos.first.video_interaction_count %></span>
+          </p>
+
+          <p class="video_content_meta_info_comment">
+            <i class="fas fa-comment"></i> <span class="video_comment_count"><%= @videos.first.video_comment_count %></span>
+          </p>
+          <p class="video_content_meta_info_share">
+            <i class="fas fa-share"></i> <span class="video_share_count"><%= @videos.first.video_share_count %></span>
+          </p>
+        </div>
+      </div>
+
+      <div class="video_content_profile">
+        <div class="video_content_profile_image">
+          <%= image_tag @videos.first.user.user_covers, class:"video_user_covers" %>
+        </div>
+        <p class="video_user_nick_name"><%= @videos.first.user.user_nick_name %></p>
+      </div>
+    <% end %>
+
+  </section>
+
+  <article class="video_content_main">
+
+    <section class="video_content_tag_info">
+      <div class="video_content_tag_info_header">
+        <figure class="profile_image">
+          <%= image_tag @user.user_covers %>
+        </figure>
+        <h1><%= @user.user_nick_name %></h1>
+      </figure>
+      <div class="video_content_tag_info_meta">
+        <p class="video_content_tag_info_meta_post">
+          <!--          <%#= @tag.tag_posts_count unless @tag.tag_posts_count.nil? %> <span>投稿</span>-->
+        </p>
+
+        <p class="video_content_tag_info_meta_view">
+          <!--          <%#= @tag.tag_views_count unless @tag.tag_views_count.nil? %> <span>回再生</span>-->
+        </p>
+      </div>
+    </section>
+
+    <section class="video_content_item">
+      <h2><i class="fas fa-cookie-bite"></i> おすすめ動画</h2>
+      <ul>
+        <% if @videos.present? %>
+          <% @videos.shuffle.each_with_index do |video, i| %>
+            <li>
+              <%= image_tag video.video_cover_image, class: "video_data video_index_#{i}",
+                            data: {video_source: video.video_url,
+                                   video_index: i,
+                                   video_title: video.video_title,
+                                   video_tags: video.video_tags,
+                                   video_play_count: video.video_interaction_count,
+                                   video_comment_count: video.video_comment_count,
+                                   video_share_count: video.video_share_count,
+                                   video_user_covers: video.user.user_covers,
+                                   video_user_nick_name: video.user.user_nick_name,
+                                   video_user_id: video.user.id,
+                            } %>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </section>
+
+
+  </article>
+
+</div>
+
+</body>
+</html>
