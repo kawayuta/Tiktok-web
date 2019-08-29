@@ -33,7 +33,7 @@ video.on('ended',function(){
   var item_width = $('.video_content_item ul li img')[0].width;
   var item_margin_left = $('.video_content_item ul li img').css('margin-left').replace('px', '');
   $('.video_content_item ul').animate({
-    scrollLeft: (item_width + item_margin_left) * (video_index + 1)
+    scrollLeft: (item_width + Number(item_margin_left)) * (video_index + 1)
   }, 500);
 
 });
@@ -103,8 +103,8 @@ $(".video_data").click(function(){
   var item_width = $('.video_content_item ul li img')[0].width;
   var item_margin_left = $('.video_content_item ul li img').css('margin-left').replace('px', '');
   $('.video_content_item ul').animate({
-    scrollLeft: (item_width + item_margin_left) * (video_index + 1)
-  }, 500);
+    scrollLeft: (item_width + Number(item_margin_left)) * (video_index + 1)
+}, 500);
 });
 
 var hearts = {};
