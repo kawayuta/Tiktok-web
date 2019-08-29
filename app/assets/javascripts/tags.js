@@ -91,15 +91,11 @@ $(".video_data").click(function(){
 
 
   $(this).animate({
-    "width": "340px",
-    "height": "600px",
-    "top": "-200px"
+    'transform': 'scale(1.1)'
   }, 300);
 
   $(this).animate({
-    "width": "140px",
-    "height": "250px",
-    "top": "0px"
+    'transform': 'scale(1)'
   }, 300);
 
   $('.video_content_item ul').animate({
