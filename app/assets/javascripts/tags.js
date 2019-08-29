@@ -30,9 +30,11 @@ video.on('ended',function(){
   $('.video_user_covers').attr('href', '/users/' + next.data('video-user-id'));
   $('.video_user_nick_name').text(next.data('video-user-nick-name'));
 
+  var item_width = $('.video_content_item ul li img')[0].width;
+  var item_margin_left = $('.video_content_item ul li img').css('margin-left').replace('px', '');
   $('.video_content_item ul').animate({
-    scrollLeft: 160 * (video_index + 1)
-  }, 300);
+    scrollLeft: (item_width + item_margin_left) * (video_index + 1)
+  }, 500);
 
 });
 
@@ -98,8 +100,10 @@ $(".video_data").click(function(){
     'transform': 'scale(1)'
   }, 300);
 
+  var item_width = $('.video_content_item ul li img')[0].width;
+  var item_margin_left = $('.video_content_item ul li img').css('margin-left').replace('px', '');
   $('.video_content_item ul').animate({
-    scrollLeft: 160 * (video_index + 1)
+    scrollLeft: (item_width + item_margin_left) * (video_index + 1)
   }, 500);
 });
 
