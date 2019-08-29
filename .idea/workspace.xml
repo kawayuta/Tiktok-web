@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a2e4aa1-93ac-4a71-a04c-86b144ad4cb1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/scaffolds.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/scaffolds.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/welcome/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/welcome/index.html.erb" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -87,14 +86,14 @@
           <entry key="Gemfile" value="74" />
           <entry key="cap" value="12" />
           <entry key="css" value="20" />
-          <entry key="erb" value="4322" />
+          <entry key="erb" value="4331" />
           <entry key="html" value="2" />
           <entry key="js" value="1541" />
           <entry key="lock" value="8" />
           <entry key="rake" value="4698" />
           <entry key="rb" value="5914" />
           <entry key="ru" value="3" />
-          <entry key="scss" value="4704" />
+          <entry key="scss" value="4706" />
           <entry key="txt" value="30" />
           <entry key="yml" value="102" />
         </counts>
@@ -105,9 +104,9 @@
           <entry key="HTML" value="13" />
           <entry key="JavaScript" value="1530" />
           <entry key="PLAIN_TEXT" value="54" />
-          <entry key="RHTML" value="4322" />
+          <entry key="RHTML" value="4331" />
           <entry key="Ruby" value="10706" />
-          <entry key="SCSS" value="4704" />
+          <entry key="SCSS" value="4706" />
           <entry key="YAML" value="102" />
         </counts>
       </usages-collector>
@@ -144,7 +143,7 @@
             <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/tags.scss">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="827">
-                  <caret line="67" lean-forward="true" selection-start-line="4" selection-end-line="67" />
+                  <caret line="67" selection-start-line="4" selection-end-line="67" />
                 </state>
               </provider>
             </entry>
@@ -166,8 +165,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/scaffolds.scss">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="219">
-                  <caret line="210" column="22" selection-start-line="210" selection-start-column="22" selection-end-line="210" selection-end-column="22" />
+                <state relative-caret-position="468">
+                  <caret line="720" column="27" selection-start-line="720" selection-start-column="27" selection-end-line="720" selection-end-column="27" />
                   <folding>
                     <element signature="e#293#1852#0" />
                     <element signature="e#2649#3828#0" />
@@ -217,11 +216,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/assets/javascripts/tags.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="197">
-                  <caret line="89" column="56" selection-start-line="89" selection-start-column="56" selection-end-line="89" selection-end-column="56" />
+                <state relative-caret-position="588">
+                  <caret line="112" column="22" selection-start-line="112" selection-start-column="22" selection-end-line="112" selection-end-column="22" />
                 </state>
               </provider>
             </entry>
@@ -230,7 +229,7 @@
             <entry file="file://$USER_HOME$/Work_lab/にく処 おおた/nikuota/assets/scss/style.scss">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="271">
-                  <caret line="619" lean-forward="true" selection-start-line="619" selection-end-line="619" />
+                  <caret line="619" selection-start-line="619" selection-end-line="619" />
                 </state>
               </provider>
             </entry>
@@ -244,11 +243,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/views/welcome/index.html.erb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="739">
-                  <caret line="86" column="64" selection-start-line="86" selection-start-column="64" selection-end-line="86" selection-end-column="64" />
+                <state relative-caret-position="442">
+                  <caret line="26" column="50" lean-forward="true" selection-start-line="26" selection-start-column="50" selection-end-line="26" selection-end-column="50" />
                 </state>
               </provider>
             </entry>
@@ -331,8 +330,8 @@
       <find>bi-hac</find>
       <find>@video_url</find>
       <find>video_content_item</find>
-      <find>video</find>
       <find>@videos</find>
+      <find>video</find>
     </findStrings>
     <replaceStrings>
       <replace>user</replace>
@@ -390,11 +389,11 @@
         <option value="$PROJECT_DIR$/config/routes.rb" />
         <option value="$PROJECT_DIR$/app/controllers/users_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/tags/show.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/welcome/index.html.erb" />
         <option value="$PROJECT_DIR$/config/sitemap.rb" />
         <option value="$PROJECT_DIR$/app/views/users/show.html.erb" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/tags.js" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/scaffolds.scss" />
+        <option value="$PROJECT_DIR$/app/views/welcome/index.html.erb" />
       </list>
     </option>
   </component>
@@ -750,12 +749,12 @@
       <workItem from="1566759604353" duration="7427000" />
       <workItem from="1566894335145" duration="41074000" />
       <workItem from="1566972267611" duration="2142000" />
-      <workItem from="1567024724645" duration="17568000" />
+      <workItem from="1567024724645" duration="17993000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="213839000" />
+    <option name="totallyTimeSpent" value="214264000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-12" y="308" width="2048" height="972" extended-state="0" />
@@ -1063,13 +1062,6 @@
     <entry file="file://$PROJECT_DIR$/app/views/tags/index.html.erb">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/users/show.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/helpers/application_helper.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -1080,7 +1072,7 @@
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/tags.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="827">
-          <caret line="67" lean-forward="true" selection-start-line="4" selection-end-line="67" />
+          <caret line="67" selection-start-line="4" selection-end-line="67" />
         </state>
       </provider>
     </entry>
@@ -1097,33 +1089,40 @@
     <entry file="file://$USER_HOME$/Work_lab/にく処 おおた/nikuota/assets/scss/style.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="271">
-          <caret line="619" lean-forward="true" selection-start-line="619" selection-end-line="619" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/welcome/index.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="739">
-          <caret line="86" column="64" selection-start-line="86" selection-start-column="64" selection-end-line="86" selection-end-column="64" />
+          <caret line="619" selection-start-line="619" selection-end-line="619" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/tags.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="89" column="56" selection-start-line="89" selection-start-column="56" selection-end-line="89" selection-end-column="56" />
+        <state relative-caret-position="588">
+          <caret line="112" column="22" selection-start-line="112" selection-start-column="22" selection-end-line="112" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/scaffolds.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="210" column="22" selection-start-line="210" selection-start-column="22" selection-end-line="210" selection-end-column="22" />
+        <state relative-caret-position="468">
+          <caret line="720" column="27" selection-start-line="720" selection-start-column="27" selection-end-line="720" selection-end-column="27" />
           <folding>
             <element signature="e#293#1852#0" />
             <element signature="e#2649#3828#0" />
             <element signature="e#5616#7215#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/users/show.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/welcome/index.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="50" lean-forward="true" selection-start-line="26" selection-start-column="50" selection-end-line="26" selection-end-column="50" />
         </state>
       </provider>
     </entry>
