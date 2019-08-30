@@ -11,10 +11,6 @@ var video = $('#video');
       '</video>' +
       '</div>');
 
-    $(".video_index_" + i).load();
-    $(".video_index_" + i).prop('muted', false);
-    $(".video_index_" + i).get(0).play();
-    $(".video_index_" + i).pause();
 
   }
 video.attr('src', $(".video_index_0").data('video-source'));
@@ -115,6 +111,7 @@ $(".video_data").click(function(){
     if(page != swiper.realIndex) {
       $('.video_' + page).get(0).pause();
       page = swiper.realIndex;
+      $('.video_' + page).get(0).load();
       $('.video_' + page).prop('muted', false);
       $('.video_' + page).get(0).play();
 
