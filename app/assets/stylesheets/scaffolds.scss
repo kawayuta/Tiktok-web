@@ -366,32 +366,56 @@ p, a, h1, h2, h3, h4, li {
 }
 
 
+.swiper-container {
+  width: 100%;
+  height: 600px;
+}
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+
+
 @media screen and (max-width: 500px) {
 
   header {
-    width: 100%;
+    width: 100vw;
     height: 56px;
-    background-color: rgba(0,0,0,0);
+    background-color: rgba(0,0,0,1);
     position: fixed;
     z-index: 999;
+    overflow: hidden;
     & .header-inner {
-      width: 100%;
+      width: 100vw;
       height: 60px;
-      background-color: rgba(0,0,0,0);
+      background-color: rgba(0,0,0,1);
       margin: 0 auto;
       border-bottom: 0px solid #333;
       display: flex;
       flex-wrap: nowrap;
-      overflow: auto;
       & .branding_logo {
-        width: 155px;
+        width: 130px;
         height: auto;
         padding-top: 0px;
         padding-left: 0px;
         & img {
           width: 100%;
           height: auto;
-          display: none;
         }
       }
 
@@ -399,7 +423,7 @@ p, a, h1, h2, h3, h4, li {
         width: calc(100vw - 20px);
         position: fixed;
         left:0;
-        bottom: 150px;
+        bottom: 15px;
         z-index: 999;
         &:before {
           content: "#";
@@ -560,8 +584,8 @@ p, a, h1, h2, h3, h4, li {
     & .video_content {
       width: 100%;
       max-width: 100vw;
-      min-height: calc(100vh - 96px);
-      max-height: calc(100vh - 96px);
+      min-height: calc(100vh);
+      max-height: calc(100vh);
       overflow: hidden;
       & h3 {
         width: 100%;
@@ -569,18 +593,18 @@ p, a, h1, h2, h3, h4, li {
       }
       & .video_player {
         width: 100vw;
-        min-height: calc(100vh - 96px);
-        max-height: calc(100vh - 96px);
+        min-height: calc(100vh);
+        max-height: calc(100vh);
         overflow: hidden;
         background-color: #222;
         border: 0px solid #FF046E;
         position: fixed;
-        top:-56px;
+        top:0px;
         & video {
+          background-color: #000;
           width: 100vw;
-
-          min-height: calc(100vh - 96px);
-          max-height: calc(100vh - 96px);
+          min-height: calc(100vh);
+          max-height: calc(100vh);
         }
       }
       .canvas_heart_bubble {
@@ -595,13 +619,13 @@ p, a, h1, h2, h3, h4, li {
         line-height: 1.5em;
         margin-bottom: 10px;
         position: fixed;
-        bottom: 230px;
+        bottom: 145px;
         z-index: 999;
         text-shadow:2px 2px 3px #000000;
         & p {
           display: inline-block;
           &.video_content_meta_tag a {
-            color: #14EDEC;
+            color: #FFF;
             text-decoration: none;
           }
         }
@@ -634,7 +658,7 @@ p, a, h1, h2, h3, h4, li {
         flex-wrap: nowrap;
         border-top: 0px solid #333;
         position: fixed;
-        top: 0px;
+        bottom: 110px;
         z-index: 999;
         text-shadow:2px 2px 3px #000000;
         &_image {
@@ -703,6 +727,7 @@ p, a, h1, h2, h3, h4, li {
         position: fixed;
         bottom:0px;
         z-index: 999;
+        display: none;
         & h2 {
           font-size: 25px;
           padding-left: 30px;
@@ -757,5 +782,33 @@ p, a, h1, h2, h3, h4, li {
     position: relative;
     z-index: 999;
   }
+
+
+  .swiper-container {
+    width: 100%;
+    height: 100vh;
+    min-height: 100vh;
+    max-height: 100vh;
+    background-color: #000;
+  }
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+  }
+
 
 }
