@@ -15,7 +15,7 @@
       </div>
     </div>
 
-    <% if @videos.present? %>
+    <% if @videos.present? && @videos.first.present? %>
     <div class="video_content_meta">
       <h3 class="video_title"><%= @videos.first.video_title %></h3>
       <div class="video_content_meta_tags">

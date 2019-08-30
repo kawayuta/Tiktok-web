@@ -10,6 +10,7 @@
   -o-box-sizing: border-box;
   -ms-box-sizing: border-box;
   box-sizing: border-box;
+
 }
 
 body {
@@ -102,6 +103,7 @@ main {
   width: 100%;
   display: flex;
   flex-wrap: nowrap;
+  font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
   & aside {
     width: 300px;
     min-height: calc(100vh - 96px);
@@ -369,15 +371,15 @@ p, a, h1, h2, h3, h4, li {
   header {
     width: 100%;
     height: 56px;
-    background-color: #000;
+    background-color: rgba(0,0,0,0);
     position: fixed;
     z-index: 999;
     & .header-inner {
       width: 100%;
       height: 60px;
-      background-color: #000;
+      background-color: rgba(0,0,0,0);
       margin: 0 auto;
-      border-bottom: 1px solid #333;
+      border-bottom: 0px solid #333;
       display: flex;
       flex-wrap: nowrap;
       overflow: auto;
@@ -389,6 +391,7 @@ p, a, h1, h2, h3, h4, li {
         & img {
           width: 100%;
           height: auto;
+          display: none;
         }
       }
 
@@ -629,9 +632,9 @@ p, a, h1, h2, h3, h4, li {
         padding: 10px;
         display: flex;
         flex-wrap: nowrap;
-        border-top: 1px solid #333;
+        border-top: 0px solid #333;
         position: fixed;
-        top: 60px;
+        top: 0px;
         z-index: 999;
         text-shadow:2px 2px 3px #000000;
         &_image {
