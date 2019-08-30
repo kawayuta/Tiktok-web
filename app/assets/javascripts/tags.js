@@ -13,10 +13,8 @@ var video = $('#video');
   }
 video.attr('src', $(".video_index_0").data('video-source'));
 video.load();
-video.prop('muted', true);
 video.get(0).play();
 $(".video_index_0").click();
-video.prop('muted', false);
 
 // video.on('ended',function(){
 //   video_index += 1;
@@ -112,7 +110,6 @@ $(".video_data").click(function(){
       page = swiper.realIndex;
       $('.video_' + page).get(0).load();
       $('.video_' + page).get(0).play();
-      $('.video_' + page).prop('muted', false);
 
 
       var next_v = $(".video_index_" + page);
