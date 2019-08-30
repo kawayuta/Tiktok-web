@@ -10,14 +10,6 @@ var video = $('#video');
       $(".video_index_" + i).data('video-source') +'">' +
       '</video>' +
       '</div>');
-    (function () {
-      $(".video_index_" + i).load();
-      $(".video_index_" + i).prop('muted', false);
-      $(".video_index_" + i).play();
-      $(".video_index_" + i).pause();
-    });
-
-
   }
 video.attr('src', $(".video_index_0").data('video-source'));
 video.load();
@@ -120,6 +112,7 @@ $(".video_data").click(function(){
       $('.video_' + page).get(0).load();
       $('.video_' + page).prop('muted', false);
       $('.video_' + page).get(0).play();
+      $('.video_' + page).prop('muted', true);
 
 
       var next_v = $(".video_index_" + page);
