@@ -19,7 +19,7 @@
     <div class="video_content_meta">
       <h3 class="video_title"><%= @videos.first.video_title %></h3>
       <div class="video_content_meta_tags">
-      <% @videos.first.video_tags.drop(1).each do | tag | %>
+      <% @videos.first.video_tags.each do | tag | %>
         <p class="video_content_meta_tag"><%= link_to "##{tag}", search_tags_path(keyword: tag) %></p>
       <% end %>
       </div>
