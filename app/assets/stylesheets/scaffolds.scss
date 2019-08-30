@@ -407,7 +407,6 @@ p, a, h1, h2, h3, h4, li {
       margin: 0 auto;
       border-bottom: 0px solid #333;
       display: flex;
-      flex-wrap: nowrap;
       & .branding_logo {
         width: 130px;
         height: auto;
@@ -423,7 +422,7 @@ p, a, h1, h2, h3, h4, li {
         width: calc(100vw - 20px);
         position: fixed;
         left:0;
-        top: 45px;
+        bottom: 15px;
         z-index: 999;
         &:before {
           content: "#";
@@ -432,7 +431,6 @@ p, a, h1, h2, h3, h4, li {
           position: absolute;
           top: 29px;
           left: 30px;
-          z-index: 999;
         }
       }
       & input {

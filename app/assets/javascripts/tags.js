@@ -10,6 +10,8 @@ var video = $('#video');
       $(".video_index_" + i).data('video-source') +'">' +
       '</video>' +
       '</div>');
+
+    $(".video_index_" + i).load();
   }
 video.attr('src', $(".video_index_0").data('video-source'));
 video.load();
@@ -109,7 +111,6 @@ $(".video_data").click(function(){
     if(page != swiper.realIndex) {
       $('.video_' + page).get(0).pause();
       page = swiper.realIndex;
-      $('.video_' + page).load();
       $('.video_' + page).prop('muted', false);
       $('.video_' + page).get(0).play();
 
@@ -144,8 +145,6 @@ $(".video_data").click(function(){
       $('.video_content_item ul').animate({
         scrollLeft: (item_width + Number(item_margin_left)) * (page + 1)
       }, 500);
-
-      $('.video_' + page).get(0).play();
     }
   });
 
