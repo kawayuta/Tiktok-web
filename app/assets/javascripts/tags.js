@@ -6,7 +6,7 @@ var video_index = 0;
 var video = $('#video');
   for(var i=1;i<$(".video_data").length;i++){
     $('.swiper-wrapper').append('<div class="swiper-slide" style="height: 600px;">' +
-      '<video muted="muted" controls="controls" id="video" class="video_' + i +'" playsinline="true", autoplay="true" muted="true" src="'+
+      '<video muted="muted" controls="controls" id="video" class="video_' + i +'" playsinline="true" autoplay="true" muted="true" src="'+
       $(".video_index_" + i).data('video-source') +'">' +
       '</video>' +
       '</div>');
