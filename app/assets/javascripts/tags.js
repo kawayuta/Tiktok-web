@@ -10,10 +10,13 @@ var video = $('#video');
       $(".video_index_" + i).data('video-source') +'">' +
       '</video>' +
       '</div>');
-    $(".video_index_" + i).get(0).load();
-    $(".video_index_" + i).prop('muted', false);
-    $(".video_index_" + i).get(0).play();
-    $(".video_index_" + i).get(0).pause();
+    (function () {
+      $(".video_index_" + i).load();
+      $(".video_index_" + i).prop('muted', false);
+      $(".video_index_" + i).play();
+      $(".video_index_" + i).pause();
+    });
+
 
   }
 video.attr('src', $(".video_index_0").data('video-source'));
