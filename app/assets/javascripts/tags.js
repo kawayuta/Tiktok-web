@@ -79,7 +79,9 @@ $(".video_data").click(function(){
   var video = $('#video');
   video_index = $(this).data('video-index');
   swiper.slideTo(video_index);
-
+  for(var i=0;i<$(".video_data").length;i++){
+    $('.video_' + i).prop('muted', false);
+  }
 
   $(this).animate({
     'transform': 'scale(1.1)'

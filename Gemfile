@@ -30,6 +30,7 @@ gem 'sitemap_generator'
 gem 'roboto'
 gem 'bullet', group: 'development'
 gem 'whenever', require: false
+gem 'google-api-client'
 
 # Use CoffeeScript for .coffee assets and views
 # gem 'coffee-rails', '~> 4.2'
