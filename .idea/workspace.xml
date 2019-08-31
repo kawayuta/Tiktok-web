@@ -88,7 +88,7 @@
           <entry key="css" value="20" />
           <entry key="erb" value="4426" />
           <entry key="html" value="2" />
-          <entry key="js" value="2347" />
+          <entry key="js" value="2513" />
           <entry key="lock" value="8" />
           <entry key="rake" value="4698" />
           <entry key="rb" value="5914" />
@@ -102,7 +102,7 @@
         <counts>
           <entry key="CSS" value="20" />
           <entry key="HTML" value="18" />
-          <entry key="JavaScript" value="2331" />
+          <entry key="JavaScript" value="2497" />
           <entry key="PLAIN_TEXT" value="54" />
           <entry key="RHTML" value="4426" />
           <entry key="Ruby" value="10714" />
@@ -219,8 +219,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/assets/javascripts/tags.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="233">
-                  <caret line="114" column="47" lean-forward="true" selection-start-line="114" selection-start-column="47" selection-end-line="114" selection-end-column="47" />
+                <state relative-caret-position="1712">
+                  <caret line="107" column="22" selection-start-line="107" selection-start-column="22" selection-end-line="107" selection-end-column="22" />
                   <folding>
                     <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
                   </folding>
@@ -283,7 +283,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>inner</find>
       <find>pickup_trending_tag</find>
       <find>tiktok</find>
       <find>hash</find>
@@ -313,6 +312,7 @@
       <find>@videos.firs</find>
       <find>video_index_</find>
       <find>video</find>
+      <find>muted</find>
     </findStrings>
     <replaceStrings>
       <replace>user</replace>
@@ -731,12 +731,12 @@
       <workItem from="1566759604353" duration="7427000" />
       <workItem from="1566894335145" duration="41074000" />
       <workItem from="1566972267611" duration="2142000" />
-      <workItem from="1567024724645" duration="36806000" />
+      <workItem from="1567024724645" duration="38450000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="233077000" />
+    <option name="totallyTimeSpent" value="234721000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="353" width="2560" height="1247" extended-state="0" />
@@ -1117,8 +1117,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/tags.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="114" column="47" lean-forward="true" selection-start-line="114" selection-start-column="47" selection-end-line="114" selection-end-column="47" />
+        <state relative-caret-position="1712">
+          <caret line="107" column="22" selection-start-line="107" selection-start-column="22" selection-end-line="107" selection-end-column="22" />
           <folding>
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
           </folding>

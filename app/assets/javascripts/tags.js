@@ -101,16 +101,22 @@ $(".video_data").click(function(){
     direction: 'vertical',
     pagination: {
       clickable: false,
-    },
+    }
   });
   var page = 0;
-  swiper.on('slideChange', function () {
+
+    swiper.on('touchEnd', function () {
+      $('.video_' + page).prop('muted', false);
+      $('.video_' + (page + 1)).prop('muted', false);
+      $('.video_' + (page - 1)).prop('muted', false);
+    });
+
+    swiper.on('slideChange', function () {
     if(page != swiper.realIndex) {
       $('.video_' + page).get(0).pause();
       page = swiper.realIndex;
       $('.video_' + page).get(0).load();
       $('.video_' + page).get(0).play();
-
 
       var next_v = $(".video_index_" + page);
       $('.video_title').text(next_v.data('video-title'));
