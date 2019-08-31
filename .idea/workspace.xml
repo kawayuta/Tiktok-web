@@ -88,7 +88,7 @@
           <entry key="css" value="20" />
           <entry key="erb" value="4426" />
           <entry key="html" value="2" />
-          <entry key="js" value="2542" />
+          <entry key="js" value="2563" />
           <entry key="lock" value="8" />
           <entry key="rake" value="4698" />
           <entry key="rb" value="5914" />
@@ -102,7 +102,7 @@
         <counts>
           <entry key="CSS" value="20" />
           <entry key="HTML" value="18" />
-          <entry key="JavaScript" value="2526" />
+          <entry key="JavaScript" value="2547" />
           <entry key="PLAIN_TEXT" value="54" />
           <entry key="RHTML" value="4426" />
           <entry key="Ruby" value="10714" />
@@ -219,8 +219,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/assets/javascripts/tags.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="552">
-                  <caret line="107" column="29" selection-start-line="107" selection-start-column="29" selection-end-line="107" selection-end-column="29" />
+                <state relative-caret-position="360">
+                  <caret line="140" column="24" selection-start-line="140" selection-start-column="24" selection-end-line="140" selection-end-column="24" />
                   <folding>
                     <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
                   </folding>
@@ -731,12 +731,12 @@
       <workItem from="1566759604353" duration="7427000" />
       <workItem from="1566894335145" duration="41074000" />
       <workItem from="1566972267611" duration="2142000" />
-      <workItem from="1567024724645" duration="39197000" />
+      <workItem from="1567024724645" duration="39491000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="235468000" />
+    <option name="totallyTimeSpent" value="235762000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="353" width="2560" height="1247" extended-state="0" />
@@ -1117,8 +1117,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/tags.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="552">
-          <caret line="107" column="29" selection-start-line="107" selection-start-column="29" selection-end-line="107" selection-end-column="29" />
+        <state relative-caret-position="360">
+          <caret line="140" column="24" selection-start-line="140" selection-start-column="24" selection-end-line="140" selection-end-column="24" />
           <folding>
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
           </folding>

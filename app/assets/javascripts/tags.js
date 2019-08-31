@@ -105,11 +105,11 @@ $(".video_data").click(function(){
   });
   var page = 0;
 
-    swiper.on('touchStart', function () {
-      for(var i=0;i<$(".video_data").length;i++){
-        $('.video_' + i).prop('muted', false);
-      }
-    });
+    // swiper.on('touchStart', function () {
+    //   for(var i=0;i<$(".video_data").length;i++){
+    //     $('.video_' + i).prop('muted', false);
+    //   }
+    // });
 
     swiper.on('slideChange', function () {
     if(page != swiper.realIndex) {
@@ -137,6 +137,10 @@ $(".video_data").click(function(){
       $('.video_user_covers').attr('href', '/users/' + next_v.data('video-user-id'));
       $('.video_user_nick_name').text(next_v.data('video-user-nick-name'));
 
+      $('.video_' + page).on('play',function(){
+        $('.video_' + page).prop('muted', false);
+      });
+
 
       $('.video_' + page).on('ended',function(){
         var next = page + 1;
@@ -155,7 +159,10 @@ $(".video_data").click(function(){
     var next = page + 1;
     swiper.slideTo(next);
   });
-
+  
+  $('.video_' + page).on('play',function(){
+    $('.video_' + page).prop('muted', false);
+  });
 
 
 var hearts = {};
