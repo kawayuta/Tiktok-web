@@ -105,7 +105,7 @@ $(".video_data").click(function(){
   });
   var page = 0;
 
-    swiper.on('touchEnd', function () {
+    swiper.on('touchStart', function () {
       for(var i=0;i<$(".video_data").length;i++){
         $('.video_' + i).prop('muted', false);
       }
