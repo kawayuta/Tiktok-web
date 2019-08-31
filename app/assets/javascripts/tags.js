@@ -106,9 +106,9 @@ $(".video_data").click(function(){
   var page = 0;
 
     swiper.on('touchEnd', function () {
-      $('.video_' + page).prop('muted', false);
-      $('.video_' + (page + 1)).prop('muted', false);
-      $('.video_' + (page - 1)).prop('muted', false);
+      for(var i=0;i<$(".video_data").length;i++){
+        $('.video_' + i).prop('muted', false);
+      }
     });
 
     swiper.on('slideChange', function () {
