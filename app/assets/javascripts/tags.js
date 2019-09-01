@@ -16,6 +16,16 @@ video.load();
 video.get(0).play();
 $(".video_index_0").click();
 
+  var ua = navigator.userAgent;
+  if (ua.indexOf('iPhone') > 0 || ua.indexOf('Android') > 0 && ua.indexOf('Mobile') > 0) {
+    // スマートフォン用コード
+  } else if (ua.indexOf('iPad') > 0 || ua.indexOf('Android') > 0) {
+    // タブレット用コード
+  } else {
+    // PC用コード
+    video.prop('muted', false);
+  }
+
 // video.on('ended',function(){
 //   video_index += 1;
 //   var next = $(".video_index_" + video_index);
