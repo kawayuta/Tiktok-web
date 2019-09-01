@@ -362,20 +362,20 @@ class Gc
           open(video.video_url) do |file|
             open("./lib/tasks/v/#{video.id.to_s}.mp4", "w+b") do |out|
               out.write(file.read)
-              system("ffmpeg -i #{Dir.pwd}/lib/tasks/v/#{video.id.to_s}.mp4 -r 30 -c:v h264 -c:a libfdk_aac #{Dir.pwd}/lib/tasks/m/#{video.id.to_s}.mp4")
-              system("echo file '#{Dir.pwd}/lib/tasks/m/#{video.id.to_s}.mp4' >> #{Dir.pwd}/lib/tasks/m/videos.txt")
+              system("ffmpeg -i ./lib/tasks/v/#{video.id.to_s}.mp4 -r 30 -c:v h264 -c:a libfdk_aac ./lib/tasks/m/#{video.id.to_s}.mp4")
+              system("echo file './lib/tasks/m/#{video.id.to_s}.mp4' >> #{Dir.pwd}/lib/tasks/m/videos.txt")
             end
           end
         end
 
         @videos = []
-        system("ffmpeg -f concat -safe 0 -i #{Dir.pwd}/lib/tasks/m/videos.txt -y #{Dir.pwd}/lib/tasks/m/output.mp4")
+        system("ffmpeg -f concat -safe 0 -i ./lib/tasks/m/videos.txt -y ./lib/tasks/m/output.mp4")
         Gc.authorize
         Gc.main(tag.tag_title)
-        system("rm -rf #{Dir.pwd}/lib/tasks/v/")
-        system("mkdir #{Dir.pwd}/lib/tasks/v/")
-        system("rm -rf #{Dir.pwd}/lib/tasks/m/")
-        system("mkdir #{Dir.pwd}/lib/tasks/m/")
+        system("rm -rf ./lib/tasks/v/")
+        system("mkdir ./lib/tasks/v/")
+        system("rm -rf ./lib/tasks/m/")
+        system("mkdir ./lib/tasks/m/")
 
       end
     end
