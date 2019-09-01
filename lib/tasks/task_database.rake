@@ -341,7 +341,7 @@ class Gc
     youtube = Google::Apis::YoutubeV3::YouTubeService.new
     youtube.client_options.application_name = APPLICATION_NAME
     youtube.authorization = authorize
-    path = "./lib/tasks/m/output.mp4"
+    path = "/var/www/sample-test/current/lib/tasks/m/output.mp4"
     snippet = { snippet: { title: "【TikTok】今週の「##{tag}」動画！【オモシロ人気動画】まとめ【2019年9月】", description: "TikTok Proが運営するTikTok分析から発見された本当に面白い今週のトレンド動画です。\nhttps://tiktok-pro.com\n#TikTok面白動画\n#TikTokオモシロ\n#トレンド" } }
     response = youtube.insert_video('snippet', snippet, upload_source: path, content_type: 'video/*')
     pp response
