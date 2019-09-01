@@ -299,7 +299,7 @@ namespace :task_database do
   end
 
   task :test => :environment do
-    Gc.download
+    Gc.download_and_upload
   end
 
 end
@@ -312,7 +312,7 @@ require 'google/apis/youtube_v3'
 class Gc
   OOB_URI = 'urn:ietf:wg:oauth:2.0:oob'
   APPLICATION_NAME = 'idolsongplaylist'
-  CLIENT_SECRETS_PATH = './lib/tasks/t/client_secret.json'
+  CLIENT_SECRETS_PATH = "#{Dir.pwd}/lib/tasks/t/client_secret.json"
   CREDENTIALS_PATH = File.join(Dir.home, '.credentials', "tokens.yaml")
 
   SCOPE = [ "https://www.googleapis.com/auth/youtube", "https://www.googleapis.com/auth/youtube.upload"]
@@ -323,7 +323,7 @@ class Gc
     client_id = Google::Auth::ClientId.from_file(CLIENT_SECRETS_PATH)
     token_store = Google::Auth::Stores::FileTokenStore.new(file: CREDENTIALS_PATH)
     authorizer = Google::Auth::UserAuthorizer.new(client_id, SCOPE, token_store)
-    user_id = 'default'
+    user_id = 'user1'
     credentials = authorizer.get_credentials(user_id)
     if credentials.nil?
       url = authorizer.get_authorization_url(base_url: OOB_URI)
@@ -337,33 +337,59 @@ class Gc
     credentials
   end
 
-  def self.main
+  def self.main(tag)
     youtube = Google::Apis::YoutubeV3::YouTubeService.new
     youtube.client_options.application_name = APPLICATION_NAME
     youtube.authorization = authorize
-    path = './lib/tasks/t/preview.mp4'
-    snippet = { snippet: { title: "title", description: "description" } }
+    path = "#{Dir.pwd}/lib/tasks/m/output.mp4"
+    snippet = { snippet: { title: "【TikTok】今週の「##{tag}」動画！【オモシロ人気動画】まとめ【2019年9月】", description: "TikTok Proが運営するTikTok分析から発見された本当に面白い今週のトレンド動画です。\nhttps://tiktok-pro.com\n#TikTok面白動画\n#TikTokオモシロ\n#トレンド" } }
     response = youtube.insert_video('snippet', snippet, upload_source: path, content_type: 'video/*')
     pp response
   end
 
-  def self.download
+  def self.download_and_upload
     require 'open-uri'
 
-    system("rm #{Dir.pwd}/lib/tasks/v/videos.txt")
-    system("touch #{Dir.pwd}/lib/tasks/v/videos.txt")
-    system("nkf --overwrite --oc=UTF-8-BOM #{Dir.pwd}/lib/tasks/v/videos.txt")
-
-    Video.where(video_trending: true).each do | video |
-      puts video.video_url
-      open(video.video_url) do |file|
-        open("./lib/tasks/v/#{video.id.to_s}.mp4", "w+b") do |out|
-          out.write(file.read)
-          system("echo file '#{Dir.pwd}/lib/tasks/v/#{video.id.to_s}.mp4' >> #{Dir.pwd}/lib/tasks/v/videos.txt")
+    @videos = []
+    Tag.all.each do |tag|
+      Video.all.each do |v|
+        if v.video_tags.try(:include?, tag.tag_title)
+          @videos.push(v)
         end
       end
+      unless @videos.nil?
+        @videos.each do | video |
+          open(video.video_url) do |file|
+            open("./lib/tasks/v/#{video.id.to_s}.mp4", "w+b") do |out|
+              out.write(file.read)
+              system("ffmpeg -i #{Dir.pwd}/lib/tasks/v/#{video.id.to_s}.mp4 -r 30 -c:v h264 -c:a aac #{Dir.pwd}/lib/tasks/m/#{video.id.to_s}.mp4")
+              system("echo file '#{Dir.pwd}/lib/tasks/m/#{video.id.to_s}.mp4' >> #{Dir.pwd}/lib/tasks/m/videos.txt")
+            end
+          end
+        end
+
+        @videos = []
+        system("ffmpeg -f concat -safe 0 -i #{Dir.pwd}/lib/tasks/m/videos.txt -y #{Dir.pwd}/lib/tasks/m/output.mp4")
+        Gc.authorize
+        Gc.main(tag.tag_title)
+        system("rm -rf #{Dir.pwd}/lib/tasks/v/")
+        system("mkdir #{Dir.pwd}/lib/tasks/v/")
+        system("rm -rf #{Dir.pwd}/lib/tasks/m/")
+        system("mkdir #{Dir.pwd}/lib/tasks/m/")
+
+      end
     end
-    system("ffmpeg -safe 0 -f concat -i #{Dir.pwd}/lib/tasks/v/videos.txt -c:v copy -c:a copy -map 0:v -map 0:a #{Dir.pwd}/lib/tasks/v/output.mp4")
+
+    # Video.where(video_trending: true).each do | video |
+    #   open(video.video_url) do |file|
+    #     open("./lib/tasks/v/#{video.id.to_s}.mp4", "w+b") do |out|
+    #       out.write(file.read)
+    #       system("ffmpeg -i #{Dir.pwd}/lib/tasks/v/#{video.id.to_s}.mp4 -r 30 -c:v h264 -c:a aac #{Dir.pwd}/lib/tasks/m/#{video.id.to_s}.mp4")
+    #       system("echo file '#{Dir.pwd}/lib/tasks/m/#{video.id.to_s}.mp4' >> #{Dir.pwd}/lib/tasks/m/videos.txt")
+    #     end
+    #   end
+    # end
+
 
   end
 
