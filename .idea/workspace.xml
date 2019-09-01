@@ -90,7 +90,7 @@
           <entry key="html" value="2" />
           <entry key="js" value="2578" />
           <entry key="lock" value="8" />
-          <entry key="rake" value="6119" />
+          <entry key="rake" value="6130" />
           <entry key="rb" value="5918" />
           <entry key="ru" value="3" />
           <entry key="scss" value="5116" />
@@ -105,7 +105,7 @@
           <entry key="JavaScript" value="2562" />
           <entry key="PLAIN_TEXT" value="54" />
           <entry key="RHTML" value="4426" />
-          <entry key="Ruby" value="12165" />
+          <entry key="Ruby" value="12176" />
           <entry key="SCSS" value="5116" />
           <entry key="YAML" value="103" />
         </counts>
@@ -172,8 +172,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/lib/tasks/task_database.rake">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1074">
-                  <caret line="364" column="107" selection-start-line="364" selection-start-column="107" selection-end-line="364" selection-end-column="107" />
+                <state relative-caret-position="785">
+                  <caret line="365" column="35" selection-start-line="365" selection-start-column="35" selection-end-line="365" selection-end-column="47" />
                   <folding>
                     <element signature="e#184#2237#0" />
                     <element signature="e#2277#7553#0" />
@@ -691,12 +691,12 @@
       <workItem from="1566759604353" duration="7427000" />
       <workItem from="1566894335145" duration="41074000" />
       <workItem from="1566972267611" duration="2142000" />
-      <workItem from="1567024724645" duration="71327000" />
+      <workItem from="1567024724645" duration="72041000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="267598000" />
+    <option name="totallyTimeSpent" value="268312000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="353" width="2560" height="1247" extended-state="0" />
@@ -1061,20 +1061,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/tasks/task_database.rake">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1074">
-          <caret line="364" column="107" selection-start-line="364" selection-start-column="107" selection-end-line="364" selection-end-column="107" />
-          <folding>
-            <element signature="e#184#2237#0" />
-            <element signature="e#2277#7553#0" />
-            <element signature="e#7598#8312#0" />
-            <element signature="e#8355#9503#0" />
-            <element signature="e#9547#10332#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/tags.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
@@ -1089,6 +1075,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="296">
           <caret line="32" column="22" selection-start-line="32" selection-start-column="6" selection-end-line="32" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/tasks/task_database.rake">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="785">
+          <caret line="365" column="35" selection-start-line="365" selection-start-column="35" selection-end-line="365" selection-end-column="47" />
+          <folding>
+            <element signature="e#184#2237#0" />
+            <element signature="e#2277#7553#0" />
+            <element signature="e#7598#8312#0" />
+            <element signature="e#8355#9503#0" />
+            <element signature="e#9547#10332#0" />
+          </folding>
         </state>
       </provider>
     </entry>
