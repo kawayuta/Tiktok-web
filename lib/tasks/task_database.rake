@@ -299,7 +299,7 @@ namespace :task_database do
   end
 
   task :upload_youtube => :environment do
-    Gc.download_and_upload
+    Gc.authorize
   end
 
 end
@@ -323,7 +323,7 @@ class Gc
     client_id = Google::Auth::ClientId.from_file(CLIENT_SECRETS_PATH)
     token_store = Google::Auth::Stores::FileTokenStore.new(file: CREDENTIALS_PATH)
     authorizer = Google::Auth::UserAuthorizer.new(client_id, SCOPE, token_store)
-    user_id = 'user1'
+    user_id = 'user_sever'
     credentials = authorizer.get_credentials(user_id)
     if credentials.nil?
       url = authorizer.get_authorization_url(base_url: OOB_URI)
@@ -362,7 +362,7 @@ class Gc
           open(video.video_url) do |file|
             open("./lib/tasks/v/#{video.id.to_s}.mp4", "w+b") do |out|
               out.write(file.read)
-              system("ffmpeg -i ./lib/tasks/v/#{video.id.to_s}.mp4 -r 30 -c:v h264 -c:a libfdk_aac ./lib/tasks/m/#{video.id.to_s}.mp4")
+              system("ffmpeg -i ./lib/tasks/v/#{video.id.to_s}.mp4 -r 30 -c:v h264 -c:a aac ./lib/tasks/m/#{video.id.to_s}.mp4")
               system("echo file '#{video.id.to_s}.mp4' >> ./lib/tasks/m/videos.txt")
             end
           end
