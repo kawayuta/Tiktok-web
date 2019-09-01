@@ -299,7 +299,7 @@ namespace :task_database do
   end
 
   task :upload_youtube => :environment do
-    Gc.authorize
+    Gc.main("test")
   end
 
 end
