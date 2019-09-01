@@ -299,7 +299,7 @@ namespace :task_database do
   end
 
   task :upload_youtube => :environment do
-    Gc.main("test")
+    Gc.download_and_upload
   end
 
 end
@@ -323,7 +323,7 @@ class Gc
     client_id = Google::Auth::ClientId.from_file(CLIENT_SECRETS_PATH)
     token_store = Google::Auth::Stores::FileTokenStore.new(file: CREDENTIALS_PATH)
     authorizer = Google::Auth::UserAuthorizer.new(client_id, SCOPE, token_store)
-    user_id = 'user_sever'
+    user_id = 'user_server'
     credentials = authorizer.get_credentials(user_id)
     if credentials.nil?
       url = authorizer.get_authorization_url(base_url: OOB_URI)
@@ -341,7 +341,7 @@ class Gc
     youtube = Google::Apis::YoutubeV3::YouTubeService.new
     youtube.client_options.application_name = APPLICATION_NAME
     youtube.authorization = authorize
-    path = "/var/www/sample-test/current/lib/tasks/m/output.mp4"
+    path = "#{Dir.pwd}/lib/tasks/m/output.mp4"
     snippet = { snippet: { title: "【TikTok】今週の「##{tag}」動画！【オモシロ人気動画】まとめ【2019年9月】", description: "TikTok Proが運営するTikTok分析から発見された本当に面白い今週のトレンド動画です。\nhttps://tiktok-pro.com\n#TikTok面白動画\n#TikTokオモシロ\n#トレンド" } }
     response = youtube.insert_video('snippet', snippet, upload_source: path, content_type: 'video/*')
     pp response
@@ -360,22 +360,22 @@ class Gc
       unless @videos.nil?
         @videos.each do | video |
           open(video.video_url) do |file|
-            open("./lib/tasks/v/#{video.id.to_s}.mp4", "w+b") do |out|
+            open("#{Dir.pwd}/lib/tasks/v/#{video.id.to_s}.mp4", "w+b") do |out|
               out.write(file.read)
-              system("ffmpeg -i ./lib/tasks/v/#{video.id.to_s}.mp4 -r 30 -c:v h264 -c:a aac ./lib/tasks/m/#{video.id.to_s}.mp4")
-              system("echo file '#{video.id.to_s}.mp4' >> ./lib/tasks/m/videos.txt")
+              system("ffmpeg -i #{Dir.pwd}/lib/tasks/v/#{video.id.to_s}.mp4 -r 30 -c:v h264 -c:a libfdk_aac #{Dir.pwd}/lib/tasks/m/#{video.id.to_s}.mp4")
+              system("echo file '#{Dir.pwd}/lib/tasks/m/#{video.id.to_s}.mp4' >> #{Dir.pwd}/lib/tasks/m/videos.txt")
             end
           end
         end
 
         @videos = []
-        system("ffmpeg -f concat -safe 0 -i ./lib/tasks/m/videos.txt -y ./lib/tasks/m/output.mp4")
+        system("ffmpeg -f concat -safe 0 -i #{Dir.pwd}/lib/tasks/m/videos.txt -y #{Dir.pwd}/lib/tasks/m/output.mp4")
         Gc.authorize
         Gc.main(tag.tag_title)
-        system("rm -rf ./lib/tasks/v/")
-        system("mkdir ./lib/tasks/v/")
-        system("rm -rf ./lib/tasks/m/")
-        system("mkdir ./lib/tasks/m/")
+        system("rm -rf #{Dir.pwd}/lib/tasks/v/")
+        system("mkdir #{Dir.pwd}/lib/tasks/v/")
+        system("rm -rf #{Dir.pwd}/lib/tasks/m/")
+        system("mkdir #{Dir.pwd}/lib/tasks/m/")
 
       end
     end

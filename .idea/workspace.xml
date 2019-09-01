@@ -50,7 +50,7 @@
         <counts>
           <entry key="Capfile" value="2" />
           <entry key="Gemfile" value="9" />
-          <entry key="cap" value="3" />
+          <entry key="cap" value="4" />
           <entry key="css" value="3" />
           <entry key="erb" value="36" />
           <entry key="html" value="1" />
@@ -74,7 +74,7 @@
           <entry key="Image" value="2" />
           <entry key="JSON" value="4" />
           <entry key="JavaScript" value="14" />
-          <entry key="PLAIN_TEXT" value="13" />
+          <entry key="PLAIN_TEXT" value="14" />
           <entry key="RHTML" value="36" />
           <entry key="Ruby" value="132" />
           <entry key="SCSS" value="14" />
@@ -92,7 +92,7 @@
           <entry key="html" value="2" />
           <entry key="js" value="2578" />
           <entry key="lock" value="8" />
-          <entry key="rake" value="6178" />
+          <entry key="rake" value="6185" />
           <entry key="rb" value="5918" />
           <entry key="ru" value="3" />
           <entry key="scss" value="5116" />
@@ -107,7 +107,7 @@
           <entry key="JavaScript" value="2562" />
           <entry key="PLAIN_TEXT" value="54" />
           <entry key="RHTML" value="4426" />
-          <entry key="Ruby" value="12224" />
+          <entry key="Ruby" value="12231" />
           <entry key="SCSS" value="5116" />
           <entry key="YAML" value="103" />
         </counts>
@@ -118,15 +118,6 @@
     <splitter split-orientation="horizontal" split-proportion="0.62531394">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/tags.scss">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1034">
-                  <caret line="68" selection-start-line="68" selection-end-line="68" />
-                </state>
-              </provider>
-            </entry>
-          </file>
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/models/user.rb">
               <provider selected="true" editor-type-id="text-editor">
@@ -160,8 +151,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/lib/tasks/task_database.rake">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="197">
-                  <caret line="301" column="17" selection-start-line="301" selection-start-column="17" selection-end-line="301" selection-end-column="17" />
+                <state relative-caret-position="290">
+                  <caret line="343" column="12" lean-forward="true" selection-start-line="343" selection-start-column="12" selection-end-line="343" selection-end-column="26" />
                   <folding>
                     <element signature="e#184#2237#0" />
                     <element signature="e#2277#7553#0" />
@@ -169,6 +160,15 @@
                     <element signature="e#8355#9503#0" />
                     <element signature="e#9547#10332#0" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/lib/capistrano/tasks/unicorn.cap">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="34">
+                  <caret line="2" column="44" lean-forward="true" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="44" />
                 </state>
               </provider>
             </entry>
@@ -684,12 +684,12 @@
       <workItem from="1566759604353" duration="7427000" />
       <workItem from="1566894335145" duration="41074000" />
       <workItem from="1566972267611" duration="2142000" />
-      <workItem from="1567024724645" duration="74122000" />
+      <workItem from="1567024724645" duration="74461000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="270393000" />
+    <option name="totallyTimeSpent" value="270732000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="353" width="2560" height="1247" extended-state="0" />
@@ -749,13 +749,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="36" selection-start-line="2" selection-start-column="36" selection-end-line="2" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/capistrano/tasks/unicorn.cap">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -1067,10 +1060,17 @@
     <entry file="file://$PROJECT_DIR$/lib/tasks/t/tokens.yml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/lib/capistrano/tasks/unicorn.cap">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="44" lean-forward="true" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/lib/tasks/task_database.rake">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="301" column="17" selection-start-line="301" selection-start-column="17" selection-end-line="301" selection-end-column="17" />
+        <state relative-caret-position="290">
+          <caret line="343" column="12" lean-forward="true" selection-start-line="343" selection-start-column="12" selection-end-line="343" selection-end-column="26" />
           <folding>
             <element signature="e#184#2237#0" />
             <element signature="e#2277#7553#0" />
