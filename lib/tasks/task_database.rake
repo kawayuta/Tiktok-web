@@ -299,7 +299,7 @@ namespace :task_database do
   end
 
   task :upload_youtube => :environment do
-    Gc.authorize
+    Gc.download_and_upload
   end
 
 end
@@ -325,7 +325,7 @@ class Gc
     authorizer = Google::Auth::UserAuthorizer.new(client_id, SCOPE, token_store)
     user_id = 'user1'
     credentials = authorizer.get_credentials(user_id)
-    unless credentials.nil?
+    if credentials.nil?
       url = authorizer.get_authorization_url(base_url: OOB_URI)
       puts 'Open the following URL in the browser and enter the ' +
                'resulting code after authorization'

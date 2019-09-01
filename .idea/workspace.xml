@@ -92,7 +92,7 @@
           <entry key="html" value="2" />
           <entry key="js" value="2578" />
           <entry key="lock" value="8" />
-          <entry key="rake" value="6131" />
+          <entry key="rake" value="6137" />
           <entry key="rb" value="5918" />
           <entry key="ru" value="3" />
           <entry key="scss" value="5116" />
@@ -107,7 +107,7 @@
           <entry key="JavaScript" value="2562" />
           <entry key="PLAIN_TEXT" value="54" />
           <entry key="RHTML" value="4426" />
-          <entry key="Ruby" value="12177" />
+          <entry key="Ruby" value="12183" />
           <entry key="SCSS" value="5116" />
           <entry key="YAML" value="103" />
         </counts>
@@ -174,8 +174,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/lib/tasks/task_database.rake">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="240">
-                  <caret line="301" column="16" selection-start-line="301" selection-start-column="16" selection-end-line="301" selection-end-column="16" />
+                <state relative-caret-position="77">
+                  <caret line="301" column="26" selection-start-line="301" selection-start-column="7" selection-end-line="301" selection-end-column="26" />
                   <folding>
                     <element signature="e#184#2237#0" />
                     <element signature="e#2277#7553#0" />
@@ -693,12 +693,12 @@
       <workItem from="1566759604353" duration="7427000" />
       <workItem from="1566894335145" duration="41074000" />
       <workItem from="1566972267611" duration="2142000" />
-      <workItem from="1567024724645" duration="72630000" />
+      <workItem from="1567024724645" duration="72973000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="268901000" />
+    <option name="totallyTimeSpent" value="269244000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="353" width="2560" height="1247" extended-state="0" />
@@ -1082,8 +1082,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/tasks/task_database.rake">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="301" column="16" selection-start-line="301" selection-start-column="16" selection-end-line="301" selection-end-column="16" />
+        <state relative-caret-position="77">
+          <caret line="301" column="26" selection-start-line="301" selection-start-column="7" selection-end-line="301" selection-end-column="26" />
           <folding>
             <element signature="e#184#2237#0" />
             <element signature="e#2277#7553#0" />
