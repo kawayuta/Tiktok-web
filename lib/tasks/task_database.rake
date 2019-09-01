@@ -362,7 +362,7 @@ class Gc
           open(video.video_url) do |file|
             open("./lib/tasks/v/#{video.id.to_s}.mp4", "w+b") do |out|
               out.write(file.read)
-              system("ffmpeg -i #{Dir.pwd}/lib/tasks/v/#{video.id.to_s}.mp4 -r 30 -c:v h264 -c:a aac #{Dir.pwd}/lib/tasks/m/#{video.id.to_s}.mp4")
+              system("ffmpeg -i #{Dir.pwd}/lib/tasks/v/#{video.id.to_s}.mp4 -r 30 -c:v h264 -c:a libfdk_aac #{Dir.pwd}/lib/tasks/m/#{video.id.to_s}.mp4")
               system("echo file '#{Dir.pwd}/lib/tasks/m/#{video.id.to_s}.mp4' >> #{Dir.pwd}/lib/tasks/m/videos.txt")
             end
           end
