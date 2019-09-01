@@ -298,7 +298,7 @@ namespace :task_database do
     false
   end
 
-  task :test => :environment do
+  task :upload_youtube => :environment do
     Gc.download_and_upload
   end
 

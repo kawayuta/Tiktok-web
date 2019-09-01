@@ -47,6 +47,17 @@ namespace :deploy do
     end
   end
 
+  task :task_upload_youtube do
+    on roles(:db) do |host|
+      within current_path do
+        with rails_env: fetch(:rails_env) do
+          execute :rake, 'task_database:upload_youtube'
+        end
+      end
+    end
+  end
+
+
   task :migrate_rest do
     on roles(:db) do |host|
       within current_path do
