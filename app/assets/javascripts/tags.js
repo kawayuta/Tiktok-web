@@ -22,8 +22,9 @@ $(".video_index_0").click();
   } else if (ua.indexOf('iPad') > 0 || ua.indexOf('Android') > 0) {
     // タブレット用コード
   } else {
-    // PC用コード
-    video.prop('muted', false);
+    for(var i=0;i<$(".video_data").length;i++){
+      $('.video_' + i).prop('muted', false);
+    }
   }
 
 // video.on('ended',function(){
