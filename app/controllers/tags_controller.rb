@@ -22,7 +22,7 @@ class TagsController < ApplicationController
       end
     end
 
-    @videos.shuffle!.first(50)
+    @videos.shuffle!.first(30)
     @users = @videos.pluck(:user_id).uniq
 
   end
