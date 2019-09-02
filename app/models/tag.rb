@@ -4,9 +4,12 @@ class Tag < ApplicationRecord
     @tag = Tag.find_by(tag_title: search)
     unless @tag.nil?
       ActiveRecord::Base.connection_pool.with_connection do
-        puts "update tag"
-        tag = Tag.get_tag("https://www.tiktok.com/tag/#{search}?langCountry=ja")
-        @tag = @tag.update(tag)
+        if @tag.updated_at.strftime("%Y-%m-%d") != Time.current.strftime("%Y-%m-%d")
+          puts "update tag"
+          tag = Tag.get_tag("https://www.tiktok.com/tag/#{search}?langCountry=ja")
+          @old = TagHistory.create(tag)
+          @tag = @tag.update(tag)
+        end
       end
     else
       ActiveRecord::Base.connection_pool.with_connection do
@@ -285,13 +288,13 @@ class Tag < ApplicationRecord
     g_driver.close
     g_driver.quit
 
-    js = doc_tag.search('script')[7].text
+    js = doc_tag.search('script').to_s
     @tag_official_id = js.split('challengeId":')[1].split(',')[0].delete('"')
     @tag_title = js.split('challengeName":')[1].split(',')[0].delete('"')
-    @tag_text = js.split('text":')[1].split(',')[0].delete('"')
+    @tag_text = js.split('","text":"')[1].split(',')[0].delete('"')
     @tag_cover_image = js.split('covers":')[1].split(',')[0].delete('["').delete('"]')
-    @tag_posts_count = js.split('posts":')[1].split(',')[0]
-    @tag_views_count = js.split('views":')[1].split(',')[0].delete('"').delete('}')
+    @tag_posts_count = js.split('posts":')[2].split(',')[0]
+    @tag_views_count = js.split('views":')[2].split(',')[0].delete('"').delete('}')
     @tag_url = url
 
     tag = {
@@ -304,6 +307,7 @@ class Tag < ApplicationRecord
         "tag_url": @tag_url
     }
 
+    puts tag
     return tag
   end
 end

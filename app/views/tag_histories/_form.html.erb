@@ -1,0 +1,27 @@
+<%= form_with(model: tag_history, local: true) do |form| %>
+  <% if tag_history.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(tag_history.errors.count, "error") %> prohibited this tag_history from being saved:</h2>
+
+      <ul>
+      <% tag_history.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :user_official_id %>
+    <%= form.text_area :user_official_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_nick_named %>
+    <%= form.text_area :user_nick_named %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

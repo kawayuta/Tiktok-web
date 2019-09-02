@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Tag Histories</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User official</th>
+      <th>User nick named</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tag_histories.each do |tag_history| %>
+      <tr>
+        <td><%= tag_history.user_official_id %></td>
+        <td><%= tag_history.user_nick_named %></td>
+        <td><%= link_to 'Show', tag_history %></td>
+        <td><%= link_to 'Edit', edit_tag_history_path(tag_history) %></td>
+        <td><%= link_to 'Destroy', tag_history, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tag History', new_tag_history_path %>

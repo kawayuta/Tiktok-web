@@ -6,6 +6,12 @@ namespace :task_database do
   require 'tor-privoxy'
   require 'socksify/http'
 
+  task :get_tag_data => :environment do
+    Tag.all.each do |tag|
+      Tag.new_tag(tag.tag_title)
+    end
+  end
+
   task :get_tr_from_tag => :environment do
 
     Tag.all.each do |tag|
@@ -49,7 +55,6 @@ namespace :task_database do
 
     end
   end
-
 
   task :get_tr => :environment do
     client = Selenium::WebDriver::Remote::Http::Default.new

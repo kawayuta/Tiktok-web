@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :tag_histories
   mount_roboto
   root to: 'welcome#index'
   resources :tags, only: :show do

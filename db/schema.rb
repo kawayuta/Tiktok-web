@@ -10,7 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_22_232910) do
+ActiveRecord::Schema.define(version: 2019_09_02_095022) do
+
+  create_table "tag_histories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.text "tag_official_id"
+    t.text "tag_title"
+    t.text "tag_text"
+    t.text "tag_cover_image"
+    t.text "tag_posts_count"
+    t.text "tag_views_count"
+    t.text "tag_url"
+    t.boolean "tag_trending"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tag_cover_image"], name: "index_tag_histories_on_tag_cover_image", type: :fulltext
+    t.index ["tag_official_id"], name: "index_tag_histories_on_tag_official_id", type: :fulltext
+    t.index ["tag_posts_count"], name: "index_tag_histories_on_tag_posts_count", type: :fulltext
+    t.index ["tag_text"], name: "index_tag_histories_on_tag_text", type: :fulltext
+    t.index ["tag_title"], name: "index_tag_histories_on_tag_title", type: :fulltext
+    t.index ["tag_trending"], name: "index_tag_histories_on_tag_trending"
+    t.index ["tag_url"], name: "index_tag_histories_on_tag_url", type: :fulltext
+    t.index ["tag_views_count"], name: "index_tag_histories_on_tag_views_count", type: :fulltext
+  end
 
   create_table "tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.text "tag_official_id"

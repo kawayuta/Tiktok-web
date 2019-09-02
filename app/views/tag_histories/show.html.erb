@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User official:</strong>
+  <%= @tag_history.user_official_id %>
+</p>
+
+<p>
+  <strong>User nick named:</strong>
+  <%= @tag_history.user_nick_named %>
+</p>
+
+<%= link_to 'Edit', edit_tag_history_path(@tag_history) %> |
+<%= link_to 'Back', tag_histories_path %>
