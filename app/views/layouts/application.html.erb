@@ -27,6 +27,9 @@
           <%= link_to image_tag('logo.png'), root_path %>
         </div>
 
+        <p class="header_tag_title"><%= @tag.nil? ? "" : "##{@tag.tag_title}" %></p>
+        <p class="header_tag_raking"><%= link_to "このタグのランキング", ranking_tag_path(@tag) unless @tag.nil? %></p>
+
         <%= form_tag(search_tags_path, method: "get") do %>
             <%= text_field_tag :keyword, '', class: 'form-control', placeholder: 'キーワードを入力してね' %>
           <%= button_tag '<i class="fa fa-search"></i>'.html_safe, :type => "submit" %>

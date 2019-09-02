@@ -802,6 +802,10 @@ p, a, h1, h2, h3, h4, li {
       margin: 0 auto;
       border-bottom: 0px solid #333;
       display: flex;
+      justify-content: flex-end;
+      &  >:nth-child(2) {
+        margin-right: auto;
+      }
       & .branding_logo {
         width: 60px;
         height: auto;
@@ -812,7 +816,23 @@ p, a, h1, h2, h3, h4, li {
           height: auto;
         }
       }
-
+      & .header_tag_title {
+        font-size:25px;
+        font-weight: bold;
+        line-height: 2.3em;
+      }
+      & .header_tag_raking {
+        margin-top: 20px;
+        margin-right: 10px;
+        & a {
+          padding: 10px;
+          color:#FFF;
+          text-decoration: none;
+          background-color: #EE1D52;
+          border-radius: 8px;
+          font-size: 18px;
+        }
+      }
       & form {
         width: calc(100vw - 20px);
         height: 50px;
