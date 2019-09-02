@@ -37,6 +37,16 @@ namespace :deploy do
     end
   end
 
+  task :task_tag_update do
+    on roles(:db) do |host|
+      within current_path do
+        with rails_env: fetch(:rails_env) do
+          execute :rake, 'task_database:get_tag_data'
+        end
+      end
+    end
+  end
+
   task :task_input_trending do
     on roles(:db) do |host|
       within current_path do
