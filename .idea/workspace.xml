@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a2e4aa1-93ac-4a71-a04c-86b144ad4cb1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/tasks/m/videos.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/tasks/task_database.rake" beforeDir="false" afterPath="$PROJECT_DIR$/lib/tasks/task_database.rake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/tasks/v/1.mp4" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -92,7 +95,7 @@
           <entry key="html" value="2" />
           <entry key="js" value="2578" />
           <entry key="lock" value="8" />
-          <entry key="rake" value="6206" />
+          <entry key="rake" value="6207" />
           <entry key="rb" value="5918" />
           <entry key="ru" value="3" />
           <entry key="scss" value="5116" />
@@ -107,7 +110,7 @@
           <entry key="JavaScript" value="2562" />
           <entry key="PLAIN_TEXT" value="54" />
           <entry key="RHTML" value="4426" />
-          <entry key="Ruby" value="12252" />
+          <entry key="Ruby" value="12253" />
           <entry key="SCSS" value="5116" />
           <entry key="YAML" value="103" />
         </counts>
@@ -151,8 +154,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/lib/tasks/task_database.rake">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="125">
-                  <caret line="302" column="17" selection-start-line="302" selection-start-column="17" selection-end-line="302" selection-end-column="17" />
+                <state relative-caret-position="137">
+                  <caret line="302" column="26" selection-start-line="302" selection-start-column="26" selection-end-line="302" selection-end-column="26" />
                   <folding>
                     <element signature="e#184#2237#0" />
                     <element signature="e#2277#7553#0" />
@@ -168,7 +171,7 @@
             <entry file="file://$PROJECT_DIR$/lib/capistrano/tasks/unicorn.cap">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="34">
-                  <caret line="2" column="44" lean-forward="true" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="44" />
+                  <caret line="2" column="44" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="44" />
                 </state>
               </provider>
             </entry>
@@ -189,7 +192,11 @@
           </file>
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/lib/tasks/t/client_secret.json">
-              <provider selected="true" editor-type-id="text-editor" />
+              <provider selected="true" editor-type-id="text-editor">
+                <state>
+                  <caret column="43" lean-forward="true" selection-start-column="43" selection-end-column="43" />
+                </state>
+              </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
@@ -299,7 +306,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>hash_default</find>
       <find>bundler</find>
       <find>dec</find>
       <find>text</find>
@@ -329,6 +335,7 @@
       <find>propprop</find>
       <find>prop</find>
       <find>CLIENT_SECRETS_PATHCLIENT_SECRETS_PATH</find>
+      <find>CLIENT_SECRETS_PATH</find>
     </findStrings>
     <replaceStrings>
       <replace>user</replace>
@@ -684,18 +691,18 @@
       <workItem from="1566759604353" duration="7427000" />
       <workItem from="1566894335145" duration="41074000" />
       <workItem from="1566972267611" duration="2142000" />
-      <workItem from="1567024724645" duration="74751000" />
+      <workItem from="1567024724645" duration="75628000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="271022000" />
+    <option name="totallyTimeSpent" value="271899000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="353" width="2560" height="1247" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20929308" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20929308" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -1023,13 +1030,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/deploy/production.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="779">
-          <caret line="81" selection-start-line="81" selection-end-line="81" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/tags.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
@@ -1047,6 +1047,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/lib/capistrano/tasks/unicorn.cap">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="44" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/tasks/t/tokens.yml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/tasks/t/client_secret.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="43" lean-forward="true" selection-start-column="43" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/config/unicorn/production.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -1054,23 +1071,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/tasks/t/client_secret.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/tasks/t/tokens.yml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/capistrano/tasks/unicorn.cap">
+    <entry file="file://$PROJECT_DIR$/config/deploy/production.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="44" lean-forward="true" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="44" />
+        <state relative-caret-position="779">
+          <caret line="81" selection-start-line="81" selection-end-line="81" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/tasks/task_database.rake">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="302" column="17" selection-start-line="302" selection-start-column="17" selection-end-line="302" selection-end-column="17" />
+        <state relative-caret-position="137">
+          <caret line="302" column="26" selection-start-line="302" selection-start-column="26" selection-end-line="302" selection-end-column="26" />
           <folding>
             <element signature="e#184#2237#0" />
             <element signature="e#2277#7553#0" />

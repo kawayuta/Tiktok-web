@@ -299,7 +299,8 @@ namespace :task_database do
   end
 
   task :upload_youtube => :environment do
-    Gc.download_and_upload
+    Gc.authorize
+    Gc.main(tag.tag_title)
   end
 
 end
