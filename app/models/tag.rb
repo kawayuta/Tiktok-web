@@ -289,12 +289,12 @@ class Tag < ApplicationRecord
     g_driver.quit
 
     js = doc_tag.search('script').to_s
-    @tag_official_id = js.split('challengeId":')[1].split(',')[0].delete('"')
-    @tag_title = js.split('challengeName":')[1].split(',')[0].delete('"')
-    @tag_text = js.split('","text":"')[1].split(',')[0].delete('"')
-    @tag_cover_image = js.split('covers":')[1].split(',')[0].delete('["').delete('"]')
-    @tag_posts_count = js.split('posts":')[2].split(',')[0]
-    @tag_views_count = js.split('views":')[2].split(',')[0].delete('"').delete('}')
+    @tag_official_id = js.split('challengeId":')[1].split(',')[0].delete('"') unless js.split('challengeId":')[1].nil?
+    @tag_title = js.split('challengeName":')[1].split(',')[0].delete('"') unless js.split('challengeName":')[1].nil?
+    @tag_text = js.split('","text":"')[1].split(',')[0].delete('"') unless js.split('","text":"')[1].nil?
+    @tag_cover_image = js.split('covers":')[1].split(',')[0].delete('["').delete('"]') unless js.split('covers":')[1].nil?
+    @tag_posts_count = js.split('posts":')[2].split(',')[0] unless js.split('posts":')[2].nil?
+    @tag_views_count = js.split('views":')[2].split(',')[0].delete('"').delete('}') unless js.split('views":')[2].nil?
     @tag_url = url
 
     tag = {

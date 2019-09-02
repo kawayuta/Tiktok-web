@@ -74,11 +74,11 @@
       </div>
       <div class="video_content_tag_info_meta">
         <p class="video_content_tag_info_meta_post">
-<!--          <%#= @tag.tag_posts_count unless @tag.tag_posts_count.nil? %> <span>投稿</span>-->
+          <%= @tag.tag_posts_count unless @tag.tag_posts_count.nil? %> <span>投稿</span>
         </p>
 
         <p class="video_content_tag_info_meta_view">
-<!--          <%#= @tag.tag_views_count unless @tag.tag_views_count.nil? %> <span>回再生</span>-->
+          <%= @tag.tag_views_count unless @tag.tag_views_count.nil? %> <span>回再生</span>
         </p>
       </div>
     </section>
