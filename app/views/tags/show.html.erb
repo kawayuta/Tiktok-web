@@ -108,12 +108,14 @@
     </section>
 
 
-    <section id="container">
-      <% @videos.each_with_index do | video, index |%>
-        <div class="ball ball_<%= index %>">
-          <%= link_to image_tag(video.user.user_covers), video.user %>
-        </div>
-      <% end %>
+    <section class="video_content_item_transition">
+      <h2><i class="fas fa-cookie-bite"></i> 「#<%= @tag.tag_title %>」タグの総再生回数 推移</h2>
+      <%= line_chart TagHistory.where(tag_title: @tag.tag_title).pluck(:created_at,:tag_views_count).map { |e| [ e[0].strftime("%Y-%m-%d"), e[1] ] } , xtitle: "日付", ytitle: "総再生回数" %>
+    </section>
+
+    <section class="video_content_item_transition">
+      <h2><i class="fas fa-cookie-bite"></i> 「#<%= @tag.tag_title %>」タグの動画投稿数 推移</h2>
+      <%= line_chart TagHistory.where(tag_title: @tag.tag_title).pluck(:created_at,:tag_posts_count).map { |e| [ e[0].strftime("%Y-%m-%d"), e[1] ] } , xtitle: "日付", ytitle: "動画投稿数" %>
     </section>
 
   </article>

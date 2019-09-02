@@ -84,6 +84,10 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
+    chartable (0.0.0.3)
+      activesupport (>= 3.0.0)
+      chronic (~> 0.10)
+    chartkick (3.2.1)
     childprocess (1.0.1)
       rake (< 13.0)
     chromedriver-helper (2.1.1)
@@ -123,6 +127,8 @@ GEM
       multi_json (~> 1.11)
       os (>= 0.9, < 2.0)
       signet (~> 0.7)
+    groupdate (4.1.2)
+      activesupport (>= 4.2)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     httpclient (2.8.3)
@@ -334,9 +340,12 @@ DEPENDENCIES
   capistrano-rbenv
   capistrano3-unicorn
   capybara (>= 2.15)
+  chartable
+  chartkick
   chromedriver-helper
   font-awesome-sass (~> 5.4.1)
   google-api-client
+  groupdate
   jbuilder (~> 2.5)
   jquery-rails
   jquery-ui-rails
