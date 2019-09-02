@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a2e4aa1-93ac-4a71-a04c-86b144ad4cb1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/lib/tasks/task_database.rake" beforeDir="false" afterPath="$PROJECT_DIR$/lib/tasks/task_database.rake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/scaffolds.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/scaffolds.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/tags_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/tags_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/welcome_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/welcome_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/tags/show.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/tags/show.html.erb" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -88,14 +92,14 @@
           <entry key="Gemfile" value="111" />
           <entry key="cap" value="12" />
           <entry key="css" value="20" />
-          <entry key="erb" value="4766" />
+          <entry key="erb" value="5219" />
           <entry key="html" value="2" />
           <entry key="js" value="2587" />
           <entry key="lock" value="8" />
           <entry key="rake" value="6344" />
-          <entry key="rb" value="6071" />
+          <entry key="rb" value="6142" />
           <entry key="ru" value="3" />
-          <entry key="scss" value="5138" />
+          <entry key="scss" value="5766" />
           <entry key="txt" value="30" />
           <entry key="yml" value="103" />
         </counts>
@@ -106,9 +110,9 @@
           <entry key="HTML" value="18" />
           <entry key="JavaScript" value="2571" />
           <entry key="PLAIN_TEXT" value="54" />
-          <entry key="RHTML" value="4766" />
-          <entry key="Ruby" value="12546" />
-          <entry key="SCSS" value="5138" />
+          <entry key="RHTML" value="5219" />
+          <entry key="Ruby" value="12617" />
+          <entry key="SCSS" value="5766" />
           <entry key="YAML" value="103" />
         </counts>
       </usages-collector>
@@ -163,11 +167,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/lib/tasks/task_database.rake">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="170">
-                  <caret line="10" column="14" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
+                <state relative-caret-position="952">
+                  <caret line="56" column="7" lean-forward="true" selection-start-line="56" selection-start-column="7" selection-end-line="56" selection-end-column="7" />
                 </state>
               </provider>
             </entry>
@@ -186,11 +190,11 @@
               <provider selected="true" editor-type-id="text-editor" />
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/views/tags/show.html.erb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="484">
-                  <caret line="83" column="14" selection-start-line="83" selection-start-column="14" selection-end-line="83" selection-end-column="14" />
+                <state relative-caret-position="479">
+                  <caret line="128" column="63" selection-start-line="128" selection-start-column="32" selection-end-line="128" selection-end-column="63" />
                 </state>
               </provider>
             </entry>
@@ -230,11 +234,11 @@
               <provider selected="true" editor-type-id="text-editor" />
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/controllers/tags_controller.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="561">
-                  <caret line="33" selection-start-line="33" selection-end-line="33" />
+                <state relative-caret-position="374">
+                  <caret line="22" column="7" lean-forward="true" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
                 </state>
               </provider>
             </entry>
@@ -251,8 +255,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/controllers/welcome_controller.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="85">
-                  <caret line="5" column="81" selection-start-line="5" selection-start-column="81" selection-end-line="5" selection-end-column="81" />
+                <state relative-caret-position="153">
+                  <caret line="9" selection-end-line="9" />
                 </state>
               </provider>
             </entry>
@@ -266,16 +270,17 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/scaffolds.scss">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="364">
-                  <caret line="663" column="21" selection-start-line="663" selection-start-column="21" selection-end-line="663" selection-end-column="21" />
+                <state relative-caret-position="667">
+                  <caret line="957" column="22" selection-start-line="957" selection-start-column="22" selection-end-line="957" selection-end-column="22" />
                   <folding>
-                    <element signature="e#2873#4052#0" />
-                    <element signature="e#4161#5865#0" />
                     <element signature="e#6857#7817#0" />
+                    <element signature="e#7915#8016#0" />
+                    <element signature="e#7909#8869#0" />
                     <element signature="e#7844#8804#0" />
+                    <element signature="e#12692#15077#0" />
                     <element signature="e#16162#17520#0" />
                   </folding>
                 </state>
@@ -314,7 +319,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>delimited</find>
       <find>hover</find>
       <find>get_tag</find>
       <find>ens</find>
@@ -342,8 +346,9 @@
       <find>%Y</find>
       <find>CLIENT_SECRETS_PATH</find>
       <find>prop</find>
-      <find>video_content_item</find>
       <find>video_content_tag_info_meta</find>
+      <find>video_content_item</find>
+      <find>image_tag</find>
     </findStrings>
     <replaceStrings>
       <replace>user</replace>
@@ -400,12 +405,12 @@
         <option value="$PROJECT_DIR$/config/deploy/production.rb" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/application.js" />
         <option value="$PROJECT_DIR$/Gemfile" />
-        <option value="$PROJECT_DIR$/app/views/tags/show.html.erb" />
-        <option value="$PROJECT_DIR$/app/assets/stylesheets/scaffolds.scss" />
-        <option value="$PROJECT_DIR$/app/controllers/welcome_controller.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/tags_controller.rb" />
         <option value="$PROJECT_DIR$/app/models/tag.rb" />
         <option value="$PROJECT_DIR$/lib/tasks/task_database.rake" />
+        <option value="$PROJECT_DIR$/app/controllers/welcome_controller.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/tags_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/tags/show.html.erb" />
+        <option value="$PROJECT_DIR$/app/assets/stylesheets/scaffolds.scss" />
       </list>
     </option>
   </component>
@@ -744,7 +749,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="283538000" />
+    <option name="totallyTimeSpent" value="288755000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="353" width="2560" height="1247" extended-state="0" />
@@ -1029,48 +1034,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/swiper.min.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/scaffolds.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="663" column="21" selection-start-line="663" selection-start-column="21" selection-end-line="663" selection-end-column="21" />
-          <folding>
-            <element signature="e#2873#4052#0" />
-            <element signature="e#4161#5865#0" />
-            <element signature="e#6857#7817#0" />
-            <element signature="e#7844#8804#0" />
-            <element signature="e#16162#17520#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/welcome_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="81" selection-start-line="5" selection-start-column="81" selection-end-line="5" selection-end-column="81" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" column="26" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/tags_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="33" selection-start-line="33" selection-end-line="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/tags/show.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="83" column="14" selection-start-line="83" selection-start-column="14" selection-end-line="83" selection-end-column="14" />
         </state>
       </provider>
     </entry>
@@ -1102,10 +1069,49 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/welcome_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/lib/tasks/task_database.rake">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="14" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
+        <state relative-caret-position="952">
+          <caret line="56" column="7" lean-forward="true" selection-start-line="56" selection-start-column="7" selection-end-line="56" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/tags_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="7" lean-forward="true" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/swiper.min.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/tags/show.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="479">
+          <caret line="128" column="63" selection-start-line="128" selection-start-column="32" selection-end-line="128" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/scaffolds.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="667">
+          <caret line="957" column="22" selection-start-line="957" selection-start-column="22" selection-end-line="957" selection-end-column="22" />
+          <folding>
+            <element signature="e#6857#7817#0" />
+            <element signature="e#7915#8016#0" />
+            <element signature="e#7909#8869#0" />
+            <element signature="e#7844#8804#0" />
+            <element signature="e#12692#15077#0" />
+            <element signature="e#16162#17520#0" />
+          </folding>
         </state>
       </provider>
     </entry>

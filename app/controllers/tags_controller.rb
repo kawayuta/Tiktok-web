@@ -22,7 +22,9 @@ class TagsController < ApplicationController
       end
     end
 
-    @videos.shuffle!.first(30)
+    @videos_rank = @videos.sort_by {|array| array.video_interaction_count}.reverse
+
+    @videos.shuffle!.take(30)
     @users = @videos.pluck(:user_id).uniq
 
   end
