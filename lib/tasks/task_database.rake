@@ -300,7 +300,7 @@ namespace :task_database do
 
   task :upload_youtube => :environment do
     Gc.authorize
-    Gc.main(tag.tag_title)
+    Gc.main("test")
   end
 
 end
