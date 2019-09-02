@@ -313,7 +313,7 @@ require 'google/apis/youtube_v3'
 class Gc
   OOB_URI = 'urn:ietf:wg:oauth:2.0:oob'
   APPLICATION_NAME = 'idolsongplaylist'
-  CLIENT_SECRETS_PATH = "#{Dir.pwd}/lib/tasks/t/client_secret.json"
+  CLIENT_SECRETS_PATH = "/var/www/sample-test/current/lib/tasks/t/client_secret.json"
   CREDENTIALS_PATH = File.join(Dir.home, '.credentials', "tokens.yaml")
 
   SCOPE = [ "https://www.googleapis.com/auth/youtube", "https://www.googleapis.com/auth/youtube.upload"]
