@@ -28,6 +28,7 @@ SitemapGenerator::Sitemap.create do
   add root_path, :priority => 0.5, :changefreq => 'daily'
   Tag.find_each do |tag|
     add tag_path(tag), :lastmod => tag.updated_at, :changefreq => 'always'
+    add ranking_tag_path(tag), :lastmod => tag.updated_at, :changefreq => 'daily'
   end
   User.find_each do |user|
     add user_path(user), :lastmod => user.updated_at, :changefreq => 'always'
