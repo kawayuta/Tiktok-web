@@ -38,7 +38,12 @@ header {
         height: auto;
       }
     }
-
+    & .header_tag_title {
+      display: none;
+    }
+    & .header_tag_raking {
+      display: none;
+    }
     & form {
       &:before {
         content: "#";
@@ -46,7 +51,7 @@ header {
         font-size: 35px;
         position: absolute;
         top: 29px;
-        left: 320px;
+        left: 215px;
         z-index: 999;
       }
     }
