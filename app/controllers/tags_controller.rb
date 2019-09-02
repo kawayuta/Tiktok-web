@@ -1,5 +1,5 @@
 class TagsController < ApplicationController
-  before_action :set_tag, only: [:show, :edit, :update, :destroy]
+  before_action :set_tag, only: [:show, :ranking]
   before_action :search_params, only: [:search]
 
   # GET /tags
@@ -106,7 +106,22 @@ class TagsController < ApplicationController
 
     redirect_to tag_path(@tag.id)
 
+  end
 
+  def ranking
+    @trending_videos = Video.where(video_trending: true)
+    @trending_tags = Tag.where(tag_trending: true)
+
+    @videos = []
+    Video.eager_load(:user).all.each do | video |
+      unless video.video_tags.nil?
+        @videos.push(video) if video.video_tags.include?(@tag.tag_title)
+      end
+    end
+
+    @videos_interaction_rank = @videos.sort_by {|array| array.video_interaction_count}.reverse
+    @videos_comment_rank = @videos.sort_by {|array| array.video_comment_count}.reverse
+    @videos_share_rank = @videos.sort_by {|array| array.video_share_count}.reverse
   end
 
   private

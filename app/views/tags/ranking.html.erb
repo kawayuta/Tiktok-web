@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+  <meta charset="UTF-8">
+  <% set_meta_tags title: "「##{@tag.tag_title}」タグの「いいね！・コメント数・シェア数」動画ランキング", description: "「##{@tag.tag_title}」タグの「いいね！・コメント数・シェア数」動画ランキング - TikTok（ティックトック）アプリがパソコンでも観れるようになりました！TikTok Webでは人気クリエイターや動画のランキングから人気タグの情報をお届けします！現在、開発中です。" %>
+</head>
+<body>
+
+<article class="tag_ranking_info">
+  <section class="video_content_tag_info">
+    <div class="video_content_tag_info_header">
+
+      <%= image_tag('hash_tag.png') %>
+
+      <h1>「#<%= @tag.tag_title %>」タグの「いいね！・コメント数・シェア数」動画ランキング</h1>
+    </div>
+    <div class="video_content_tag_info_meta">
+      <p class="video_content_tag_info_meta_post">
+        <%= @tag.tag_posts_count unless @tag.tag_posts_count.nil? %> <span>投稿</span>
+      </p>
+
+      <p class="video_content_tag_info_meta_view">
+        <%= @tag.tag_views_count unless @tag.tag_views_count.nil? %> <span>回再生</span>
+      </p>
+    </div>
+  </section>
+
+  <div class="split_wrap">
+    <section class="video_content_item_ranking">
+      <h2><i class="fas fa-cookie-bite"></i> 「いいね！数」ランキング</h2>
+      <ul>
+        <% @videos_interaction_rank.first(50).each_with_index do |video, index| %>
+          <li>
+            <p class="rank_index rank_index_<%= index + 1 %>"><%= index + 1 %></p>
+            <div>
+              <%= image_tag video.video_cover_image %>
+            </div>
+            <div>
+              <h3><%= video.video_title %></h3>
+              <div class="video_content_item_ranking_meta">
+                <p><i class="fas fa-heart"></i> <%= video.video_interaction_count %></p>
+                <p><i class="fas fa-comment"></i> <%= video.video_share_count %></p>
+                <p><i class="fas fa-share"></i> <%= video.video_comment_count %></p>
+              </div>
+              <div class="video_content_item_ranking_user">
+                <%= link_to image_tag(video.user.user_covers), video.user %>
+                <p><%= video.user.user_nick_name %></p>
+              </div>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </section>
+
+    <section class="video_content_item_ranking">
+      <h2><i class="fas fa-cookie-bite"></i> 「コメント数」ランキング</h2>
+      <ul>
+        <% @videos_comment_rank.first(50).each_with_index do |video, index| %>
+          <li>
+            <p class="rank_index rank_index_<%= index + 1 %>"><%= index + 1 %></p>
+            <div>
+              <%= image_tag video.video_cover_image %>
+            </div>
+            <div>
+              <h3><%= video.video_title %></h3>
+              <div class="video_content_item_ranking_meta">
+                <p><i class="fas fa-heart"></i> <%= video.video_interaction_count %></p>
+                <p><i class="fas fa-comment"></i> <%= video.video_share_count %></p>
+                <p><i class="fas fa-share"></i> <%= video.video_comment_count %></p>
+              </div>
+              <div class="video_content_item_ranking_user">
+                <%= link_to image_tag(video.user.user_covers), video.user %>
+                <p><%= video.user.user_nick_name %></p>
+              </div>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </section>
+
+    <section class="video_content_item_ranking">
+      <h2><i class="fas fa-cookie-bite"></i> 「シェア数」ランキング</h2>
+      <ul>
+        <% @videos_share_rank.first(50).each_with_index do |video, index| %>
+          <li>
+            <p class="rank_index rank_index_<%= index + 1 %>"><%= index + 1 %></p>
+            <div>
+              <%= image_tag video.video_cover_image %>
+            </div>
+            <div>
+              <h3><%= video.video_title %></h3>
+              <div class="video_content_item_ranking_meta">
+                <p><i class="fas fa-heart"></i> <%= video.video_interaction_count %></p>
+                <p><i class="fas fa-comment"></i> <%= video.video_share_count %></p>
+                <p><i class="fas fa-share"></i> <%= video.video_comment_count %></p>
+              </div>
+              <div class="video_content_item_ranking_user">
+                <%= link_to image_tag(video.user.user_covers), video.user %>
+                <p><%= video.user.user_nick_name %></p>
+              </div>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </section>
+
+  </div>
+</article>
