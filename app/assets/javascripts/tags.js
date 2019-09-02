@@ -1,6 +1,23 @@
 $(document).ready(function () {
 
-
+  var next_v = $(".video_index_" + 0);
+  $('.video_title').text(next_v.data('video-title'));
+  $('.video_content_meta_tag').remove();
+  $.each(next_v.data('video-tags'), function(index, value){
+    $('.video_content_meta_tags').append('<p class="video_content_meta_tag">' +
+      '<a href="/tags/search?keyword=' +
+      value +
+      '">#' +
+      value +
+      '</a>' +
+      '<p>');
+  });
+  $('.video_play_count').text(next_v.data('video-play-count'));
+  $('.video_comment_count').text(next_v.data('video-comment-count'));
+  $('.video_share_count').text(next_v.data('video-share-count'));
+  $('.video_user_covers img').attr('src', next_v.data('video-user-covers'));
+  $('.video_user_covers').attr('href', '/users/' + next_v.data('video-user-id'));
+  $('.video_user_nick_name').text(next_v.data('video-user-nick-name'));
 
 var video_index = 0;
 var video = $('#video');
@@ -22,6 +39,7 @@ $(".video_index_0").click();
   } else if (ua.indexOf('iPad') > 0 || ua.indexOf('Android') > 0) {
     // タブレット用コード
   } else {
+
     for(var i=0;i<$(".video_data").length;i++){
       $('.video_' + i).prop('muted', false);
     }
