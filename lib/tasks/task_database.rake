@@ -8,7 +8,7 @@ namespace :task_database do
 
   task :get_tag_data => :environment do
     Tag.all.each do |tag|
-      sleep(3)
+      sleep(10)
       Tag.new_tag(tag.tag_title)
     end
   end

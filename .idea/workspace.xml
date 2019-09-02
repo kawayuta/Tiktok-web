@@ -92,7 +92,7 @@
           <entry key="html" value="2" />
           <entry key="js" value="2587" />
           <entry key="lock" value="8" />
-          <entry key="rake" value="6342" />
+          <entry key="rake" value="6344" />
           <entry key="rb" value="6071" />
           <entry key="ru" value="3" />
           <entry key="scss" value="5138" />
@@ -107,7 +107,7 @@
           <entry key="JavaScript" value="2571" />
           <entry key="PLAIN_TEXT" value="54" />
           <entry key="RHTML" value="4766" />
-          <entry key="Ruby" value="12544" />
+          <entry key="Ruby" value="12546" />
           <entry key="SCSS" value="5138" />
           <entry key="YAML" value="103" />
         </counts>
@@ -166,8 +166,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/lib/tasks/task_database.rake">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="272">
-                  <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+                <state relative-caret-position="170">
+                  <caret line="10" column="14" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
                 </state>
               </provider>
             </entry>
@@ -744,7 +744,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="282969000" />
+    <option name="totallyTimeSpent" value="283538000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="353" width="2560" height="1247" extended-state="0" />
@@ -1104,8 +1104,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/tasks/task_database.rake">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        <state relative-caret-position="170">
+          <caret line="10" column="14" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
         </state>
       </provider>
     </entry>
