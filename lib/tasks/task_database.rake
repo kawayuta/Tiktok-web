@@ -6,6 +6,67 @@ namespace :task_database do
   require 'tor-privoxy'
   require 'socksify/http'
 
+  task :get_tr_from_tag => :environment do
+
+    Tag.all.each do |tag|
+
+      client = Selenium::WebDriver::Remote::Http::Default.new
+      client.read_timeout = 120 # seconds
+      options = Selenium::WebDriver::Chrome::Options.new
+      options.add_argument('--headless')
+      options.add_argument('--no-sandbox')
+      options.add_argument('--disable-dev-shm-usage')
+      # options.add_argument('--proxy-server=%s' % "socks5://127.0.0.1:9050")
+
+      ua = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.116 Safari/537.36"
+
+      caps = Selenium::WebDriver::Remote::Capabilities.chrome("chromeOptions" => {binary: '/usr/local/bin/chromedriver', args: ["--headless", "--disable-gpu", "--user-agent=#{ua}", "window-size=1280x800"]})
+      driver = Selenium::WebDriver.for :chrome, options: options, http_client: client, desired_capabilities: caps
+      driver.get "https://www.tiktok.com/tag/#{tag.tag_title}"
+
+      doc = Nokogiri::HTML(driver.page_source)
+      elements = doc.search('script').to_s.split('name":"').drop(1)
+      driver.close
+      driver.quit
+
+      @video_trending = Video.where(video_trending: true)
+      unless @video_trending.nil?
+        @video_trending.each do |v|
+          v.video_trending = false
+          v.save
+        end
+      end
+
+      @tag_trending = Tag.where(tag_trending: true)
+      unless @tag_trending.nil?
+        @tag_trending.each do |t|
+          t.tag_trending = false
+          t.save
+        end
+      end
+
+      urls = []
+      # elements.each do |el|
+      #   unless el.split('"url":"')[1].nil?
+      #     @video_url = el.split('"url":"')[1].split('","')[0]
+      #     @video_official_id = @video_url.split('/').last
+      #     urls.push("https://www.tiktok.com/embed/#{@video_official_id}")
+      #   end
+      # end
+
+      doc.css('._video_feed_item').each do |item|
+        puts item.css('a')[0][:href].split('/').last
+        urls.push("https://www.tiktok.com/embed/#{item.css('a')[0][:href].split('/').last}")
+      end
+
+      Parallel.map(urls.uniq!, in_processes: 3) do |u|
+        Tag.get_video_from_embed_task(u)
+      end
+
+    end
+  end
+
+
   task :get_tr => :environment do
     client = Selenium::WebDriver::Remote::Http::Default.new
     client.read_timeout = 120 # seconds
@@ -60,7 +121,6 @@ namespace :task_database do
       Tag.get_video_from_embed_task(u)
     end
   end
-
 
   task :get_trending => :environment do
     # agent = Mechanize.new

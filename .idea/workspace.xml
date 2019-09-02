@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a2e4aa1-93ac-4a71-a04c-86b144ad4cb1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/assets/javascripts/tags.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/javascripts/tags.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/tasks/task_database.rake" beforeDir="false" afterPath="$PROJECT_DIR$/lib/tasks/task_database.rake" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -92,7 +92,7 @@
           <entry key="html" value="2" />
           <entry key="js" value="2581" />
           <entry key="lock" value="8" />
-          <entry key="rake" value="6222" />
+          <entry key="rake" value="6233" />
           <entry key="rb" value="5918" />
           <entry key="ru" value="3" />
           <entry key="scss" value="5116" />
@@ -107,7 +107,7 @@
           <entry key="JavaScript" value="2565" />
           <entry key="PLAIN_TEXT" value="54" />
           <entry key="RHTML" value="4426" />
-          <entry key="Ruby" value="12268" />
+          <entry key="Ruby" value="12279" />
           <entry key="SCSS" value="5116" />
           <entry key="YAML" value="103" />
         </counts>
@@ -115,7 +115,7 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.36916122">
+    <splitter split-orientation="horizontal" split-proportion="0.68006027">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
@@ -151,8 +151,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/lib/tasks/task_database.rake">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="666">
-                  <caret line="366" column="15" selection-start-line="366" selection-start-column="15" selection-end-line="366" selection-end-column="15" />
+                <state relative-caret-position="136">
+                  <caret line="8" column="40" lean-forward="true" selection-start-line="8" selection-start-column="40" selection-end-line="8" selection-end-column="40" />
                   <folding>
                     <element signature="e#184#2237#0" />
                     <element signature="e#2277#7553#0" />
@@ -221,8 +221,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/assets/javascripts/tags.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="408">
-                  <caret line="24" selection-start-line="24" selection-end-line="24" />
+                <state relative-caret-position="442">
+                  <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
                   <folding>
                     <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
                   </folding>
@@ -384,8 +384,8 @@
         <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/lib/tasks/t/tokens.yml" />
         <option value="$PROJECT_DIR$/config/deploy/production.rb" />
-        <option value="$PROJECT_DIR$/lib/tasks/task_database.rake" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/tags.js" />
+        <option value="$PROJECT_DIR$/lib/tasks/task_database.rake" />
       </list>
     </option>
   </component>
@@ -684,7 +684,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="273316000" />
+    <option name="totallyTimeSpent" value="273882000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="353" width="2560" height="1247" extended-state="0" />
@@ -726,8 +726,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="ruby-line">
           <url>file://$PROJECT_DIR$/lib/tasks/task_database.rake</url>
-          <line>280</line>
+          <line>335</line>
           <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="ruby-line">
+          <url>file://$PROJECT_DIR$/lib/tasks/task_database.rake</url>
+          <line>276</line>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -1044,26 +1049,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/tags.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/lib/tasks/task_database.rake">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="666">
-          <caret line="366" column="15" selection-start-line="366" selection-start-column="15" selection-end-line="366" selection-end-column="15" />
+        <state relative-caret-position="136">
+          <caret line="8" column="40" lean-forward="true" selection-start-line="8" selection-start-column="40" selection-end-line="8" selection-end-column="40" />
           <folding>
             <element signature="e#184#2237#0" />
             <element signature="e#2277#7553#0" />
             <element signature="e#7598#8312#0" />
             <element signature="e#8355#9503#0" />
             <element signature="e#9547#10332#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/tags.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
