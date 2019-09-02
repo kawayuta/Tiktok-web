@@ -299,8 +299,7 @@ namespace :task_database do
   end
 
   task :upload_youtube => :environment do
-    Gc.authorize
-    Gc.main("test")
+    Gc.download_and_upload
   end
 
 end
@@ -373,11 +372,10 @@ class Gc
         system("ffmpeg -f concat -safe 0 -i ./lib/tasks/m/videos.txt -y ./lib/tasks/m/output.mp4")
         Gc.authorize
         Gc.main(tag.tag_title)
-        # system("rm -rf ./lib/tasks/v/")
-        # system("mkdir ./lib/tasks/v/")
-        # system("rm -rf ./lib/tasks/m/")
-        # system("mkdir ./lib/tasks/m/")
-
+        system("rm -rf ./lib/tasks/v/")
+        system("mkdir ./lib/tasks/v/")
+        system("rm -rf ./lib/tasks/m/")
+        system("mkdir ./lib/tasks/m/")
       end
     end
 
