@@ -47,6 +47,16 @@ namespace :deploy do
     end
   end
 
+  task :task_input_video_from_tag do
+    on roles(:db) do |host|
+      within current_path do
+        with rails_env: fetch(:rails_env) do
+          execute :rake, 'task_database:get_tr_from_tag'
+        end
+      end
+    end
+  end
+
   task :task_upload_youtube do
     on roles(:db) do |host|
       within current_path do
