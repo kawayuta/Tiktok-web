@@ -29,22 +29,6 @@ namespace :task_database do
       driver.close
       driver.quit
 
-      @video_trending = Video.where(video_trending: true)
-      unless @video_trending.nil?
-        @video_trending.each do |v|
-          v.video_trending = false
-          v.save
-        end
-      end
-
-      @tag_trending = Tag.where(tag_trending: true)
-      unless @tag_trending.nil?
-        @tag_trending.each do |t|
-          t.tag_trending = false
-          t.save
-        end
-      end
-
       urls = []
       # elements.each do |el|
       #   unless el.split('"url":"')[1].nil?
@@ -60,7 +44,7 @@ namespace :task_database do
       end
 
       Parallel.map(urls.uniq!, in_processes: 3) do |u|
-        Tag.get_video_from_embed_task(u)
+        Tag.get_video_from_embed(u)
       end
 
     end
