@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a2e4aa1-93ac-4a71-a04c-86b144ad4cb1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/models/tag.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/tag.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/tags_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/tags_controller.rb" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -59,7 +59,7 @@
           <entry key="lock" value="5" />
           <entry key="png" value="2" />
           <entry key="rake" value="7" />
-          <entry key="rb" value="124" />
+          <entry key="rb" value="125" />
           <entry key="ru" value="3" />
           <entry key="scss" value="14" />
           <entry key="svg" value="3" />
@@ -76,7 +76,7 @@
           <entry key="JavaScript" value="14" />
           <entry key="PLAIN_TEXT" value="14" />
           <entry key="RHTML" value="39" />
-          <entry key="Ruby" value="142" />
+          <entry key="Ruby" value="143" />
           <entry key="SCSS" value="14" />
           <entry key="SVG" value="3" />
           <entry key="YAML" value="10" />
@@ -93,7 +93,7 @@
           <entry key="js" value="2586" />
           <entry key="lock" value="8" />
           <entry key="rake" value="6332" />
-          <entry key="rb" value="6040" />
+          <entry key="rb" value="6050" />
           <entry key="ru" value="3" />
           <entry key="scss" value="5116" />
           <entry key="txt" value="30" />
@@ -107,7 +107,7 @@
           <entry key="JavaScript" value="2570" />
           <entry key="PLAIN_TEXT" value="54" />
           <entry key="RHTML" value="4426" />
-          <entry key="Ruby" value="12500" />
+          <entry key="Ruby" value="12510" />
           <entry key="SCSS" value="5116" />
           <entry key="YAML" value="103" />
         </counts>
@@ -115,7 +115,7 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.6018121">
+    <splitter split-orientation="horizontal" split-proportion="0.2846924">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
@@ -156,7 +156,7 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/models/tag.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="441">
+                <state relative-caret-position="874">
                   <caret line="102" column="125" selection-start-line="102" selection-start-column="125" selection-end-line="102" selection-end-column="125" />
                 </state>
               </provider>
@@ -217,11 +217,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/assets/javascripts/tags.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="493">
-                  <caret line="29" column="3" selection-start-line="29" selection-start-column="3" selection-end-line="29" selection-end-column="3" />
+                <state relative-caret-position="561">
+                  <caret line="33" column="17" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="17" />
                   <folding>
                     <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
                   </folding>
@@ -234,6 +234,15 @@
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="568">
                   <caret line="48" column="31" selection-start-line="48" selection-start-column="31" selection-end-line="48" selection-end-column="31" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/app/controllers/tags_controller.rb">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="408">
+                  <caret line="24" column="29" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
                 </state>
               </provider>
             </entry>
@@ -318,11 +327,11 @@
       <find>video</find>
       <find>muted</find>
       <find>propprop</find>
-      <find>prop</find>
       <find>CLIENT_SECRETS_PATHCLIENT_SECRETS_PATH</find>
       <find>get_video_from_embed_task</find>
       <find>%Y</find>
       <find>CLIENT_SECRETS_PATH</find>
+      <find>prop</find>
     </findStrings>
     <replaceStrings>
       <replace>user</replace>
@@ -364,7 +373,6 @@
         <option value="$PROJECT_DIR$/config/unicorn/production.rb" />
         <option value="$PROJECT_DIR$/config/environments/development.rb" />
         <option value="$PROJECT_DIR$/app/helpers/application_helper.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/tags_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/welcome_controller.rb" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
         <option value="$PROJECT_DIR$/app/controllers/users_controller.rb" />
@@ -385,6 +393,7 @@
         <option value="$PROJECT_DIR$/config/deploy/production.rb" />
         <option value="$PROJECT_DIR$/app/views/tags/show.html.erb" />
         <option value="$PROJECT_DIR$/app/models/tag.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/tags_controller.rb" />
       </list>
     </option>
   </component>
@@ -703,7 +712,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="278302000" />
+    <option name="totallyTimeSpent" value="278562000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="353" width="2560" height="1247" extended-state="0" />
@@ -975,13 +984,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/tags_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="490">
-          <caret line="92" column="80" selection-start-line="92" selection-start-column="7" selection-end-line="92" selection-end-column="80" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/db/migrate/20190902095022_create_tag_histories.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
@@ -1054,16 +1056,6 @@
     <entry file="file://$PROJECT_DIR$/config/spring.rb">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/tags.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="3" selection-start-line="29" selection-start-column="3" selection-end-line="29" selection-end-column="3" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/tags/show.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="437">
@@ -1073,8 +1065,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/tag.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
+        <state relative-caret-position="874">
           <caret line="102" column="125" selection-start-line="102" selection-start-column="125" selection-end-line="102" selection-end-column="125" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/tags.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="33" column="17" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="17" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/tags_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="29" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
         </state>
       </provider>
     </entry>
