@@ -56,8 +56,6 @@ class Tag < ApplicationRecord
     doc = Nokogiri::HTML(driver.page_source)
 
     elements = doc.search('script').to_s.split('name":"').drop(1)
-    driver.close
-    driver.quit
 
     @tag = Tag.find_by(tag_title: search)
 
@@ -78,6 +76,8 @@ class Tag < ApplicationRecord
     urls.uniq.each do |u|
       get_video_from_embed(u, driver)
     end
+    driver.close
+    driver.quit
 
   end
 
