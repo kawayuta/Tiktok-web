@@ -118,10 +118,9 @@ class TagsController < ApplicationController
         @videos.push(video) if video.video_tags.include?(@tag.tag_title)
       end
     end
-
-    @videos_interaction_rank = @videos.sort_by {|array| array.video_interaction_count}.reverse
-    @videos_comment_rank = @videos.sort_by {|array| array.video_comment_count}.reverse
-    @videos_share_rank = @videos.sort_by {|array| array.video_share_count}.reverse
+    @videos_interaction_rank = @videos.sort_by {|array| Integer(array.video_interaction_count)}.reverse
+    @videos_comment_rank = @videos.sort_by {|array| Integer(array.video_comment_count)}.reverse
+    @videos_share_rank = @videos.sort_by {|array| Integer(array.video_share_count)}.reverse
   end
 
   private
