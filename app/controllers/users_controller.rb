@@ -11,8 +11,8 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     Rails.cache.fetch("cache_videos_trending", expired_in: 60.minutes) do
-      @trending_videos = Video.where(video_trending: true).to_a
-      @trending_tags = Tag.where(tag_trending: true).to_a
+      @trending_videos = Video.where(video_trending: true).limit(10).to_a
+      @trending_tags = Tag.where(tag_trending: true).limit(10).to_a
     end
 
     @videos = @user.videos

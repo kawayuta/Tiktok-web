@@ -19,6 +19,7 @@ class TagsController < ApplicationController
 
     Rails.cache.fetch("cache_videos_tagController_show", expired_in: 60.minutes) do
       @videos_data = Video.eager_load(:user).all.to_a
+    end
 
       @videos = []
       @videos_data.each do | video |
@@ -30,8 +31,7 @@ class TagsController < ApplicationController
 
       @users = @videos.pluck(:user_id).uniq
 
-      @videos_rank = @videos.sort_by {|array| Integer(array.video_interaction_count)}.reverse.first(10).to_a
-    end
+      @videos_rank = @videos.sort_by {|array| Integer(array.video_interaction_count)}.first(10).reverse.to_a
 
 
 

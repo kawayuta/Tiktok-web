@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a2e4aa1-93ac-4a71-a04c-86b144ad4cb1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/views/tags/show.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/tags/show.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/tags_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/tags_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/users_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/users_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/welcome_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/welcome_controller.rb" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -88,12 +90,12 @@
           <entry key="Gemfile" value="114" />
           <entry key="cap" value="12" />
           <entry key="css" value="20" />
-          <entry key="erb" value="5782" />
+          <entry key="erb" value="5783" />
           <entry key="html" value="2" />
           <entry key="js" value="2636" />
           <entry key="lock" value="8" />
           <entry key="rake" value="6391" />
-          <entry key="rb" value="6929" />
+          <entry key="rb" value="6939" />
           <entry key="ru" value="12" />
           <entry key="scss" value="6485" />
           <entry key="txt" value="30" />
@@ -106,8 +108,8 @@
           <entry key="HTML" value="21" />
           <entry key="JavaScript" value="2617" />
           <entry key="PLAIN_TEXT" value="54" />
-          <entry key="RHTML" value="5782" />
-          <entry key="Ruby" value="13463" />
+          <entry key="RHTML" value="5783" />
+          <entry key="Ruby" value="13473" />
           <entry key="SCSS" value="6485" />
           <entry key="YAML" value="103" />
         </counts>
@@ -196,8 +198,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/views/tags/show.html.erb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="258">
-                  <caret line="114" column="43" selection-start-line="114" selection-start-column="28" selection-end-line="114" selection-end-column="43" />
+                <state relative-caret-position="445">
+                  <caret line="125" column="88" selection-start-line="125" selection-start-column="88" selection-end-line="125" selection-end-column="88" />
                 </state>
               </provider>
             </entry>
@@ -256,11 +258,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/controllers/tags_controller.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="420">
-                  <caret line="35" selection-start-line="35" selection-end-line="35" />
+                <state relative-caret-position="272">
+                  <caret line="16" column="67" lean-forward="true" selection-start-line="15" selection-start-column="6" selection-end-line="16" selection-end-column="67" />
                 </state>
               </provider>
             </entry>
@@ -268,8 +270,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/controllers/welcome_controller.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state>
-                  <caret column="47" selection-start-column="47" selection-end-column="47" />
+                <state relative-caret-position="68">
+                  <caret line="4" column="67" selection-start-line="4" selection-start-column="67" selection-end-line="4" selection-end-column="67" />
                 </state>
               </provider>
             </entry>
@@ -283,11 +285,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="289">
-                  <caret line="17" column="26" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
+                <state relative-caret-position="238">
+                  <caret line="14" column="67" selection-start-line="14" selection-start-column="67" selection-end-line="14" selection-end-column="67" />
                 </state>
               </provider>
             </entry>
@@ -327,7 +329,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>propprop</find>
       <find>CLIENT_SECRETS_PATHCLIENT_SECRETS_PATH</find>
       <find>get_video_from_embed_task</find>
       <find>%Y</find>
@@ -357,6 +358,7 @@
       <find>video_content_item_ranking</find>
       <find>image_tag</find>
       <find>first</find>
+      <find>@videos_rank</find>
     </findStrings>
     <replaceStrings>
       <replace>user</replace>
@@ -408,7 +410,6 @@
         <option value="$PROJECT_DIR$/app/models/tag.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20190902095022_create_tag_histories.rb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/scaffolds.scss" />
-        <option value="$PROJECT_DIR$/app/controllers/users_controller.rb" />
         <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/config/environments/production.rb" />
         <option value="$PROJECT_DIR$/config/environments/development.rb" />
@@ -416,9 +417,10 @@
         <option value="$PROJECT_DIR$/app/views/users/show.html.erb" />
         <option value="$PROJECT_DIR$/app/views/welcome/index.html.erb" />
         <option value="$PROJECT_DIR$/app/views/tags/ranking.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/tags/show.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/tags_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/welcome_controller.rb" />
-        <option value="$PROJECT_DIR$/app/views/tags/show.html.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/users_controller.rb" />
       </list>
     </option>
   </component>
@@ -778,7 +780,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="322788000" />
+    <option name="totallyTimeSpent" value="323229000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-2" y="353" width="2560" height="1247" extended-state="0" />
@@ -1097,13 +1099,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="26" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/tags/ranking.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="490">
@@ -1118,24 +1113,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/welcome_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/views/tags/show.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="47" selection-start-column="47" selection-end-column="47" />
+        <state relative-caret-position="445">
+          <caret line="125" column="88" selection-start-line="125" selection-start-column="88" selection-end-line="125" selection-end-column="88" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/tags_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="35" selection-start-line="35" selection-end-line="35" />
+        <state relative-caret-position="272">
+          <caret line="16" column="67" lean-forward="true" selection-start-line="15" selection-start-column="6" selection-end-line="16" selection-end-column="67" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/tags/show.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/welcome_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="114" column="43" selection-start-line="114" selection-start-column="28" selection-end-line="114" selection-end-column="43" />
+        <state relative-caret-position="68">
+          <caret line="4" column="67" selection-start-line="4" selection-start-column="67" selection-end-line="4" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="67" selection-start-line="14" selection-start-column="67" selection-end-line="14" selection-end-column="67" />
         </state>
       </provider>
     </entry>
