@@ -20,7 +20,7 @@ class Tag < ApplicationRecord
         if @tag.updated_at.strftime("%Y-%m-%d") != Time.current.strftime("%Y-%m-%d") && @tag.updated_at.strftime("%Y-%m-%d") != "2001-01-01"
           puts "update tag"
           tag = Tag.get_tag("https://www.tiktok.com/tag/#{search}?langCountry=ja", driver)
-          @tag = @tag.update(tag)
+          @tag.update(tag)
           @tag.updated_at = "2001-01-01"
           @tag.save!
         end
