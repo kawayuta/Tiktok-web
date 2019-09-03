@@ -13,11 +13,11 @@ class TagsController < ApplicationController
   def show
 
     Rails.cache.fetch("cache_videos_trending", expired_in: 60.minutes) do
-      @trending_videos = Video.where(video_trending: true).to_a
-      @trending_tags = Tag.where(tag_trending: true).to_a
+      @trending_videos = Video.where(video_trending: true).limit(10).to_a
+      @trending_tags = Tag.where(tag_trending: true).limit(10).to_a
     end
 
-    Rails.cache.fetch("cache_videos_tagController", expired_in: 60.minutes) do
+    Rails.cache.fetch("cache_videos_tagController_show", expired_in: 60.minutes) do
       @videos_data = Video.eager_load(:user).all.to_a
 
       @videos = []
@@ -30,7 +30,7 @@ class TagsController < ApplicationController
 
       @users = @videos.pluck(:user_id).uniq
 
-      @videos_rank = @videos.sort_by {|array| Integer(array.video_interaction_count)}.reverse
+      @videos_rank = @videos.sort_by {|array| Integer(array.video_interaction_count)}.reverse.first(10)
     end
 
 
@@ -118,20 +118,21 @@ class TagsController < ApplicationController
       @trending_tags = Tag.where(tag_trending: true).to_a
     end
 
-    Rails.cache.fetch("cache_videos", expired_in: 60.minutes) do
+    Rails.cache.fetch("cache_videos_tagController_ranking", expired_in: 60.minutes) do
       @videos_data = Video.eager_load(:user).all.to_a
-    end
 
-    @videos = []
-    @videos_data.each do | video |
-      unless video.video_tags.nil?
-        @videos.push(video) if video.video_tags.include?(@tag.tag_title)
+      @videos = []
+      @videos_data.each do | video |
+        unless video.video_tags.nil?
+          @videos.push(video) if video.video_tags.include?(@tag.tag_title)
+        end
       end
+
+      @videos_interaction_rank = @videos.sort_by {|array| Integer(array.video_interaction_count)}.reverse.first(50)
+      @videos_comment_rank = @videos.sort_by {|array| Integer(array.video_comment_count)}.reverse.first(50)
+      @videos_share_rank = @videos.sort_by {|array| Integer(array.video_share_count)}.reverse.first(50)
     end
 
-    @videos_interaction_rank = @videos.sort_by {|array| Integer(array.video_interaction_count)}.reverse
-    @videos_comment_rank = @videos.sort_by {|array| Integer(array.video_comment_count)}.reverse
-    @videos_share_rank = @videos.sort_by {|array| Integer(array.video_share_count)}.reverse
   end
 
   private

@@ -29,7 +29,7 @@
     <section class="video_content_item_ranking">
       <h2><i class="fas fa-cookie-bite"></i> 「いいね！数」ランキング</h2>
       <ul>
-        <% @videos_interaction_rank.first(50).each_with_index do |video, index| %>
+        <% @videos_interaction_rank.each_with_index do |video, index| %>
           <li>
             <p class="rank_index rank_index_<%= index + 1 %>"><%= index + 1 %></p>
             <div>
@@ -55,7 +55,7 @@
     <section class="video_content_item_ranking">
       <h2><i class="fas fa-cookie-bite"></i> 「コメント数」ランキング</h2>
       <ul>
-        <% @videos_comment_rank.first(50).each_with_index do |video, index| %>
+        <% @videos_comment_rank.each_with_index do |video, index| %>
           <li>
             <p class="rank_index rank_index_<%= index + 1 %>"><%= index + 1 %></p>
             <div>
@@ -81,7 +81,7 @@
     <section class="video_content_item_ranking">
       <h2><i class="fas fa-cookie-bite"></i> 「シェア数」ランキング</h2>
       <ul>
-        <% @videos_share_rank.first(50).each_with_index do |video, index| %>
+        <% @videos_share_rank.each_with_index do |video, index| %>
           <li>
             <p class="rank_index rank_index_<%= index + 1 %>"><%= index + 1 %></p>
             <div>
