@@ -112,9 +112,9 @@
             <%= link_to "すべてのランキング", ranking_tag_path(@tag) %>
           </div>
           <ul>
-            <% @videos_rank.each do |video| %>
+            <% @videos_rank.each.with_index do |video, index| %>
               <li>
-                <p class="rank_index rank_index_1">1</p>
+                <p class="rank_index rank_index_<%= index + 1 %>"><%= index + 1 %></p>
                 <div>
                   <%= link_to image_tag(video.video_cover_image), video.user %>
                 </div>

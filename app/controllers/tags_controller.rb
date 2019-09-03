@@ -30,7 +30,7 @@ class TagsController < ApplicationController
 
       @users = @videos.pluck(:user_id).uniq
 
-      @videos_rank = @videos.sort_by {|array| Integer(array.video_interaction_count)}.reverse.first(10)
+      @videos_rank = @videos.sort_by {|array| Integer(array.video_interaction_count)}.reverse.first(10).to_a
     end
 
 
