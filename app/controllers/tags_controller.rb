@@ -18,7 +18,7 @@ class TagsController < ApplicationController
     end
 
     Rails.cache.fetch("cache_videos", expired_in: 60.minutes) do
-      @videos_data = Video.eager_load(:user).all.to_a
+      @videos_data = Video.eager_load(:user).all
     end
 
     @videos = []
