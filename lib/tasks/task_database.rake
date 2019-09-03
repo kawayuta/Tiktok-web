@@ -17,6 +17,7 @@ namespace :task_database do
 
     Tag.all.each do |tag|
 
+      sleep(10)
       client = Selenium::WebDriver::Remote::Http::Default.new
       client.read_timeout = 120 # seconds
       options = Selenium::WebDriver::Chrome::Options.new
