@@ -47,6 +47,7 @@ namespace :task_database do
       end
 
       urls.uniq.each do |u|
+        sleep(5)
         Tag.get_video_from_embed(u, driver)
       end
 
