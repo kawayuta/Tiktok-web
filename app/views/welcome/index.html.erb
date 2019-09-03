@@ -111,7 +111,7 @@
             <%#= link_to "すべてのランキング", ranking_tag_path(@tag) %>
           </div>
           <ul>
-            <% @videos_trend_rank.first(10).each_with_index do |video, index| %>
+            <% @videos_trend_rank.take(10).each_with_index do |video, index| %>
               <li>
                 <p class="rank_index rank_index_<%= index + 1 %>"><%= index + 1 %></p>
                 <div>
@@ -144,7 +144,7 @@
             <%#= link_to "すべてのランキング", ranking_tag_path(@tag) %>
           </div>
           <ul>
-            <% @videos_all_rank.first(10).each_with_index do |video, index| %>
+            <% @videos_all_rank.take(10).each_with_index do |video, index| %>
               <li>
                 <p class="rank_index rank_index_<%= index + 1 %>"><%= index + 1 %></p>
                 <div>
