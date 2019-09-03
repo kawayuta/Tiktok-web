@@ -17,21 +17,23 @@ class TagsController < ApplicationController
       @trending_tags = Tag.where(tag_trending: true).to_a
     end
 
-    Rails.cache.fetch("cache_videos", expired_in: 60.minutes) do
-      @videos_data = Video.eager_load(:user).all
-    end
+    Rails.cache.fetch("cache_videos_tagController", expired_in: 60.minutes) do
+      @videos_data = Video.eager_load(:user).all.to_a
 
-    @videos = []
-    @videos_data.each do | video |
-      unless video.video_tags.nil?
-        @videos.push(video) if video.video_tags.include?(@tag.tag_title)
+      @videos = []
+      @videos_data.each do | video |
+        unless video.video_tags.nil?
+          @videos.push(video) if video.video_tags.include?(@tag.tag_title)
+        end
       end
+      @videos.shuffle!
+
+      @users = @videos.pluck(:user_id).uniq
+
+      @videos_rank = @videos.sort_by {|array| Integer(array.video_interaction_count)}.reverse
     end
-    @videos.shuffle!
 
-    @users = @videos.pluck(:user_id).uniq
 
-    @videos_rank = @videos.sort_by {|array| Integer(array.video_interaction_count)}.reverse
 
   end
 
