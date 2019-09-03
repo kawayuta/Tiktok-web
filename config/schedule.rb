@@ -31,7 +31,7 @@ every 1.day, :at => '2:00 am' do
   rake "task_database:get_tag_data"
 end
 
-every 1.day, :at => '3:00 am' do
+every 1.day, :at => '4:00 am' do
   rake "task_database:get_video_from_tag"
 end
 

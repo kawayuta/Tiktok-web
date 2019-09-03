@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a2e4aa1-93ac-4a71-a04c-86b144ad4cb1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/models/tag.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/tag.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/schedule.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/schedule.rb" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -93,7 +93,7 @@
           <entry key="js" value="2636" />
           <entry key="lock" value="8" />
           <entry key="rake" value="6391" />
-          <entry key="rb" value="6580" />
+          <entry key="rb" value="6581" />
           <entry key="ru" value="12" />
           <entry key="scss" value="6398" />
           <entry key="txt" value="30" />
@@ -107,7 +107,7 @@
           <entry key="JavaScript" value="2617" />
           <entry key="PLAIN_TEXT" value="54" />
           <entry key="RHTML" value="5649" />
-          <entry key="Ruby" value="13112" />
+          <entry key="Ruby" value="13113" />
           <entry key="SCSS" value="6398" />
           <entry key="YAML" value="103" />
         </counts>
@@ -141,11 +141,11 @@
               <provider selected="true" editor-type-id="text-editor" />
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/models/tag.rb">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="323">
-                  <caret line="19" column="133" selection-start-line="19" selection-start-column="133" selection-end-line="19" selection-end-column="133" />
+                  <caret line="19" column="52" selection-start-line="19" selection-start-column="52" selection-end-line="19" selection-end-column="53" />
                 </state>
               </provider>
             </entry>
@@ -154,7 +154,7 @@
             <entry file="file://$PROJECT_DIR$/lib/tasks/task_database.rake">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="386">
-                  <caret line="36" column="44" lean-forward="true" selection-start-line="36" selection-start-column="44" selection-end-line="36" selection-end-column="44" />
+                  <caret line="36" column="44" selection-start-line="36" selection-start-column="44" selection-end-line="36" selection-end-column="44" />
                   <folding>
                     <element signature="e#2062#4049#0" />
                   </folding>
@@ -162,11 +162,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/config/schedule.rb">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="561">
-                  <caret line="33" column="24" selection-start-line="33" selection-start-column="24" selection-end-line="33" selection-end-column="24" />
+                  <caret line="33" column="22" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
                 </state>
               </provider>
             </entry>
@@ -277,7 +277,7 @@
             <entry file="file://$PROJECT_DIR$/app/controllers/tags_controller.rb">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="648">
-                  <caret line="99" column="16" lean-forward="true" selection-start-line="98" selection-start-column="6" selection-end-line="99" selection-end-column="16" />
+                  <caret line="99" column="16" selection-start-line="98" selection-start-column="6" selection-end-line="99" selection-end-column="16" />
                 </state>
               </provider>
             </entry>
@@ -410,7 +410,6 @@
         <option value="$PROJECT_DIR$/app/views/tags/ranking.html.erb" />
         <option value="$PROJECT_DIR$/config/deploy/production.rb" />
         <option value="$PROJECT_DIR$/app/views/tags/show.html.erb" />
-        <option value="$PROJECT_DIR$/config/schedule.rb" />
         <option value="$PROJECT_DIR$/config.ru" />
         <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/config/environments/production.rb" />
@@ -418,6 +417,7 @@
         <option value="$PROJECT_DIR$/app/controllers/tags_controller.rb" />
         <option value="$PROJECT_DIR$/lib/tasks/task_database.rake" />
         <option value="$PROJECT_DIR$/app/models/tag.rb" />
+        <option value="$PROJECT_DIR$/config/schedule.rb" />
       </list>
     </option>
   </component>
@@ -770,7 +770,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="310660000" />
+    <option name="totallyTimeSpent" value="311030000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-2" y="353" width="2560" height="1247" extended-state="0" />
@@ -1085,13 +1085,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/schedule.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="33" column="24" selection-start-line="33" selection-start-column="24" selection-end-line="33" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/deploy/production.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="349">
@@ -1102,14 +1095,14 @@
     <entry file="file://$PROJECT_DIR$/app/controllers/tags_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="648">
-          <caret line="99" column="16" lean-forward="true" selection-start-line="98" selection-start-column="6" selection-end-line="99" selection-end-column="16" />
+          <caret line="99" column="16" selection-start-line="98" selection-start-column="6" selection-end-line="99" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/tasks/task_database.rake">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="386">
-          <caret line="36" column="44" lean-forward="true" selection-start-line="36" selection-start-column="44" selection-end-line="36" selection-end-column="44" />
+          <caret line="36" column="44" selection-start-line="36" selection-start-column="44" selection-end-line="36" selection-end-column="44" />
           <folding>
             <element signature="e#2062#4049#0" />
           </folding>
@@ -1119,7 +1112,14 @@
     <entry file="file://$PROJECT_DIR$/app/models/tag.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
-          <caret line="19" column="133" selection-start-line="19" selection-start-column="133" selection-end-line="19" selection-end-column="133" />
+          <caret line="19" column="52" selection-start-line="19" selection-start-column="52" selection-end-line="19" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/schedule.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="33" column="22" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
         </state>
       </provider>
     </entry>
