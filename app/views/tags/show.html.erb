@@ -113,8 +113,8 @@
       <div>
         <section class="video_content_item_ranking">
           <div class="video_content_item_ranking_header">
-            <h2><i class="fas fa-cookie-bite"></i> 人気動画ランキング</h2>
-            <%= link_to "他のランキングを見る", ranking_tag_path(@tag) %>
+            <h2><i class="fas fa-cookie-bite"></i> 人気動画ランキング(いいね数)</h2>
+            <%= link_to "すべてのランキング", ranking_tag_path(@tag) %>
           </div>
           <ul>
             <% @videos_rank.first(10).each_with_index do |video, index| %>
