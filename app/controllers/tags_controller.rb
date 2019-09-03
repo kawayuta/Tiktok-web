@@ -12,20 +12,26 @@ class TagsController < ApplicationController
   # GET /tags/1.json
   def show
 
-    @trending_videos = Video.where(video_trending: true)
-    @trending_tags = Tag.where(tag_trending: true)
+    Rails.cache.fetch("cache_videos_trending", expired_in: 60.minutes) do
+      @trending_videos = Video.where(video_trending: true).to_a
+      @trending_tags = Tag.where(tag_trending: true).to_a
+    end
+
+    Rails.cache.fetch("cache_videos", expired_in: 60.minutes) do
+      @videos_data = Video.eager_load(:user).all.to_a
+    end
 
     @videos = []
-    Video.eager_load(:user).all.each do | video |
+    @videos_data.each do | video |
       unless video.video_tags.nil?
         @videos.push(video) if video.video_tags.include?(@tag.tag_title)
       end
     end
+    @videos.shuffle!
+
+    @users = @videos.pluck(:user_id).uniq
 
     @videos_rank = @videos.sort_by {|array| Integer(array.video_interaction_count)}.reverse
-
-    @videos.shuffle!
-    @users = @videos.pluck(:user_id).uniq
 
   end
 
@@ -105,15 +111,22 @@ class TagsController < ApplicationController
   end
 
   def ranking
-    @trending_videos = Video.where(video_trending: true)
-    @trending_tags = Tag.where(tag_trending: true)
+    Rails.cache.fetch("cache_videos_trending", expired_in: 60.minutes) do
+      @trending_videos = Video.where(video_trending: true).to_a
+      @trending_tags = Tag.where(tag_trending: true).to_a
+    end
+
+    Rails.cache.fetch("cache_videos", expired_in: 60.minutes) do
+      @videos_data = Video.eager_load(:user).all.to_a
+    end
 
     @videos = []
-    Video.eager_load(:user).all.each do | video |
+    @videos_data.each do | video |
       unless video.video_tags.nil?
         @videos.push(video) if video.video_tags.include?(@tag.tag_title)
       end
     end
+
     @videos_interaction_rank = @videos.sort_by {|array| Integer(array.video_interaction_count)}.reverse
     @videos_comment_rank = @videos.sort_by {|array| Integer(array.video_comment_count)}.reverse
     @videos_share_rank = @videos.sort_by {|array| Integer(array.video_share_count)}.reverse
