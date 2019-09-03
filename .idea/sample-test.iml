@@ -878,19 +878,6 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="groupdate (vbundled(4.1.2)) [path][gem]" type="rubylib">
-        <properties>
-          <option name="version" value="3" />
-        </properties>
-        <CLASSES>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/groupdate-4.1.2/lib" />
-        </CLASSES>
-        <SOURCES>
-          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/groupdate-4.1.2/lib" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
       <library name="http-cookie (vbundled(1.0.3)) [path][gem]" type="rubylib">
         <properties>
           <option name="version" value="3" />
@@ -1692,6 +1679,27 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/rack-2.0.7/test" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/rack-2.0.7/contrib" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/rack-2.0.7/example" />
+        </excluded>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="rack-attack (vbundled(6.1.0)) [path][gem]" type="rubylib">
+        <properties>
+          <option name="version" value="3" />
+        </properties>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/rack-attack-6.1.0/bin" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/rack-attack-6.1.0/lib" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/rack-attack-6.1.0/spec" />
+        </CLASSES>
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/rack-attack-6.1.0/bin" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/rack-attack-6.1.0/lib" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/rack-attack-6.1.0/spec" />
+        </SOURCES>
+        <excluded>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/rack-attack-6.1.0/bin" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/rack-attack-6.1.0/spec" />
         </excluded>
       </library>
     </orderEntry>
