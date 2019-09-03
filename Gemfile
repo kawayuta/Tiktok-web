@@ -34,6 +34,7 @@ gem 'google-api-client'
 gem 'chartkick'
 gem 'chartable'
 gem 'rack-attack'
+gem 'google-analytics-rails'
 # Use CoffeeScript for .coffee assets and views
 # gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
