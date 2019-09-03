@@ -20,8 +20,11 @@ class Tag < ApplicationRecord
         if @tag.updated_at.strftime("%Y-%m-%d") != Time.current.strftime("%Y-%m-%d")
           puts "update tag"
           tag = Tag.get_tag("https://www.tiktok.com/tag/#{search}?langCountry=ja", driver)
-          @old = TagHistory.create(tag)
           @tag = @tag.update(tag)
+        end
+        unless TagHistory.where(tag_title: search, created_at: Time.current.strftime("%Y-%m-%d").in_time_zone.all_day).present?
+          tag = Tag.get_tag("https://www.tiktok.com/tag/#{search}?langCountry=ja", driver)
+          @old = TagHistory.create(tag)
         end
       end
     else
