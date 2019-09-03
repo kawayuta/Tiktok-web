@@ -93,9 +93,6 @@ class TagsController < ApplicationController
     end
 
     if @tag.updated_at.strftime("%Y-%m-%d") != Time.current.strftime("%Y-%m-%d")
-      Thread.new do
-        # Tag.new_tag(search_params[:keyword])
-      end
 
       Thread.new do
         Tag.get_tag_from_keyword(search_params[:keyword])

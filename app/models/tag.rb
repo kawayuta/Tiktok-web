@@ -2,11 +2,24 @@ class Tag < ApplicationRecord
 
   def self.new_tag(search)
     @tag = Tag.find_by(tag_title: search)
+
+    client = Selenium::WebDriver::Remote::Http::Default.new
+    client.read_timeout = 120 # seconds
+    options = Selenium::WebDriver::Chrome::Options.new
+    options.add_argument('--headless')
+    options.add_argument('--no-sandbox')
+    options.add_argument('--disable-dev-shm-usage')
+    # options.add_argument('--proxy-server=%s' % "socks5://127.0.0.1:9050")
+    ua = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.116 Safari/537.36"
+
+    caps = Selenium::WebDriver::Remote::Capabilities.chrome("chromeOptions" => {binary: '/usr/local/bin/chromedriver', args: ["--headless", "--disable-gpu", "--user-agent=#{ua}", "window-size=1280x800"]})
+    driver = Selenium::WebDriver.for :chrome, options: options, http_client: client, desired_capabilities: caps
+
     unless @tag.nil?
       ActiveRecord::Base.connection_pool.with_connection do
         if @tag.updated_at.strftime("%Y-%m-%d") != Time.current.strftime("%Y-%m-%d")
           puts "update tag"
-          tag = Tag.get_tag("https://www.tiktok.com/tag/#{search}?langCountry=ja")
+          tag = Tag.get_tag("https://www.tiktok.com/tag/#{search}?langCountry=ja", driver)
           @old = TagHistory.create(tag)
           @tag = @tag.update(tag)
         end
@@ -15,10 +28,14 @@ class Tag < ApplicationRecord
       ActiveRecord::Base.connection_pool.with_connection do
         puts "new tag"
         url = "https://www.tiktok.com/tag/#{search}?langCountry=ja"
-        tag = Tag.get_tag(url)
+        tag = Tag.get_tag(url, driver)
         @tag = Tag.create(tag)
       end
     end
+
+
+    driver.close
+    driver.quit
   end
 
   def self.get_tag_from_keyword(search)
@@ -58,32 +75,17 @@ class Tag < ApplicationRecord
       urls.push("https://www.tiktok.com/embed/#{item.css('a')[0][:href].split('/').last}")
     end
 
-    Parallel.map(urls.uniq!, in_processes: 3) do |u|
-      get_video_from_embed(u)
+    urls.uniq.each do |u|
+      get_video_from_embed(u, driver)
     end
 
   end
 
 
 
-  def self.get_video_from_embed_task(url)
-    client = Selenium::WebDriver::Remote::Http::Default.new
-    client.read_timeout = 120 # seconds
-    options = Selenium::WebDriver::Chrome::Options.new
-    options.add_argument('--headless')
-    options.add_argument('--no-sandbox')
-    options.add_argument('--disable-dev-shm-usage')
-    # options.add_argument('--proxy-server=%s' % "socks5://127.0.0.1:9050")
-
-    ua = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.116 Safari/537.36"
-
-    caps = Selenium::WebDriver::Remote::Capabilities.chrome("chromeOptions" => {binary: '/usr/local/bin/chromedriver', args: ["--headless", "--disable-gpu", "--user-agent=#{ua}", "window-size=1280x800"]})
-    driver = Selenium::WebDriver.for :chrome, options: options, http_client: client, desired_capabilities: caps
+  def self.get_video_from_embed_task(url, driver)
     driver.get url
-
     doc = Nokogiri::HTML(driver.page_source)
-    driver.close
-    driver.quit
 
     if doc.css('title').text != "TikTok"
       a = doc.search('script').to_s
@@ -173,24 +175,9 @@ class Tag < ApplicationRecord
 
   end
 
-  def self.get_video_from_embed(url)
-    client = Selenium::WebDriver::Remote::Http::Default.new
-    client.read_timeout = 120 # seconds
-    options = Selenium::WebDriver::Chrome::Options.new
-    options.add_argument('--headless')
-    options.add_argument('--no-sandbox')
-    options.add_argument('--disable-dev-shm-usage')
-    # options.add_argument('--proxy-server=%s' % "socks5://127.0.0.1:9050")
-
-    ua = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.116 Safari/537.36"
-
-    caps = Selenium::WebDriver::Remote::Capabilities.chrome("chromeOptions" => {binary: '/usr/local/bin/chromedriver', args: ["--headless", "--disable-gpu", "--user-agent=#{ua}", "window-size=1280x800"]})
-    driver = Selenium::WebDriver.for :chrome, options: options, http_client: client, desired_capabilities: caps
+  def self.get_video_from_embed(url, driver)
     driver.get url
-
     doc = Nokogiri::HTML(driver.page_source)
-    driver.close
-    driver.quit
 
     if doc.css('title').text != "TikTok"
       a = doc.search('script').to_s
@@ -252,6 +239,7 @@ class Tag < ApplicationRecord
         end
       else
         ActiveRecord::Base.connection_pool.with_connection do
+          puts "create video"
           @video = @user.videos.create(video)
         end
       end
@@ -270,23 +258,9 @@ class Tag < ApplicationRecord
 
   end
 
-  def self.get_tag(url)
-    client = Selenium::WebDriver::Remote::Http::Default.new
-    client.read_timeout = 120 # seconds
-    options = Selenium::WebDriver::Chrome::Options.new
-    options.add_argument('--headless')
-    options.add_argument('--no-sandbox')
-    options.add_argument('--disable-dev-shm-usage')
-    # options.add_argument('--proxy-server=%s' % "socks5://127.0.0.1:9050")
-    ua = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.116 Safari/537.36"
-
-    caps = Selenium::WebDriver::Remote::Capabilities.chrome("chromeOptions" => {binary: '/usr/local/bin/chromedriver', args: ["--headless", "--disable-gpu", "--user-agent=#{ua}", "window-size=1280x800"]})
-    g_driver = Selenium::WebDriver.for :chrome, options: options, http_client: client, desired_capabilities: caps
-    g_driver.get url
-    doc_tag = Nokogiri::HTML(g_driver.page_source)
-
-    g_driver.close
-    g_driver.quit
+  def self.get_tag(url, driver)
+    driver.get url
+    doc_tag = Nokogiri::HTML(driver.page_source)
 
     js = doc_tag.search('script').to_s
     @tag_official_id = js.split('challengeId":')[1].split(',')[0].delete('"') unless js.split('challengeId":')[1].nil?

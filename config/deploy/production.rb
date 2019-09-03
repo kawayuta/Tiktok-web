@@ -51,7 +51,7 @@ namespace :deploy do
     on roles(:db) do |host|
       within current_path do
         with rails_env: fetch(:rails_env) do
-          execute :rake, 'task_database:get_tr'
+          execute :rake, 'task_database:get_trending'
         end
       end
     end
@@ -61,7 +61,7 @@ namespace :deploy do
     on roles(:db) do |host|
       within current_path do
         with rails_env: fetch(:rails_env) do
-          execute :rake, 'task_database:get_tr_from_tag'
+          execute :rake, 'task_database:get_video_from_tag'
         end
       end
     end
