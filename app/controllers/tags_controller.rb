@@ -12,21 +12,21 @@ class TagsController < ApplicationController
   # GET /tags/1.json
   def show
 
-      @trending_videos = cache_videos_trending
-      @trending_tags = cache_tags_trending
+    @trending_videos = cache_videos_trending
+    @trending_tags = cache_tags_trending
 
-      @videos_data = cache_videos
-      @videos = []
-      @videos_data.each do | video |
-        unless video.video_tags.nil?
-          @videos.push(video) if video.video_tags.include?(@tag.tag_title)
-        end
+    @videos_data = cache_videos
+    @videos = []
+    @videos_data.each do | video |
+      unless video.video_tags.nil?
+        @videos.push(video) if video.video_tags.include?(@tag.tag_title)
       end
-      @videos.shuffle!
+    end
+    @videos.shuffle!
 
-      @users = @videos.pluck(:user_id).uniq
+    @users = @videos.pluck(:user_id).uniq
 
-      @videos_rank = @videos.sort_by {|array| Integer(array.video_interaction_count)}.first(10).reverse.to_a
+    @videos_rank = @videos.sort_by {|array| Integer(array.video_interaction_count)}.first(10).reverse.to_a
 
   end
 

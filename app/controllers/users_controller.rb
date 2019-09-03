@@ -10,10 +10,9 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    Rails.cache.fetch("cache_videos_trending", expired_in: 60.minutes) do
-      @trending_videos = Video.where(video_trending: true).limit(10).to_a
-      @trending_tags = Tag.where(tag_trending: true).limit(10).to_a
-    end
+
+    @trending_videos = cache_videos_trending
+    @trending_tags = cache_tags_trending
 
     @videos = @user.videos
   end
@@ -77,4 +76,16 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:user_official_id, :user_nick_name, :user_signature, :user_covers, :user_following_count, :user_fans_count, :user_heart_count, :user_video_count, :user_verified, :user_region, :user_url)
     end
+
+  def cache_videos_trending
+    Rails.cache.fetch("cache_videos_trending", expired_in: 60.minutes) do
+      Video.where(video_trending: true).limit(10).to_a
+    end
+  end
+
+  def cache_tags_trending
+    Rails.cache.fetch("cache_tags_trending", expired_in: 60.minutes) do
+      Tag.where(tag_trending: true).limit(10).to_a
+    end
+  end
 end
