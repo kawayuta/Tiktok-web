@@ -20,35 +20,32 @@
       </div>
     </div>
 
-    <% if @videos.present? && @videos.first.present? %>
+    <% if @videos.present? %>
       <div class="video_content_meta">
-        <h3 class="video_title"><%= @videos.first.video_title %></h3>
+        <h3 class="video_title"></h3>
         <div class="video_content_meta_tags">
-          <% unless @videos.first.video_tags.nil? %>
-            <% @videos.first.video_tags.each do | tag | %>
-              <p class="video_content_meta_tag"><%= link_to "##{tag}", search_tags_path(keyword: tag) %></p>
-            <% end %>
-          <% end %>
+          <p class="video_content_meta_tag"><a href=""></a></p>
+
         </div>
         <div class="video_content_meta_info">
           <p class="video_content_meta_info_play">
-            <i class="fas fa-heart"></i> <span class="video_play_count"><%= @videos.first.video_interaction_count %></span>
+            <i class="fas fa-heart"></i> <span class="video_play_count"></span>
           </p>
 
           <p class="video_content_meta_info_comment">
-            <i class="fas fa-comment"></i> <span class="video_comment_count"><%= @videos.first.video_comment_count %></span>
+            <i class="fas fa-comment"></i> <span class="video_comment_count"></span>
           </p>
           <p class="video_content_meta_info_share">
-            <i class="fas fa-share"></i> <span class="video_share_count"><%= @videos.first.video_share_count %></span>
+            <i class="fas fa-share"></i> <span class="video_share_count"></span>
           </p>
         </div>
       </div>
 
       <div class="video_content_profile">
         <div class="video_content_profile_image">
-          <%= image_tag @videos.first.user.user_covers, class:"video_user_covers" %>
+          <a class="video_user_covers" href=""><img src="" /></a>
         </div>
-        <p class="video_user_nick_name"><%= @videos.first.user.user_nick_name %></p>
+        <p class="video_user_nick_name"></p>
       </div>
     <% end %>
 
