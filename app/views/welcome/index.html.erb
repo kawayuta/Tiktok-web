@@ -105,13 +105,76 @@
       </ul>
     </section>
 
-    <section id="container">
-      <% @videos.each_with_index do | video, index |%>
-        <div class="ball ball_<%= index %>">
-          <%= link_to image_tag(video.user.user_covers), video.user %>
-        </div>
-      <% end %>
-    </section>
+
+    <div class="video_content_split_wrap">
+      <div>
+        <section class="video_content_item_ranking">
+          <div class="video_content_item_ranking_header">
+            <h2><i class="fas fa-cookie-bite"></i> トレンド動画ランキング(いいね数)</h2>
+            <%#= link_to "すべてのランキング", ranking_tag_path(@tag) %>
+          </div>
+          <ul>
+            <% @videos_trend_rank.first(10).each_with_index do |video, index| %>
+              <li>
+                <p class="rank_index rank_index_<%= index + 1 %>"><%= index + 1 %></p>
+                <div>
+                  <%= link_to image_tag(video.video_cover_image), video.user %>
+                </div>
+                <div>
+                  <h3><%= video.video_title %></h3>
+                  <div class="video_content_item_ranking_meta">
+                    <p><i class="fas fa-heart"></i> <%= video.video_interaction_count %></p>
+                    <p><i class="fas fa-comment"></i> <%= video.video_share_count %></p>
+                    <p><i class="fas fa-share"></i> <%= video.video_comment_count %></p>
+                  </div>
+                  <div class="video_content_item_ranking_user">
+                    <%= link_to image_tag(video.user.user_covers), video.user %>
+                    <p><%= video.user.user_nick_name %></p>
+                  </div>
+                </div>
+              </li>
+            <% end %>
+            <li class="ranking_more">
+              <%#= link_to "もっと見る", ranking_tag_path(@tag) %>
+            </li>
+          </ul>
+        </section>
+      </div>
+      <div>
+        <section class="video_content_item_ranking">
+          <div class="video_content_item_ranking_header">
+            <h2><i class="fas fa-cookie-bite"></i> すべての動画ランキング(いいね数)</h2>
+            <%#= link_to "すべてのランキング", ranking_tag_path(@tag) %>
+          </div>
+          <ul>
+            <% @videos_all_rank.first(10).each_with_index do |video, index| %>
+              <li>
+                <p class="rank_index rank_index_<%= index + 1 %>"><%= index + 1 %></p>
+                <div>
+                  <%= link_to image_tag(video.video_cover_image), video.user %>
+                </div>
+                <div>
+                  <h3><%= video.video_title %></h3>
+                  <div class="video_content_item_ranking_meta">
+                    <p><i class="fas fa-heart"></i> <%= video.video_interaction_count %></p>
+                    <p><i class="fas fa-comment"></i> <%= video.video_share_count %></p>
+                    <p><i class="fas fa-share"></i> <%= video.video_comment_count %></p>
+                  </div>
+                  <div class="video_content_item_ranking_user">
+                    <%= link_to image_tag(video.user.user_covers), video.user %>
+                    <p><%= video.user.user_nick_name %></p>
+                  </div>
+                </div>
+              </li>
+            <% end %>
+            <li class="ranking_more">
+              <%#= link_to "もっと見る", ranking_tag_path(@tag) %>
+            </li>
+          </ul>
+        </section>
+      </div>
+
+    </div>
 
   </article>
 
