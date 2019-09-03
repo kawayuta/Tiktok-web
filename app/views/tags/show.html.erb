@@ -121,7 +121,7 @@
               <li>
                 <p class="rank_index rank_index_<%= index + 1 %>"><%= index + 1 %></p>
                 <div>
-                  <%= image_tag video.video_cover_image %>
+                  <%= link_to image_tag(video.video_cover_image), video.user %>
                 </div>
                 <div>
                     <h3><%= video.video_title %></h3>
