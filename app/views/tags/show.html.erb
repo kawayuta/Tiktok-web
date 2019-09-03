@@ -87,7 +87,7 @@
       <h2><i class="fas fa-cookie-bite"></i> おすすめ動画</h2>
       <ul>
         <% if @videos.present? %>
-          <% @videos.shuffle.each_with_index do |video, i| %>
+          <% @videos.shuffle.take(30).each_with_index do |video, i| %>
             <li>
               <%= image_tag video.video_cover_image, class: "video_data video_index_#{i}",
                             data: {video_source: video.video_url,
