@@ -78,7 +78,7 @@ class UsersController < ApplicationController
 
     def cache_videos_trending
       Rails.cache.fetch("cache_videos_trending", expired_in: 60.minutes) do
-        Video.where(video_trending: true).to_a
+        Video.eager_load(:user).where(video_trending: true).to_a
       end
     end
 

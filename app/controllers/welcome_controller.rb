@@ -9,8 +9,6 @@ class WelcomeController < ApplicationController
 
     @videos_data = cache_videos
     @videos = cache_videos_trending.shuffle.take(30)
-    @users = @videos.pluck(:user_id).uniq
-
     @videos_all_rank = @videos_data.sort_by {|array| Integer(array.video_interaction_count)}.reverse.first(10)
   end
 
@@ -30,7 +28,7 @@ class WelcomeController < ApplicationController
 
   def cache_videos_trending
     Rails.cache.fetch("cache_videos_trending", expired_in: 60.minutes) do
-      Video.where(video_trending: true).to_a
+      Video.eager_load(:user).where(video_trending: true).to_a
     end
   end
 

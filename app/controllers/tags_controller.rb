@@ -23,9 +23,6 @@ class TagsController < ApplicationController
       end
     end
     @videos.shuffle!
-
-    @users = @videos.pluck(:user_id).uniq
-
     @videos_rank = @videos.sort_by {|array| Integer(array.video_interaction_count)}.first(10).reverse.to_a
 
   end
@@ -146,7 +143,7 @@ class TagsController < ApplicationController
 
     def cache_videos_trending
       Rails.cache.fetch("cache_videos_trending", expired_in: 60.minutes) do
-        Video.where(video_trending: true).to_a
+        Video.eager_load(:user).where(video_trending: true).to_a
       end
     end
 
