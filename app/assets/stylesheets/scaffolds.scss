@@ -808,7 +808,11 @@ p, a, h1, h2, h3, h4, li {
       margin: 0 auto;
       border-bottom: 0px solid #333;
       display: flex;
-      justify-content: flex-end;
+      -webkit-align-items: center; /* 縦方向中央揃え（Safari用） */
+      align-items: center; /* 縦方向中央揃え */
+      -webkit-justify-content: center; /* 横方向中央揃え（Safari用） */
+      justify-content: center; /* 横方向中央揃え */
+      font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
       &  >:nth-child(2) {
         margin-right: auto;
       }
@@ -823,14 +827,15 @@ p, a, h1, h2, h3, h4, li {
         }
       }
       & .header_tag_title {
-        display: block;
-        font-size:25px;
+        width: 140px;
+        font-size:16px;
         font-weight: bold;
-        line-height: 2.3em;
+        line-height: 1.6em;
+        overflow: hidden;
+        display: block;
       }
       & .header_tag_raking {
         display: block;
-        margin-top: 20px;
         margin-right: 10px;
         & a {
           padding: 10px;
