@@ -12,8 +12,8 @@ class TagsController < ApplicationController
   # GET /tags/1.json
   def show
 
-    @trending_videos = cache_videos_trending
-    @trending_tags = cache_tags_trending
+    @trending_videos = cache_videos_trending.take(10)
+    @trending_tags = cache_tags_trending.take(10)
 
     @videos_data = cache_videos
     @videos = []
@@ -106,25 +106,20 @@ class TagsController < ApplicationController
   end
 
   def ranking
-    Rails.cache.fetch("cache_videos_trending", expired_in: 60.minutes) do
-      @trending_videos = Video.where(video_trending: true).to_a
-      @trending_tags = Tag.where(tag_trending: true).to_a
-    end
+    @trending_videos = cache_videos_trending.take(10)
+    @trending_tags = cache_tags_trending.take(10)
 
-    Rails.cache.fetch("cache_videos_tagController_ranking", expired_in: 60.minutes) do
-      @videos_data = Video.eager_load(:user).all.to_a
-
-      @videos = []
-      @videos_data.each do | video |
-        unless video.video_tags.nil?
-          @videos.push(video) if video.video_tags.include?(@tag.tag_title)
-        end
+    @videos_data = cache_videos
+    @videos = []
+    @videos_data.each do | video |
+      unless video.video_tags.nil?
+        @videos.push(video) if video.video_tags.include?(@tag.tag_title)
       end
-
-      @videos_interaction_rank = @videos.sort_by {|array| Integer(array.video_interaction_count)}.reverse.first(50)
-      @videos_comment_rank = @videos.sort_by {|array| Integer(array.video_comment_count)}.reverse.first(50)
-      @videos_share_rank = @videos.sort_by {|array| Integer(array.video_share_count)}.reverse.first(50)
     end
+
+    @videos_interaction_rank = @videos.sort_by {|array| Integer(array.video_interaction_count)}.reverse.first(50)
+    @videos_comment_rank = @videos.sort_by {|array| Integer(array.video_comment_count)}.reverse.first(50)
+    @videos_share_rank = @videos.sort_by {|array| Integer(array.video_share_count)}.reverse.first(50)
 
   end
 
@@ -151,13 +146,13 @@ class TagsController < ApplicationController
 
     def cache_videos_trending
       Rails.cache.fetch("cache_videos_trending", expired_in: 60.minutes) do
-        Video.where(video_trending: true).limit(10).to_a
+        Video.where(video_trending: true).to_a
       end
     end
 
     def cache_tags_trending
       Rails.cache.fetch("cache_tags_trending", expired_in: 60.minutes) do
-        Tag.where(tag_trending: true).limit(10).to_a
+        Tag.where(tag_trending: true).to_a
       end
     end
 

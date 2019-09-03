@@ -407,6 +407,7 @@ main {
         position: absolute;
         line-height: 1.4em;
         border-radius: 6px;
+        z-index: 1000;
       }
       & .rank_index_1 {
         width: 53px;
@@ -650,6 +651,7 @@ main {
       position: absolute;
       line-height: 1.4em;
       border-radius: 6px;
+      z-index: 1000;
     }
     & .rank_index_1 {
       width: 53px;
