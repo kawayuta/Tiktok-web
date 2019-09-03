@@ -12,15 +12,10 @@ class TagsController < ApplicationController
   # GET /tags/1.json
   def show
 
-    Rails.cache.fetch("cache_videos_trending", expired_in: 60.minutes) do
-      @trending_videos = Video.where(video_trending: true).limit(10).to_a
-      @trending_tags = Tag.where(tag_trending: true).limit(10).to_a
-    end
+      @trending_videos = cache_videos_trending
+      @trending_tags = cache_tags_trending
 
-    Rails.cache.fetch("cache_videos_tagController_show", expired_in: 60.minutes) do
-      @videos_data = Video.eager_load(:user).all.to_a
-    end
-
+      @videos_data = cache_videos
       @videos = []
       @videos_data.each do | video |
         unless video.video_tags.nil?
@@ -32,8 +27,6 @@ class TagsController < ApplicationController
       @users = @videos.pluck(:user_id).uniq
 
       @videos_rank = @videos.sort_by {|array| Integer(array.video_interaction_count)}.first(10).reverse.to_a
-
-
 
   end
 
@@ -149,4 +142,23 @@ class TagsController < ApplicationController
     def search_params
       params.permit(:keyword)
     end
+
+    def cache_videos
+      Rails.cache.fetch("cache_videos", expired_in: 60.minutes) do
+        Video.eager_load(:user).all.to_a
+      end
+    end
+
+    def cache_videos_trending
+      Rails.cache.fetch("cache_videos_trending", expired_in: 60.minutes) do
+        Video.where(video_trending: true).limit(10).to_a
+      end
+    end
+
+    def cache_tags_trending
+      Rails.cache.fetch("cache_tags_trending", expired_in: 60.minutes) do
+        Tag.where(tag_trending: true).limit(10).to_a
+      end
+    end
+
 end
