@@ -25,8 +25,8 @@ var video = $('#video');
     $('.swiper-wrapper').append('<div class="swiper-slide" style="height: 600px;">' +
       '<video muted="muted" controls="controls" id="video" class="video_' + i +'"playsinline="true" src="'+
       $(".video_index_" + i).data('video-source') +
-      '" poster="' +
-      $(".video_index_" + i).data('video-cover-image') + '"' +
+      // '" poster="' +
+      // $(".video_index_" + i).data('video-cover-image') + '"' +
       '">' +
       '</video>' +
       '</div>');
