@@ -87,12 +87,8 @@ namespace :deploy do
   end
 
   task :sidekiq_start do
-    on roles(:db) do |host|
-      within current_path do
-        with rails_env: fetch(:rails_env) do
-          execute :rake, 'sidekiq'
-        end
-      end
+    on roles(:app) do |host|
+      execute 'bundle exec sidekiq --environment=production --daemon'
     end
   end
 
