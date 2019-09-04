@@ -7,6 +7,8 @@ require 'capistrano3/unicorn'
 require 'whenever/capistrano'
 require 'capistrano/scm/git'
 require 'capistrano/sidekiq'
+require 'capistrano/bundler'
+
 install_plugin Capistrano::SCM::Git
 
 # Include tasks from other gems included in your Gemfile
@@ -30,3 +32,4 @@ install_plugin Capistrano::SCM::Git
 #
 # Load custom tasks from `lib/capistrano/tasks` if you have any defined
 Dir.glob("lib/capistrano/tasks/*.rake").each { |r| import r }
+
