@@ -16,13 +16,7 @@ class TagsController < ApplicationController
     @trending_tags = cache_tags_trending.take(10)
 
     @videos_data = cache_videos
-    @videos = []
-    @videos_data.each do | video |
-      unless video.video_tags.nil?
-        @videos.push(video) if video.video_tags.include?(@tag.tag_title)
-      end
-    end
-    @videos.shuffle!
+    @videos = @videos_data.select { |v| v.video_tags.include?(@tag.tag_title) unless v.video_tags.nil? }.shuffle!
     @videos_rank = @videos.sort_by {|array| Integer(array.video_interaction_count)}.first(10).reverse.to_a
 
     @tag_histries_posts = cache_tags_histories.select {|h|h.tag_title == @tag.tag_title}
@@ -108,12 +102,7 @@ class TagsController < ApplicationController
     @trending_tags = cache_tags_trending.take(10)
 
     @videos_data = cache_videos
-    @videos = []
-    @videos_data.each do | video |
-      unless video.video_tags.nil?
-        @videos.push(video) if video.video_tags.include?(@tag.tag_title)
-      end
-    end
+    @videos = @videos_data.select { |v| v.video_tags.include?(@tag.tag_title) unless v.video_tags.nil? }
 
     @videos_interaction_rank = @videos.sort_by {|array| Integer(array.video_interaction_count)}.reverse.first(50)
     @videos_comment_rank = @videos.sort_by {|array| Integer(array.video_comment_count)}.reverse.first(50)
