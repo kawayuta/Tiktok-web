@@ -110,7 +110,6 @@ namespace :deploy do
 
       within release_path do
         execute :rm, '-rf', release_path.join('tmp/cache')
-        execute :sudo, :systemctl, :restart, :sidekiq
       end
     end
   end
