@@ -10,7 +10,7 @@
   <section class="video_content_tag_info">
     <div class="video_content_tag_info_header">
 
-      <%= image_tag('hash_tag.png') %>
+      <%= image_tag('hash_tag.png', alt:"#") %>
 
       <h1>「#<%= @tag.tag_title %>」タグの「いいね！・コメント数・シェア数」動画ランキング</h1>
     </div>
@@ -33,7 +33,7 @@
           <li>
             <p class="rank_index rank_index_<%= index + 1 %>"><%= index + 1 %></p>
             <div>
-              <%= link_to image_tag(video.video_cover_image), video.user %>
+              <%= link_to image_tag(video.video_cover_image, alt:video.video_title), video.user %>
             </div>
             <div>
               <h3><%= video.video_title %></h3>
@@ -43,7 +43,7 @@
                 <p><i class="fas fa-share"></i> <%= video.video_share_count %></p>
               </div>
               <div class="video_content_item_ranking_user">
-                <%= link_to image_tag(video.user.user_covers), video.user %>
+                <%= link_to image_tag(video.user.user_covers, alt:video.user.user_nick_name), video.user %>
                 <p><%= video.user.user_nick_name %></p>
               </div>
             </div>
@@ -59,7 +59,7 @@
           <li>
             <p class="rank_index rank_index_<%= index + 1 %>"><%= index + 1 %></p>
             <div>
-              <%= link_to image_tag(video.video_cover_image), video.user %>
+              <%= link_to image_tag(video.video_cover_image, alt:video.video_title), video.user %>
             </div>
             <div>
               <h3><%= video.video_title %></h3>
@@ -69,7 +69,7 @@
                 <p><i class="fas fa-share"></i> <%= video.video_share_count %></p>
               </div>
               <div class="video_content_item_ranking_user">
-                <%= link_to image_tag(video.user.user_covers), video.user %>
+                <%= link_to image_tag(video.user.user_covers, alt:video.user.user_nick_name), video.user %>
                 <p><%= video.user.user_nick_name %></p>
               </div>
             </div>
@@ -85,7 +85,7 @@
           <li>
             <p class="rank_index rank_index_<%= index + 1 %>"><%= index + 1 %></p>
             <div>
-              <%= link_to image_tag(video.video_cover_image), video.user %>
+              <%= link_to image_tag(video.video_cover_image, alt:video.video_title), video.user %>
             </div>
             <div>
               <h3><%= video.video_title %></h3>
@@ -95,7 +95,7 @@
                 <p><i class="fas fa-share"></i> <%= video.video_share_count %></p>
               </div>
               <div class="video_content_item_ranking_user">
-                <%= link_to image_tag(video.user.user_covers), video.user %>
+                <%= link_to image_tag(video.user.user_covers, alt:video.user.user_nick_name), video.user %>
                 <p><%= video.user.user_nick_name %></p>
               </div>
             </div>

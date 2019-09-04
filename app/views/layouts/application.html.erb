@@ -16,7 +16,7 @@
   <header>
       <div class="header-inner">
         <div class="branding_logo">
-          <%= link_to image_tag('logo.png'), root_path %>
+          <%= link_to image_tag('logo.png', alt:"TikTok Pro"), root_path %>
         </div>
 
         <p class="header_tag_title"><%= @tag.nil? ? "" : "##{@tag.tag_title}" %></p>

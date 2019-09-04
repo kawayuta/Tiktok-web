@@ -56,7 +56,7 @@
     <section class="video_content_tag_info">
       <div class="video_content_tag_info_header">
         <figure class="profile_image">
-          <%= image_tag @user.user_covers %>
+          <%= image_tag @user.user_covers, alt: @user.user_nick_name %>
         </figure>
         <h1><%= @user.user_nick_name %></h1>
       </div>
@@ -77,7 +77,7 @@
         <% if @videos.present? %>
           <% @videos.shuffle.each_with_index do |video, i| %>
             <li>
-              <%= image_tag video.video_cover_image, class: "video_data video_index_#{i}",
+              <%= image_tag video.video_cover_image, class: "video_data video_index_#{i}", alt: video.video_title,
                             data: {video_source: video.video_url,
                                    video_index: i,
                                    video_title: video.video_title,
