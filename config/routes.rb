@@ -21,6 +21,9 @@ Rails.application.routes.draw do
   require 'sidekiq/web'
   require 'sidekiq-scheduler/web'
 
+  Sidekiq::Web.use Rack::Auth::Basic do |username, password|
+    username == 'kawayuta' && password == 'nyaumyuuta1123'
+  end
   mount Sidekiq::Web, at: "/sidekiq"
 
 end
