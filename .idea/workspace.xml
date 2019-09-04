@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2a2e4aa1-93ac-4a71-a04c-86b144ad4cb1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/config/deploy/production.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/deploy/production.rb" afterDir="false" />
-    </list>
+    <list default="true" id="2a2e4aa1-93ac-4a71-a04c-86b144ad4cb1" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
     <ignored path="$PROJECT_DIR$/public/system/" />
@@ -754,7 +752,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="349226000" />
+    <option name="totallyTimeSpent" value="349733000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-2" y="353" width="2560" height="1247" extended-state="0" />
@@ -1115,17 +1113,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/sidekiq.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/deploy/production.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="513">
           <caret line="86" column="5" selection-start-line="86" selection-start-column="5" selection-end-line="86" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/sidekiq.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
         </state>
       </provider>
     </entry>
