@@ -86,16 +86,6 @@ namespace :deploy do
     end
   end
 
-  task :sidekiq_start do
-    on roles(:app) do |host|
-      within current_path do
-        with rails_env: fetch(:rails_env) do
-          execute :bundle, :exec, "sidekiq -e production -C #{shared_path}/config/sidekiq.yml -d"
-        end
-      end
-    end
-  end
-
   desc 'upload important files'
   task :upload do
     on roles(:app) do |host|
@@ -117,7 +107,6 @@ namespace :deploy do
 
   before :started,   'deploy:upload'
   after  :finishing, 'deploy:cleanup'
-  after  :finishing, 'deploy:sidekiq_start'
 
   desc 'Restart application'
   task :restart do
