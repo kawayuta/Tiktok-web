@@ -43,7 +43,7 @@ namespace :task_database do
   task :get_tag_data => :environment do
     Tag.all.each do |tag|
       sleep(5)
-      Tag.new_tag(tag.tag_title)
+      TagJob.perform_later(tag.tag_title)
     end
   end
 

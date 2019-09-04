@@ -35,7 +35,6 @@ class Tag < ApplicationRecord
   def self.get_tag_from_keyword(search)
     url = URI.encode "https://www.tiktok.com/tag/#{search}"
     charset = nil
-
     html = open(url) do |f|
       charset = f.charset
       f.read
