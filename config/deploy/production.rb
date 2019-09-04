@@ -19,12 +19,13 @@ set :keep_releases, 5
 set :deploy_via, :remote_cache
 
 set :log_level, :debug
-set :pty, false
+set :pty, true
 
 set :linked_files, %w{config/database.yml config/secrets.yml}
 set :linked_dirs,  %w{bin log tmp/pids tmp/sockets tmp/cache vender/bundle}
 
 after 'deploy:publishing', 'deploy:restart'
+after 'deploy:sidekiq_start', 'deploy:restart'
 namespace :deploy do
 
   desc 'Restart application'
@@ -81,6 +82,16 @@ namespace :deploy do
       within current_path do
         with rails_env: fetch(:rails_env) do
           execute :rake, 'RAILS_ENV=production db:migrate:reset DISABLE_DATABASE_ENVIRONMENT_CHECK=1'
+        end
+      end
+    end
+  end
+
+  task :sidekiq_start do
+    on roles(:db) do |host|
+      within current_path do
+        with rails_env: fetch(:rails_env) do
+          execute :rake, 'RAILS_ENV=production sidekiq'
         end
       end
     end
