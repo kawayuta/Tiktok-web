@@ -38,6 +38,9 @@ gem 'google-analytics-rails'
 gem 'redis'
 gem 'redis-rails'
 gem 'hiredis'
+gem 'sidekiq'
+gem 'sidekiq-scheduler'
+gem 'sinatra', require: false
 # Use CoffeeScript for .coffee assets and views
 # gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -76,6 +79,7 @@ group :development do
   gem 'capistrano-bundler'
   gem 'capistrano-rbenv'
   gem 'capistrano3-unicorn'
+  gem 'capistrano-sidekiq'
 end
 
 group :test do

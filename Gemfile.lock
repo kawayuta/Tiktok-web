@@ -74,6 +74,9 @@ GEM
     capistrano-rbenv (2.1.4)
       capistrano (~> 3.1)
       sshkit (~> 1.3)
+    capistrano-sidekiq (1.0.2)
+      capistrano (>= 3.9.0)
+      sidekiq (>= 3.4)
     capistrano3-unicorn (0.2.1)
       capistrano (~> 3.1, >= 3.1.0)
     capybara (3.28.0)
@@ -102,12 +105,17 @@ GEM
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
     erubi (1.8.0)
+    et-orbi (1.2.2)
+      tzinfo
     execjs (2.7.0)
     faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
     ffi (1.11.1)
     font-awesome-sass (5.4.1)
       sassc (>= 1.11)
+    fugit (1.3.3)
+      et-orbi (~> 1.1, >= 1.1.8)
+      raabro (~> 1.1)
     get_process_mem (0.2.4)
       ffi (~> 1.0)
     globalid (0.4.2)
@@ -182,6 +190,7 @@ GEM
     msgpack (1.3.1)
     multi_json (1.13.1)
     multipart-post (2.1.1)
+    mustermann (1.0.3)
     mysql2 (0.5.2)
     net-http-digest_auth (1.4.1)
     net-http-persistent (3.1.0)
@@ -198,9 +207,12 @@ GEM
     parallel (1.17.0)
     public_suffix (3.1.1)
     puma (3.12.1)
+    raabro (1.1.6)
     rack (2.0.7)
     rack-attack (6.1.0)
       rack (>= 1.0, < 3)
+    rack-protection (2.0.7)
+      rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (5.2.3)
@@ -259,6 +271,8 @@ GEM
       rails (>= 4.2)
     ruby_dep (1.5.0)
     rubyzip (1.2.3)
+    rufus-scheduler (3.6.0)
+      fugit (~> 1.1, >= 1.1.6)
     sass (3.7.4)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -275,11 +289,26 @@ GEM
     selenium-webdriver (3.142.3)
       childprocess (>= 0.5, < 2.0)
       rubyzip (~> 1.2, >= 1.2.2)
+    sidekiq (6.0.0)
+      connection_pool (>= 2.2.2)
+      rack (>= 2.0.0)
+      rack-protection (>= 2.0.0)
+      redis (>= 4.1.0)
+    sidekiq-scheduler (3.0.0)
+      redis (>= 3, < 5)
+      rufus-scheduler (~> 3.2)
+      sidekiq (>= 3)
+      tilt (>= 1.4.0)
     signet (0.11.0)
       addressable (~> 2.3)
       faraday (~> 0.9)
       jwt (>= 1.5, < 3.0)
       multi_json (~> 1.10)
+    sinatra (2.0.7)
+      mustermann (~> 1.0)
+      rack (~> 2.0)
+      rack-protection (= 2.0.7)
+      tilt (~> 2.0)
     sitemap_generator (6.0.2)
       builder (~> 3.0)
     socksify (1.7.1)
@@ -357,6 +386,7 @@ DEPENDENCIES
   capistrano-bundler
   capistrano-rails
   capistrano-rbenv
+  capistrano-sidekiq
   capistrano3-unicorn
   capybara (>= 2.15)
   chartable
@@ -383,6 +413,9 @@ DEPENDENCIES
   roboto
   sass-rails (~> 5.0)
   selenium-webdriver
+  sidekiq
+  sidekiq-scheduler
+  sinatra
   sitemap_generator
   spring
   spring-watcher-listen (~> 2.0.0)

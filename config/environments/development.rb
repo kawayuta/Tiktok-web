@@ -15,6 +15,7 @@ Rails.application.configure do
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
   if Rails.root.join('tmp', 'caching-dev.txt').exist?
+    config.cache_store = :redis_store, "redis://localhost:6379/0/cache"
     config.action_controller.perform_caching = true
 
     config.public_file_server.headers = {
@@ -23,9 +24,9 @@ Rails.application.configure do
   else
     config.cache_store = :redis_store, "redis://localhost:6379/0/cache"
     config.action_controller.perform_caching = true
-
-    config.cache_store = :null_store
   end
+
+  config.active_job.queue_adapter = :sidekiq
 
   # Store uploaded files on the local file system (see config/storage.yml for options)
   config.active_storage.service = :local

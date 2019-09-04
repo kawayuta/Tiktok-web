@@ -17,4 +17,13 @@ Rails.application.routes.draw do
   # post 'tag/:keyword', to: 'tags#search'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  #
+  require 'sidekiq/web'
+  require 'sidekiq-scheduler/web'
+
+  Sidekiq::Web.use Rack::Auth::Basic do |username, password|
+    username == 'kawayuta' && password == 'nyaumyuuta1123'
+  end
+  mount Sidekiq::Web, at: "/sidekiq"
+
 end

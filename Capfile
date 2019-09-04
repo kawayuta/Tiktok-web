@@ -5,7 +5,9 @@ require 'capistrano/rbenv'
 require 'capistrano/bundler'
 require 'capistrano3/unicorn'
 require 'whenever/capistrano'
-require "capistrano/scm/git"
+require 'capistrano/scm/git'
+require 'capistrano/sidekiq'
+require 'capistrano/sidekiq/monit'
 install_plugin Capistrano::SCM::Git
 
 # Include tasks from other gems included in your Gemfile
