@@ -15,32 +15,35 @@ class Tag < ApplicationRecord
     caps = Selenium::WebDriver::Remote::Capabilities.chrome("chromeOptions" => {binary: '/usr/local/bin/chromedriver', args: ["--headless", "--disable-gpu", "--user-agent=#{ua}", "window-size=1280x800"]})
     driver = Selenium::WebDriver.for :chrome, options: options, http_client: client, desired_capabilities: caps
 
-    unless @tag.nil?
-      ActiveRecord::Base.connection_pool.with_connection do
-        if @tag.updated_at.strftime("%Y-%m-%d") != Time.current.strftime("%Y-%m-%d") && @tag.updated_at.strftime("%Y-%m-%d") != "2001-01-01"
-          puts "update tag"
-          tag = Tag.get_tag("https://www.tiktok.com/tag/#{search}?langCountry=ja", driver)
-          @tag.update(tag)
-          @tag.updated_at = "2001-01-01"
-          @tag.save!
+    begin
+      unless @tag.nil?
+        ActiveRecord::Base.connection_pool.with_connection do
+          if @tag.updated_at.strftime("%Y-%m-%d") != Time.current.strftime("%Y-%m-%d") && @tag.updated_at.strftime("%Y-%m-%d") != "2001-01-01"
+            puts "update tag"
+            tag = Tag.get_tag("https://www.tiktok.com/tag/#{search}?langCountry=ja", driver)
+            @tag.update(tag)
+            @tag.updated_at = "2001-01-01"
+            @tag.save!
+          end
+          unless TagHistory.where(tag_title: search, created_at: Time.current.strftime("%Y-%m-%d").in_time_zone.all_day).present?
+            puts "update history"
+            tag = Tag.get_tag("https://www.tiktok.com/tag/#{search}?langCountry=ja", driver)
+            @old = TagHistory.create(tag)
+          end
         end
-        unless TagHistory.where(tag_title: search, created_at: Time.current.strftime("%Y-%m-%d").in_time_zone.all_day).present?
-          puts "update history"
-          tag = Tag.get_tag("https://www.tiktok.com/tag/#{search}?langCountry=ja", driver)
+      else
+        ActiveRecord::Base.connection_pool.with_connection do
+          puts "new tag & histories"
+          url = "https://www.tiktok.com/tag/#{search}?langCountry=ja"
+          tag = Tag.get_tag(url, driver)
+          @tag = Tag.create(tag)
           @old = TagHistory.create(tag)
         end
       end
-    else
-      ActiveRecord::Base.connection_pool.with_connection do
-        puts "new tag & histories"
-        url = "https://www.tiktok.com/tag/#{search}?langCountry=ja"
-        tag = Tag.get_tag(url, driver)
-        @tag = Tag.create(tag)
-        @old = TagHistory.create(tag)
-      end
+    rescue => error
+      driver.close
+      driver.quit
     end
-
-
     driver.close
     driver.quit
   end
@@ -80,8 +83,13 @@ class Tag < ApplicationRecord
       urls.push("https://www.tiktok.com/embed/#{item.css('a')[0][:href].split('/').last}")
     end
 
-    urls.uniq.each do |u|
-      get_video_from_embed(u, driver)
+    begin
+      urls.uniq.each do |u|
+        get_video_from_embed(u, driver)
+      end
+    rescue => error
+      driver.close
+      driver.quit
     end
     driver.close
     driver.quit

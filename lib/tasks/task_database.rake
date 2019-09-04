@@ -46,9 +46,14 @@ namespace :task_database do
         urls.push("https://www.tiktok.com/embed/#{item.css('a')[0][:href].split('/').last}")
       end
 
-      urls.uniq.each do |u|
-        sleep(5)
-        Tag.get_video_from_embed(u, driver)
+      begin
+        urls.uniq.each do |u|
+          sleep(5)
+          Tag.get_video_from_embed(u, driver)
+        end
+      rescue => error
+        driver.close
+        driver.quit
       end
 
       driver.close
@@ -104,8 +109,13 @@ namespace :task_database do
       urls.push("https://www.tiktok.com/embed/#{item.css('a')[0][:href].split('/').last}")
     end
 
-    urls.uniq.each do |u|
-      Tag.get_video_from_embed_task(u, driver)
+    begin
+      urls.uniq.each do |u|
+        Tag.get_video_from_embed_task(u, driver)
+      end
+    rescue => error
+      driver.close
+      driver.quit
     end
 
     driver.close
