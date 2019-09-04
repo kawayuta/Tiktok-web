@@ -19,7 +19,7 @@ set :keep_releases, 5
 set :deploy_via, :remote_cache
 
 set :log_level, :debug
-set :pty, false
+set :pty, true
 
 set :linked_files, %w{config/database.yml config/secrets.yml}
 set :linked_dirs,  %w{bin log tmp/pids tmp/sockets tmp/cache vender/bundle}
@@ -27,20 +27,12 @@ set :linked_dirs,  %w{bin log tmp/pids tmp/sockets tmp/cache vender/bundle}
 after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
 
-
   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
       execute :mkdir, '-p', release_path.join('tmp')
       execute :touch, release_path.join('tmp/restart.txt')
     end
-  end
-
-  task :add_default_hooks do
-    after 'deploy:starting',  'sidekiq:quiet'
-    after 'deploy:updated',   'sidekiq:stop'
-    after 'deploy:published', 'sidekiq:start'
-    after 'deploy:failed', 'sidekiq:restart'
   end
 
   task :task_tag_update do
