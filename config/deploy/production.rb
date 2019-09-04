@@ -19,7 +19,7 @@ set :keep_releases, 5
 set :deploy_via, :remote_cache
 
 set :log_level, :debug
-set :pty, false
+set :pty, true
 
 set :linked_files, %w{config/database.yml config/secrets.yml}
 set :linked_dirs,  %w{bin log tmp/pids tmp/sockets tmp/cache vender/bundle}
@@ -90,7 +90,7 @@ namespace :deploy do
     on roles(:db) do |host|
       within current_path do
         with rails_env: fetch(:rails_env) do
-          execute :rake, 'bundle exec sidekiq --environment production --daemon'
+          execute :rake, 'bundle exec sidekiq --environment=production --daemon'
         end
       end
     end
