@@ -82,6 +82,7 @@
       <h2><i class="fas fa-cookie-bite"></i> 「<%= @tag.tag_title %>」おすすめ動画</h2>
       <ul>
         <% if @videos.present? %>
+
           <% @videos.shuffle.take(30).each_with_index do |video, i| %>
             <li>
               <%= image_tag video.video_cover_image, class: "video_data video_index_#{i}",
@@ -112,7 +113,8 @@
             <%= link_to "すべてのランキング", ranking_tag_path(@tag) %>
           </div>
           <ul>
-            <% @videos_rank.each_with_index do |video, index| %>
+            <% cache @videos_rank do %>
+          <% @videos_rank.each_with_index do |video, index| %>
               <li>
                 <p class="rank_index rank_index_<%= index + 1 %>"><%= index + 1 %></p>
                 <div>
@@ -135,6 +137,8 @@
             <li class="ranking_more">
               <%= link_to "もっと見る", ranking_tag_path(@tag) %>
             </li>
+            <% end %>
+
           </ul>
         </section>
       </div>
@@ -142,12 +146,16 @@
       <div>
         <section class="video_content_item_transition">
           <h2><i class="fas fa-cookie-bite"></i> タグ総再生回数 推移</h2>
-          <%= line_chart @tag_histries_posts.pluck(:created_at,:tag_views_count).map { |e| [ e[0].strftime("%Y-%m-%d"), e[1] ] } , xtitle: "日付", ytitle: "総再生回数" %>
+          <% cache @tag_histries_posts_trans_views_count do %>
+            <%= line_chart @tag_histries_posts_trans_views_count , xtitle: "日付", ytitle: "総再生回数" %>
+          <% end %>
         </section>
 
         <section class="video_content_item_transition">
           <h2><i class="fas fa-cookie-bite"></i> タグ動画投稿数 推移</h2>
-          <%= line_chart @tag_histries_posts.pluck(:created_at,:tag_posts_count).map { |e| [ e[0].strftime("%Y-%m-%d"), e[1] ] } , xtitle: "日付", ytitle: "動画投稿数" %>
+          <% cache @tag_histries_posts_trans_posts_count do %>
+            <%= line_chart @tag_histries_posts_trans_posts_count , xtitle: "日付", ytitle: "動画投稿数" %>
+          <% end %>
         </section>
       </div>
     </div>

@@ -19,7 +19,9 @@ class TagsController < ApplicationController
     @videos = @videos_data.select { |v| v.video_tags.include?(@tag.tag_title) unless v.video_tags.nil? }.shuffle!
     @videos_rank = @videos.sort_by {|array| Integer(array.video_interaction_count)}.first(10).reverse.to_a
 
-    @tag_histries_posts = cache_tags_histories.select {|h|h.tag_title == @tag.tag_title}
+    @tag_histries_posts_trans_views_count = cache_tags_histories.select {|h|h.tag_title == @tag.tag_title}.pluck(:created_at,:tag_views_count).map { |e| [ e[0].strftime("%Y-%m-%d"), e[1] ] }
+    @tag_histries_posts_trans_posts_count = cache_tags_histories.select {|h|h.tag_title == @tag.tag_title}.pluck(:created_at,:tag_posts_count).map { |e| [ e[0].strftime("%Y-%m-%d"), e[1] ] }
+
   end
 
   # GET /tags/new
