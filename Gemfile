@@ -39,6 +39,7 @@ gem 'redis'
 gem 'redis-rails'
 gem 'hiredis'
 gem 'sidekiq'
+gem 'redis-namespace'
 gem 'sidekiq-scheduler'
 gem 'sinatra', require: false
 # Use CoffeeScript for .coffee assets and views
