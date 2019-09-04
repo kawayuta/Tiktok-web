@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a2e4aa1-93ac-4a71-a04c-86b144ad4cb1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/deploy/production.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/deploy/production.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/initializers/sidekiq.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/initializers/sidekiq.rb" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -60,7 +59,7 @@
           <entry key="lock" value="7" />
           <entry key="png" value="2" />
           <entry key="rake" value="8" />
-          <entry key="rb" value="154" />
+          <entry key="rb" value="155" />
           <entry key="ru" value="5" />
           <entry key="scss" value="15" />
           <entry key="svg" value="3" />
@@ -77,7 +76,7 @@
           <entry key="JavaScript" value="16" />
           <entry key="PLAIN_TEXT" value="19" />
           <entry key="RHTML" value="44" />
-          <entry key="Ruby" value="179" />
+          <entry key="Ruby" value="180" />
           <entry key="SCSS" value="15" />
           <entry key="SVG" value="3" />
           <entry key="YAML" value="13" />
@@ -94,7 +93,7 @@
           <entry key="js" value="2639" />
           <entry key="lock" value="8" />
           <entry key="rake" value="6391" />
-          <entry key="rb" value="7600" />
+          <entry key="rb" value="7607" />
           <entry key="ru" value="12" />
           <entry key="scss" value="6535" />
           <entry key="txt" value="30" />
@@ -108,7 +107,7 @@
           <entry key="JavaScript" value="2620" />
           <entry key="PLAIN_TEXT" value="54" />
           <entry key="RHTML" value="5892" />
-          <entry key="Ruby" value="14160" />
+          <entry key="Ruby" value="14167" />
           <entry key="SCSS" value="6535" />
           <entry key="YAML" value="103" />
         </counts>
@@ -225,8 +224,17 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/config/environments/production.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="824">
+                <state relative-caret-position="1105">
                   <caret line="65" column="44" selection-start-line="65" selection-start-column="44" selection-end-line="65" selection-end-column="44" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/config/initializers/sidekiq.rb">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="85">
+                  <caret line="5" column="70" selection-start-line="5" selection-start-column="70" selection-end-line="5" selection-end-column="70" />
                 </state>
               </provider>
             </entry>
@@ -266,17 +274,17 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Gemfile">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="643">
-                  <caret line="76" selection-start-line="76" selection-end-line="76" />
+                <state relative-caret-position="669">
+                  <caret line="41" column="20" selection-start-line="41" selection-start-column="11" selection-end-line="41" selection-end-column="20" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/config/deploy/production.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1143">
-                  <caret line="124" lean-forward="true" selection-start-line="124" selection-end-line="124" />
+                <state relative-caret-position="1178">
+                  <caret line="119" column="19" selection-start-line="119" selection-start-column="19" selection-end-line="119" selection-end-column="19" />
                 </state>
               </provider>
             </entry>
@@ -286,15 +294,6 @@
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="238">
                   <caret line="14" selection-start-line="14" selection-end-line="14" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/lib/capistrano/tasks/unicorn.cap">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="34">
-                  <caret line="2" column="44" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="44" />
                 </state>
               </provider>
             </entry>
@@ -313,7 +312,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>header</find>
       <find>end</find>
       <find>&lt;video</find>
       <find>load</find>
@@ -342,6 +340,7 @@
       <find>queue_adapter</find>
       <find>@videos_trend_rank</find>
       <find>get_video_from_embed</find>
+      <find>namespace</find>
       <find>publishing</find>
     </findStrings>
     <replaceStrings>
@@ -401,10 +400,10 @@
         <option value="$PROJECT_DIR$/app/jobs/video_job.rb" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
         <option value="$PROJECT_DIR$/config/sidekiq.yml" />
-        <option value="$PROJECT_DIR$/config/initializers/sidekiq.rb" />
         <option value="$PROJECT_DIR$/Capfile" />
-        <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/config/deploy/production.rb" />
+        <option value="$PROJECT_DIR$/Gemfile" />
+        <option value="$PROJECT_DIR$/config/initializers/sidekiq.rb" />
       </list>
     </option>
   </component>
@@ -775,7 +774,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="347345000" />
+    <option name="totallyTimeSpent" value="347632000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-2" y="353" width="2560" height="1247" extended-state="0" />
@@ -1070,13 +1069,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/initializers/sidekiq.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/capistrano/tasks/unicorn.cap">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -1098,27 +1090,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Gemfile.lock">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Gemfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="643">
-          <caret line="76" selection-start-line="76" selection-end-line="76" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/robots/production.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/environments/production.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="824">
-          <caret line="65" column="44" selection-start-line="65" selection-start-column="44" selection-end-line="65" selection-end-column="44" />
         </state>
       </provider>
     </entry>
@@ -1136,6 +1111,9 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Gemfile.lock">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/config/sidekiq.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -1143,10 +1121,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Gemfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="669">
+          <caret line="41" column="20" selection-start-line="41" selection-start-column="11" selection-end-line="41" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/config/deploy/production.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1143">
-          <caret line="124" lean-forward="true" selection-start-line="124" selection-end-line="124" />
+        <state relative-caret-position="1178">
+          <caret line="119" column="19" selection-start-line="119" selection-start-column="19" selection-end-line="119" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/environments/production.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1105">
+          <caret line="65" column="44" selection-start-line="65" selection-start-column="44" selection-end-line="65" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/initializers/sidekiq.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="70" selection-start-line="5" selection-start-column="70" selection-end-line="5" selection-end-column="70" />
         </state>
       </provider>
     </entry>
