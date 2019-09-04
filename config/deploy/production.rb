@@ -110,13 +110,13 @@ namespace :deploy do
 
       within release_path do
         execute :rm, '-rf', release_path.join('tmp/cache')
+        execute :sudo, :systemctl, :restart, :sidekiq
       end
     end
   end
 
   before :started,   'deploy:upload'
   after  :finishing, 'deploy:cleanup'
-  after  :finishing, 'deploy:sidekiq_start'
 
   desc 'Restart application'
   task :restart do
