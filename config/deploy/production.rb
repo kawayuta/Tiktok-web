@@ -90,7 +90,7 @@ namespace :deploy do
     on roles(:app) do |host|
       within current_path do
         with rails_env: fetch(:rails_env) do
-          execute :bundle, :exec, "sidekiq -e production --daemon"
+          execute :bundle, :exec, "sidekiq -e production -C #{shared_path}/config/sidekiq.yml -d"
         end
       end
     end
@@ -115,8 +115,7 @@ namespace :deploy do
   end
 
   before :started,   'deploy:upload'
-  after  :finishing, 'deploy:cleanup'
-  after  :finishing, 'deploy:sidekiq_start'
+  after  :finishing, 'deploy:cleanup','deploy:sidekiq_start'
 
   desc 'Restart application'
   task :restart do
