@@ -16,6 +16,7 @@ $(document).ready(function () {
   $('.video_comment_count').text(next_v.data('video-comment-count'));
   $('.video_share_count').text(next_v.data('video-share-count'));
   $('.video_user_covers img').attr('src', next_v.data('video-user-covers'));
+  $('.video_user_covers img').attr('alt', next_v.data('video-title'));
   $('.video_user_covers').attr('href', '/users/' + next_v.data('video-user-id'));
   $('.video_user_nick_name').text(next_v.data('video-user-nick-name'));
 
@@ -168,6 +169,7 @@ $(".video_data").click(function(){
       $('.video_comment_count').text(next_v.data('video-comment-count'));
       $('.video_share_count').text(next_v.data('video-share-count'));
       $('.video_user_covers img').attr('src', next_v.data('video-user-covers'));
+      $('.video_user_covers img').attr('alt', next_v.data('video-title'));
       $('.video_user_covers').attr('href', '/users/' + next_v.data('video-user-id'));
       $('.video_user_nick_name').text(next_v.data('video-user-nick-name'));
 
