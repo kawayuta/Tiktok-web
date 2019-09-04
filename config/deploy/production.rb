@@ -25,6 +25,9 @@ set :pty, true
 set :linked_files, %w{config/database.yml config/secrets.yml}
 set :linked_dirs,  %w{bin log tmp/pids tmp/sockets tmp/cache vender/bundle}
 
+SSHKit.config.command_map[:sidekiq] = "bundle exec sidekiq"
+SSHKit.config.command_map[:sidekiqctl] = "bundle exec sidekiqctl"
+
 after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
 
