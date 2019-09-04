@@ -25,7 +25,6 @@ set :linked_files, %w{config/database.yml config/secrets.yml}
 set :linked_dirs,  %w{bin log tmp/pids tmp/sockets tmp/cache vender/bundle}
 
 after 'deploy:publishing', 'deploy:restart'
-after 'deploy:sidekiq_start', 'deploy:restart'
 namespace :deploy do
 
   desc 'Restart application'
@@ -117,6 +116,7 @@ namespace :deploy do
 
   before :started,   'deploy:upload'
   after  :finishing, 'deploy:cleanup'
+  after  :finishing, 'deploy:sidekiq_start'
 
   desc 'Restart application'
   task :restart do
