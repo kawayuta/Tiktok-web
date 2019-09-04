@@ -25,8 +25,6 @@ set :pty, true
 set :linked_files, %w{config/database.yml config/secrets.yml}
 set :linked_dirs,  %w{bin log tmp/pids tmp/sockets tmp/cache vender/bundle}
 
-set :pty, true
-
 after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
 
