@@ -418,4 +418,23 @@ class Tag < ApplicationRecord
     }
     return tag
   end
+
+  def self.old()
+
+    client = Selenium::WebDriver::Remote::Http::Default.new
+    client.read_timeout = 120 # seconds
+    options = Selenium::WebDriver::Chrome::Options.new
+    options.add_argument('--headless')
+    options.add_argument('--no-sandbox')
+    options.add_argument('--disable-dev-shm-usage')
+    options.add_argument('--window-size=1,1')
+    # options.add_argument('--proxy-server=%s' % "socks5://127.0.0.1:9050")
+    ua = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.116 Safari/537.36"
+
+    caps = Selenium::WebDriver::Remote::Capabilities.chrome("chromeOptions" => {binary: '/usr/local/bin/chromedriver', args: ["--headless", "--disable-gpu", "--user-agent=#{ua}", "window-size=1280x800"]})
+    driver = Selenium::WebDriver.for :chrome, options: options, http_client: client, desired_capabilities: caps
+
+    driver.closee
+    driver.quit
+  end
 end
