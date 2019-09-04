@@ -68,7 +68,7 @@ namespace :task_database do
       end
 
       embeds.each do |url|
-        Tag.get_video_from_embed_new(url)
+        VideoJob.perform_later(url)
       end
     end
   end
@@ -91,7 +91,7 @@ namespace :task_database do
     end
 
     embeds.each do |url|
-      Tag.get_video_from_embed_task_new(url)
+      VideoTaskJob.perform_later(url)
     end
   end
 

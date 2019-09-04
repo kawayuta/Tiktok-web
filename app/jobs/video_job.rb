@@ -1,8 +1,8 @@
 class VideoJob < ApplicationJob
   queue_as :default
 
-  def perform(keyword)
+  def perform(url)
     puts "ジョブ実行"
-    Tag.get_tag_from_keyword(keyword)
+    Tag.get_video_from_embed_new(url)
   end
 end

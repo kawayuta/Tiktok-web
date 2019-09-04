@@ -50,7 +50,7 @@ class Tag < ApplicationRecord
     end
 
     embeds.each do |url|
-      get_video_from_embed_new(url)
+      VideoJob.perform_later(url)
     end
 
   end
@@ -419,7 +419,7 @@ class Tag < ApplicationRecord
     return tag
   end
 
-  def self.old()
+  def self.old_arg
 
     client = Selenium::WebDriver::Remote::Http::Default.new
     client.read_timeout = 120 # seconds

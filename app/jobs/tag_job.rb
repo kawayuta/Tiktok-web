@@ -1,8 +1,7 @@
 class TagJob < ApplicationJob
   queue_as :default
 
-  def perform(args)
+  def perform(url)
     puts "TAG ジョブが実行されたよ！＼(^o^)／"
-    Tag.new_tag(args)
   end
 end
