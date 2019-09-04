@@ -116,7 +116,6 @@ namespace :deploy do
 
   before :started,   'deploy:upload'
   after  :finishing, 'deploy:cleanup'
-  after  :finishing, 'deploy:sidekiq_start'
 
   desc 'Restart application'
   task :restart do
