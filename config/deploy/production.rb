@@ -88,7 +88,11 @@ namespace :deploy do
 
   task :sidekiq_start do
     on roles(:app) do |host|
-      execute 'bundle exec sidekiq --environment=production --daemon'
+      within current_path do
+        with rails_env: fetch(:rails_env) do
+          execute 'bundle exec sidekiq --environment=production --daemon'
+        end
+      end
     end
   end
 
