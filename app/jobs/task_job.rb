@@ -1,4 +1,4 @@
-class VideoTaskJob < ApplicationJob
+class TaskJob < ApplicationJob
   queue_as :default
 
   def perform(url)

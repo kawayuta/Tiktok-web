@@ -91,7 +91,7 @@ namespace :task_database do
     end
 
     embeds.each do |url|
-      VideoTaskJob.perform_later(url)
+      TaskJob.perform_later(url)
     end
   end
 
