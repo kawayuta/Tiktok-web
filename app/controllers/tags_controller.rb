@@ -25,6 +25,7 @@ class TagsController < ApplicationController
     @videos.shuffle!
     @videos_rank = @videos.sort_by {|array| Integer(array.video_interaction_count)}.first(10).reverse.to_a
 
+    @tag_histries_posts = cache_tags_histories.select {|h|h.tag_title == @tag.tag_title}
   end
 
   # GET /tags/new
@@ -136,20 +137,26 @@ class TagsController < ApplicationController
     end
 
     def cache_videos
-      Rails.cache.fetch("cache_videos", expired_in: 60.minutes) do
+      Rails.cache.fetch("cache_videos", expired_in: 720.minutes) do
         Video.eager_load(:user).all.to_a
       end
     end
 
     def cache_videos_trending
-      Rails.cache.fetch("cache_videos_trending", expired_in: 60.minutes) do
+      Rails.cache.fetch("cache_videos_trending", expired_in: 720.minutes) do
         Video.eager_load(:user).where(video_trending: true).to_a
       end
     end
 
     def cache_tags_trending
-      Rails.cache.fetch("cache_tags_trending", expired_in: 60.minutes) do
+      Rails.cache.fetch("cache_tags_trending", expired_in: 720.minutes) do
         Tag.where(tag_trending: true).to_a
+      end
+    end
+
+    def cache_tags_histories
+      Rails.cache.fetch("cache_tags_histories", expired_in: 720.minutes) do
+        TagHistory.all.to_a
       end
     end
 
