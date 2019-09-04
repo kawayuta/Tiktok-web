@@ -6,8 +6,43 @@ namespace :task_database do
   require 'tor-privoxy'
   require 'socksify/http'
 
+
+  task :test => :environment do
+    url = 'https://www.tiktok.com/tag/%E3%82%A2%E3%83%8B%E3%83%A1'
+    charset = nil
+
+    html = open(url) do |f|
+      charset = f.charset
+      f.read
+    end
+
+    doc = Nokogiri::HTML.parse(html, nil, charset)
+
+    js = doc.search('script').to_s
+    @tag_official_id = js.split('challengeId":')[1].split(',')[0].delete('"') unless js.split('challengeId":')[1].nil?
+    @tag_title = js.split('challengeName":')[1].split(',')[0].delete('"') unless js.split('challengeName":')[1].nil?
+    @tag_text = js.split('","text":"')[1].split(',')[0].delete('"') unless js.split('","text":"')[1].nil?
+    @tag_cover_image = js.split('covers":')[1].split(',')[0].delete('["').delete('"]') unless js.split('covers":')[1].nil?
+    @tag_posts_count = js.split('posts":')[2].split(',')[0] unless js.split('posts":')[2].nil?
+    @tag_views_count = js.split('views":')[2].split(',')[0].delete('"').delete('}') unless js.split('views":')[2].nil?
+    @tag_url = url
+
+    tag = {
+        "tag_official_id": @tag_official_id,
+        "tag_title": @tag_title,
+        "tag_text": @tag_text,
+        "tag_cover_image": @tag_cover_image,
+        "tag_posts_count": @tag_posts_count,
+        "tag_views_count": @tag_views_count,
+        "tag_url": @tag_url
+    }
+
+    puts tag
+  end
+
   task :get_tag_data => :environment do
     Tag.all.each do |tag|
+      sleep(5)
       Tag.new_tag(tag.tag_title)
     end
   end
@@ -15,111 +50,49 @@ namespace :task_database do
   task :get_video_from_tag => :environment do
 
     Tag.all.each do |tag|
-      client = Selenium::WebDriver::Remote::Http::Default.new
-      client.read_timeout = 120 # seconds
-      options = Selenium::WebDriver::Chrome::Options.new
-      options.add_argument('--headless')
-      options.add_argument('--no-sandbox')
-      options.add_argument('--disable-dev-shm-usage')
-      # options.add_argument('--proxy-server=%s' % "socks5://127.0.0.1:9050")
+      sleep(10)
+      url = URI.encode "https://www.tiktok.com/tag/#{tag.tag_title}"
+      charset = nil
 
-      ua = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.116 Safari/537.36"
-
-      caps = Selenium::WebDriver::Remote::Capabilities.chrome("chromeOptions" => {binary: '/usr/local/bin/chromedriver', args: ["--headless", "--disable-gpu", "--user-agent=#{ua}", "window-size=1280x800"]})
-      driver = Selenium::WebDriver.for :chrome, options: options, http_client: client, desired_capabilities: caps
-      driver.get "https://www.tiktok.com/tag/#{tag.tag_title}"
-
-      doc = Nokogiri::HTML(driver.page_source)
-      # elements = doc.search('script').to_s.split('name":"').drop(1)
-
-      urls = []
-      # elements.each do |el|
-      #   unless el.split('"url":"')[1].nil?
-      #     @video_url = el.split('"url":"')[1].split('","')[0]
-      #     @video_official_id = @video_url.split('/').last
-      #     urls.push("https://www.tiktok.com/embed/#{@video_official_id}")
-      #   end
-      # end
-
-      doc.css('._video_feed_item').each do |item|
-        puts item.css('a')[0][:href].split('/').last
-        urls.push("https://www.tiktok.com/embed/#{item.css('a')[0][:href].split('/').last}")
+      html = open(url) do |f|
+        charset = f.charset
+        f.read
       end
 
-      begin
-        urls.uniq.each do |u|
-          sleep(5)
-          Tag.get_video_from_embed(u, driver)
-        end
-      rescue => error
-        driver.close
-        driver.quit
+      doc = Nokogiri::HTML.parse(html, nil, charset)
+
+      embeds = []
+      script = doc.css('script').to_s
+      script.split('"embedUrl":"').drop(1).each do |n|
+        embeds.push(n.split('","')[0])
       end
 
-      driver.close
-      driver.quit
+      embeds.each do |url|
+        Tag.get_video_from_embed_new(url)
+      end
     end
   end
 
   task :get_trending => :environment do
-    client = Selenium::WebDriver::Remote::Http::Default.new
-    client.read_timeout = 120 # seconds
-    options = Selenium::WebDriver::Chrome::Options.new
-    options.add_argument('--headless')
-    options.add_argument('--no-sandbox')
-    options.add_argument('--disable-dev-shm-usage')
-    # options.add_argument('--proxy-server=%s' % "socks5://127.0.0.1:9050")
+    url = URI.encode "https://www.tiktok.com/ja/trending"
+    charset = nil
 
-    ua = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.116 Safari/537.36"
-
-    caps = Selenium::WebDriver::Remote::Capabilities.chrome("chromeOptions" => {binary: '/usr/local/bin/chromedriver', args: ["--headless", "--disable-gpu", "--user-agent=#{ua}", "window-size=1280x800"]})
-    driver = Selenium::WebDriver.for :chrome, options: options, http_client: client, desired_capabilities: caps
-    driver.get "https://www.tiktok.com/ja/trending"
-
-    doc = Nokogiri::HTML(driver.page_source)
-    # elements = doc.search('script').to_s.split('name":"').drop(1)
-
-    @video_trending = Video.where(video_trending: true)
-    unless @video_trending.nil?
-      @video_trending.each do |v|
-        v.video_trending = false
-        v.save
-      end
+    html = open(url) do |f|
+      charset = f.charset
+      f.read
     end
 
-    @tag_trending = Tag.where(tag_trending: true)
-    unless @tag_trending.nil?
-      @tag_trending.each do |t|
-        t.tag_trending = false
-        t.save
-      end
+    doc = Nokogiri::HTML.parse(html, nil, charset)
+
+    embeds = []
+    script = doc.css('script').to_s
+    script.split('"embedUrl":"').drop(1).each do |n|
+      embeds.push(n.split('","')[0])
     end
 
-    urls = []
-    # elements.each do |el|
-    #   unless el.split('"url":"')[1].nil?
-    #     @video_url = el.split('"url":"')[1].split('","')[0]
-    #     @video_official_id = @video_url.split('/').last
-    #     urls.push("https://www.tiktok.com/embed/#{@video_official_id}")
-    #   end
-    # end
-
-    doc.css('._video_feed_item').each do |item|
-      puts item.css('a')[0][:href].split('/').last
-      urls.push("https://www.tiktok.com/embed/#{item.css('a')[0][:href].split('/').last}")
+    embeds.each do |url|
+      Tag.get_video_from_embed_task_new(url)
     end
-
-    begin
-      urls.uniq.each do |u|
-        Tag.get_video_from_embed_task(u, driver)
-      end
-    rescue => error
-      driver.close
-      driver.quit
-    end
-
-    driver.close
-    driver.quit
   end
 
   def self.has_mb?(str)

@@ -1,102 +1,216 @@
 class Tag < ApplicationRecord
 
+  require 'nokogiri'
+  require 'open-uri'
   def self.new_tag(search)
     @tag = Tag.find_by(tag_title: search)
-
-    client = Selenium::WebDriver::Remote::Http::Default.new
-    client.read_timeout = 120 # seconds
-    options = Selenium::WebDriver::Chrome::Options.new
-    options.add_argument('--headless')
-    options.add_argument('--no-sandbox')
-    options.add_argument('--disable-dev-shm-usage')
-    # options.add_argument('--proxy-server=%s' % "socks5://127.0.0.1:9050")
-    ua = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.116 Safari/537.36"
-
-    caps = Selenium::WebDriver::Remote::Capabilities.chrome("chromeOptions" => {binary: '/usr/local/bin/chromedriver', args: ["--headless", "--disable-gpu", "--user-agent=#{ua}", "window-size=1280x800"]})
-    driver = Selenium::WebDriver.for :chrome, options: options, http_client: client, desired_capabilities: caps
-
     begin
       unless @tag.nil?
         ActiveRecord::Base.connection_pool.with_connection do
           if @tag.updated_at.strftime("%Y-%m-%d") != Time.current.strftime("%Y-%m-%d") && @tag.updated_at.strftime("%Y-%m-%d") != "2001-01-01"
             puts "update tag"
-            tag = Tag.get_tag("https://www.tiktok.com/tag/#{search}?langCountry=ja", driver)
+            tag = Tag.get_tag("https://www.tiktok.com/tag/#{search}")
             @tag.update(tag)
             @tag.updated_at = "2001-01-01"
             @tag.save!
           end
           unless TagHistory.where(tag_title: search, created_at: Time.current.strftime("%Y-%m-%d").in_time_zone.all_day).present?
             puts "update history"
-            tag = Tag.get_tag("https://www.tiktok.com/tag/#{search}?langCountry=ja", driver)
+            tag = Tag.get_tag("https://www.tiktok.com/tag/#{search}")
             @old = TagHistory.create(tag)
           end
         end
       else
         ActiveRecord::Base.connection_pool.with_connection do
           puts "new tag & histories"
-          url = "https://www.tiktok.com/tag/#{search}?langCountry=ja"
-          tag = Tag.get_tag(url, driver)
+          tag = Tag.get_tag("https://www.tiktok.com/tag/#{search}")
           @tag = Tag.create(tag)
           @old = TagHistory.create(tag)
         end
       end
     rescue => error
-      driver.close
-      driver.quit
     end
-    driver.close
-    driver.quit
   end
 
   def self.get_tag_from_keyword(search)
-    client = Selenium::WebDriver::Remote::Http::Default.new
-    client.read_timeout = 120 # seconds
-    options = Selenium::WebDriver::Chrome::Options.new
-    options.add_argument('--headless')
-    options.add_argument('--no-sandbox')
-    options.add_argument('--disable-dev-shm-usage')
-    # options.add_argument('--proxy-server=%s' % "socks5://127.0.0.1:9050")
+    url = URI.encode "https://www.tiktok.com/tag/#{search}"
+    charset = nil
 
-    ua = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.116 Safari/537.36"
-
-    caps = Selenium::WebDriver::Remote::Capabilities.chrome("chromeOptions" => {binary: '/usr/local/bin/chromedriver', args: ["--headless", "--disable-gpu", "--user-agent=#{ua}", "window-size=1280x800"]})
-    driver = Selenium::WebDriver.for :chrome, options: options, http_client: client, desired_capabilities: caps
-    driver.get "https://www.tiktok.com/tag/#{search}?langCountry=ja"
-
-    doc = Nokogiri::HTML(driver.page_source)
-
-    elements = doc.search('script').to_s.split('name":"').drop(1)
-
-    @tag = Tag.find_by(tag_title: search)
-
-    urls = []
-    # elements.each do |el|
-    #   unless el.split('"url":"')[1].nil?
-    #     @video_url = el.split('"url":"')[1].split('","')[0]
-    #     @video_official_id = @video_url.split('/').last
-    #     urls.push("https://www.tiktok.com/embed/#{@video_official_id}")
-    #   end
-    # end
-    #
-    doc.css('._video_feed_item').each do |item|
-      puts item.css('a')[0][:href].split('/').last
-      urls.push("https://www.tiktok.com/embed/#{item.css('a')[0][:href].split('/').last}")
+    html = open(url) do |f|
+      charset = f.charset
+      f.read
     end
 
-    begin
-      urls.uniq.each do |u|
-        get_video_from_embed(u, driver)
-      end
-    rescue => error
-      driver.close
-      driver.quit
+    doc = Nokogiri::HTML.parse(html, nil, charset)
+
+    embeds = []
+    script = doc.css('script').to_s
+    script.split('"embedUrl":"').drop(1).each do |n|
+      embeds.push(n.split('","')[0])
     end
-    driver.close
-    driver.quit
+
+    embeds.each do |url|
+      get_video_from_embed_new(url)
+    end
 
   end
 
+  def self.get_video_from_embed_task_new(url)
+    url = url
+    charset = nil
+    html = open(url) do |f|
+      charset = f.charset
+      f.read
+    end
+    doc = Nokogiri::HTML.parse(html, nil, charset)
+    a = doc.css('script').to_s
+    @video_official_id = a.split('"id":"')[1].split('","')[0] unless a.split('"id":"')[1].nil?
+    @video_interaction_count = a.split('"diggCount":')[1].split(',"')[0] unless a.split('"diggCount":')[1].nil?
+    @video_share_count = a.split('"shareCount":')[1].split(',"')[0] unless a.split('"shareCount":')[1].nil?
+    @video_comment_count = a.split('"commentCount":')[1].split(',"')[0] unless a.split('"commentCount":')[1].nil?
+    @video_url = "https://tiktok.com/node/video/playwm?id=#{@video_official_id}" unless @video_official_id.nil?
+    @video_cover_url = a.split('"urlsOrigin":["')[1].split('"],"')[0] unless a.split('"urlsOrigin":["')[1].nil?
 
+    @video_text_title = a.split('"text":"')[1].split('","')[0].split('#')[0] unless a.split('"text":"')[1].nil?
+    @video_tags_title = a.split('"text":"')[1].split('","')[0].split('#').drop(1).map(&:strip!).compact! unless a.split('"text":"')[1].nil?
+    @video_user_official_id = a.split('"secUid":"')[1].split('","')[0] unless a.split('"secUid":"')[1].nil?
+    @video_user_nick_name = a.split('"nickName":"')[1].split('","')[0] unless a.split('"nickName":"')[1].nil?
+    @video_user_cover = a.split('"avatarUriOrigin":["')[1].split('"],"')[0] unless a.split('"avatarUriOrigin":["')[1].nil?
+
+    user = {
+        "user_official_id": @video_user_official_id,
+        "user_nick_name": @video_user_nick_name,
+        "user_covers": @video_user_cover,
+    }
+
+    video = {
+        "video_url": @video_url,
+        "video_official_id": @video_official_id,
+        "video_title": @video_text_title,
+        "video_tags": @video_tags_title,
+        "video_comment_count": @video_comment_count,
+        "video_share_count": @video_share_count,
+        "video_interaction_count": @video_interaction_count,
+        "video_cover_image": @video_cover_url,
+        "video_trending": false
+    }
+
+    unless User.find_by(user_official_id: user[:user_official_id]).nil?
+      ActiveRecord::Base.connection_pool.with_connection do
+        puts "update user"
+        @user = User.find_by(user_official_id: user[:user_official_id])
+        @user.update(user)
+      end
+    else
+      ActiveRecord::Base.connection_pool.with_connection do
+        @user = User.create(user)
+        puts "new user"
+      end
+
+    end
+
+    unless @user.videos.find_by(video_official_id: video[:video_official_id]).nil?
+      ActiveRecord::Base.connection_pool.with_connection do
+        puts "update video"
+        @video = @user.videos.find_by(video_official_id: video[:video_official_id])
+        @video.update(video)
+      end
+    else
+      ActiveRecord::Base.connection_pool.with_connection do
+        @video = @user.videos.create(video)
+      end
+    end
+
+    unless @video_tags_title.nil?
+      @video_tags_title.each do |tag|
+        tag = {
+            "tag_title": tag,
+            "tag_url": "https://www.tiktok.com/tag/#{tag}?langCountry=ja",
+            "tag_trending": "true"
+        }
+
+        puts tag[:tag_title]
+        @tag = Tag.find_by(tag_title: tag[:tag_title])
+        unless @tag.nil?
+          @tag.update(tag)
+        else
+          @tag = Tag.create(tag)
+        end
+        @tag.updated_at = "2000-01-01"
+        @tag.save!
+      end
+    end
+
+  end
+
+  def self.get_video_from_embed_new(url)
+    url = url
+    charset = nil
+    html = open(url) do |f|
+      charset = f.charset
+      f.read
+    end
+    doc = Nokogiri::HTML.parse(html, nil, charset)
+    a = doc.css('script').to_s
+    @video_official_id = a.split('"id":"')[1].split('","')[0] unless a.split('"id":"')[1].nil?
+    @video_interaction_count = a.split('"diggCount":')[1].split(',"')[0] unless a.split('"diggCount":')[1].nil?
+    @video_share_count = a.split('"shareCount":')[1].split(',"')[0] unless a.split('"shareCount":')[1].nil?
+    @video_comment_count = a.split('"commentCount":')[1].split(',"')[0] unless a.split('"commentCount":')[1].nil?
+    @video_url = "https://tiktok.com/node/video/playwm?id=#{@video_official_id}" unless @video_official_id.nil?
+    @video_cover_url = a.split('"urlsOrigin":["')[1].split('"],"')[0] unless a.split('"urlsOrigin":["')[1].nil?
+
+    @video_text_title = a.split('"text":"')[1].split('","')[0].split('#')[0] unless a.split('"text":"')[1].nil?
+    @video_tags_title = a.split('"text":"')[1].split('","')[0].split('#').drop(1).map(&:strip!).compact! unless a.split('"text":"')[1].nil?
+    @video_user_official_id = a.split('"secUid":"')[1].split('","')[0] unless a.split('"secUid":"')[1].nil?
+    @video_user_nick_name = a.split('"nickName":"')[1].split('","')[0] unless a.split('"nickName":"')[1].nil?
+    @video_user_cover = a.split('"avatarUriOrigin":["')[1].split('"],"')[0] unless a.split('"avatarUriOrigin":["')[1].nil?
+
+    user = {
+        "user_official_id": @video_user_official_id,
+        "user_nick_name": @video_user_nick_name,
+        "user_covers": @video_user_cover,
+    }
+
+    video = {
+        "video_url": @video_url,
+        "video_official_id": @video_official_id,
+        "video_title": @video_text_title,
+        "video_tags": @video_tags_title,
+        "video_comment_count": @video_comment_count,
+        "video_share_count": @video_share_count,
+        "video_interaction_count": @video_interaction_count,
+        "video_cover_image": @video_cover_url,
+        "video_trending": false
+    }
+
+    unless User.find_by(user_official_id: user[:user_official_id]).nil?
+      ActiveRecord::Base.connection_pool.with_connection do
+        puts "update user"
+        @user = User.find_by(user_official_id: user[:user_official_id])
+        @user.update(user)
+      end
+    else
+      ActiveRecord::Base.connection_pool.with_connection do
+        @user = User.create(user)
+        puts "new user"
+      end
+
+    end
+
+    unless @user.videos.find_by(video_official_id: video[:video_official_id]).nil?
+      ActiveRecord::Base.connection_pool.with_connection do
+        puts "update video"
+        @video = @user.videos.find_by(video_official_id: video[:video_official_id])
+        @video.update(video)
+      end
+    else
+      ActiveRecord::Base.connection_pool.with_connection do
+        puts "create video"
+        @video = @user.videos.create(video)
+      end
+    end
+
+  end
 
   def self.get_video_from_embed_task(url, driver)
     driver.get url
@@ -259,25 +373,32 @@ class Tag < ApplicationRecord
         end
       end
 
-      unless @video_tags_title.nil?
-        @video_tags_title.each do |tag|
-          @tag = {
-              "tag_title": tag,
-              "tag_url": "https://www.tiktok.com/tag/#{tag}?langCountry=ja",
-              "tag_trending": "false"
-          }
-        end
-      end
+      # unless @video_tags_title.nil?
+      #   @video_tags_title.each do |tag|
+      #     @tag = {
+      #         "tag_title": tag,
+      #         "tag_url": "https://www.tiktok.com/tag/#{tag}?langCountry=ja",
+      #         "tag_trending": "false"
+      #     }
+      #   end
+      # end
 
     end
 
   end
 
-  def self.get_tag(url, driver)
-    driver.get url
-    doc_tag = Nokogiri::HTML(driver.page_source)
+  def self.get_tag(url)
+    url = URI.encode url
+    charset = nil
 
-    js = doc_tag.search('script').to_s
+    html = open(url) do |f|
+      charset = f.charset
+      f.read
+    end
+
+    doc = Nokogiri::HTML.parse(html, nil, charset)
+
+    js = doc.search('script').to_s
     @tag_official_id = js.split('challengeId":')[1].split(',')[0].delete('"') unless js.split('challengeId":')[1].nil?
     @tag_title = js.split('challengeName":')[1].split(',')[0].delete('"') unless js.split('challengeName":')[1].nil?
     @tag_text = js.split('","text":"')[1].split(',')[0].delete('"') unless js.split('","text":"')[1].nil?
@@ -295,8 +416,6 @@ class Tag < ApplicationRecord
         "tag_views_count": @tag_views_count,
         "tag_url": @tag_url
     }
-
-    puts tag
     return tag
   end
 end

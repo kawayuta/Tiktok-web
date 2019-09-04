@@ -16,18 +16,18 @@ Rails.application.configure do
   # Run rails dev:cache to toggle caching.
   config.sass.inline_source_maps = true
   if Rails.root.join('tmp', 'caching-dev.txt').exist?
-    config.cache_store = :redis_store, "redis://localhost:6379/0/cache"
-    config.action_controller.perform_caching = true
+    # config.cache_store = :redis_store, "redis://localhost:6379/0/cache"
+    # config.action_controller.perform_caching = true
 
     config.public_file_server.headers = {
       'Cache-Control' => "public, max-age=#{2.days.to_i}"
     }
   else
-    config.cache_store = :redis_store, "redis://localhost:6379/0/cache"
-    config.action_controller.perform_caching = true
+    # config.cache_store = :redis_store, "redis://localhost:6379/0/cache"
+    # config.action_controller.perform_caching = true
   end
 
-  config.active_job.queue_adapter = :sidekiq
+  # config.active_job.queue_adapter = :sidekiq
 
   # Store uploaded files on the local file system (see config/storage.yml for options)
   config.active_storage.service = :local
