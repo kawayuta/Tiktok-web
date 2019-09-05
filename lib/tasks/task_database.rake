@@ -42,7 +42,7 @@ namespace :task_database do
 
   task :get_tag_data => :environment do
     Tag.all.each do |tag|
-      sleep(5)
+      # sleep(5)
       TagJob.perform_later(tag.tag_title)
     end
   end
@@ -50,7 +50,7 @@ namespace :task_database do
   task :get_video_from_tag => :environment do
 
     Tag.all.each do |tag|
-      sleep(10)
+      # sleep(10)
       url = URI.encode "https://www.tiktok.com/tag/#{tag.tag_title}"
       charset = nil
 
