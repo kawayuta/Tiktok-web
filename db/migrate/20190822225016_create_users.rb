@@ -1,7 +1,7 @@
 class CreateUsers < ActiveRecord::Migration[5.2]
   def change
     create_table :users do |t|
-      t.text :user_official_id
+      t.text :user_official_id, unique: true
       t.text :user_nick_name
       t.text :user_signature
       t.text :user_covers

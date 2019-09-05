@@ -1,8 +1,8 @@
 class CreateTags < ActiveRecord::Migration[5.2]
   def change
     create_table :tags do |t|
-      t.text :tag_official_id
-      t.text :tag_title
+      t.text :tag_official_id, unique: true
+      t.text :tag_title, unique: true
       t.text :tag_text
       t.text :tag_cover_image
       t.text :tag_posts_count

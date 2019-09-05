@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a2e4aa1-93ac-4a71-a04c-86b144ad4cb1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/config/sidekiq.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config/sidekiq.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20190822223011_create_videos.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20190822223011_create_videos.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20190822225016_create_users.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20190822225016_create_users.rb" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -59,7 +60,7 @@
           <entry key="lock" value="7" />
           <entry key="png" value="2" />
           <entry key="rake" value="10" />
-          <entry key="rb" value="177" />
+          <entry key="rb" value="179" />
           <entry key="ru" value="5" />
           <entry key="scss" value="15" />
           <entry key="svg" value="3" />
@@ -76,7 +77,7 @@
           <entry key="JavaScript" value="16" />
           <entry key="PLAIN_TEXT" value="21" />
           <entry key="RHTML" value="53" />
-          <entry key="Ruby" value="204" />
+          <entry key="Ruby" value="206" />
           <entry key="SCSS" value="15" />
           <entry key="SVG" value="3" />
           <entry key="YAML" value="16" />
@@ -93,7 +94,7 @@
           <entry key="js" value="2639" />
           <entry key="lock" value="8" />
           <entry key="rake" value="6926" />
-          <entry key="rb" value="8170" />
+          <entry key="rb" value="8185" />
           <entry key="ru" value="12" />
           <entry key="scss" value="6535" />
           <entry key="txt" value="30" />
@@ -107,7 +108,7 @@
           <entry key="JavaScript" value="2620" />
           <entry key="PLAIN_TEXT" value="54" />
           <entry key="RHTML" value="5924" />
-          <entry key="Ruby" value="15271" />
+          <entry key="Ruby" value="15286" />
           <entry key="SCSS" value="6535" />
           <entry key="YAML" value="127" />
         </counts>
@@ -136,11 +137,29 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/config/sidekiq.yml">
               <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="85">
+                  <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/db/migrate/20190822225016_create_users.rb">
+              <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="51">
-                  <caret line="3" column="16" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
+                  <caret line="3" column="44" lean-forward="true" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="44" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/db/migrate/20190822223011_create_videos.rb">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="493">
+                  <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
                 </state>
               </provider>
             </entry>
@@ -155,15 +174,6 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/jobs/tag_job.rb">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="204">
-                  <caret line="12" selection-start-line="12" selection-end-line="12" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/lib/tasks/task_database.rake">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="527">
@@ -171,15 +181,6 @@
                   <folding>
                     <element signature="e#183#1443#0" />
                   </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/config/environments/development.rb">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1020">
-                  <caret line="60" column="61" selection-start-line="60" selection-start-column="61" selection-end-line="60" selection-end-column="61" />
                 </state>
               </provider>
             </entry>
@@ -364,9 +365,7 @@
         <option value="$PROJECT_DIR$/app/models/user.rb" />
         <option value="$PROJECT_DIR$/app/models/video.rb" />
         <option value="$PROJECT_DIR$/config/initializers/meta_tags.rb" />
-        <option value="$PROJECT_DIR$/db/migrate/20190822223011_create_videos.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20190822232910_create_tags.rb" />
-        <option value="$PROJECT_DIR$/db/migrate/20190822225016_create_users.rb" />
         <option value="$PROJECT_DIR$/config/deploy.rb" />
         <option value="$PROJECT_DIR$/config/robots/production.txt" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/users.scss" />
@@ -408,6 +407,8 @@
         <option value="$PROJECT_DIR$/lib/tasks/task_database.rake" />
         <option value="$PROJECT_DIR$/app/models/tag.rb" />
         <option value="$PROJECT_DIR$/config/sidekiq.yml" />
+        <option value="$PROJECT_DIR$/db/migrate/20190822225016_create_users.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20190822223011_create_videos.rb" />
       </list>
     </option>
   </component>
@@ -810,13 +811,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="383307000" />
+    <option name="totallyTimeSpent" value="384112000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-2" y="353" width="2560" height="1247" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16322479" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20373312" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -859,16 +860,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/config/spring.rb">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="24" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/swiper.min.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1181,8 +1172,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/sidekiq.yml">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20190822225016_create_users.rb">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
-          <caret line="3" column="16" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
+          <caret line="3" column="44" lean-forward="true" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20190822223011_create_videos.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
         </state>
       </provider>
     </entry>
