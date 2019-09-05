@@ -12,7 +12,7 @@ class TagsController < ApplicationController
   # GET /tags/1.json
   def show
 
-    return redirect_to root_path unless @tag.nil?
+    return redirect_to root_path if @tag.nil?
 
     @trending_videos = cache_videos_trending.take(10)
     @trending_tags = cache_tags_trending.take(10)
