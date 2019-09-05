@@ -11,7 +11,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.text :user_video_count
       t.boolean :user_verified
       t.text :user_region
-      t.text :user_url
+      t.text :user_url, unique: true
 
       t.timestamps
     end

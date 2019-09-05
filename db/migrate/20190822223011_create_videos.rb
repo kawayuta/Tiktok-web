@@ -2,7 +2,7 @@ class CreateVideos < ActiveRecord::Migration[5.2]
   def change
     create_table :videos do |t|
       t.references :user
-      t.text :video_url
+      t.text :video_url, unique: true
       t.text :video_official_id, unique: true
       t.text :video_title
       t.text :video_tags, array: true
