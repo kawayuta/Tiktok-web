@@ -2,6 +2,7 @@ class Tag < ApplicationRecord
 
   require 'nokogiri'
   require 'open-uri'
+  require 'socksify'
   def self.new_tag(search)
     @tag = Tag.find_by(tag_title: search)
     begin
@@ -34,38 +35,40 @@ class Tag < ApplicationRecord
 
   def self.get_tag_from_keyword(search)
     begin
-      url = URI.encode "https://www.tiktok.com/tag/#{search}"
-      charset = nil
-      html = open(url) do |f|
-        charset = f.charset
-        f.read
-      end
 
-      doc = Nokogiri::HTML.parse(html, nil, charset)
+      Socksify::proxy("127.0.0.1", 9050) {
+        url = URI.encode "https://www.tiktok.com/tag/#{search}"
+        charset = nil
+        html = open(url) do |f|
+          charset = f.charset
+          f.read
+        end
+        doc = Nokogiri::HTML.parse(html, nil, charset)
+        embeds = []
+        script = doc.css('script').to_s
+        script.split('"embedUrl":"').drop(1).each do |n|
+          embeds.push(n.split('","')[0])
+        end
 
-      puts doc
-      embeds = []
-      script = doc.css('script').to_s
-      script.split('"embedUrl":"').drop(1).each do |n|
-        embeds.push(n.split('","')[0])
-      end
-
-      embeds.each do |url|
-        VideoJob.perform_later(url)
-      end
+        embeds.each do |url|
+          VideoJob.perform_later(url)
+        end
+      }
     rescue => error
     end
 
   end
 
   def self.get_video_from_embed_task_new(url)
-    url = URI.encode url
-    charset = nil
-    html = open(url) do |f|
-      charset = f.charset
-      f.read
-    end
-    doc = Nokogiri::HTML.parse(html, nil, charset)
+
+    Socksify::proxy("127.0.0.1", 9050) {
+      url = URI.encode url
+      charset = nil
+      html = open(url) do |f|
+        charset = f.charset
+        f.read
+      end
+      doc = Nokogiri::HTML.parse(html, nil, charset)
     a = doc.css('script').to_s
     @video_official_id = a.split('"id":"')[1].split('","')[0] unless a.split('"id":"')[1].nil?
     @video_interaction_count = a.split('"diggCount":')[1].split(',"')[0] unless a.split('"diggCount":')[1].nil?
@@ -143,10 +146,13 @@ class Tag < ApplicationRecord
         @tag.save!
       end
     end
+    }
 
   end
 
   def self.get_video_from_embed_new(url)
+
+    Socksify::proxy("127.0.0.1", 9050) {
     url = URI.encode url
     charset = nil
     html = open(url) do |f|
@@ -212,6 +218,7 @@ class Tag < ApplicationRecord
         @video = @user.videos.create(video)
       end
     end
+    }
 
   end
 
@@ -391,6 +398,7 @@ class Tag < ApplicationRecord
   end
 
   def self.get_tag(url)
+    Socksify::proxy("127.0.0.1", 9050) {
     url = URI.encode url
     charset = nil
 
@@ -420,6 +428,7 @@ class Tag < ApplicationRecord
         "tag_url": @tag_url
     }
     return tag
+    }
   end
 
   def self.old_arg

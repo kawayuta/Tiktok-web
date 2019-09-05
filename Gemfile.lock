@@ -427,6 +427,7 @@ DEPENDENCIES
   sidekiq-scheduler
   sinatra
   sitemap_generator
+  socksify
   spring
   spring-watcher-listen (~> 2.0.0)
   tor
