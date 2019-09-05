@@ -7,7 +7,7 @@ class CreateTagHistories < ActiveRecord::Migration[5.2]
       t.text :tag_cover_image
       t.text :tag_posts_count
       t.text :tag_views_count
-      t.text :tag_url
+      t.text :tag_url, unique: true
       t.boolean :tag_trending
 
       t.timestamps

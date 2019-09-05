@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   has_many :videos
 
+  validates :user_official_id, uniqueness: true
+  validates :user_url, uniqueness: true
+
   def self.get_user(url)
     client = Selenium::WebDriver::Remote::Http::Default.new
     client.read_timeout = 120 # seconds

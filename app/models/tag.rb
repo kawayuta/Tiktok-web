@@ -4,6 +4,10 @@ class Tag < ApplicationRecord
   require 'open-uri'
   require 'socksify'
 
+  validates :tag_official_id, uniqueness: true
+  validates :tag_title, uniqueness: true
+  validates :tag_url, uniqueness: true
+
   def self.new_tag(search)
     @tag = Tag.find_by(tag_title: search)
     begin
