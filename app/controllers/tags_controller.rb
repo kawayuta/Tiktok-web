@@ -77,7 +77,7 @@ class TagsController < ApplicationController
 
   def search
 
-    return redirect_to tag_path(1) if search_params[:keyword] == ""
+    return redirect_to root_path if search_params[:keyword] == ""
 
     @tag = Tag.find_by(tag_title: search_params[:keyword])
 
