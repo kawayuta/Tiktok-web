@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="2a2e4aa1-93ac-4a71-a04c-86b144ad4cb1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/app/models/tag.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/tag.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/tasks/task_database.rake" beforeDir="false" afterPath="$PROJECT_DIR$/lib/tasks/task_database.rake" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -93,8 +92,8 @@
           <entry key="html" value="2" />
           <entry key="js" value="2639" />
           <entry key="lock" value="8" />
-          <entry key="rake" value="6924" />
-          <entry key="rb" value="8169" />
+          <entry key="rake" value="6926" />
+          <entry key="rb" value="8170" />
           <entry key="ru" value="12" />
           <entry key="scss" value="6535" />
           <entry key="txt" value="30" />
@@ -108,7 +107,7 @@
           <entry key="JavaScript" value="2620" />
           <entry key="PLAIN_TEXT" value="54" />
           <entry key="RHTML" value="5924" />
-          <entry key="Ruby" value="15268" />
+          <entry key="Ruby" value="15271" />
           <entry key="SCSS" value="6535" />
           <entry key="YAML" value="125" />
         </counts>
@@ -116,7 +115,7 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.14285715">
+    <splitter split-orientation="horizontal" split-proportion="0.37826294">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
@@ -167,8 +166,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/lib/tasks/task_database.rake">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1394">
-                  <caret line="113" lean-forward="true" selection-start-line="113" selection-end-line="113" />
+                <state relative-caret-position="527">
+                  <caret line="62" selection-start-line="62" selection-end-line="62" />
                   <folding>
                     <element signature="e#183#1443#0" />
                   </folding>
@@ -219,8 +218,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/models/tag.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="476">
-                  <caret line="28" column="10" lean-forward="true" selection-start-line="28" selection-start-column="10" selection-end-line="28" selection-end-column="10" />
+                <state relative-caret-position="357">
+                  <caret line="21" column="41" selection-start-line="21" selection-start-column="41" selection-end-line="21" selection-end-column="41" />
                   <folding>
                     <element signature="e#1201#1707#0" />
                     <element signature="e#1842#5483#0" />
@@ -811,7 +810,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="382307000" />
+    <option name="totallyTimeSpent" value="382917000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-2" y="353" width="2560" height="1247" extended-state="0" />
@@ -853,7 +852,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="ruby-line">
           <url>file://$PROJECT_DIR$/app/models/tag.rb</url>
-          <line>462</line>
+          <line>458</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
@@ -1163,8 +1162,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/tasks/task_database.rake">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1394">
-          <caret line="113" lean-forward="true" selection-start-line="113" selection-end-line="113" />
+        <state relative-caret-position="527">
+          <caret line="62" selection-start-line="62" selection-end-line="62" />
           <folding>
             <element signature="e#183#1443#0" />
           </folding>
@@ -1173,8 +1172,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/tag.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="10" lean-forward="true" selection-start-line="28" selection-start-column="10" selection-end-line="28" selection-end-column="10" />
+        <state relative-caret-position="357">
+          <caret line="21" column="41" selection-start-line="21" selection-start-column="41" selection-end-line="21" selection-end-column="41" />
           <folding>
             <element signature="e#1201#1707#0" />
             <element signature="e#1842#5483#0" />

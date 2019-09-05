@@ -20,10 +20,6 @@ class Tag < ApplicationRecord
             puts "create history"
             tag = Tag.get_tag("https://www.tiktok.com/tag/#{search}")
             @old = TagHistory.create(tag)
-          else
-            puts "update history"
-            tag = Tag.get_tag("https://www.tiktok.com/tag/#{search}")
-            @old = TagHistory.where(tag_title: search, created_at: Time.current.strftime("%Y-%m-%d").in_time_zone.all_day).update(tag)
           end
         end
       else
