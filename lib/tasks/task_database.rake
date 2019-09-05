@@ -42,7 +42,6 @@ namespace :task_database do
 
   task :get_tag_data => :environment do
     Tag.all.each do |tag|
-      # sleep(5)
       TagJob.perform_later(tag.tag_title)
     end
   end
@@ -51,7 +50,35 @@ namespace :task_database do
 
     Tag.all.each do |tag|
       # sleep(10)
-      url = URI.encode "https://www.tiktok.com/tag/#{tag.tag_title}"
+      begin
+        url = URI.encode "https://www.tiktok.com/tag/#{tag.tag_title}"
+        charset = nil
+
+        html = open(url) do |f|
+          charset = f.charset
+          f.read
+        end
+
+        doc = Nokogiri::HTML.parse(html, nil, charset)
+
+        embeds = []
+        script = doc.css('script').to_s
+        script.split('"embedUrl":"').drop(1).each do |n|
+          embeds.push(n.split('","')[0])
+        end
+
+        embeds.each do |url|
+          VideoJob.perform_later(url)
+        end
+      rescue => error
+        puts "TASK_DATABASE 例外やで"
+      end
+    end
+  end
+
+  task :get_trending => :environment do
+    begin
+      url = URI.encode "https://www.tiktok.com/ja/trending"
       charset = nil
 
       html = open(url) do |f|
@@ -68,30 +95,10 @@ namespace :task_database do
       end
 
       embeds.each do |url|
-        VideoJob.perform_later(url)
+        TaskJob.perform_later(url)
       end
-    end
-  end
-
-  task :get_trending => :environment do
-    url = URI.encode "https://www.tiktok.com/ja/trending"
-    charset = nil
-
-    html = open(url) do |f|
-      charset = f.charset
-      f.read
-    end
-
-    doc = Nokogiri::HTML.parse(html, nil, charset)
-
-    embeds = []
-    script = doc.css('script').to_s
-    script.split('"embedUrl":"').drop(1).each do |n|
-      embeds.push(n.split('","')[0])
-    end
-
-    embeds.each do |url|
-      TaskJob.perform_later(url)
+    rescue => error
+      puts "TASK_DATABASE 例外やで"
     end
   end
 
