@@ -60,13 +60,12 @@ namespace :task_database do
           script.split('"embedUrl":"').drop(1).each do |n|
             embeds.push(n.split('","')[0])
           end
-
           embeds.each do |url|
             VideoJob.perform_later(url)
           end
         }
       rescue => error
-        puts "TASK_DATABASE 例外やで"
+        puts error
       end
     end
   end
