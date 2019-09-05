@@ -38,7 +38,7 @@ namespace :task_database do
   end
 
   task :get_tag_data => :environment do
-    Tag.all.each do |tag|
+    Parallel.each(Tag.all, in_processes: 10) do |tag|
       Tag.new_tag(tag.tag_title)
     end
   end
@@ -60,9 +60,11 @@ namespace :task_database do
           script.split('"embedUrl":"').drop(1).each do |n|
             embeds.push(n.split('","')[0])
           end
-          embeds.each do |url|
+
+          Parallel.each(embeds, in_processes: 10) do |url|
             Tag.get_video_from_embed_new(url)
           end
+
         }
       rescue => error
         puts error
@@ -101,7 +103,7 @@ namespace :task_database do
         #   end
         # end
 
-        embeds.each do |url|
+        Parallel.each(embeds, in_processes: 10) do |url|
           Tag.get_video_from_embed_task_new(url)
         end
       }
