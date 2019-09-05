@@ -107,4 +107,5 @@ ActiveRecord::Schema.define(version: 2019_09_02_095022) do
     t.index ["video_trending"], name: "index_videos_on_video_trending"
   end
 
+  add_foreign_key "videos", "users"
 end

@@ -1,7 +1,7 @@
 class CreateVideos < ActiveRecord::Migration[5.2]
   def change
     create_table :videos do |t|
-      t.references :user
+      t.references :user, foreign_key: true
       t.text :video_url, unique: true
       t.text :video_official_id, unique: true
       t.text :video_title
