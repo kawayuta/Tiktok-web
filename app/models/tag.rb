@@ -231,9 +231,9 @@ class Tag < ApplicationRecord
           @tag.update(tag)
         else
           @tag = Tag.create(tag)
+          @tag.updated_at = "2000-01-01"
+          @tag.save!
         end
-        @tag.updated_at = "2000-01-01"
-        @tag.save!
       end
     end
     }
