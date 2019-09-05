@@ -55,169 +55,160 @@ class Tag < ApplicationRecord
   end
 
   def self.get_video_from_embed_task_new(url)
-    begin
-      url = url
-      charset = nil
-      html = open(url) do |f|
-        charset = f.charset
-        f.read
-      end
-      doc = Nokogiri::HTML.parse(html, nil, charset)
-      a = doc.css('script').to_s
-      @video_official_id = a.split('"id":"')[1].split('","')[0] unless a.split('"id":"')[1].nil?
-      @video_interaction_count = a.split('"diggCount":')[1].split(',"')[0] unless a.split('"diggCount":')[1].nil?
-      @video_share_count = a.split('"shareCount":')[1].split(',"')[0] unless a.split('"shareCount":')[1].nil?
-      @video_comment_count = a.split('"commentCount":')[1].split(',"')[0] unless a.split('"commentCount":')[1].nil?
-      @video_url = "https://tiktok.com/node/video/playwm?id=#{@video_official_id}" unless @video_official_id.nil?
-      @video_cover_url = a.split('"urlsOrigin":["')[1].split('"],"')[0] unless a.split('"urlsOrigin":["')[1].nil?
-
-      @video_text_title = a.split('"text":"')[1].split('","')[0].split('#')[0] unless a.split('"text":"')[1].nil?
-      @video_tags_title = a.split('"text":"')[1].split('","')[0].split('#').drop(1).map(&:strip!).compact! unless a.split('"text":"')[1].nil?
-      @video_user_official_id = a.split('"secUid":"')[1].split('","')[0] unless a.split('"secUid":"')[1].nil?
-      @video_user_nick_name = a.split('"nickName":"')[1].split('","')[0] unless a.split('"nickName":"')[1].nil?
-      @video_user_cover = a.split('"avatarUriOrigin":["')[1].split('"],"')[0] unless a.split('"avatarUriOrigin":["')[1].nil?
-
-      user = {
-          "user_official_id": @video_user_official_id,
-          "user_nick_name": @video_user_nick_name,
-          "user_covers": @video_user_cover,
-      }
-
-      video = {
-          "video_url": @video_url,
-          "video_official_id": @video_official_id,
-          "video_title": @video_text_title,
-          "video_tags": @video_tags_title,
-          "video_comment_count": @video_comment_count,
-          "video_share_count": @video_share_count,
-          "video_interaction_count": @video_interaction_count,
-          "video_cover_image": @video_cover_url,
-          "video_trending": false
-      }
-
-      unless User.find_by(user_official_id: user[:user_official_id]).nil?
-        ActiveRecord::Base.connection_pool.with_connection do
-          puts "update user"
-          @user = User.find_by(user_official_id: user[:user_official_id])
-          @user.update(user)
-        end
-      else
-        ActiveRecord::Base.connection_pool.with_connection do
-          @user = User.create(user)
-          puts "new user"
-        end
-
-      end
-
-      unless @user.videos.find_by(video_official_id: video[:video_official_id]).nil?
-        ActiveRecord::Base.connection_pool.with_connection do
-          puts "update video"
-          @video = @user.videos.find_by(video_official_id: video[:video_official_id])
-          @video.update(video)
-        end
-      else
-        ActiveRecord::Base.connection_pool.with_connection do
-          @video = @user.videos.create(video)
-        end
-      end
-
-      unless @video_tags_title.nil?
-        @video_tags_title.each do |tag|
-          tag = {
-              "tag_title": tag,
-              "tag_url": "https://www.tiktok.com/tag/#{tag}?langCountry=ja",
-              "tag_trending": "true"
-          }
-
-          puts tag[:tag_title]
-          @tag = Tag.find_by(tag_title: tag[:tag_title])
-          unless @tag.nil?
-            @tag.update(tag)
-          else
-            @tag = Tag.create(tag)
-          end
-          @tag.updated_at = "2000-01-01"
-          @tag.save!
-        end
-      end
-
-    rescue => error
-      puts "例外やで"
+    url = URI.encode url
+    charset = nil
+    html = open(url) do |f|
+      charset = f.charset
+      f.read
     end
+    doc = Nokogiri::HTML.parse(html, nil, charset)
+    a = doc.css('script').to_s
+    @video_official_id = a.split('"id":"')[1].split('","')[0] unless a.split('"id":"')[1].nil?
+    @video_interaction_count = a.split('"diggCount":')[1].split(',"')[0] unless a.split('"diggCount":')[1].nil?
+    @video_share_count = a.split('"shareCount":')[1].split(',"')[0] unless a.split('"shareCount":')[1].nil?
+    @video_comment_count = a.split('"commentCount":')[1].split(',"')[0] unless a.split('"commentCount":')[1].nil?
+    @video_url = "https://tiktok.com/node/video/playwm?id=#{@video_official_id}" unless @video_official_id.nil?
+    @video_cover_url = a.split('"urlsOrigin":["')[1].split('"],"')[0] unless a.split('"urlsOrigin":["')[1].nil?
+
+    @video_text_title = a.split('"text":"')[1].split('","')[0].split('#')[0] unless a.split('"text":"')[1].nil?
+    @video_tags_title = a.split('"text":"')[1].split('","')[0].split('#').drop(1).map(&:strip!).compact! unless a.split('"text":"')[1].nil?
+    @video_user_official_id = a.split('"secUid":"')[1].split('","')[0] unless a.split('"secUid":"')[1].nil?
+    @video_user_nick_name = a.split('"nickName":"')[1].split('","')[0] unless a.split('"nickName":"')[1].nil?
+    @video_user_cover = a.split('"avatarUriOrigin":["')[1].split('"],"')[0] unless a.split('"avatarUriOrigin":["')[1].nil?
+
+    user = {
+        "user_official_id": @video_user_official_id,
+        "user_nick_name": @video_user_nick_name,
+        "user_covers": @video_user_cover,
+    }
+
+    video = {
+        "video_url": @video_url,
+        "video_official_id": @video_official_id,
+        "video_title": @video_text_title,
+        "video_tags": @video_tags_title,
+        "video_comment_count": @video_comment_count,
+        "video_share_count": @video_share_count,
+        "video_interaction_count": @video_interaction_count,
+        "video_cover_image": @video_cover_url,
+        "video_trending": false
+    }
+
+    unless User.find_by(user_official_id: user[:user_official_id]).nil?
+      ActiveRecord::Base.connection_pool.with_connection do
+        puts "update user"
+        @user = User.find_by(user_official_id: user[:user_official_id])
+        @user.update(user)
+      end
+    else
+      ActiveRecord::Base.connection_pool.with_connection do
+        @user = User.create(user)
+        puts "new user"
+      end
+
+    end
+
+    unless @user.videos.find_by(video_official_id: video[:video_official_id]).nil?
+      ActiveRecord::Base.connection_pool.with_connection do
+        puts "update video"
+        @video = @user.videos.find_by(video_official_id: video[:video_official_id])
+        @video.update(video)
+      end
+    else
+      ActiveRecord::Base.connection_pool.with_connection do
+        @video = @user.videos.create(video)
+      end
+    end
+
+    unless @video_tags_title.nil?
+      @video_tags_title.each do |tag|
+        tag = {
+            "tag_title": tag,
+            "tag_url": "https://www.tiktok.com/tag/#{tag}?langCountry=ja",
+            "tag_trending": "true"
+        }
+
+        puts tag[:tag_title]
+        @tag = Tag.find_by(tag_title: tag[:tag_title])
+        unless @tag.nil?
+          @tag.update(tag)
+        else
+          @tag = Tag.create(tag)
+        end
+        @tag.updated_at = "2000-01-01"
+        @tag.save!
+      end
+    end
+
   end
 
   def self.get_video_from_embed_new(url)
-
-    begin
-      url = url
-      charset = nil
-      html = open(url) do |f|
-        charset = f.charset
-        f.read
-      end
-      doc = Nokogiri::HTML.parse(html, nil, charset)
-      a = doc.css('script').to_s
-      @video_official_id = a.split('"id":"')[1].split('","')[0] unless a.split('"id":"')[1].nil?
-      @video_interaction_count = a.split('"diggCount":')[1].split(',"')[0] unless a.split('"diggCount":')[1].nil?
-      @video_share_count = a.split('"shareCount":')[1].split(',"')[0] unless a.split('"shareCount":')[1].nil?
-      @video_comment_count = a.split('"commentCount":')[1].split(',"')[0] unless a.split('"commentCount":')[1].nil?
-      @video_url = "https://tiktok.com/node/video/playwm?id=#{@video_official_id}" unless @video_official_id.nil?
-      @video_cover_url = a.split('"urlsOrigin":["')[1].split('"],"')[0] unless a.split('"urlsOrigin":["')[1].nil?
-
-      @video_text_title = a.split('"text":"')[1].split('","')[0].split('#')[0] unless a.split('"text":"')[1].nil?
-      @video_tags_title = a.split('"text":"')[1].split('","')[0].split('#').drop(1).map(&:strip!).compact! unless a.split('"text":"')[1].nil?
-      @video_user_official_id = a.split('"secUid":"')[1].split('","')[0] unless a.split('"secUid":"')[1].nil?
-      @video_user_nick_name = a.split('"nickName":"')[1].split('","')[0] unless a.split('"nickName":"')[1].nil?
-      @video_user_cover = a.split('"avatarUriOrigin":["')[1].split('"],"')[0] unless a.split('"avatarUriOrigin":["')[1].nil?
-
-      user = {
-          "user_official_id": @video_user_official_id,
-          "user_nick_name": @video_user_nick_name,
-          "user_covers": @video_user_cover,
-      }
-
-      video = {
-          "video_url": @video_url,
-          "video_official_id": @video_official_id,
-          "video_title": @video_text_title,
-          "video_tags": @video_tags_title,
-          "video_comment_count": @video_comment_count,
-          "video_share_count": @video_share_count,
-          "video_interaction_count": @video_interaction_count,
-          "video_cover_image": @video_cover_url,
-          "video_trending": false
-      }
-
-      unless User.find_by(user_official_id: user[:user_official_id]).nil?
-        ActiveRecord::Base.connection_pool.with_connection do
-          puts "update user"
-          @user = User.find_by(user_official_id: user[:user_official_id])
-          @user.update(user)
-        end
-      else
-        ActiveRecord::Base.connection_pool.with_connection do
-          @user = User.create(user)
-          puts "new user"
-        end
-
-      end
-
-      unless @user.videos.find_by(video_official_id: video[:video_official_id]).nil?
-        ActiveRecord::Base.connection_pool.with_connection do
-          puts "update video"
-          @video = @user.videos.find_by(video_official_id: video[:video_official_id])
-          @video.update(video)
-        end
-      else
-        ActiveRecord::Base.connection_pool.with_connection do
-          puts "create video"
-          @video = @user.videos.create(video)
-        end
-      end
-
-    rescue => error
-      puts "例外やで"
+    url = URI.encode url
+    charset = nil
+    html = open(url) do |f|
+      charset = f.charset
+      f.read
     end
+    doc = Nokogiri::HTML.parse(html, nil, charset)
+    a = doc.css('script').to_s
+    @video_official_id = a.split('"id":"')[1].split('","')[0] unless a.split('"id":"')[1].nil?
+    @video_interaction_count = a.split('"diggCount":')[1].split(',"')[0] unless a.split('"diggCount":')[1].nil?
+    @video_share_count = a.split('"shareCount":')[1].split(',"')[0] unless a.split('"shareCount":')[1].nil?
+    @video_comment_count = a.split('"commentCount":')[1].split(',"')[0] unless a.split('"commentCount":')[1].nil?
+    @video_url = "https://tiktok.com/node/video/playwm?id=#{@video_official_id}" unless @video_official_id.nil?
+    @video_cover_url = a.split('"urlsOrigin":["')[1].split('"],"')[0] unless a.split('"urlsOrigin":["')[1].nil?
+
+    @video_text_title = a.split('"text":"')[1].split('","')[0].split('#')[0] unless a.split('"text":"')[1].nil?
+    @video_tags_title = a.split('"text":"')[1].split('","')[0].split('#').drop(1).map(&:strip!).compact! unless a.split('"text":"')[1].nil?
+    @video_user_official_id = a.split('"secUid":"')[1].split('","')[0] unless a.split('"secUid":"')[1].nil?
+    @video_user_nick_name = a.split('"nickName":"')[1].split('","')[0] unless a.split('"nickName":"')[1].nil?
+    @video_user_cover = a.split('"avatarUriOrigin":["')[1].split('"],"')[0] unless a.split('"avatarUriOrigin":["')[1].nil?
+
+    user = {
+        "user_official_id": @video_user_official_id,
+        "user_nick_name": @video_user_nick_name,
+        "user_covers": @video_user_cover,
+    }
+
+    video = {
+        "video_url": @video_url,
+        "video_official_id": @video_official_id,
+        "video_title": @video_text_title,
+        "video_tags": @video_tags_title,
+        "video_comment_count": @video_comment_count,
+        "video_share_count": @video_share_count,
+        "video_interaction_count": @video_interaction_count,
+        "video_cover_image": @video_cover_url,
+        "video_trending": false
+    }
+
+    unless User.find_by(user_official_id: user[:user_official_id]).nil?
+      ActiveRecord::Base.connection_pool.with_connection do
+        puts "update user"
+        @user = User.find_by(user_official_id: user[:user_official_id])
+        @user.update(user)
+      end
+    else
+      ActiveRecord::Base.connection_pool.with_connection do
+        @user = User.create(user)
+        puts "new user"
+      end
+
+    end
+
+    unless @user.videos.find_by(video_official_id: video[:video_official_id]).nil?
+      ActiveRecord::Base.connection_pool.with_connection do
+        puts "update video"
+        @video = @user.videos.find_by(video_official_id: video[:video_official_id])
+        @video.update(video)
+      end
+    else
+      ActiveRecord::Base.connection_pool.with_connection do
+        puts "create video"
+        @video = @user.videos.create(video)
+      end
+    end
+
   end
 
   def self.get_video_from_embed_task(url, driver)
@@ -396,40 +387,35 @@ class Tag < ApplicationRecord
   end
 
   def self.get_tag(url)
-    begin
-      url = URI.encode url
-      charset = nil
+    url = URI.encode url
+    charset = nil
 
-      html = open(url) do |f|
-        charset = f.charset
-        f.read
-      end
-
-      doc = Nokogiri::HTML.parse(html, nil, charset)
-
-      js = doc.search('script').to_s
-      @tag_official_id = js.split('challengeId":')[1].split(',')[0].delete('"') unless js.split('challengeId":')[1].nil?
-      @tag_title = js.split('challengeName":')[1].split(',')[0].delete('"') unless js.split('challengeName":')[1].nil?
-      @tag_text = js.split('","text":"')[1].split(',')[0].delete('"') unless js.split('","text":"')[1].nil?
-      @tag_cover_image = js.split('covers":')[1].split(',')[0].delete('["').delete('"]') unless js.split('covers":')[1].nil?
-      @tag_posts_count = js.split('posts":')[2].split(',')[0] unless js.split('posts":')[2].nil?
-      @tag_views_count = js.split('views":')[2].split(',')[0].delete('"').delete('}') unless js.split('views":')[2].nil?
-      @tag_url = url
-
-      tag = {
-          "tag_official_id": @tag_official_id,
-          "tag_title": @tag_title,
-          "tag_text": @tag_text,
-          "tag_cover_image": @tag_cover_image,
-          "tag_posts_count": @tag_posts_count,
-          "tag_views_count": @tag_views_count,
-          "tag_url": @tag_url
-      }
-      return tag
-
-    rescue => error
-      puts "例外やで"
+    html = open(url) do |f|
+      charset = f.charset
+      f.read
     end
+
+    doc = Nokogiri::HTML.parse(html, nil, charset)
+
+    js = doc.search('script').to_s
+    @tag_official_id = js.split('challengeId":')[1].split(',')[0].delete('"') unless js.split('challengeId":')[1].nil?
+    @tag_title = js.split('challengeName":')[1].split(',')[0].delete('"') unless js.split('challengeName":')[1].nil?
+    @tag_text = js.split('","text":"')[1].split(',')[0].delete('"') unless js.split('","text":"')[1].nil?
+    @tag_cover_image = js.split('covers":')[1].split(',')[0].delete('["').delete('"]') unless js.split('covers":')[1].nil?
+    @tag_posts_count = js.split('posts":')[2].split(',')[0] unless js.split('posts":')[2].nil?
+    @tag_views_count = js.split('views":')[2].split(',')[0].delete('"').delete('}') unless js.split('views":')[2].nil?
+    @tag_url = url
+
+    tag = {
+        "tag_official_id": @tag_official_id,
+        "tag_title": @tag_title,
+        "tag_text": @tag_text,
+        "tag_cover_image": @tag_cover_image,
+        "tag_posts_count": @tag_posts_count,
+        "tag_views_count": @tag_views_count,
+        "tag_url": @tag_url
+    }
+    return tag
   end
 
   def self.old_arg
