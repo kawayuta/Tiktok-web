@@ -3,10 +3,6 @@ class TagJob < ApplicationJob
 
   def perform(title)
     puts "TAG ジョブが実行されたよ！＼(^o^)／"
-    begin
-      Tag.new_tag(title)
-    rescue => error
-      puts "TAG 例外やで"
-    end
+    Tag.new_tag(title)
   end
 end

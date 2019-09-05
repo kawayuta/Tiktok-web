@@ -3,10 +3,6 @@ class VideoJob < ApplicationJob
 
   def perform(url)
     puts "Video ジョブ実行"
-    begin
-      Tag.get_video_from_embed_new(url)
-    rescue => error
-      puts "Video 例外やで"
-    end
+    Tag.get_video_from_embed_new(url)
   end
 end
