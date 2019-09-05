@@ -218,6 +218,24 @@ class Tag < ApplicationRecord
         @video = @user.videos.create(video)
       end
     end
+
+    unless @video_tags_title.nil?
+      @video_tags_title.each do |tag|
+        tag = {
+            "tag_title": tag,
+            "tag_url": "https://www.tiktok.com/tag/#{tag}?langCountry=ja",
+            "tag_trending": "false"
+        }
+        @tag = Tag.find_by(tag_title: tag[:tag_title])
+        unless @tag.nil?
+          @tag.update(tag)
+        else
+          @tag = Tag.create(tag)
+        end
+        @tag.updated_at = "2000-01-01"
+        @tag.save!
+      end
+    end
     }
 
   end
