@@ -88,19 +88,19 @@ namespace :task_database do
           embeds.push(n.split('","')[0])
         end
 
-        if Video.where(video_trending: true).present?
-          Video.where(video_trending: true).each do |v|
-            v.video_trending = false
-            v.save!
-          end
-        end
-
-        if Tag.where(tag_trending: true).present?
-          Tag.where(tag_trending: true).each do |v|
-            v.tag_trending = false
-            v.save!
-          end
-        end
+        # if Video.where(video_trending: true).present?
+        #   Video.where(video_trending: true).each do |v|
+        #     v.video_trending = false
+        #     v.save!
+        #   end
+        # end
+        #
+        # if Tag.where(tag_trending: true).present?
+        #   Tag.where(tag_trending: true).each do |v|
+        #     v.tag_trending = false
+        #     v.save!
+        #   end
+        # end
 
         embeds.each do |url|
           TaskJob.perform_later(url)
