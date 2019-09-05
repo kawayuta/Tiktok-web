@@ -86,7 +86,7 @@ class TagsController < ApplicationController
       @tag.updated_at = "2000-01-01"
       @tag.tag_url = "https://www.tiktok.com/tag/#{search_params[:keyword]}"
       @tag.tag_trending = false
-      @tag.save
+      @tag.save!
     end
 
     if @tag.updated_at.strftime("%Y-%m-%d") != Time.current.strftime("%Y-%m-%d")
