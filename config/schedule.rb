@@ -23,16 +23,16 @@ every :hour do # Many shortcuts available: :hour, :day, :month, :year, :reboot
   rake '-s sitemap:refresh'
 end
 
-every 6.hours do
+every 3.hours do
   rake "task_database:get_trending"
 end
 
-every 6.hours do
+every 3.hours do
   rake "task_database:get_tag_data"
 end
-#
-# every 1.day, :at => '3:00 am' do
-#   rake "task_database:get_video_from_tag"
-# end
-#
+
+every 6.hours do
+  rake "task_database:get_video_from_tag"
+end
+
 
