@@ -84,7 +84,7 @@ class TagsController < ApplicationController
     if @tag.nil?
       @tag = Tag.create(tag_title: search_params[:keyword])
       @tag.updated_at = "2000-01-01"
-      @tag.tag_url = "https://www.tiktok.com/tag/#{search_params[:keyword]}"
+      @tag.tag_url = "https://www.tiktok.com/tag/#{search_params[:keyword]}?langCountry=ja"
       @tag.tag_trending = false
       @tag.save
     end

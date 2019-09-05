@@ -6,7 +6,7 @@ namespace :task_database do
 
   task :test => :environment do
     Socksify::proxy("127.0.0.1", 9050) {
-      url = 'https://www.tiktok.com/tag/%E3%82%A2%E3%83%8B%E3%83%A1'
+      url = 'https://www.tiktok.com/tag/%E3%82%A2%E3%83%8B%E3%83%A1?langCountry=ja'
       charset = nil
       html = open(url) do |f|
         charset = f.charset
@@ -48,7 +48,7 @@ namespace :task_database do
       # sleep(10)
       begin
         Socksify::proxy("127.0.0.1", 9050) {
-          url = URI.encode "https://www.tiktok.com/tag/#{tag.tag_title}"
+          url = URI.encode "https://www.tiktok.com/tag/#{tag.tag_title}?langCountry=ja"
           charset = nil
           html = open(url) do |f|
             charset = f.charset
