@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a2e4aa1-93ac-4a71-a04c-86b144ad4cb1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/controllers/tags_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/tags_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -93,7 +93,7 @@
           <entry key="js" value="2639" />
           <entry key="lock" value="8" />
           <entry key="rake" value="6926" />
-          <entry key="rb" value="8206" />
+          <entry key="rb" value="8221" />
           <entry key="ru" value="12" />
           <entry key="scss" value="6535" />
           <entry key="txt" value="30" />
@@ -107,7 +107,7 @@
           <entry key="JavaScript" value="2620" />
           <entry key="PLAIN_TEXT" value="54" />
           <entry key="RHTML" value="5924" />
-          <entry key="Ruby" value="15307" />
+          <entry key="Ruby" value="15322" />
           <entry key="SCSS" value="6535" />
           <entry key="YAML" value="127" />
         </counts>
@@ -121,8 +121,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/controllers/tags_controller.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="835">
-                  <caret line="93" column="26" selection-start-line="93" selection-start-column="26" selection-end-line="93" selection-end-column="26" />
+                <state relative-caret-position="1056">
+                  <caret line="106" column="31" selection-start-line="106" selection-start-column="31" selection-end-line="106" selection-end-column="31" />
                 </state>
               </provider>
             </entry>
@@ -167,7 +167,7 @@
             <entry file="file://$PROJECT_DIR$/db/migrate/20190822226011_create_videos.rb">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="493">
-                  <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+                  <caret line="29" selection-start-line="29" selection-end-line="29" />
                 </state>
               </provider>
             </entry>
@@ -196,8 +196,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/config/deploy/production.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1043">
-                  <caret line="69" column="28" selection-start-line="69" selection-start-column="28" selection-end-line="69" selection-end-column="28" />
+                <state relative-caret-position="1028">
+                  <caret line="104" column="7" selection-start-line="104" selection-start-column="7" selection-end-line="104" selection-end-column="7" />
                 </state>
               </provider>
             </entry>
@@ -218,8 +218,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/models/tag.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="946">
-                  <caret line="238" column="20" lean-forward="true" selection-start-line="238" selection-start-column="20" selection-end-line="238" selection-end-column="20" />
+                <state relative-caret-position="321">
+                  <caret line="243" selection-start-line="243" selection-end-line="243" />
                   <folding>
                     <element signature="e#1201#1707#0" />
                     <element signature="e#1842#5483#0" />
@@ -345,8 +345,8 @@
       <find>get_video_from_embed_new</find>
       <find>get_tag_from_keyword</find>
       <find>Tor</find>
-      <find>na</find>
       <find>get_video_from_embed_task_new</find>
+      <find>na</find>
     </findStrings>
     <replaceStrings>
       <replace>user</replace>
@@ -383,7 +383,6 @@
         <option value="$PROJECT_DIR$/config/environments/production.rb" />
         <option value="$PROJECT_DIR$/Capfile" />
         <option value="$PROJECT_DIR$/config/initializers/sidekiq.rb" />
-        <option value="$PROJECT_DIR$/config/deploy/production.rb" />
         <option value="$PROJECT_DIR$/app/jobs/video_task_job.rb" />
         <option value="$PROJECT_DIR$/app/jobs/video_job.rb" />
         <option value="$PROJECT_DIR$/app/jobs/task_job.rb" />
@@ -409,6 +408,7 @@
         <option value="$PROJECT_DIR$/app/models/tag.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20190822223011_create_videos.rb" />
         <option value="$PROJECT_DIR$/app/controllers/tags_controller.rb" />
+        <option value="$PROJECT_DIR$/config/deploy/production.rb" />
       </list>
     </option>
   </component>
@@ -594,11 +594,6 @@
               <item name="sample-test" type="462c0819:PsiDirectoryNode" />
               <item name="lib" type="462c0819:PsiDirectoryNode" />
               <item name="tasks" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sample-test" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sample-test" type="462c0819:PsiDirectoryNode" />
-              <item name="tmp" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="sample-test" type="b2602c69:ProjectViewProjectNode" />
@@ -811,13 +806,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="387642000" />
+    <option name="totallyTimeSpent" value="388293000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-2" y="353" width="2560" height="1247" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20373312" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20373312" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -1075,24 +1070,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/welcome_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="40" selection-start-line="40" selection-end-line="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/unicorn/production.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="11" selection-start-line="4" selection-end-line="4" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/deploy/production.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1043">
-          <caret line="69" column="28" selection-start-line="69" selection-start-column="28" selection-end-line="69" selection-end-column="28" />
         </state>
       </provider>
     </entry>
@@ -1148,24 +1129,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20190822225016_create_users.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="22" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20190822232910_create_tags.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="35" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/db/migrate/20190822226011_create_videos.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
-          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
         </state>
       </provider>
     </entry>
@@ -1178,8 +1145,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/tag.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="946">
-          <caret line="238" column="20" lean-forward="true" selection-start-line="238" selection-start-column="20" selection-end-line="238" selection-end-column="20" />
+        <state relative-caret-position="321">
+          <caret line="243" selection-start-line="243" selection-end-line="243" />
           <folding>
             <element signature="e#1201#1707#0" />
             <element signature="e#1842#5483#0" />
@@ -1190,10 +1157,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/config/deploy/production.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1028">
+          <caret line="104" column="7" selection-start-line="104" selection-start-column="7" selection-end-line="104" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/welcome_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="40" selection-start-line="40" selection-end-line="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20190822232910_create_tags.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="35" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20190822225016_create_users.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="22" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/tags_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="835">
-          <caret line="93" column="26" selection-start-line="93" selection-start-column="26" selection-end-line="93" selection-end-column="26" />
+        <state relative-caret-position="1056">
+          <caret line="106" column="31" selection-start-line="106" selection-start-column="31" selection-end-line="106" selection-end-column="31" />
         </state>
       </provider>
     </entry>
