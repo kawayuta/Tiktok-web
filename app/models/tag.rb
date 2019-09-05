@@ -3,6 +3,7 @@ class Tag < ApplicationRecord
   require 'nokogiri'
   require 'open-uri'
   require 'socksify'
+  
   def self.new_tag(search)
     @tag = Tag.find_by(tag_title: search)
     begin
@@ -98,8 +99,9 @@ class Tag < ApplicationRecord
         "video_share_count": @video_share_count,
         "video_interaction_count": @video_interaction_count,
         "video_cover_image": @video_cover_url,
-        "video_trending": false
+        "video_trending": true
     }
+
 
     unless User.find_by(user_official_id: user[:user_official_id]).nil?
       ActiveRecord::Base.connection_pool.with_connection do
@@ -134,8 +136,6 @@ class Tag < ApplicationRecord
             "tag_url": "https://www.tiktok.com/tag/#{tag}?langCountry=ja",
             "tag_trending": "true"
         }
-
-        puts tag[:tag_title]
         @tag = Tag.find_by(tag_title: tag[:tag_title])
         unless @tag.nil?
           @tag.update(tag)

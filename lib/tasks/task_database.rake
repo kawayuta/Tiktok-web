@@ -2,8 +2,6 @@ namespace :task_database do
 
   require 'nokogiri'
   require 'open-uri'
-  require 'selenium-webdriver'
-  require 'tor-privoxy'
   require 'socksify'
 
   task :test => :environment do
@@ -75,25 +73,38 @@ namespace :task_database do
 
   task :get_trending => :environment do
     begin
-
       Socksify::proxy("127.0.0.1", 9050) {
-      url = URI.encode "https://www.tiktok.com/ja/trending"
-      charset = nil
-      html = open(url) do |f|
-        charset = f.charset
-        f.read
-      end
-      doc = Nokogiri::HTML.parse(html, nil, charset)
+        url = URI.encode "https://www.tiktok.com/ja/trending"
+        charset = nil
+        html = open(url) do |f|
+          charset = f.charset
+          f.read
+        end
+        doc = Nokogiri::HTML.parse(html, nil, charset)
 
-      embeds = []
-      script = doc.css('script').to_s
-      script.split('"embedUrl":"').drop(1).each do |n|
-        embeds.push(n.split('","')[0])
-      end
+        embeds = []
+        script = doc.css('script').to_s
+        script.split('"embedUrl":"').drop(1).each do |n|
+          embeds.push(n.split('","')[0])
+        end
 
-      embeds.each do |url|
-        TaskJob.perform_later(url)
-      end
+        if Video.where(video_trending: true).present?
+          Video.where(video_trending: true).each do |v|
+            v.video_trending = false
+            v.save!
+          end
+        end
+
+        if Tag.where(tag_trending: true).present?
+          Tag.where(tag_trending: true).each do |v|
+            v.tag_trending = false
+            v.save!
+          end
+        end
+
+        embeds.each do |url|
+          TaskJob.perform_later(url)
+        end
       }
     rescue => error
       puts "TASK_DATABASE 例外やで"
