@@ -3,6 +3,7 @@ namespace :task_database do
   require 'nokogiri'
   require 'open-uri'
   require 'socksify'
+  require 'parallel'
 
   task :get_tag_data => :environment do
     Parallel.each(Tag.all, in_processes: 10) do |tag|
