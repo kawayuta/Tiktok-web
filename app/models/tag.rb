@@ -33,23 +33,27 @@ class Tag < ApplicationRecord
   end
 
   def self.get_tag_from_keyword(search)
-    url = URI.encode "https://www.tiktok.com/tag/#{search}"
-    charset = nil
-    html = open(url) do |f|
-      charset = f.charset
-      f.read
-    end
+    begin
+      url = URI.encode "https://www.tiktok.com/tag/#{search}"
+      charset = nil
+      html = open(url) do |f|
+        charset = f.charset
+        f.read
+      end
 
-    doc = Nokogiri::HTML.parse(html, nil, charset)
+      doc = Nokogiri::HTML.parse(html, nil, charset)
 
-    embeds = []
-    script = doc.css('script').to_s
-    script.split('"embedUrl":"').drop(1).each do |n|
-      embeds.push(n.split('","')[0])
-    end
+      puts doc
+      embeds = []
+      script = doc.css('script').to_s
+      script.split('"embedUrl":"').drop(1).each do |n|
+        embeds.push(n.split('","')[0])
+      end
 
-    embeds.each do |url|
-      VideoJob.perform_later(url)
+      embeds.each do |url|
+        VideoJob.perform_later(url)
+      end
+    rescue => error
     end
 
   end
