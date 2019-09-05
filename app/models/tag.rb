@@ -11,21 +11,21 @@ class Tag < ApplicationRecord
         ActiveRecord::Base.connection_pool.with_connection do
           if @tag.updated_at.strftime("%Y-%m-%d") != Time.current.strftime("%Y-%m-%d") && @tag.updated_at.strftime("%Y-%m-%d") != "2001-01-01"
             puts "update tag"
-            tag = Tag.get_tag("https://www.tiktok.com/tag/#{search}?langCountry=ja")
+            tag = Tag.get_tag("https://www.tiktok.com/tag/#{search}")
             @tag.update(tag)
             @tag.updated_at = "2001-01-01"
             @tag.save!
           end
           unless TagHistory.where(tag_title: search, created_at: Time.current.strftime("%Y-%m-%d").in_time_zone.all_day).present?
             puts "update history"
-            tag = Tag.get_tag("https://www.tiktok.com/tag/#{search}?langCountry=ja")
+            tag = Tag.get_tag("https://www.tiktok.com/tag/#{search}")
             @old = TagHistory.create(tag)
           end
         end
       else
         ActiveRecord::Base.connection_pool.with_connection do
           puts "new tag & histories"
-          tag = Tag.get_tag("https://www.tiktok.com/tag/#{search}?langCountry=ja")
+          tag = Tag.get_tag("https://www.tiktok.com/tag/#{search}")
           @tag = Tag.create(tag)
           @old = TagHistory.create(tag)
         end
@@ -38,7 +38,7 @@ class Tag < ApplicationRecord
     begin
 
       Socksify::proxy("127.0.0.1", 9050) {
-        url = URI.encode "https://www.tiktok.com/tag/#{search}?langCountry=ja"
+        url = URI.encode "https://www.tiktok.com/tag/#{search}"
         charset = nil
         html = open(url) do |f|
           charset = f.charset
@@ -133,7 +133,7 @@ class Tag < ApplicationRecord
       @video_tags_title.each do |tag|
         tag = {
             "tag_title": tag,
-            "tag_url": "https://www.tiktok.com/tag/#{tag}?langCountry=ja",
+            "tag_url": "https://www.tiktok.com/tag/#{tag}",
             "tag_trending": "true"
         }
         @tag = Tag.find_by(tag_title: tag[:tag_title])
@@ -223,7 +223,7 @@ class Tag < ApplicationRecord
       @video_tags_title.each do |tag|
         tag = {
             "tag_title": tag,
-            "tag_url": "https://www.tiktok.com/tag/#{tag}?langCountry=ja",
+            "tag_url": "https://www.tiktok.com/tag/#{tag}",
             "tag_trending": "false"
         }
         @tag = Tag.find_by(tag_title: tag[:tag_title])
