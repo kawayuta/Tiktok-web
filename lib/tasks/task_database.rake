@@ -4,39 +4,6 @@ namespace :task_database do
   require 'open-uri'
   require 'socksify'
 
-  task :test => :environment do
-    Socksify::proxy("127.0.0.1", 9050) {
-      url = 'https://www.tiktok.com/tag/%E3%82%A2%E3%83%8B%E3%83%A1?langCountry=ja'
-      charset = nil
-      html = open(url) do |f|
-        charset = f.charset
-        f.read
-      end
-      doc = Nokogiri::HTML.parse(html, nil, charset)
-
-      js = doc.search('script').to_s
-      @tag_official_id = js.split('challengeId":')[1].split(',')[0].delete('"') unless js.split('challengeId":')[1].nil?
-      @tag_title = js.split('challengeName":')[1].split(',')[0].delete('"') unless js.split('challengeName":')[1].nil?
-      @tag_text = js.split('","text":"')[1].split(',')[0].delete('"') unless js.split('","text":"')[1].nil?
-      @tag_cover_image = js.split('covers":')[1].split(',')[0].delete('["').delete('"]') unless js.split('covers":')[1].nil?
-      @tag_posts_count = js.split('posts":')[2].split(',')[0] unless js.split('posts":')[2].nil?
-      @tag_views_count = js.split('views":')[2].split(',')[0].delete('"').delete('}') unless js.split('views":')[2].nil?
-      @tag_url = url
-
-      tag = {
-          "tag_official_id": @tag_official_id,
-          "tag_title": @tag_title,
-          "tag_text": @tag_text,
-          "tag_cover_image": @tag_cover_image,
-          "tag_posts_count": @tag_posts_count,
-          "tag_views_count": @tag_views_count,
-          "tag_url": @tag_url
-      }
-
-    puts tag
-    }
-  end
-
   task :get_tag_data => :environment do
     Parallel.each(Tag.all, in_processes: 10) do |tag|
       Tag.new_tag(tag.tag_title)
