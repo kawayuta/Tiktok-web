@@ -4,8 +4,6 @@ class Video < ApplicationRecord
 
   belongs_to :user
 
-  validates :video_url, uniqueness: true
-  validates :video_official_id, uniqueness: true
 
   def self.get_video(url)
     client = Selenium::WebDriver::Remote::Http::Default.new

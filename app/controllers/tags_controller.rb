@@ -90,8 +90,8 @@ class TagsController < ApplicationController
     end
 
     if @tag.updated_at.strftime("%Y-%m-%d") != Time.current.strftime("%Y-%m-%d")
-      Tag.new_tag(search_params[:keyword])
-      Tag.get_tag_from_keyword(search_params[:keyword])
+      TagJob.perform_later(search_params[:keyword])
+      VideoJob.perform_later(search_params[:keyword])
       @tag.updated_at = Time.current.strftime("%Y-%m-%d")
       @tag.save
     end

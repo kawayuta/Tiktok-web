@@ -39,7 +39,7 @@ namespace :task_database do
 
   task :get_tag_data => :environment do
     Tag.all.each do |tag|
-      TagJob.perform_later(tag.tag_title)
+      Tag.new_tag(tag.tag_title)
     end
   end
 
@@ -61,7 +61,7 @@ namespace :task_database do
             embeds.push(n.split('","')[0])
           end
           embeds.each do |url|
-            VideoJob.perform_later(url)
+            Tag.get_video_from_embed_new(url)
           end
         }
       rescue => error
@@ -102,7 +102,7 @@ namespace :task_database do
         # end
 
         embeds.each do |url|
-          TaskJob.perform_later(url)
+          Tag.get_video_from_embed_task_new(url)
         end
       }
     rescue => error
