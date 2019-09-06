@@ -2,7 +2,7 @@ module ApplicationHelper
 
   def default_meta_tags
     {
-        site: 'TikTok Pro',
+        site: '👑 TikTok Pro',
         title: 'タイトル',
         reverse: true,
         charset: 'utf-8',
