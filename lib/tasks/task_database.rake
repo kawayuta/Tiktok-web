@@ -38,13 +38,13 @@ namespace :task_database do
   end
 
   task :get_tag_data => :environment do
-    Tag.all.each do |tag|
+    Tag.all.reverse.each do |tag|
       Tag.new_tag(tag.tag_title)
     end
   end
 
   task :get_video_from_tag => :environment do
-    Tag.all.each do |tag|
+    Tag.all.reverse.each do |tag|
       # sleep(10)
       begin
         Socksify::proxy("127.0.0.1", 9050) {
