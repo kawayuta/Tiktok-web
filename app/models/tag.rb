@@ -81,7 +81,7 @@ class Tag < ApplicationRecord
 
     @video_text_title = a.split('"text":"')[1].split('","')[0].split('#')[0] unless a.split('"text":"')[1].nil?
     @video_tags_title = a.split('"text":"')[1].split('","')[0].split('#').drop(1).map(&:strip!).compact! unless a.split('"text":"')[1].nil?
-    @video_user_official_id = a.split('"secUid":"')[1].split('","')[0] unless a.split('"secUid":"')[1].nil?
+    @video_user_official_id = a.split('"userId":"')[1].split('","')[0] unless a.split('"userId":"')[1].nil?
     @video_user_nick_name = a.split('"nickName":"')[1].split('","')[0] unless a.split('"nickName":"')[1].nil?
     @video_user_cover = a.split('"avatarUriOrigin":["')[1].split('"],"')[0] unless a.split('"avatarUriOrigin":["')[1].nil?
 
@@ -171,7 +171,7 @@ class Tag < ApplicationRecord
 
     @video_text_title = a.split('"text":"')[1].split('","')[0].split('#')[0] unless a.split('"text":"')[1].nil?
     @video_tags_title = a.split('"text":"')[1].split('","')[0].split('#').drop(1).map(&:strip!).compact! unless a.split('"text":"')[1].nil?
-    @video_user_official_id = a.split('"secUid":"')[1].split('","')[0] unless a.split('"secUid":"')[1].nil?
+    @video_user_official_id = a.split('"userId":"')[1].split('","')[0] unless a.split('"userId":"')[1].nil?
     @video_user_nick_name = a.split('"nickName":"')[1].split('","')[0] unless a.split('"nickName":"')[1].nil?
     @video_user_cover = a.split('"avatarUriOrigin":["')[1].split('"],"')[0] unless a.split('"avatarUriOrigin":["')[1].nil?
 

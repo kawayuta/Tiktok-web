@@ -111,6 +111,53 @@ namespace :task_database do
     end
   end
 
+
+  task :get_user_data => :environment do
+
+    User.all.each do | user |
+      begin
+          Socksify::proxy("127.0.0.1", 9050) {
+            url = URI.encode "https://www.tiktok.com/@#{user.user_official_id}"
+            charset = nil
+            html = open(url) do |f|
+              charset = f.charset
+              f.read
+            end
+            doc = Nokogiri::HTML.parse(html, nil, charset)
+
+            js = doc.css('script').to_s
+            @user_url = js.split('fullUrl":')[1].split(',')[0].delete('"').delete('}') unless js.split('fullUrl":')[1].nil?
+            @user_user_id = js.split('userId":')[1].split(',')[0].delete('"') unless js.split('userId":')[1].nil?
+            @user_nick_name = js.split('nickName":')[1].split(',')[0].delete('"') unless js.split('nickName":')[1].nil?
+            @user_signature = js.split('signature":')[1].split(',')[0].delete('"') unless js.split('signature":')[1].nil?
+            @user_covers = js.split('covers":')[1].split(',')[0].delete('["').delete('"]') unless js.split('covers":')[1].nil?
+            @user_following_count = js.split('following":')[1].split(',')[0].delete('"') unless js.split('following":')[1].nil?
+            @user_fans_count = js.split('fans":')[1].split(',')[0].delete('"') unless js.split('fans":')[1].nil?
+            @user_heart_count = js.split('heart":')[1].split(',')[0].delete('"') unless js.split('heart":')[1].nil?
+            @user_video_count = js.split('video":')[1].split(',')[0].delete('"') unless js.split('video":')[1].nil?
+            @user_verified = js.split('verified":')[1].split(',')[0].delete('"') unless js.split('verified":')[1].nil?
+
+            u = {
+                "user_official_id": @user_user_id,
+                "user_nick_name": @user_nick_name,
+                "user_signature": @user_signature,
+                "user_covers": @user_covers,
+                "user_following_count": @user_following_count,
+                "user_fans_count": @user_fans_count,
+                "user_heart_count": @user_heart_count,
+                "user_video_count": @user_video_count,
+                "user_verified": @user_verified,
+                "user_url": @user_url
+            }
+            puts u
+            user.update(u)
+          }
+      rescue => error
+        puts "TASK_DATABASE 例外やで"
+      end
+    end
+  end
+
   def self.has_mb?(str)
     str.bytes do |b|
       return true if  (b & 0b10000000) != 0
