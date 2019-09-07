@@ -35,16 +35,6 @@ namespace :deploy do
     end
   end
 
-  task :task_tag_update do
-    on roles(:db) do |host|
-      within current_path do
-        with rails_env: fetch(:rails_env) do
-          execute :rake, 'task_database:get_tag_data'
-        end
-      end
-    end
-  end
-
   task :task_input_trending do
     on roles(:db) do |host|
       within current_path do
@@ -55,11 +45,41 @@ namespace :deploy do
     end
   end
 
+  task :task_tag_update do
+    on roles(:db) do |host|
+      within current_path do
+        with rails_env: fetch(:rails_env) do
+          execute :rake, 'task_database:get_tag_data'
+        end
+      end
+    end
+  end
+
+  task :task_user_update do
+    on roles(:db) do |host|
+      within current_path do
+        with rails_env: fetch(:rails_env) do
+          execute :rake, 'task_database:get_user_data'
+        end
+      end
+    end
+  end
+
   task :task_input_video_from_tag do
     on roles(:db) do |host|
       within current_path do
         with rails_env: fetch(:rails_env) do
           execute :rake, 'task_database:get_video_from_tag'
+        end
+      end
+    end
+  end
+
+  task :task_input_video_from_user do
+    on roles(:db) do |host|
+      within current_path do
+        with rails_env: fetch(:rails_env) do
+          execute :rake, 'task_database:get_video_from_user'
         end
       end
     end

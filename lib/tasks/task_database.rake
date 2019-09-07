@@ -4,51 +4,48 @@ namespace :task_database do
   require 'open-uri'
   require 'socksify'
 
-  task :test => :environment do
-    Socksify::proxy("127.0.0.1", 9050) {
-      url = 'https://www.tiktok.com/tag/%E3%82%A2%E3%83%8B%E3%83%A1?langCountry=ja'
-      charset = nil
-      html = open(url) do |f|
-        charset = f.charset
-        f.read
-      end
-      doc = Nokogiri::HTML.parse(html, nil, charset)
-
-      js = doc.search('script').to_s
-      @tag_official_id = js.split('challengeId":')[1].split(',')[0].delete('"') unless js.split('challengeId":')[1].nil?
-      @tag_title = js.split('challengeName":')[1].split(',')[0].delete('"') unless js.split('challengeName":')[1].nil?
-      @tag_text = js.split('","text":"')[1].split(',')[0].delete('"') unless js.split('","text":"')[1].nil?
-      @tag_cover_image = js.split('covers":')[1].split(',')[0].delete('["').delete('"]') unless js.split('covers":')[1].nil?
-      @tag_posts_count = js.split('posts":')[2].split(',')[0] unless js.split('posts":')[2].nil?
-      @tag_views_count = js.split('views":')[2].split(',')[0].delete('"').delete('}') unless js.split('views":')[2].nil?
-      @tag_url = url
-
-      tag = {
-          "tag_official_id": @tag_official_id,
-          "tag_title": @tag_title,
-          "tag_text": @tag_text,
-          "tag_cover_image": @tag_cover_image,
-          "tag_posts_count": @tag_posts_count,
-          "tag_views_count": @tag_views_count,
-          "tag_url": @tag_url
-      }
-
-    puts tag
-    }
-  end
-
   task :get_tag_data => :environment do
     Tag.all.reverse.each do |tag|
       Tag.new_tag(tag.tag_title)
     end
   end
+  task :get_user_data => :environment do
+    User.all.each do | user |
+      User.new_user(user.user_official_id)
+    end
+  end
 
   task :get_video_from_tag => :environment do
     Tag.all.reverse.each do |tag|
-      # sleep(10)
       begin
         Socksify::proxy("127.0.0.1", 9050) {
           url = URI.encode "https://www.tiktok.com/tag/#{tag.tag_title}"
+          charset = nil
+          html = open(url) do |f|
+            charset = f.charset
+            f.read
+          end
+          doc = Nokogiri::HTML.parse(html, nil, charset)
+          embeds = []
+          script = doc.css('script').to_s
+          script.split('"embedUrl":"').drop(1).each do |n|
+            embeds.push(n.split('","')[0])
+          end
+
+          embeds.each do |url|
+            Tag.get_video_from_embed_new(url)
+          end
+        }
+      rescue => error
+        puts error
+      end
+    end
+  end
+  task :get_video_from_user => :environment do
+    User.all.reverse.each do |user|
+      begin
+        Socksify::proxy("127.0.0.1", 9050) {
+          url = URI.encode "https://www.tiktok.com/@#{user.user_sec_id}"
           charset = nil
           html = open(url) do |f|
             charset = f.charset
@@ -108,53 +105,6 @@ namespace :task_database do
       }
     rescue => error
       puts "TASK_DATABASE 例外やで"
-    end
-  end
-
-
-  task :get_user_data => :environment do
-
-    User.all.each do | user |
-      begin
-          Socksify::proxy("127.0.0.1", 9050) {
-            url = URI.encode "https://www.tiktok.com/@#{user.user_official_id}"
-            charset = nil
-            html = open(url) do |f|
-              charset = f.charset
-              f.read
-            end
-            doc = Nokogiri::HTML.parse(html, nil, charset)
-
-            js = doc.css('script').to_s
-            @user_url = js.split('fullUrl":')[1].split(',')[0].delete('"').delete('}') unless js.split('fullUrl":')[1].nil?
-            @user_user_id = js.split('userId":')[1].split(',')[0].delete('"') unless js.split('userId":')[1].nil?
-            @user_nick_name = js.split('nickName":')[1].split(',')[0].delete('"') unless js.split('nickName":')[1].nil?
-            @user_signature = js.split('signature":')[1].split(',')[0].delete('"') unless js.split('signature":')[1].nil?
-            @user_covers = js.split('covers":')[1].split(',')[0].delete('["').delete('"]') unless js.split('covers":')[1].nil?
-            @user_following_count = js.split('following":')[1].split(',')[0].delete('"') unless js.split('following":')[1].nil?
-            @user_fans_count = js.split('fans":')[1].split(',')[0].delete('"') unless js.split('fans":')[1].nil?
-            @user_heart_count = js.split('heart":')[1].split(',')[0].delete('"') unless js.split('heart":')[1].nil?
-            @user_video_count = js.split('video":')[1].split(',')[0].delete('"') unless js.split('video":')[1].nil?
-            @user_verified = js.split('verified":')[1].split(',')[0].delete('"') unless js.split('verified":')[1].nil?
-
-            u = {
-                "user_official_id": @user_user_id,
-                "user_nick_name": @user_nick_name,
-                "user_signature": @user_signature,
-                "user_covers": @user_covers,
-                "user_following_count": @user_following_count,
-                "user_fans_count": @user_fans_count,
-                "user_heart_count": @user_heart_count,
-                "user_video_count": @user_video_count,
-                "user_verified": @user_verified,
-                "user_url": @user_url
-            }
-            puts u
-            user.update(u)
-          }
-      rescue => error
-        puts "TASK_DATABASE 例外やで"
-      end
     end
   end
 

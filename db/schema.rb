@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_02_095022) do
+ActiveRecord::Schema.define(version: 2019_09_07_171244) do
 
   create_table "tag_histories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.text "tag_official_id"
@@ -54,6 +54,35 @@ ActiveRecord::Schema.define(version: 2019_09_02_095022) do
     t.index ["tag_views_count"], name: "index_tags_on_tag_views_count", type: :fulltext
   end
 
+  create_table "user_histories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.text "user_official_id"
+    t.text "user_unique_id"
+    t.text "user_sec_id"
+    t.text "user_nick_name"
+    t.text "user_signature"
+    t.text "user_covers"
+    t.text "user_following_count"
+    t.text "user_fans_count"
+    t.text "user_heart_count"
+    t.text "user_video_count"
+    t.boolean "user_verified"
+    t.text "user_region"
+    t.text "user_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_covers"], name: "index_user_histories_on_user_covers", type: :fulltext
+    t.index ["user_fans_count"], name: "index_user_histories_on_user_fans_count", type: :fulltext
+    t.index ["user_following_count"], name: "index_user_histories_on_user_following_count", type: :fulltext
+    t.index ["user_heart_count"], name: "index_user_histories_on_user_heart_count", type: :fulltext
+    t.index ["user_nick_name"], name: "index_user_histories_on_user_nick_name", type: :fulltext
+    t.index ["user_official_id"], name: "index_user_histories_on_user_official_id", type: :fulltext
+    t.index ["user_region"], name: "index_user_histories_on_user_region", type: :fulltext
+    t.index ["user_signature"], name: "index_user_histories_on_user_signature", type: :fulltext
+    t.index ["user_url"], name: "index_user_histories_on_user_url", type: :fulltext
+    t.index ["user_verified"], name: "index_user_histories_on_user_verified"
+    t.index ["user_video_count"], name: "index_user_histories_on_user_video_count", type: :fulltext
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.text "user_official_id"
     t.text "user_nick_name"
@@ -68,6 +97,8 @@ ActiveRecord::Schema.define(version: 2019_09_02_095022) do
     t.text "user_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "user_unique_id"
+    t.text "user_sec_id"
     t.index ["user_covers"], name: "index_users_on_user_covers", type: :fulltext
     t.index ["user_fans_count"], name: "index_users_on_user_fans_count", type: :fulltext
     t.index ["user_following_count"], name: "index_users_on_user_following_count", type: :fulltext

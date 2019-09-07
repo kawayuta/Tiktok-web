@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :user_histories
   root to: 'welcome#index'
   resources :tags, only: :show do
     collection do
