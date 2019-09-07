@@ -14,6 +14,11 @@ namespace :task_database do
       User.new_user(user.user_official_id)
     end
   end
+  task :get_video_data => :environment do
+    Video.all.each do | video |
+      Video.update_video(video.video_official_id)
+    end
+  end
 
   task :get_video_from_tag => :environment do
     Tag.all.reverse.each do |tag|

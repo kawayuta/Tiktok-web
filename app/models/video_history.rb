@@ -1,0 +1,2 @@
+class VideoHistory < ApplicationRecord
+end

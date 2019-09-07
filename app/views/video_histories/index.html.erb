@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Video Histories</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User official</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @video_histories.each do |video_history| %>
+      <tr>
+        <td><%= video_history.user_official_id %></td>
+        <td><%= link_to 'Show', video_history %></td>
+        <td><%= link_to 'Edit', edit_video_history_path(video_history) %></td>
+        <td><%= link_to 'Destroy', video_history, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Video History', new_video_history_path %>

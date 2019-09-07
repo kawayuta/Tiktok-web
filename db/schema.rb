@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_07_171244) do
+ActiveRecord::Schema.define(version: 2019_09_07_174533) do
 
   create_table "tag_histories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.text "tag_official_id"
@@ -110,6 +110,30 @@ ActiveRecord::Schema.define(version: 2019_09_07_171244) do
     t.index ["user_url"], name: "index_users_on_user_url", type: :fulltext
     t.index ["user_verified"], name: "index_users_on_user_verified"
     t.index ["user_video_count"], name: "index_users_on_user_video_count", type: :fulltext
+  end
+
+  create_table "video_histories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.text "video_url"
+    t.text "video_official_id"
+    t.text "video_title"
+    t.text "video_tags"
+    t.text "video_tags_official_ids"
+    t.text "video_comment_count"
+    t.text "video_share_count"
+    t.text "video_interaction_count"
+    t.text "video_cover_image"
+    t.boolean "video_trending"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["video_comment_count"], name: "index_video_histories_on_video_comment_count", type: :fulltext
+    t.index ["video_cover_image"], name: "index_video_histories_on_video_cover_image", type: :fulltext
+    t.index ["video_interaction_count"], name: "index_video_histories_on_video_interaction_count", type: :fulltext
+    t.index ["video_official_id"], name: "index_video_histories_on_video_official_id", type: :fulltext
+    t.index ["video_share_count"], name: "index_video_histories_on_video_share_count", type: :fulltext
+    t.index ["video_tags"], name: "index_video_histories_on_video_tags", type: :fulltext
+    t.index ["video_tags_official_ids"], name: "index_video_histories_on_video_tags_official_ids", type: :fulltext
+    t.index ["video_title"], name: "index_video_histories_on_video_title", type: :fulltext
+    t.index ["video_trending"], name: "index_video_histories_on_video_trending"
   end
 
   create_table "videos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|

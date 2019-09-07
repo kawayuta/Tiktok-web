@@ -35,6 +35,25 @@ namespace :deploy do
     end
   end
 
+
+  task :task_auto do
+    on roles(:db) do |host|
+      within current_path do
+        with rails_env: fetch(:rails_env) do
+          execute :rake, 'task_database:get_tag_data'
+          execute :rake, 'task_database:get_user_data'
+          execute :rake, 'task_database:get_video_data'
+          execute :rake, 'task_database:get_video_from_tag'
+          execute :rake, 'task_database:get_video_from_user'
+          execute :rake, 'task_database:get_trending'
+          execute :rake, 'task_database:get_tag_data'
+          execute :rake, 'task_database:get_user_data'
+          execute :rake, 'task_database:get_video_data'
+        end
+      end
+    end
+  end
+
   task :task_input_trending do
     on roles(:db) do |host|
       within current_path do
@@ -60,6 +79,16 @@ namespace :deploy do
       within current_path do
         with rails_env: fetch(:rails_env) do
           execute :rake, 'task_database:get_user_data'
+        end
+      end
+    end
+  end
+
+  task :task_video_update do
+    on roles(:db) do |host|
+      within current_path do
+        with rails_env: fetch(:rails_env) do
+          execute :rake, 'task_database:get_video_data'
         end
       end
     end

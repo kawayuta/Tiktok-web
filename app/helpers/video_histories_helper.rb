@@ -1,0 +1,2 @@
+module VideoHistoriesHelper
+end
