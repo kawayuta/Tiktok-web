@@ -28,6 +28,8 @@ class Tag < ApplicationRecord
           return if tag_data[:tag_official_id].nil?
 
           tag_instance = Tag.create(tag_data)
+          tag_instance.updated_at = "2000-01-01"
+          tag_instance.save
           TagHistory.create(tag_data)
 
           ActiveRecord::Base.connection_pool.with_connection do

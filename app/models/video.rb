@@ -33,8 +33,6 @@ class Video < ApplicationRecord
           return if video_data[:video_official_id].nil?
 
           video_instance = user_instance.videos.create(video_data)
-          video_instance.updated_at = "2000-01-01"
-          video_instance.save
           VideoHistory.create(video_data)
 
           ActiveRecord::Base.connection_pool.with_connection do
