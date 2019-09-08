@@ -177,15 +177,17 @@ class Tag < ApplicationRecord
             "tag_trending": "true"
         }
         @tag = Tag.find_by(tag_title: tag[:tag_title])
-        unless @tag.nil?
-          @tag.update(tag)
+        ActiveRecord::Base.connection_pool.with_connection do
+          unless @tag.nil?
+              @tag.update(tag)
+              @tag.updated_at = "2000-01-01"
+              @tag.save!
+          else
+            @tag = Tag.create(tag)
+          end
           @tag.updated_at = "2000-01-01"
           @tag.save!
-        else
-          @tag = Tag.create(tag)
         end
-        @tag.updated_at = "2000-01-01"
-        @tag.save!
       end
     end
     }
@@ -276,12 +278,14 @@ class Tag < ApplicationRecord
             "tag_trending": "false"
         }
         @tag = Tag.find_by(tag_title: tag[:tag_title])
-        unless @tag.nil?
-          @tag.update(tag)
-          @tag.updated_at = "2000-01-01"
-          @tag.save!
-        else
-          @tag = Tag.create(tag)
+        ActiveRecord::Base.connection_pool.with_connection do
+          unless @tag.nil?
+            @tag.update(tag)
+            @tag.updated_at = "2000-01-01"
+            @tag.save!
+          else
+            @tag = Tag.create(tag)
+          end
           @tag.updated_at = "2000-01-01"
           @tag.save!
         end
