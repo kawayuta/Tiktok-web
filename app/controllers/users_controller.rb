@@ -14,6 +14,13 @@ class UsersController < ApplicationController
     @trending_tags = cache_tags_trending.take(10)
 
     @videos = @user.videos
+
+    @videos_rank = @videos.sort_by {|array| Integer(array.video_interaction_count)}.first(10).reverse.to_a
+
+    # @user_histries_posts_trans_following_count = cache_users_histories.select {|h|h.user_official_id == @user.user_official_id}.pluck(:created_at,:user_following_count).map { |e| [ e[0].strftime("%Y-%m-%d"), e[1] ] }
+    @user_histries_posts_trans_fans_count = cache_users_histories.select {|h|h.user_official_id == @user.user_official_id}.pluck(:created_at,:user_fans_count).map { |e| [ e[0].strftime("%Y-%m-%d"), e[1] ] }
+    @user_histries_posts_trans_heart_count = cache_users_histories.select {|h|h.user_official_id == @user.user_official_id}.pluck(:created_at,:user_heart_count).map { |e| [ e[0].strftime("%Y-%m-%d"), e[1] ] }
+
   end
 
   # GET /users/new
@@ -87,4 +94,11 @@ class UsersController < ApplicationController
         Tag.where(tag_trending: true).to_a
       end
     end
+
+    def cache_users_histories
+      Rails.cache.fetch("cache_users_histories", expired_in: 60.minutes) do
+        UserHistory.all.to_a
+      end
+    end
+
 end

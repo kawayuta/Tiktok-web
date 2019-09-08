@@ -62,17 +62,20 @@
       </div>
       <div class="video_content_tag_info_meta">
         <p class="video_content_tag_info_meta_post">
-          <!--          <%#= @tag.tag_posts_count unless @tag.tag_posts_count.nil? %> <span>投稿</span>-->
+          <%= @user.user_following_count unless @user.user_following_count.nil? %> <span>フォロー</span>
         </p>
 
         <p class="video_content_tag_info_meta_view">
-          <!--          <%#= @tag.tag_views_count unless @tag.tag_views_count.nil? %> <span>回再生</span>-->
+          <%= @user.user_fans_count unless @user.user_fans_count.nil? %> <span>フォロワー(ファン)</span>
+        </p>
+        <p class="video_content_tag_info_meta_view">
+          <%= @user.user_heart_count unless @user.user_heart_count.nil? %> <span>回いいね</span>
         </p>
       </div>
     </section>
 
     <section class="video_content_item">
-      <h2><i class="fas fa-cookie-bite"></i> おすすめ動画</h2>
+      <h2><i class="fas fa-cookie-bite"></i> <%= @user.user_nick_name %>のおすすめ動画</h2>
       <ul>
         <% if @videos.present? %>
           <% @videos.shuffle.each_with_index do |video, i| %>
@@ -94,6 +97,62 @@
         <% end %>
       </ul>
     </section>
+
+
+
+    <div class="video_content_split_wrap">
+      <div>
+        <section class="video_content_item_ranking">
+          <div class="video_content_item_ranking_header">
+            <h2><i class="fas fa-cookie-bite"></i> <%= @user.user_nick_name %>の人気動画ランキング</h2>
+          </div>
+          <ul>
+            <% cache @videos_rank do %>
+              <% @videos_rank.each_with_index do |video, index| %>
+                <li>
+                  <p class="rank_index rank_index_<%= index + 1 %>"><%= index + 1 %></p>
+                  <div>
+                    <%= link_to image_tag(video.video_cover_image, alt:video.video_title), video.user %>
+                  </div>
+                  <div>
+                    <h3><%= video.video_title %></h3>
+                    <div class="video_content_item_ranking_meta">
+                      <p><i class="fas fa-heart"></i> <%= video.video_interaction_count %></p>
+                      <p><i class="fas fa-comment"></i> <%= video.video_share_count %></p>
+                      <p><i class="fas fa-share"></i> <%= video.video_comment_count %></p>
+                    </div>
+                    <div class="video_content_item_ranking_user">
+                      <%= link_to image_tag(video.user.user_covers, alt:video.user.user_nick_name), video.user %>
+                      <p><%= video.user.user_nick_name %></p>
+                    </div>
+                  </div>
+                </li>
+              <% end %>
+              <li class="ranking_more">
+                <%#= link_to "もっと見る", ranking_tag_path(@tag) %>
+              </li>
+            <% end %>
+
+          </ul>
+        </section>
+      </div>
+
+      <div>
+        <section class="video_content_item_transition">
+          <h2><i class="fas fa-cookie-bite"></i> <%= @user.user_nick_name %>のフォロワー(ファン)数 推移</h2>
+          <% cache @user_histries_posts_trans_fans_count do %>
+            <%= line_chart @user_histries_posts_trans_fans_count , xtitle: "日付", ytitle: "総再生回数" %>
+          <% end %>
+        </section>
+
+        <section class="video_content_item_transition">
+          <h2><i class="fas fa-cookie-bite"></i> <%= @user.user_nick_name %>の総いいね数 推移</h2>
+          <% cache @user_histries_posts_trans_heart_count do %>
+            <%= line_chart @user_histries_posts_trans_heart_count , xtitle: "日付", ytitle: "動画投稿数" %>
+          <% end %>
+        </section>
+      </div>
+    </div>
 
 
   </article>
