@@ -364,6 +364,47 @@ main {
       }
 
     }
+    & .video_content_item_tags {
+      width: calc(100vw - 640px);
+      & h2 {
+        font-size: 25px;
+        padding-left: 30px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        margin-top: 40px;
+        margin-bottom: 10px;
+        & i {
+          color:#14EDEC;
+        }
+      }
+      & ul {
+        display: flex;
+        flex-wrap: wrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+        padding: 10px;
+        margin-left: 15px;
+        &::-webkit-scrollbar {
+          display: none;
+        }
+        & li {
+          padding: 10px;
+          background-color: #27282F;
+          border-radius: 5px;
+          margin-right: 10px;
+          margin-bottom: 10px;
+
+          & a {
+            color: #A8A9B2;
+            text-decoration: none;
+          }
+        }
+      }
+
+    }
     & .video_content_item_ranking {
       width: calc((100vw - 640px) / 2 - 40px);
       &_header {

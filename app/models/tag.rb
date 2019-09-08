@@ -184,9 +184,9 @@ class Tag < ApplicationRecord
               @tag.save!
           else
             @tag = Tag.create(tag)
+            @tag.updated_at = "2000-01-01"
+            @tag.save!
           end
-          @tag.updated_at = "2000-01-01"
-          @tag.save!
         end
       end
     end
@@ -281,13 +281,11 @@ class Tag < ApplicationRecord
         ActiveRecord::Base.connection_pool.with_connection do
           unless @tag.nil?
             @tag.update(tag)
-            @tag.updated_at = "2000-01-01"
-            @tag.save!
           else
             @tag = Tag.create(tag)
+            @tag.updated_at = "2000-01-01"
+            @tag.save!
           end
-          @tag.updated_at = "2000-01-01"
-          @tag.save!
         end
       end
     end

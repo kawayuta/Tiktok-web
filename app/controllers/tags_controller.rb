@@ -18,7 +18,7 @@ class TagsController < ApplicationController
     @trending_tags = cache_tags_trending.take(10)
 
     @videos_data = cache_videos
-    @videos = @videos_data.select { |v| v.video_tags.include?(@tag.tag_title) unless v.video_tags.nil? }.shuffle!
+    @videos = @videos_data.select { |v| v.video_tags.include?(@tag.tag_title.downcase) || v.video_tags.include?(@tag.tag_title.upcase) unless v.video_tags.nil? }
     @videos_rank = @videos.sort_by {|array| Integer(array.video_interaction_count)}.first(10).reverse.to_a
 
     @tag_histries_posts_trans_views_count = cache_tags_histories.select {|h|h.tag_title == @tag.tag_title}.pluck(:created_at,:tag_views_count).map { |e| [ e[0].strftime("%Y-%m-%d"), e[1] ] }
@@ -127,9 +127,10 @@ class TagsController < ApplicationController
     end
 
     def cache_videos
-      Rails.cache.fetch("cache_videos", expired_in: 60.minutes) do
-        Video.eager_load(:user).all.to_a
-      end
+      Video.eager_load(:user).all.to_a
+      # Rails.cache.fetch("cache_videos", expired_in: 60.minutes) do
+      #
+      # end
     end
 
     def cache_videos_trending
@@ -145,9 +146,9 @@ class TagsController < ApplicationController
     end
 
     def cache_tags_histories
-      Rails.cache.fetch("cache_tags_histories", expired_in: 60.minutes) do
-        TagHistory.all.to_a
-      end
+      TagHistory.all.to_a
+      # Rails.cache.fetch("cache_tags_histories", expired_in: 60.minutes) do
+      # end
     end
 
 end
