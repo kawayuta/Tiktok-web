@@ -5,23 +5,23 @@ namespace :task_database do
   require 'socksify'
 
   task :get_tag_data => :environment do
-    Tag.all.reverse.each do |tag|
+    Parallel.each(Tag.all.reverse, in_processes: 5) do |tag|
       Tag.new_tag(tag.tag_title)
     end
   end
   task :get_user_data => :environment do
-    User.all.each do | user |
+    Parallel.each(User.all.reverse, in_processes: 5) do | user |
       User.new_user(user.user_official_id)
     end
   end
   task :get_video_data => :environment do
-    Video.all.each do | video |
+    Parallel.each(Video.all.reverse, in_processes: 5) do | video |
       Video.update_video(video.video_official_id)
     end
   end
 
   task :get_video_from_tag => :environment do
-    Tag.all.reverse.each do |tag|
+    Parallel.each(Tag.all.reverse, in_processes: 5) do |tag|
       begin
         Socksify::proxy("127.0.0.1", 9050) {
           url = URI.encode "https://www.tiktok.com/tag/#{tag.tag_title}"
@@ -47,7 +47,7 @@ namespace :task_database do
     end
   end
   task :get_video_from_user => :environment do
-    User.all.reverse.each do |user|
+    Parallel.each(User.all.reverse, in_processes: 5) do |user|
       begin
         Socksify::proxy("127.0.0.1", 9050) {
           url = URI.encode "https://www.tiktok.com/@#{user.user_sec_id}"
