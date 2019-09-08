@@ -98,7 +98,16 @@
       </ul>
     </section>
 
-
+    <section class="video_content_item_tags">
+      <h2><i class="fas fa-cookie-bite"></i> 関連するハッシュタグ</h2>
+      <ul>
+        <% if @videos.present? %>
+          <% @recommend_tags.each do |tag| %>
+            <li><%= link_to"##{tag}", search_tags_path(keyword: tag) %></li>
+          <% end %>
+        <% end %>
+      </ul>
+    </section>
 
     <div class="video_content_split_wrap">
       <div>

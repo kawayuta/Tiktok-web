@@ -21,6 +21,7 @@ class UsersController < ApplicationController
     @user_histries_posts_trans_fans_count = cache_users_histories.select {|h|h.user_official_id == @user.user_official_id}.pluck(:created_at,:user_fans_count).map { |e| [ e[0].strftime("%Y-%m-%d"), e[1] ] }
     @user_histries_posts_trans_heart_count = cache_users_histories.select {|h|h.user_official_id == @user.user_official_id}.pluck(:created_at,:user_heart_count).map { |e| [ e[0].strftime("%Y-%m-%d"), e[1] ] }
 
+    @recommend_tags = @videos.pluck(:video_tags).flatten.compact.uniq.sort.reverse
   end
 
   # GET /users/new

@@ -24,6 +24,7 @@ class TagsController < ApplicationController
     @tag_histries_posts_trans_views_count = cache_tags_histories.select {|h|h.tag_title == @tag.tag_title}.pluck(:created_at,:tag_views_count).map { |e| [ e[0].strftime("%Y-%m-%d"), e[1] ] }
     @tag_histries_posts_trans_posts_count = cache_tags_histories.select {|h|h.tag_title == @tag.tag_title}.pluck(:created_at,:tag_posts_count).map { |e| [ e[0].strftime("%Y-%m-%d"), e[1] ] }
 
+    @recommend_tags = @videos.pluck(:video_tags).flatten.compact.uniq.sort.reverse
   end
 
   # GET /tags/new
