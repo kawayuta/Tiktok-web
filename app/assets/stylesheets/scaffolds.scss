@@ -29,7 +29,7 @@ header {
     display: flex;
     flex-wrap: nowrap;
     & .branding_logo {
-      width: 105px;
+      width: 150px;
       height: auto;
       padding-top: 10px;
       padding-left: 40px;
@@ -51,7 +51,7 @@ header {
         font-size: 35px;
         position: absolute;
         top: 29px;
-        left: 215px;
+        left: 255px;
         z-index: 999;
       }
     }
@@ -819,10 +819,10 @@ p, a, h1, h2, h3, h4, li {
         margin-right: auto;
       }
       & .branding_logo {
-        width: 60px;
+        width: 85px;
         height: auto;
         padding-top: 0px;
-        padding-left: 0px;
+        padding-left: 10px;
         & img {
           width: 100%;
           height: auto;
