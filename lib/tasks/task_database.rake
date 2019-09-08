@@ -6,17 +6,17 @@ namespace :task_database do
 
   task :get_tag_data => :environment do
     Tag.all.find_each(batch_size: 100) do |tag|
-        Tag.new_tag(tag.tag_title)
+      TagUpdateWorker.perform_async(tag.tag_title)
     end
   end
   task :get_user_data => :environment do
     User.all.find_each(batch_size: 100) do |user|
-        User.new_user(user.user_official_id)
+      UserUpdateWorker.perform_async(user.user_official_id)
     end
   end
   task :get_video_data => :environment do
     Video.all.find_each(batch_size: 100) do |video|
-        Video.update_video(video.video_official_id)
+      VideoUpdateWorker.perform_async(video.video_official_id, nil)
     end
   end
 
@@ -37,8 +37,8 @@ namespace :task_database do
               embeds.push(n.split('","')[0])
             end
 
-            embeds.each do |url|
-              Tag.get_video_from_embed_new(url)
+            embeds.uniq.each do |url|
+              DataFromEmbedWorker.perform_async(url, false)
             end
           }
         rescue => error
@@ -63,8 +63,8 @@ namespace :task_database do
               embeds.push(n.split('","')[0])
             end
 
-            embeds.each do |url|
-              Tag.get_video_from_embed_new(url)
+            embeds.uniq.each do |url|
+              DataFromEmbedWorker.perform_async(url, false)
             end
           }
         rescue => error
@@ -86,26 +86,12 @@ namespace :task_database do
 
         embeds = []
         script = doc.css('script').to_s
-        script.split('"embedUrl":"').drop(1).each do |n|
+        script.split('"embedUrl":"').drop(1).uniq.each do |n|
           embeds.push(n.split('","')[0])
         end
 
-        # if Video.where(video_trending: true).present?
-        #   Video.where(video_trending: true).each do |v|
-        #     v.video_trending = false
-        #     v.save!
-        #   end
-        # end
-        #
-        # if Tag.where(tag_trending: true).present?
-        #   Tag.where(tag_trending: true).each do |v|
-        #     v.tag_trending = false
-        #     v.save!
-        #   end
-        # end
-
-        embeds.each do |url|
-          Tag.get_video_from_embed_task_new(url)
+        embeds.uniq.each do |url|
+          DataFromEmbedWorker.perform_async(url, true)
         end
       }
     rescue => error

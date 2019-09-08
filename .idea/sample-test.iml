@@ -2407,6 +2407,36 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
+      <library name="sidekiq-unique-jobs (vbundled(6.0.13)) [path][gem]" type="rubylib">
+        <properties>
+          <option name="version" value="3" />
+        </properties>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/sidekiq-unique-jobs-6.0.13/bin" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/sidekiq-unique-jobs-6.0.13/lib" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/sidekiq-unique-jobs-6.0.13/redis" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/sidekiq-unique-jobs-6.0.13/assets" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/sidekiq-unique-jobs-6.0.13/.github" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/sidekiq-unique-jobs-6.0.13/examples" />
+        </CLASSES>
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/sidekiq-unique-jobs-6.0.13/bin" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/sidekiq-unique-jobs-6.0.13/lib" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/sidekiq-unique-jobs-6.0.13/redis" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/sidekiq-unique-jobs-6.0.13/assets" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/sidekiq-unique-jobs-6.0.13/.github" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/sidekiq-unique-jobs-6.0.13/examples" />
+        </SOURCES>
+        <excluded>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/sidekiq-unique-jobs-6.0.13/bin" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/sidekiq-unique-jobs-6.0.13/redis" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/sidekiq-unique-jobs-6.0.13/assets" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/sidekiq-unique-jobs-6.0.13/.github" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/sidekiq-unique-jobs-6.0.13/examples" />
+        </excluded>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
       <library name="signet (vbundled(0.11.0)) [path][gem]" type="rubylib">
         <properties>
           <option name="version" value="3" />
