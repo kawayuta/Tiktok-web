@@ -158,10 +158,14 @@ class Tag < ApplicationRecord
         puts "update video"
         @video = @user.videos.find_by(video_official_id: video[:video_official_id])
         @video.update(video)
+        @video.updated_at = "2000-01-01"
+        @video.save!
       end
     else
       ActiveRecord::Base.connection_pool.with_connection do
         @video = @user.videos.create(video)
+        @video.updated_at = "2000-01-01"
+        @video.save!
       end
     end
 
@@ -252,11 +256,15 @@ class Tag < ApplicationRecord
         puts "update video"
         @video = @user.videos.find_by(video_official_id: video[:video_official_id])
         @video.update(video)
+        @video.updated_at = "2000-01-01"
+        @video.save!
       end
     else
       ActiveRecord::Base.connection_pool.with_connection do
         puts "create video"
         @video = @user.videos.create(video)
+        @video.updated_at = "2000-01-01"
+        @video.save!
       end
     end
 
