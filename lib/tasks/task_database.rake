@@ -5,70 +5,80 @@ namespace :task_database do
   require 'socksify'
 
   task :get_tag_data => :environment do
-    Parallel.each(Tag.all.reverse, in_processes: 5) do |tag|
-      Tag.new_tag(tag.tag_title)
+    Tag.find_in_batches do |model|
+      Parallel.each(model, in_processes: 5) do |tag|
+        Tag.new_tag(tag.tag_title)
+      end
     end
   end
   task :get_user_data => :environment do
-    Parallel.each(User.all.reverse, in_processes: 5) do | user |
-      User.new_user(user.user_official_id)
+    User.find_in_batches do |model|
+      Parallel.each(model, in_processes: 5) do | user |
+        User.new_user(user.user_official_id)
+      end
     end
   end
   task :get_video_data => :environment do
-    Parallel.each(Video.all.reverse, in_processes: 5) do | video |
-      Video.update_video(video.video_official_id)
+    Video.find_in_batches do |model|
+      Parallel.each(model, in_processes: 5) do | video |
+        Video.update_video(video.video_official_id)
+      end
     end
   end
 
   task :get_video_from_tag => :environment do
-    Parallel.each(Tag.all.reverse, in_processes: 5) do |tag|
-      begin
-        Socksify::proxy("127.0.0.1", 9050) {
-          url = URI.encode "https://www.tiktok.com/tag/#{tag.tag_title}"
-          charset = nil
-          html = open(url) do |f|
-            charset = f.charset
-            f.read
-          end
-          doc = Nokogiri::HTML.parse(html, nil, charset)
-          embeds = []
-          script = doc.css('script').to_s
-          script.split('"embedUrl":"').drop(1).each do |n|
-            embeds.push(n.split('","')[0])
-          end
+    Tag.find_in_batches do |model|
+      Parallel.each(model, in_processes: 5) do |tag|
+        begin
+          Socksify::proxy("127.0.0.1", 9050) {
+            url = URI.encode "https://www.tiktok.com/tag/#{tag.tag_title}"
+            charset = nil
+            html = open(url) do |f|
+              charset = f.charset
+              f.read
+            end
+            doc = Nokogiri::HTML.parse(html, nil, charset)
+            embeds = []
+            script = doc.css('script').to_s
+            script.split('"embedUrl":"').drop(1).each do |n|
+              embeds.push(n.split('","')[0])
+            end
 
-          embeds.each do |url|
-            Tag.get_video_from_embed_new(url)
-          end
-        }
-      rescue => error
-        puts error
+            embeds.each do |url|
+              Tag.get_video_from_embed_new(url)
+            end
+          }
+        rescue => error
+          puts error
+        end
       end
     end
   end
   task :get_video_from_user => :environment do
-    Parallel.each(User.all.reverse, in_processes: 5) do |user|
-      begin
-        Socksify::proxy("127.0.0.1", 9050) {
-          url = URI.encode "https://www.tiktok.com/@#{user.user_sec_id}"
-          charset = nil
-          html = open(url) do |f|
-            charset = f.charset
-            f.read
-          end
-          doc = Nokogiri::HTML.parse(html, nil, charset)
-          embeds = []
-          script = doc.css('script').to_s
-          script.split('"embedUrl":"').drop(1).each do |n|
-            embeds.push(n.split('","')[0])
-          end
+    User.find_in_batches do |model|
+      Parallel.each(model, in_processes: 5) do |user|
+        begin
+          Socksify::proxy("127.0.0.1", 9050) {
+            url = URI.encode "https://www.tiktok.com/@#{user.user_sec_id}"
+            charset = nil
+            html = open(url) do |f|
+              charset = f.charset
+              f.read
+            end
+            doc = Nokogiri::HTML.parse(html, nil, charset)
+            embeds = []
+            script = doc.css('script').to_s
+            script.split('"embedUrl":"').drop(1).each do |n|
+              embeds.push(n.split('","')[0])
+            end
 
-          embeds.each do |url|
-            Tag.get_video_from_embed_new(url)
-          end
-        }
-      rescue => error
-        puts error
+            embeds.each do |url|
+              Tag.get_video_from_embed_new(url)
+            end
+          }
+        rescue => error
+          puts error
+        end
       end
     end
   end
