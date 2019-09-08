@@ -33,16 +33,10 @@ class Video < ApplicationRecord
           return if video_data[:video_official_id].nil?
 
           video_instance = user_instance.videos.create(video_data)
-          VideoHistory.create(video_data)
 
           ActiveRecord::Base.connection_pool.with_connection do
             hash = Video.group(:video_official_id).having('count(*) >= 2').maximum(:id)
             Video.where(video_official_id: hash.keys).where.not(id: hash.values).destroy_all
-          end
-
-          ActiveRecord::Base.connection_pool.with_connection do
-            hash = VideoHistory.group(:video_official_id).having('count(*) >= 2').maximum(:id)
-            VideoHistory.where(video_official_id: hash.keys).where.not(id: hash.values).destroy_all
           end
         end
       end

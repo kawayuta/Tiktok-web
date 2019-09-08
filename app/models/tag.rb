@@ -30,16 +30,10 @@ class Tag < ApplicationRecord
           tag_instance = Tag.create(tag_data)
           tag_instance.updated_at = "2000-01-01"
           tag_instance.save
-          TagHistory.create(tag_data)
 
           ActiveRecord::Base.connection_pool.with_connection do
             hash = Tag.group(:tag_official_id).having('count(*) >= 2').maximum(:id)
             Tag.where(tag_official_id: hash.keys).where.not(id: hash.values).destroy_all
-          end
-
-          ActiveRecord::Base.connection_pool.with_connection do
-            hash = TagHistory.group(:tag_official_id).having('count(*) >= 2').maximum(:id)
-            TagHistory.where(tag_official_id: hash.keys).where.not(id: hash.values).destroy_all
           end
         end
       end

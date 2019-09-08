@@ -30,16 +30,10 @@ class User < ApplicationRecord
           return if user_data[:user_official_id].nil?
 
           user_instance = User.create(user_data)
-          UserHistory.create(user_data)
 
           ActiveRecord::Base.connection_pool.with_connection do
             hash = User.group(:user_official_id).having('count(*) >= 2').maximum(:id)
             User.where(user_official_id: hash.keys).where.not(id: hash.values).destroy_all
-          end
-
-          ActiveRecord::Base.connection_pool.with_connection do
-            hash = UserHistory.group(:user_official_id).having('count(*) >= 2').maximum(:id)
-            UserHistory.where(user_official_id: hash.keys).where.not(id: hash.values).destroy_all
           end
         end
       end
