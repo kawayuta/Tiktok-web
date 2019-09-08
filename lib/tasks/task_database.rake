@@ -5,30 +5,23 @@ namespace :task_database do
   require 'socksify'
 
   task :get_tag_data => :environment do
-    Tag.find_in_batches do |model|
-      Parallel.each(model, in_processes: 5) do |tag|
+    Tag.all.find_each do |tag|
         Tag.new_tag(tag.tag_title)
-      end
     end
   end
   task :get_user_data => :environment do
-    User.find_in_batches do |model|
-      Parallel.each(model, in_processes: 5) do | user |
+    User.all.find_each do |user|
         User.new_user(user.user_official_id)
-      end
     end
   end
   task :get_video_data => :environment do
-    Video.find_in_batches do |model|
-      Parallel.each(model, in_processes: 5) do | video |
+    Video.all.find_each do |video|
         Video.update_video(video.video_official_id)
-      end
     end
   end
 
   task :get_video_from_tag => :environment do
-    Tag.find_in_batches do |model|
-      Parallel.each(model, in_processes: 5) do |tag|
+    Tag.all.find_each do |tag|
         begin
           Socksify::proxy("127.0.0.1", 9050) {
             url = URI.encode "https://www.tiktok.com/tag/#{tag.tag_title}"
@@ -51,12 +44,10 @@ namespace :task_database do
         rescue => error
           puts error
         end
-      end
     end
   end
   task :get_video_from_user => :environment do
-    User.find_in_batches do |model|
-      Parallel.each(model, in_processes: 5) do |user|
+    User.all.find_each do |user|
         begin
           Socksify::proxy("127.0.0.1", 9050) {
             url = URI.encode "https://www.tiktok.com/@#{user.user_sec_id}"
@@ -79,7 +70,6 @@ namespace :task_database do
         rescue => error
           puts error
         end
-      end
     end
   end
 
