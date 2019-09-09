@@ -56,8 +56,6 @@ namespace :task_database do
             DataFromEmbedWorker.perform_async(u, false)
           end
         rescue => error
-          driver.close
-          driver.quit
           puts error
         end
       end
@@ -65,7 +63,7 @@ namespace :task_database do
     driver.close
     driver.quit
   end
-  
+
   task :get_video_from_user => :environment do
     client = Selenium::WebDriver::Remote::Http::Default.new
     client.read_timeout = 120 # seconds
@@ -96,8 +94,6 @@ namespace :task_database do
             DataFromEmbedWorker.perform_async(u, false)
           end
         rescue => error
-          driver.close
-          driver.quit
           puts error
         end
       end
