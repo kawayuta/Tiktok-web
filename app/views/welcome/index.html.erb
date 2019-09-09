@@ -29,14 +29,14 @@
         </div>
         <div class="video_content_meta_info">
           <p class="video_content_meta_info_play">
-            <i class="fas fa-heart"></i> <span class="video_play_count"></span>
+            <i class="material-icons">favorite</i> <span class="video_play_count"></span>
           </p>
 
           <p class="video_content_meta_info_comment">
-            <i class="fas fa-comment"></i> <span class="video_comment_count"></span>
+            <i class="material-icons">comment</i> <span class="video_comment_count"></span>
           </p>
           <p class="video_content_meta_info_share">
-            <i class="fas fa-share"></i> <span class="video_share_count"></span>
+            <i class="material-icons">share</i> <span class="video_share_count"></span>
           </p>
         </div>
       </div>
@@ -80,7 +80,7 @@
 
 
     <section class="video_content_item">
-      <h2><i class="fas fa-cookie-bite"></i> おすすめ動画</h2>
+      <h2><i class="material-icons">cake</i> おすすめ動画</h2>
       <ul>
         <% if @videos.present? %>
           <% @videos.shuffle.each_with_index do |video, i| %>
@@ -105,7 +105,7 @@
     </section>
 
     <section class="video_content_item_tags">
-      <h2><i class="fas fa-cookie-bite"></i> 関連するハッシュタグ</h2>
+      <h2><i class="material-icons">cake</i> 関連するハッシュタグ</h2>
       <ul>
         <% if @videos.present? %>
           <% @recommend_tags.each do |tag| %>
@@ -119,7 +119,7 @@
       <div>
         <section class="video_content_item_ranking">
           <div class="video_content_item_ranking_header">
-            <h2><i class="fas fa-cookie-bite"></i> トレンド動画ランキング(いいね数)</h2>
+            <h2><i class="material-icons">cake</i> トレンド動画ランキング(いいね数)</h2>
             <%#= link_to "すべてのランキング", ranking_tag_path(@tag) %>
           </div>
           <ul>
@@ -132,9 +132,9 @@
                 <div>
                   <h3><%= video.video_title %></h3>
                   <div class="video_content_item_ranking_meta">
-                    <p><i class="fas fa-heart"></i> <%= video.video_interaction_count %></p>
-                    <p><i class="fas fa-comment"></i> <%= video.video_share_count %></p>
-                    <p><i class="fas fa-share"></i> <%= video.video_comment_count %></p>
+                    <p><i class="material-icons">favorite</i> <%= video.video_interaction_count %></p>
+                    <p><i class="material-icons">comment</i> <%= video.video_share_count %></p>
+                    <p><i class="material-icons">share</i> <%= video.video_comment_count %></p>
                   </div>
                   <div class="video_content_item_ranking_user">
                     <%= link_to image_tag(video.user.user_covers, alt:video.user.user_nick_name), video.user %>
@@ -152,7 +152,7 @@
       <div>
         <section class="video_content_item_ranking">
           <div class="video_content_item_ranking_header">
-            <h2><i class="fas fa-cookie-bite"></i> すべての動画ランキング(いいね数)</h2>
+            <h2><i class="material-icons">cake</i> すべての動画ランキング(いいね数)</h2>
             <%#= link_to "すべてのランキング", ranking_tag_path(@tag) %>
           </div>
           <ul>
@@ -165,9 +165,9 @@
                 <div>
                   <h3><%= video.video_title %></h3>
                   <div class="video_content_item_ranking_meta">
-                    <p><i class="fas fa-heart"></i> <%= video.video_interaction_count %></p>
-                    <p><i class="fas fa-comment"></i> <%= video.video_share_count %></p>
-                    <p><i class="fas fa-share"></i> <%= video.video_comment_count %></p>
+                    <p><i class="material-icons">favorite</i> <%= video.video_interaction_count %></p>
+                    <p><i class="material-icons">comment</i> <%= video.video_share_count %></p>
+                    <p><i class="material-icons">share</i> <%= video.video_comment_count %></p>
                   </div>
                   <div class="video_content_item_ranking_user">
                     <%= link_to image_tag(video.user.user_covers, alt:video.user.user_nick_name), video.user %>

@@ -27,7 +27,7 @@
 
   <div class="split_wrap">
     <section class="video_content_item_ranking">
-      <h2><i class="fas fa-cookie-bite"></i> 「いいね！数」ランキング</h2>
+      <h2><i class="material-icons">cake</i> 「いいね！数」ランキング</h2>
       <ul>
         <% @videos_interaction_rank.each_with_index do |video, index| %>
           <li>
@@ -38,9 +38,9 @@
             <div>
               <h3><%= video.video_title %></h3>
               <div class="video_content_item_ranking_meta">
-                <p><i class="fas fa-heart"></i> <%= video.video_interaction_count %></p>
-                <p><i class="fas fa-comment"></i> <%= video.video_comment_count %></p>
-                <p><i class="fas fa-share"></i> <%= video.video_share_count %></p>
+                <i class="material-icons">favorite</i> <%= video.video_interaction_count %></p>
+                <p><i class="material-icons">comment</i> <%= video.video_comment_count %></p>
+                <p><i class="material-icons">share</i> <%= video.video_share_count %></p>
               </div>
               <div class="video_content_item_ranking_user">
                 <%= link_to image_tag(video.user.user_covers, alt:video.user.user_nick_name), video.user %>
@@ -53,7 +53,7 @@
     </section>
 
     <section class="video_content_item_ranking">
-      <h2><i class="fas fa-cookie-bite"></i> 「コメント数」ランキング</h2>
+      <h2><i class="material-icons">cake</i> 「コメント数」ランキング</h2>
       <ul>
         <% @videos_comment_rank.each_with_index do |video, index| %>
           <li>
@@ -64,9 +64,9 @@
             <div>
               <h3><%= video.video_title %></h3>
               <div class="video_content_item_ranking_meta">
-                <p><i class="fas fa-heart"></i> <%= video.video_interaction_count %></p>
-                <p><i class="fas fa-comment"></i> <%= video.video_comment_count %></p>
-                <p><i class="fas fa-share"></i> <%= video.video_share_count %></p>
+                <i class="material-icons">favorite</i> <%= video.video_interaction_count %></p>
+                <p><i class="material-icons">comment</i> <%= video.video_comment_count %></p>
+                <p><i class="material-icons">share</i> <%= video.video_share_count %></p>
               </div>
               <div class="video_content_item_ranking_user">
                 <%= link_to image_tag(video.user.user_covers, alt:video.user.user_nick_name), video.user %>
@@ -79,7 +79,7 @@
     </section>
 
     <section class="video_content_item_ranking">
-      <h2><i class="fas fa-cookie-bite"></i> 「シェア数」ランキング</h2>
+      <h2><i class="material-icons">cake</i> 「シェア数」ランキング</h2>
       <ul>
         <% @videos_share_rank.each_with_index do |video, index| %>
           <li>
@@ -90,9 +90,9 @@
             <div>
               <h3><%= video.video_title %></h3>
               <div class="video_content_item_ranking_meta">
-                <p><i class="fas fa-heart"></i> <%= video.video_interaction_count %></p>
-                <p><i class="fas fa-comment"></i> <%= video.video_comment_count %></p>
-                <p><i class="fas fa-share"></i> <%= video.video_share_count %></p>
+                <i class="material-icons">favorite</i> <%= video.video_interaction_count %></p>
+                <p><i class="material-icons">comment</i> <%= video.video_comment_count %></p>
+                <p><i class="material-icons">share</i> <%= video.video_share_count %></p>
               </div>
               <div class="video_content_item_ranking_user">
                 <%= link_to image_tag(video.user.user_covers, alt:video.user.user_nick_name), video.user %>
