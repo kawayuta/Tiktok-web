@@ -5,23 +5,30 @@ namespace :task_database do
   require 'socksify'
 
   task :get_tag_data => :environment do
-    Tag.all.find_each(batch_size: 100) do |tag|
-      TagUpdateWorker.perform_async(tag.tag_title)
+    Tag.all.find_in_batches(batch_size: 100) do |tags|
+      tags.reverse.each do |tag|
+        TagUpdateWorker.perform_async(tag.tag_title)
+      end
     end
   end
   task :get_user_data => :environment do
-    User.all.find_each(batch_size: 100) do |user|
-      UserUpdateWorker.perform_async(user.user_official_id)
+    User.all.find_in_batches(batch_size: 100) do |users|
+      users.reverse.each do |user|
+        UserUpdateWorker.perform_async(user.user_official_id)
+      end
     end
   end
   task :get_video_data => :environment do
-    Video.all.find_each(batch_size: 100) do |video|
-      VideoUpdateWorker.perform_async(video.video_official_id, nil)
+    Video.all.find_in_batches(batch_size: 100) do |videos|
+      videos.reverse.each do |video|
+        VideoUpdateWorker.perform_async(video.video_official_id, nil)
+      end
     end
   end
 
   task :get_video_from_tag => :environment do
-    Tag.all.find_each(batch_size: 100) do |tag|
+    Tag.all.find_in_batches(batch_size: 100) do |tags|
+      tags.reverse.each do |tag|
         begin
           client = Selenium::WebDriver::Remote::Http::Default.new
           client.read_timeout = 120 # seconds
@@ -53,10 +60,12 @@ namespace :task_database do
         rescue => error
           puts error
         end
+      end
     end
   end
   task :get_video_from_user => :environment do
-    User.all.find_each(batch_size: 100) do |user|
+    User.all.find_in_batches(batch_size: 100) do |users|
+      users.reverse.each do |user|
         begin
           client = Selenium::WebDriver::Remote::Http::Default.new
           client.read_timeout = 120 # seconds
@@ -88,6 +97,7 @@ namespace :task_database do
         rescue => error
           puts error
         end
+      end
     end
   end
 
