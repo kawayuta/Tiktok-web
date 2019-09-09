@@ -23,24 +23,33 @@ namespace :task_database do
   task :get_video_from_tag => :environment do
     Tag.all.find_each(batch_size: 100) do |tag|
         begin
-          Socksify::proxy("127.0.0.1", 9050) {
-            url = URI.encode "https://www.tiktok.com/tag/#{tag.tag_title}"
-            charset = nil
-            html = open(url) do |f|
-              charset = f.charset
-              f.read
-            end
-            doc = Nokogiri::HTML.parse(html, nil, charset)
-            embeds = []
-            script = doc.css('script').to_s
-            script.split('"embedUrl":"').drop(1).each do |n|
-              embeds.push(n.split('","')[0])
-            end
+          client = Selenium::WebDriver::Remote::Http::Default.new
+          client.read_timeout = 120 # seconds
+          options = Selenium::WebDriver::Chrome::Options.new
+          options.add_argument('--headless')
+          options.add_argument('--no-sandbox')
+          options.add_argument('--disable-dev-shm-usage')
+          options.add_argument('--proxy-server=%s' % "socks5://127.0.0.1:9050")
 
-            embeds.uniq.each do |url|
-              DataFromEmbedWorker.perform_async(url, false)
-            end
-          }
+          ua = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.116 Safari/537.36"
+
+          caps = Selenium::WebDriver::Remote::Capabilities.chrome("chromeOptions" => {binary: '/usr/local/bin/chromedriver', args: ["--headless", "--disable-gpu", "--user-agent=#{ua}", "window-size=1280x800"]})
+          driver = Selenium::WebDriver.for :chrome, options: options, http_client: client, desired_capabilities: caps
+          driver.get "https://www.tiktok.com/tag/#{tag.tag_title}"
+
+          doc = Nokogiri::HTML(driver.page_source)
+
+          urls = []
+          doc.css('._video_feed_item').each do |item|
+            puts item.css('a')[0][:href].split('/').last
+            urls.push("https://www.tiktok.com/embed/#{item.css('a')[0][:href].split('/').last}")
+          end
+          driver.close
+          driver.quit
+
+          urls.uniq.each do |u|
+            DataFromEmbedWorker.perform_async(u, false)
+          end
         rescue => error
           puts error
         end
@@ -49,24 +58,33 @@ namespace :task_database do
   task :get_video_from_user => :environment do
     User.all.find_each(batch_size: 100) do |user|
         begin
-          Socksify::proxy("127.0.0.1", 9050) {
-            url = URI.encode "https://www.tiktok.com/@#{user.user_sec_id}"
-            charset = nil
-            html = open(url) do |f|
-              charset = f.charset
-              f.read
-            end
-            doc = Nokogiri::HTML.parse(html, nil, charset)
-            embeds = []
-            script = doc.css('script').to_s
-            script.split('"embedUrl":"').drop(1).each do |n|
-              embeds.push(n.split('","')[0])
-            end
+          client = Selenium::WebDriver::Remote::Http::Default.new
+          client.read_timeout = 120 # seconds
+          options = Selenium::WebDriver::Chrome::Options.new
+          options.add_argument('--headless')
+          options.add_argument('--no-sandbox')
+          options.add_argument('--disable-dev-shm-usage')
+          options.add_argument('--proxy-server=%s' % "socks5://127.0.0.1:9050")
 
-            embeds.uniq.each do |url|
-              DataFromEmbedWorker.perform_async(url, false)
-            end
-          }
+          ua = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.116 Safari/537.36"
+
+          caps = Selenium::WebDriver::Remote::Capabilities.chrome("chromeOptions" => {binary: '/usr/local/bin/chromedriver', args: ["--headless", "--disable-gpu", "--user-agent=#{ua}", "window-size=1280x800"]})
+          driver = Selenium::WebDriver.for :chrome, options: options, http_client: client, desired_capabilities: caps
+          driver.get "https://www.tiktok.com/@#{user.user_sec_id}"
+
+          doc = Nokogiri::HTML(driver.page_source)
+
+          urls = []
+          doc.css('._video_feed_item').each do |item|
+            puts item.css('a')[0][:href].split('/').last
+            urls.push("https://www.tiktok.com/embed/#{item.css('a')[0][:href].split('/').last}")
+          end
+          driver.close
+          driver.quit
+
+          urls.uniq.each do |u|
+            DataFromEmbedWorker.perform_async(u, false)
+          end
         rescue => error
           puts error
         end
@@ -75,25 +93,34 @@ namespace :task_database do
 
   task :get_trending => :environment do
     begin
-      Socksify::proxy("127.0.0.1", 9050) {
-        url = URI.encode "https://www.tiktok.com/trending"
-        charset = nil
-        html = open(url) do |f|
-          charset = f.charset
-          f.read
-        end
-        doc = Nokogiri::HTML.parse(html, nil, charset)
+      client = Selenium::WebDriver::Remote::Http::Default.new
+      client.read_timeout = 120 # seconds
+      options = Selenium::WebDriver::Chrome::Options.new
+      options.add_argument('--headless')
+      options.add_argument('--no-sandbox')
+      options.add_argument('--disable-dev-shm-usage')
+      options.add_argument('--proxy-server=%s' % "socks5://127.0.0.1:9050")
 
-        embeds = []
-        script = doc.css('script').to_s
-        script.split('"embedUrl":"').drop(1).uniq.each do |n|
-          embeds.push(n.split('","')[0])
-        end
+      ua = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.116 Safari/537.36"
 
-        embeds.uniq.each do |url|
-          DataFromEmbedWorker.perform_async(url, true)
-        end
-      }
+      caps = Selenium::WebDriver::Remote::Capabilities.chrome("chromeOptions" => {binary: '/usr/local/bin/chromedriver', args: ["--headless", "--disable-gpu", "--user-agent=#{ua}", "window-size=1280x800"]})
+      driver = Selenium::WebDriver.for :chrome, options: options, http_client: client, desired_capabilities: caps
+      driver.get "https://www.tiktok.com/trending"
+
+      doc = Nokogiri::HTML(driver.page_source)
+
+      urls = []
+      doc.css('._video_feed_item').each do |item|
+        puts item.css('a')[0][:href].split('/').last
+        urls.push("https://www.tiktok.com/embed/#{item.css('a')[0][:href].split('/').last}")
+      end
+      driver.close
+      driver.quit
+
+      urls.uniq.each do |u|
+        DataFromEmbedWorker.perform_async(u, true)
+      end
+
     rescue => error
       puts "TASK_DATABASE 例外やで"
     end
@@ -108,6 +135,40 @@ namespace :task_database do
 
   task :upload_youtube => :environment do
     Gc.download_and_upload
+  end
+
+  task :test_get_video_from_task => :environment do
+    Tag.all.each do |tag|
+      client = Selenium::WebDriver::Remote::Http::Default.new
+      client.read_timeout = 120 # seconds
+      options = Selenium::WebDriver::Chrome::Options.new
+      options.add_argument('--headless')
+      options.add_argument('--no-sandbox')
+      options.add_argument('--disable-dev-shm-usage')
+      options.add_argument('--proxy-server=%s' % "socks5://127.0.0.1:9050")
+
+      ua = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.116 Safari/537.36"
+
+      caps = Selenium::WebDriver::Remote::Capabilities.chrome("chromeOptions" => {binary: '/usr/local/bin/chromedriver', args: ["--headless", "--disable-gpu", "--user-agent=#{ua}", "window-size=1280x800"]})
+      driver = Selenium::WebDriver.for :chrome, options: options, http_client: client, desired_capabilities: caps
+      driver.get "https://www.tiktok.com/trending"
+
+      doc = Nokogiri::HTML(driver.page_source)
+
+      urls = []
+      doc.css('._video_feed_item').each do |item|
+        puts item.css('a')[0][:href].split('/').last
+        urls.push("https://www.tiktok.com/embed/#{item.css('a')[0][:href].split('/').last}")
+      end
+      puts urls.uniq.count
+      #
+      # urls.uniq.each do |u|
+      #   DataFromEmbedWorker.perform_async(u, false)
+      # end
+
+      driver.close
+      driver.quit
+    end
   end
 
 end
