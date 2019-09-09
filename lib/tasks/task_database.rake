@@ -88,7 +88,6 @@ namespace :task_database do
 
           urls = []
           doc.css('._video_feed_item').each do |item|
-            puts item.css('a')[0][:href].split('/').last
             urls.push("https://www.tiktok.com/embed/#{item.css('a')[0][:href].split('/').last}")
           end
 
@@ -126,7 +125,6 @@ namespace :task_database do
 
       urls = []
       doc.css('._video_feed_item').each do |item|
-        puts item.css('a')[0][:href].split('/').last
         urls.push("https://www.tiktok.com/embed/#{item.css('a')[0][:href].split('/').last}")
       end
       driver.close
