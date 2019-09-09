@@ -5,23 +5,23 @@ namespace :task_database do
   require 'socksify'
 
   task :get_tag_data => :environment do
-    Tag.all.reverse.find_each(batch_size: 100) do |tag|
+    Tag.all.find_each(batch_size: 100) do |tag|
       TagUpdateWorker.perform_async(tag.tag_title)
     end
   end
   task :get_user_data => :environment do
-    User.all.reverse.find_each(batch_size: 100) do |user|
+    User.all.find_each(batch_size: 100) do |user|
       UserUpdateWorker.perform_async(user.user_official_id)
     end
   end
   task :get_video_data => :environment do
-    Video.all.reverse.find_each(batch_size: 100) do |video|
+    Video.all.find_each(batch_size: 100) do |video|
       VideoUpdateWorker.perform_async(video.video_official_id, nil)
     end
   end
 
   task :get_video_from_tag => :environment do
-    Tag.all.reverse.find_each(batch_size: 100) do |tag|
+    Tag.all.find_each(batch_size: 100) do |tag|
         begin
           client = Selenium::WebDriver::Remote::Http::Default.new
           client.read_timeout = 120 # seconds
@@ -56,7 +56,7 @@ namespace :task_database do
     end
   end
   task :get_video_from_user => :environment do
-    User.all.reverse.find_each(batch_size: 100) do |user|
+    User.all.find_each(batch_size: 100) do |user|
         begin
           client = Selenium::WebDriver::Remote::Http::Default.new
           client.read_timeout = 120 # seconds
