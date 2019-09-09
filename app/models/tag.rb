@@ -104,6 +104,7 @@ class Tag < ApplicationRecord
       urls.uniq.each do |u|
         DataFromEmbedWorker.perform_async(u, false)
       end
+
       driver.close
       driver.quit
     rescue => error
