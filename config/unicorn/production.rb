@@ -9,8 +9,8 @@ working_directory "#{app_path}"
 
 unicorn_backlog = ENV["UNICORN_BACKLOG"] || 4096
 
-listen "/var/www/sample-test/shared/tmp/sockets/unicorn.sock", :backlog =>  Integer(unicorn_backlog)
-pid "/var/www/sample-test/shared/tmp/pids/unicorn.pid"
+listen "/var/www/sample-test/current/tmp/sockets/unicorn.sock", :backlog =>  Integer(unicorn_backlog)
+pid "/var/www/sample-test/current/tmp/pids/unicorn.pid"
 
 stdout_path "#{app_path}/log/unicorn.log"
 stderr_path "#{app_path}/log/unicorn.log"
