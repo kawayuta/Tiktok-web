@@ -4,19 +4,20 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.2'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
+gem 'sassc-rails'
 # Use sqlite3 as the database for Active Record
 gem 'mysql2'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+# gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 gem 'mini_racer', platforms: :ruby
 gem 'selenium-webdriver'
 gem 'parallel'
-gem 'font-awesome-sass', '~> 5.4.1'
+# gem 'font-awesome-sass', '~> 5.4.1', require: false
 gem "jquery-rails"
 gem 'webdrivers'
 gem 'tor'
@@ -42,7 +43,6 @@ gem 'sidekiq'
 gem 'redis-namespace'
 gem 'sidekiq-scheduler'
 gem 'sinatra', require: false
-gem 'sassc-rails'
 gem 'socksify'
 gem 'sidekiq-unique-jobs'
 # Use CoffeeScript for .coffee assets and views
@@ -63,7 +63,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 # Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.1.0', require: false
+# gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
