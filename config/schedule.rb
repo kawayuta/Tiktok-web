@@ -33,7 +33,7 @@ every 3.hours do
   rake "task_database:get_video_data"
 end
 
-every 6.hours do
+every 12.hours do
   rake "task_database:get_video_from_tag"
   rake "task_database:get_video_from_user"
 end
