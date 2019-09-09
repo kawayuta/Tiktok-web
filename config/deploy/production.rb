@@ -141,7 +141,7 @@ namespace :deploy do
       execute :mkdir, '-p', "#{shared_path}/config"
       upload!('config/database.yml',"#{shared_path}/config/database.yml")
       upload!('config/secrets.yml',"#{shared_path}/config/secrets.yml")
-      upload!('config/secrets.yml',"#{shared_path}/config/sidekiq.yml")
+      upload!('config/sidekiq.yml',"#{shared_path}/config/sidekiq.yml")
     end
   end
 
