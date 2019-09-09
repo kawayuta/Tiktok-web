@@ -80,27 +80,35 @@ class Tag < ApplicationRecord
 
   def self.get_data_from_keyword(search)
     begin
+      client = Selenium::WebDriver::Remote::Http::Default.new
+      client.read_timeout = 120 # seconds
+      options = Selenium::WebDriver::Chrome::Options.new
+      options.add_argument('--headless')
+      options.add_argument('--no-sandbox')
+      options.add_argument('--disable-dev-shm-usage')
+      options.add_argument('--proxy-server=%s' % "socks5://127.0.0.1:9050")
 
-      Socksify::proxy("127.0.0.1", 9050) {
-        url = URI.encode "https://www.tiktok.com/tag/#{search}"
-        charset = nil
-        html = open(url) do |f|
-          charset = f.charset
-          f.read
-        end
-        doc = Nokogiri::HTML.parse(html, nil, charset)
-        embeds = []
-        script = doc.css('script').to_s
-        script.split('"embedUrl":"').drop(1).each do |n|
-          embeds.push(n.split('","')[0])
-        end
+      ua = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.116 Safari/537.36"
 
-        embeds.uniq.each do |url|
-          DataFromEmbedWorker.perform_async(url, false)
-        end
+      caps = Selenium::WebDriver::Remote::Capabilities.chrome("chromeOptions" => {binary: '/usr/local/bin/chromedriver', args: ["--headless", "--disable-gpu", "--user-agent=#{ua}", "window-size=1280x800"]})
+      driver = Selenium::WebDriver.for :chrome, options: options, http_client: client, desired_capabilities: caps
+      driver.get "https://www.tiktok.com/tag/#{search}"
+      doc = Nokogiri::HTML(driver.page_source)
 
-      }
+      urls = []
+      doc.css('._video_feed_item').each do |item|
+        puts item.css('a')[0][:href].split('/').last
+        urls.push("https://www.tiktok.com/embed/#{item.css('a')[0][:href].split('/').last}")
+      end
+
+      urls.uniq.each do |u|
+        DataFromEmbedWorker.perform_async(u, false)
+      end
+      driver.close
+      driver.quit
     rescue => error
+      driver.close
+      driver.quit
     end
 
   end
