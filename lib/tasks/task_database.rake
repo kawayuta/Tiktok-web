@@ -4,7 +4,7 @@ namespace :task_database do
   require 'open-uri'
   require 'socksify'
   require 'selenium-webdriver'
-  
+
   task :get_tag_data => :environment do
     Tag.all.find_in_batches(batch_size: 100) do |tags|
       tags.reverse.each do |tag|
@@ -66,21 +66,21 @@ namespace :task_database do
   end
 
   task :get_video_from_user => :environment do
-    client = Selenium::WebDriver::Remote::Http::Default.new
-    client.read_timeout = 120 # seconds
-    options = Selenium::WebDriver::Chrome::Options.new
-    options.add_argument('--headless')
-    options.add_argument('--no-sandbox')
-    options.add_argument('--disable-dev-shm-usage')
-    options.add_argument('--proxy-server=%s' % "socks5://127.0.0.1:9050")
-
-    ua = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.116 Safari/537.36"
-
-    caps = Selenium::WebDriver::Remote::Capabilities.chrome("chromeOptions" => {binary: '/usr/local/bin/chromedriver', args: ["--headless", "--disable-gpu", "--user-agent=#{ua}", "window-size=1280x800"]})
-    driver = Selenium::WebDriver.for :chrome, options: options, http_client: client, desired_capabilities: caps
     User.all.find_in_batches(batch_size: 100) do |users|
       users.reverse.each do |user|
         begin
+          client = Selenium::WebDriver::Remote::Http::Default.new
+          client.read_timeout = 120 # seconds
+          options = Selenium::WebDriver::Chrome::Options.new
+          options.add_argument('--headless')
+          options.add_argument('--no-sandbox')
+          options.add_argument('--disable-dev-shm-usage')
+          options.add_argument('--proxy-server=%s' % "socks5://127.0.0.1:9050")
+
+          ua = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.116 Safari/537.36"
+
+          caps = Selenium::WebDriver::Remote::Capabilities.chrome("chromeOptions" => {binary: '/usr/local/bin/chromedriver', args: ["--headless", "--disable-gpu", "--user-agent=#{ua}", "window-size=1280x800"]})
+          driver = Selenium::WebDriver.for :chrome, options: options, http_client: client, desired_capabilities: caps
           driver.get "https://www.tiktok.com/@#{user.user_sec_id}"
 
           doc = Nokogiri::HTML(driver.page_source)
@@ -94,13 +94,15 @@ namespace :task_database do
           urls.uniq.each do |u|
             DataFromEmbedWorker.perform_async(u, false)
           end
+          driver.close
+          driver.quit
         rescue => error
+          driver.close
+          driver.quit
           puts error
         end
       end
     end
-    driver.close
-    driver.quit
   end
 
   task :get_trending => :environment do
