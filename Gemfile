@@ -17,7 +17,6 @@ gem 'uglifier', '>= 1.3.0'
 gem 'mini_racer', platforms: :ruby
 gem 'selenium-webdriver'
 gem 'parallel'
-# gem 'font-awesome-sass', '~> 5.4.1', require: false
 gem "jquery-rails"
 gem 'webdrivers'
 gem 'tor'
