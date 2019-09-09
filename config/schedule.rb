@@ -27,7 +27,7 @@ every 12.hours do
   rake "task_database:get_trending"
 end
 
-every 3.hours do
+every 6.hours do
   rake "task_database:get_tag_data"
   rake "task_database:get_user_data"
   rake "task_database:get_video_data"
