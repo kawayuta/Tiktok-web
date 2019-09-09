@@ -3,7 +3,8 @@ namespace :task_database do
   require 'nokogiri'
   require 'open-uri'
   require 'socksify'
-
+  require 'selenium-webdriver'
+  
   task :get_tag_data => :environment do
     Tag.all.find_in_batches(batch_size: 100) do |tags|
       tags.reverse.each do |tag|
