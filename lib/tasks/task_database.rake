@@ -45,6 +45,8 @@ namespace :task_database do
           driver = Selenium::WebDriver.for :chrome, options: options, http_client: client, desired_capabilities: caps
           driver.get "https://www.tiktok.com/tag/#{tag.tag_title}"
           doc = Nokogiri::HTML(driver.page_source)
+          driver.close
+          driver.quit
 
           urls = []
           doc.css('._video_feed_item').each do |item|
@@ -55,8 +57,6 @@ namespace :task_database do
           urls.uniq.each do |u|
             DataFromEmbedWorker.perform_async(u, false)
           end
-          driver.close
-          driver.quit
         rescue => error
           driver.close
           driver.quit
@@ -83,8 +83,9 @@ namespace :task_database do
           caps = Selenium::WebDriver::Remote::Capabilities.chrome("chromeOptions" => {binary: '/usr/local/bin/chromedriver', args: ["--headless", "--disable-gpu", "--user-agent=#{ua}", "window-size=1280x800"]})
           driver = Selenium::WebDriver.for :chrome, options: options, http_client: client, desired_capabilities: caps
           driver.get "https://www.tiktok.com/@#{user.user_sec_id}"
-
           doc = Nokogiri::HTML(driver.page_source)
+          driver.close
+          driver.quit
 
           urls = []
           doc.css('._video_feed_item').each do |item|
@@ -94,8 +95,6 @@ namespace :task_database do
           urls.uniq.each do |u|
             DataFromEmbedWorker.perform_async(u, false)
           end
-          driver.close
-          driver.quit
         rescue => error
           driver.close
           driver.quit
