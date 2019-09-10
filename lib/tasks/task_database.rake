@@ -28,33 +28,61 @@ namespace :task_database do
   end
 
   task :get_video_from_tag => :environment do
+    client = Selenium::WebDriver::Remote::Http::Default.new
+    client.read_timeout = 120 # seconds
+    options = Selenium::WebDriver::Chrome::Options.new
+    options.add_argument('--headless')
+    options.add_argument('--no-sandbox')
+    options.add_argument('--disable-dev-shm-usage')
+    options.add_argument('--disable-gpu')
+    options.add_argument('--disable-setuid-sandbox')
+    options.add_argument('--no-first-run')
+    options.add_argument('--no-zygote')
+    options.add_argument('--single-process')
+    options.add_argument('--proxy-server=%s' % "socks5://127.0.0.1:9050")
+    driver = Selenium::WebDriver.for :chrome, options: options, http_client: client
     Tag.all.find_in_batches(batch_size: 100) do |tags|
       tags.reverse.each do |tag|
         begin
-          Socksify::proxy("127.0.0.1", 9050) {
-            url = URI.encode "https://www.tiktok.com/tag/#{tag.tag_title}"
-            charset = nil
-            html = open(url) do |f|
-              charset = f.charset
-              f.read
-            end
-            doc = Nokogiri::HTML.parse(html, nil, charset)
-            embeds = []
-            script = doc.css('script').to_s
-            script.split('"embedUrl":"').drop(1).each do |n|
-              embeds.push(n.split('","')[0])
-            end
+          driver.get "https://www.tiktok.com/tag/#{tag.tag_title}"
+          doc = Nokogiri::HTML(driver.page_source)
+          urls = []
+          doc.css('._video_feed_item').each do |item|
+            puts item.css('a')[0][:href].split('/').last
+            urls.push("https://www.tiktok.com/embed/#{item.css('a')[0][:href].split('/').last}")
+          end
 
-            puts embeds.uniq
-            embeds.uniq.each do |url|
-              DataFromEmbedWorker.perform_async(url, false)
-            end
-          }
+          urls.uniq.each do |u|
+            DataFromEmbedWorker.perform_async(u, false)
+          end
+          # Socksify::proxy("127.0.0.1", 9050) {
+          #   url = URI.encode "https://www.tiktok.com/tag/#{tag.tag_title}"
+          #   charset = nil
+          #   html = open(url) do |f|
+          #     charset = f.charset
+          #     f.read
+          #   end
+          #   doc = Nokogiri::HTML.parse(html, nil, charset)
+          #   embeds = []
+          #   script = doc.css('script').to_s
+          #   script.split('"embedUrl":"').drop(1).each do |n|
+          #     embeds.push(n.split('","')[0])
+          #   end
+          #
+          #   puts embeds.uniq
+          #   embeds.uniq.each do |url|
+          #     DataFromEmbedWorker.perform_async(url, false)
+          #   end
+          # }
         rescue => error
+          driver.close
+          driver.quit
           puts error
         end
       end
     end
+    driver.close
+    driver.quit
   end
 
   task :get_video_from_user => :environment do
@@ -84,7 +112,7 @@ namespace :task_database do
           end
 
           urls.uniq.each do |u|
-            DataFromEmbedWorker.perform_async(u, true)
+            DataFromEmbedWorker.perform_async(u, false)
           end
 
           # Socksify::proxy("127.0.0.1", 9050) {
@@ -131,7 +159,6 @@ namespace :task_database do
       options.add_argument('--no-zygote')
       options.add_argument('--single-process')
       options.add_argument('--proxy-server=%s' % "socks5://127.0.0.1:9050")
-
       driver = Selenium::WebDriver.for :chrome, options: options, http_client: client
       driver.get "https://www.tiktok.com/trending"
 
@@ -139,6 +166,7 @@ namespace :task_database do
 
       urls = []
 
+      puts doc.css('._video_feed_item')
       doc.css('._video_feed_item').each do |item|
         puts item.css('a')[0][:href].split('/').last
         urls.push("https://www.tiktok.com/embed/#{item.css('a')[0][:href].split('/').last}")
