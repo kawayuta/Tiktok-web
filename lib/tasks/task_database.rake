@@ -124,6 +124,8 @@ namespace :task_database do
       end
 
     rescue => error
+      driver.close
+      driver.quit
       puts "TASK_DATABASE 例外やで"
     end
   end
