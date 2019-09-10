@@ -133,7 +133,7 @@ namespace :task_database do
       options.add_argument('--no-first-run')
       options.add_argument('--no-zygote')
       options.add_argument('--single-process')
-      # options.add_argument('--proxy-server=%s' % "socks5://127.0.0.1:9050")
+      options.add_argument('--proxy-server=%s' % "socks5://127.0.0.1:9050")
 
       driver = Selenium::WebDriver.for :chrome, options: options, http_client: client
       driver.get "https://www.tiktok.com/trending"
