@@ -105,7 +105,7 @@ namespace :task_database do
 
         puts embeds.uniq
         embeds.uniq.each do |url|
-          DataFromEmbedWorker.perform_async(url, false)
+          DataFromEmbedWorker.perform_async(url, true)
         end
       }
 
