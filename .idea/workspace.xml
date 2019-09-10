@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a2e4aa1-93ac-4a71-a04c-86b144ad4cb1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/config/unicorn/production.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/unicorn/production.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/tasks/task_database.rake" beforeDir="false" afterPath="$PROJECT_DIR$/lib/tasks/task_database.rake" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
@@ -93,7 +92,7 @@
           <entry key="html" value="2" />
           <entry key="js" value="2639" />
           <entry key="lock" value="8" />
-          <entry key="rake" value="7633" />
+          <entry key="rake" value="7649" />
           <entry key="rb" value="10081" />
           <entry key="ru" value="12" />
           <entry key="scss" value="6672" />
@@ -108,7 +107,7 @@
           <entry key="JavaScript" value="2620" />
           <entry key="PLAIN_TEXT" value="54" />
           <entry key="RHTML" value="6246" />
-          <entry key="Ruby" value="17916" />
+          <entry key="Ruby" value="17932" />
           <entry key="SCSS" value="6672" />
           <entry key="YAML" value="149" />
         </counts>
@@ -229,8 +228,11 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/lib/tasks/task_database.rake">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="395">
-                  <caret line="160" selection-start-line="160" selection-end-line="160" />
+                <state relative-caret-position="-16">
+                  <caret line="22" column="44" selection-start-line="22" selection-start-column="44" selection-end-line="22" selection-end-column="44" />
+                  <folding>
+                    <element signature="e#3114#3149#0" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -800,7 +802,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="448868000" />
+    <option name="totallyTimeSpent" value="449387000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="462" width="2560" height="1138" extended-state="0" />
@@ -1141,8 +1143,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/tasks/task_database.rake">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="160" selection-start-line="160" selection-end-line="160" />
+        <state relative-caret-position="-16">
+          <caret line="22" column="44" selection-start-line="22" selection-start-column="44" selection-end-line="22" selection-end-column="44" />
+          <folding>
+            <element signature="e#3114#3149#0" />
+          </folding>
         </state>
       </provider>
     </entry>

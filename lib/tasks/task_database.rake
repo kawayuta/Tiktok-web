@@ -6,21 +6,21 @@ namespace :task_database do
   require 'selenium-webdriver'
 
   task :get_tag_data => :environment do
-    Tag.all.find_in_batches(batch_size: 100) do |tags|
+    Tag.all.find_in_batches(batch_size: 10) do |tags|
       tags.reverse.each do |tag|
         TagUpdateWorker.perform_async(tag.tag_title)
       end
     end
   end
   task :get_user_data => :environment do
-    User.all.find_in_batches(batch_size: 100) do |users|
+    User.all.find_in_batches(batch_size: 10) do |users|
       users.reverse.each do |user|
         UserUpdateWorker.perform_async(user.user_official_id)
       end
     end
   end
   task :get_video_data => :environment do
-    Video.all.find_in_batches(batch_size: 100) do |videos|
+    Video.all.find_in_batches(batch_size: 10) do |videos|
       videos.reverse.each do |video|
         VideoUpdateWorker.perform_async(video.video_official_id, nil)
       end
@@ -41,7 +41,7 @@ namespace :task_database do
     options.add_argument('--single-process')
     options.add_argument('--proxy-server=%s' % "socks5://127.0.0.1:9050")
     driver = Selenium::WebDriver.for :chrome, options: options, http_client: client
-    Tag.all.find_in_batches(batch_size: 100) do |tags|
+    Tag.all.find_in_batches(batch_size: 10) do |tags|
       tags.reverse.each do |tag|
         begin
           driver.get "https://www.tiktok.com/tag/#{tag.tag_title}"
@@ -100,7 +100,7 @@ namespace :task_database do
     options.add_argument('--proxy-server=%s' % "socks5://127.0.0.1:9050")
     driver = Selenium::WebDriver.for :chrome, options: options, http_client: client
 
-    User.all.find_in_batches(batch_size: 100) do |users|
+    User.all.find_in_batches(batch_size: 10) do |users|
       users.reverse.each do |user|
         begin
           driver.get "https://www.tiktok.com/@#{user.user_sec_id}"
