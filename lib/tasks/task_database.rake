@@ -65,14 +65,14 @@ namespace :task_database do
           client.read_timeout = 120 # seconds
           options = Selenium::WebDriver::Chrome::Options.new
           options.add_argument('--headless')
-          # options.add_argument('--no-sandbox')
+          options.add_argument('--no-sandbox')
           options.add_argument('--disable-dev-shm-usage')
           options.add_argument('--disable-gpu')
           options.add_argument('--disable-setuid-sandbox')
           options.add_argument('--no-first-run')
           options.add_argument('--no-zygote')
           options.add_argument('--single-process')
-          # options.add_argument('--proxy-server=%s' % "socks5://127.0.0.1:9050")
+          options.add_argument('--proxy-server=%s' % "socks5://127.0.0.1:9050")
 
           driver = Selenium::WebDriver.for :chrome, options: options, http_client: client
           driver.get "https://www.tiktok.com/@#{user.user_sec_id}"
