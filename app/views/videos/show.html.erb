@@ -42,23 +42,17 @@
 
     <section class="video_content_item_transition">
       <h2><i class="material-icons">cake</i> いいね数 推移</h2>
-      <% cache @video_histries_posts_interaction_count do %>
-        <%= line_chart @video_histries_posts_interaction_count , xtitle: "日付", ytitle: "いいね数" %>
-      <% end %>
+      <%= line_chart @video_histries_posts_interaction_count , xtitle: "日付", ytitle: "いいね数" %>
     </section>
 
     <section class="video_content_item_transition">
       <h2><i class="material-icons">cake</i> シェア数 推移</h2>
-      <% cache @video_histries_posts_share_count do %>
-        <%= line_chart @video_histries_posts_share_count , xtitle: "日付", ytitle: "シェア数" %>
-      <% end %>
+      <%= line_chart @video_histries_posts_share_count , xtitle: "日付", ytitle: "シェア数" %>
     </section>
 
     <section class="video_content_item_transition">
       <h2><i class="material-icons">cake</i> コメント数 推移</h2>
-      <% cache @video_histries_posts_comment_count do %>
-        <%= line_chart @video_histries_posts_comment_count , xtitle: "日付", ytitle: "コメント数" %>
-      <% end %>
+      <%= line_chart @video_histries_posts_comment_count , xtitle: "日付", ytitle: "コメント数" %>
     </section>
   <% end %>
 

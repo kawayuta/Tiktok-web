@@ -98,8 +98,6 @@ class VideosController < ApplicationController
   end
 
   def cache_videos_histories
-    Rails.cache.fetch("cache_tags_histories", expired_in: 60.minutes) do
-      VideoHistory.all.to_a
-    end
+    VideoHistory.all.to_a
   end
 end

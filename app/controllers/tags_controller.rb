@@ -146,9 +146,7 @@ class TagsController < ApplicationController
     end
 
     def cache_tags_histories
-      Rails.cache.fetch("cache_tags_histories", expired_in: 60.minutes) do
-        TagHistory.all.to_a
-      end
+      TagHistory.all.to_a
     end
 
 end
