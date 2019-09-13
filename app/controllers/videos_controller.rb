@@ -82,10 +82,7 @@ class VideosController < ApplicationController
 
   def cache_videos_near
     ids = (@video.id.to_i - 10)..10
-    Video.eager_load(:user).where(id: ids).to_a
-    # Rails.cache.fetch("cache_videos", expired_in: 60.minutes) do
-    #
-    # end
+    Video.eager_load(:user).where(id: ids)
   end
 
   def cache_videos_trending
