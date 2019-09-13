@@ -19,7 +19,7 @@ class TagsController < ApplicationController
 
     @videos_data = cache_videos
     @videos = @videos_data.select { |v| v.video_tags.include?(@tag.tag_title.downcase) || v.video_tags.include?(@tag.tag_title.upcase) unless v.video_tags.nil? }
-    @videos_rank = @videos.sort_by {|array| Integer(array.video_interaction_count)}.reverse.first(10)
+    @videos_rank = @videos.sort_by {|array| Integer(array.video_interaction_count) unless array.video_interaction_count.nil?}.reverse.first(10)
 
     @tag_histries_posts_trans_views_count = cache_tags_histories.select {|h|h.tag_title == @tag.tag_title}.pluck(:created_at,:tag_views_count).map { |e| [ e[0].strftime("%Y-%m-%d"), e[1] ] }
     @tag_histries_posts_trans_posts_count = cache_tags_histories.select {|h|h.tag_title == @tag.tag_title}.pluck(:created_at,:tag_posts_count).map { |e| [ e[0].strftime("%Y-%m-%d"), e[1] ] }
@@ -105,9 +105,9 @@ class TagsController < ApplicationController
     @videos_data = cache_videos
     @videos = @videos_data.select { |v| v.video_tags.include?(@tag.tag_title) unless v.video_tags.nil? }
 
-    @videos_interaction_rank = @videos.sort_by {|array| Integer(array.video_interaction_count)}.reverse.first(50)
-    @videos_comment_rank = @videos.sort_by {|array| Integer(array.video_comment_count)}.reverse.first(50)
-    @videos_share_rank = @videos.sort_by {|array| Integer(array.video_share_count)}.reverse.first(50)
+    @videos_interaction_rank = @videos.sort_by {|array| Integer(array.video_interaction_count) unless array.video_interaction_count.nil?}.reverse.first(50)
+    @videos_comment_rank = @videos.sort_by {|array| Integer(array.video_comment_count) unless array.video_comment_count.nil?}.reverse.first(50)
+    @videos_share_rank = @videos.sort_by {|array| Integer(array.video_share_count) unless array.video_share_count.nil?}.reverse.first(50)
 
   end
 

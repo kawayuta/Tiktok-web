@@ -82,7 +82,8 @@ class VideosController < ApplicationController
     end
 
   def cache_videos_near
-    Video.eager_load(:user).where(id: (@video.id.to_i - 10)..10).to_a
+    ids = (@video.id.to_i - 10)..(@video.id.to_i + 10)
+    Video.eager_load(:user).where(id: ids.to_a).to_a
   end
 
   def cache_videos_trending
