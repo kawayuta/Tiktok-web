@@ -33,9 +33,10 @@ every 6.hours do
   rake "task_database:get_video_data"
 end
 
-every 12.hours do
+every 1.day, :at => '12:00 am' do
   rake "task_database:get_video_from_tag"
-  rake "task_database:get_video_from_user"
 end
 
-
+every 1.day, :at => '12:00 pm' do
+  rake "task_database:get_video_from_user"
+end
