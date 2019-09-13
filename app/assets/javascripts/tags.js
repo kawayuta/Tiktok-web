@@ -167,7 +167,7 @@ $(document).ready(function () {
     },
   });
 
-  var page = 0;
+  var page_s = 0;
   swiper_single.on('touchStart', function () {
     for(var i=0;i<$(".video_data").length;i++){
       $('.video_' + i).prop('muted', false);
@@ -175,21 +175,21 @@ $(document).ready(function () {
   });
 
   swiper_single.on('slideChange', function () {
-    if(page != swiper.realIndex) {
-      $('.video_' + page).parent().css({
+    if(page_s != swiper.realIndex) {
+      $('.video_' + page_s).parent().css({
         'opacity': '0.15'
       });
-      $('.video_' + page).get(0).pause();
-      page = swiper_single.realIndex;
-      $('.video_' + page).parent().css({
+      $('.video_' + page_s).get(0).pause();
+      page_s = swiper_single.realIndex;
+      $('.video_' + page_s).parent().css({
         'opacity': '1'
       });
-      $('.video_' + page).attr('src', $(".video_index_" + page).data('video-source'));
-      $('.video_' + page).attr('loop','loop');
-      $('.video_' + page).get(0).load();
-      $('.video_' + page).get(0).play();
+      $('.video_' + page_s).attr('src', $(".video_index_" + page_s).data('video-source'));
+      $('.video_' + page_s).attr('loop','loop');
+      $('.video_' + page_s).get(0).load();
+      $('.video_' + page_s).get(0).play();
 
-      var next_v = $(".video_index_" + page);
+      var next_v = $(".video_index_" + page_s);
       $('.video_title').text(next_v.data('video-title'));
       $('.video_content_meta_tag').remove();
       $.each(next_v.data('video-tags'), function(index, value){
@@ -210,23 +210,23 @@ $(document).ready(function () {
       $('.video_user_nick_name').text(next_v.data('video-user-nick-name'));
 
 
-      $('.video_' + page).on('ended',function(){
-        var next = page + 1;
+      $('.video_' + page_s).on('ended',function(){
+        var next = page_s + 1;
         // swiper_single.slideTo(next);
       });
 
       var item_width = $('.video_content_item ul li img')[0].width;
       var item_margin_left = $('.video_content_item ul li img').css('margin-left').replace('px', '');
       $('.video_content_item ul').animate({
-        scrollLeft: (item_width + Number(item_margin_left)) * (page + 1)
+        scrollLeft: (item_width + Number(item_margin_left)) * (page_s + 1)
       }, 500);
     }
   });
-
-  $('.video_' + page).on('ended',function(){
-    var next = page + 1;
-    swiper_single.slideTo(next);
-  });
+  //
+  // $('.video_' + page_s).on('ended',function(){
+  //   var next = page_s + 1;
+  //   swiper_single.slideTo(next);
+  // });
 
   var start_id = $('.swiper-container_single').data('start-id') - 1;
   swiper_single.slideTo(start_id);
