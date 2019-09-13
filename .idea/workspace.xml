@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2a2e4aa1-93ac-4a71-a04c-86b144ad4cb1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/scaffolds.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/scaffolds.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/videos.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/videos.scss" afterDir="false" />
-    </list>
+    <list default="true" id="2a2e4aa1-93ac-4a71-a04c-86b144ad4cb1" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
     <ignored path="$PROJECT_DIR$/public/system/" />
@@ -60,7 +57,7 @@
           <entry key="lock" value="7" />
           <entry key="png" value="2" />
           <entry key="rake" value="11" />
-          <entry key="rb" value="234" />
+          <entry key="rb" value="235" />
           <entry key="ru" value="5" />
           <entry key="scss" value="29" />
           <entry key="svg" value="3" />
@@ -77,7 +74,7 @@
           <entry key="JavaScript" value="21" />
           <entry key="PLAIN_TEXT" value="22" />
           <entry key="RHTML" value="71" />
-          <entry key="Ruby" value="264" />
+          <entry key="Ruby" value="265" />
           <entry key="SCSS" value="29" />
           <entry key="SVG" value="3" />
           <entry key="YAML" value="22" />
@@ -96,7 +93,7 @@
           <entry key="rake" value="7649" />
           <entry key="rb" value="10644" />
           <entry key="ru" value="12" />
-          <entry key="scss" value="7515" />
+          <entry key="scss" value="7544" />
           <entry key="txt" value="30" />
           <entry key="yml" value="151" />
         </counts>
@@ -109,7 +106,7 @@
           <entry key="PLAIN_TEXT" value="54" />
           <entry key="RHTML" value="6968" />
           <entry key="Ruby" value="18495" />
-          <entry key="SCSS" value="7515" />
+          <entry key="SCSS" value="7544" />
           <entry key="YAML" value="151" />
         </counts>
       </usages-collector>
@@ -133,20 +130,20 @@
               <provider selected="true" editor-type-id="text-editor" />
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/controllers/tags_controller.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="966">
-                  <caret line="148" column="25" selection-start-line="148" selection-start-column="25" selection-end-line="148" selection-end-column="25" />
+                <state relative-caret-position="701">
+                  <caret line="81" lean-forward="true" selection-start-line="81" selection-end-line="81" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/scaffolds.scss">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="597">
-                  <caret line="840" lean-forward="true" selection-start-line="840" selection-end-line="842" selection-end-column="38" />
+                <state relative-caret-position="-1537">
+                  <caret line="840" selection-start-line="840" selection-end-line="842" selection-end-column="38" />
                   <folding>
                     <element signature="e#27777#29135#0" />
                   </folding>
@@ -235,11 +232,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/videos.scss">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="864">
-                  <caret line="262" column="13" selection-start-line="262" selection-start-column="13" selection-end-line="262" selection-end-column="13" />
+                <state relative-caret-position="711">
+                  <caret line="253" column="24" selection-start-line="253" selection-start-column="24" selection-end-line="253" selection-end-column="24" />
                   <folding>
                     <element signature="e#554#560#0" />
                   </folding>
@@ -274,15 +271,6 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/config/deploy/production.rb">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="525">
-                  <caret line="104" column="3" selection-start-line="104" selection-start-column="3" selection-end-line="104" selection-end-column="3" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/config/unicorn/production.rb">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="357">
@@ -305,6 +293,15 @@
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="374">
                   <caret line="22" column="3" selection-start-line="22" selection-start-column="3" selection-end-line="22" selection-end-column="3" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/config/sitemap.rb">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="663">
+                  <caret line="39" selection-start-line="39" selection-end-line="39" />
                 </state>
               </provider>
             </entry>
@@ -351,8 +348,8 @@
       <find>remove</find>
       <find>start</find>
       <find>cache_videos_histories</find>
-      <find>video_content_item</find>
       <find>re</find>
+      <find>video_content_item</find>
     </findStrings>
     <replaceStrings>
       <replace>user</replace>
@@ -814,12 +811,12 @@
       <workItem from="1566972267611" duration="2142000" />
       <workItem from="1567024724645" duration="76160000" />
       <workItem from="1567664750309" duration="3384000" />
-      <workItem from="1568344892752" duration="27252000" />
+      <workItem from="1568344892752" duration="27648000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="478436000" />
+    <option name="totallyTimeSpent" value="478832000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="33" width="2048" height="1247" extended-state="0" />
@@ -958,13 +955,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/schedule.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="3" selection-start-line="22" selection-start-column="3" selection-end-line="22" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/deploy/production.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="525">
@@ -1019,13 +1009,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/users/index.html.erb">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/sitemap.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="39" selection-start-line="39" selection-end-line="39" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/tags/search.html.erb">
       <provider selected="true" editor-type-id="text-editor" />
@@ -1118,13 +1101,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/tags_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="966">
-          <caret line="148" column="25" selection-start-line="148" selection-start-column="25" selection-end-line="148" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/tags.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="806">
@@ -1135,23 +1111,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/videos.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="711">
+          <caret line="253" column="24" selection-start-line="253" selection-start-column="24" selection-end-line="253" selection-end-column="24" />
+          <folding>
+            <element signature="e#554#560#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/schedule.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="3" selection-start-line="22" selection-start-column="3" selection-end-line="22" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/sitemap.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/scaffolds.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="597">
-          <caret line="840" lean-forward="true" selection-start-line="840" selection-end-line="842" selection-end-column="38" />
+        <state relative-caret-position="-1537">
+          <caret line="840" selection-start-line="840" selection-end-line="842" selection-end-column="38" />
           <folding>
             <element signature="e#27777#29135#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/videos.scss">
+    <entry file="file://$PROJECT_DIR$/app/controllers/tags_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="864">
-          <caret line="262" column="13" selection-start-line="262" selection-start-column="13" selection-end-line="262" selection-end-column="13" />
-          <folding>
-            <element signature="e#554#560#0" />
-          </folding>
+        <state relative-caret-position="701">
+          <caret line="81" lean-forward="true" selection-start-line="81" selection-end-line="81" />
         </state>
       </provider>
     </entry>

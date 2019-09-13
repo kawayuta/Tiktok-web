@@ -78,20 +78,22 @@ class TagsController < ApplicationController
 
   def search
 
-    return redirect_to root_path if search_params[:keyword] == ""
+    keyword = search_params[:keyword].gsub(" ", "")
 
-    @tag = Tag.find_by(tag_title: search_params[:keyword])
+    return redirect_to root_path if keyword == ""
+
+    @tag = Tag.find_by(tag_title: keyword)
 
     if @tag.nil?
-      @tag = Tag.create(tag_title: search_params[:keyword])
+      @tag = Tag.create(tag_title: keyword)
       @tag.updated_at = "2000-01-01"
-      @tag.tag_url = "https://www.tiktok.com/tag/#{search_params[:keyword]}"
+      @tag.tag_url = "https://www.tiktok.com/tag/#{keyword}"
       @tag.tag_trending = false
       @tag.save
     end
 
     if @tag.updated_at.strftime("%Y-%m-%d") != Time.current.strftime("%Y-%m-%d")
-      Tag.get_data_from_keyword(search_params[:keyword])
+      Tag.get_data_from_keyword(keyword)
     end
 
     redirect_to tag_path(@tag.id)
