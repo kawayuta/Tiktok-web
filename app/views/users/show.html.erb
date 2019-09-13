@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html lang="jp">
-<head>
-  <meta charset="UTF-8">
-  <% set_meta_tags title: "🎉「#{@user.user_nick_name}」のプロフィール・おすすめ投稿動画", description: "#{@user.user_nick_name}のプロフィール、フォロー・フォロワー数や、おすすめ動画をご紹介。TikTok（ティックトック）アプリがパソコンでも観れるようになりました！TikTok Webでは人気クリエイターや動画のランキングから人気タグの情報をお届けします！現在、開発中です。" %>
-</head>
-<body>
+<% set_meta_tags title: "🎉「#{@user.user_nick_name}」のプロフィール・おすすめ投稿動画", description: "#{@user.user_nick_name}のプロフィール、フォロー・フォロワー数や、おすすめ動画をご紹介。TikTok（ティックトック）アプリがパソコンでも観れるようになりました！TikTok Webでは人気クリエイターや動画のランキングから人気タグの情報をお届けします！現在、開発中です。" %>
 
 <div class="contents_wrap">
 
@@ -56,9 +50,9 @@
     <section class="video_content_tag_info">
       <div class="video_content_tag_info_header">
         <figure class="profile_image">
-          <%= image_tag @user.user_covers, alt: @user.user_nick_name %>
+          <%= image_tag @user.user_covers, alt: @user.user_nick_name unless @user.user_covers.nil? %>
         </figure>
-        <h1><%= @user.user_nick_name %></h1>
+        <h1><%= @user.user_nick_name unless @user.user_nick_name.nil? %></h1>
       </div>
       <div class="video_content_tag_info_meta">
         <p class="video_content_tag_info_meta_post">
