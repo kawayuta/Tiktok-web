@@ -8,6 +8,7 @@
   padding-bottom: 50px;
   position: relative;
   z-index: 1;
+  overflow: hidden;
   & .swiper-slide {
     background-position: center;
     background-size: cover;
@@ -114,5 +115,19 @@ article {
       font-size: 28px;
       font-weight: bold;
     }
+  }
+
+  & .tracker-link {
+    text-decoration: none;
+    width:100%;
+    max-width: 1000px;
+    margin:0 auto;
+    font-size: 25px;
+    color:#FFF;
+    background-color: #EE1D52;
+    padding: 15px;
+    text-align:center;
+    border-radius: 8px;
+    margin-bottom: 50px;
   }
 }
