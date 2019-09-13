@@ -29,9 +29,11 @@ $(document).ready(function () {
   var video_index = 0;
   for(var i=1;i<$(".video_data").length;i++){
     $('.swiper-wrapper').append('<div class="swiper-slide" style="height: 600px;">' +
-      '<video muted="muted" controls="controls" id="video" class="video_' + i +'"playsinline="true"' +
+      '<video muted="muted" controls="controls" id="video" class="video_' + i + ' video_id_' + $(".video_index_" + i).data('video-id') + '"' +
+      'playsinline="true"' +
       ' poster="' +
       $(".video_index_" + i).attr('src') + '"' +
+      'data-slide-index=' + i +
       '>' +
       '</video>' +
       '</div>');
@@ -228,8 +230,9 @@ $(document).ready(function () {
   //   swiper_single.slideTo(next);
   // });
 
-  var start_id = $('.swiper-container_single').data('start-id') - 1;
-  swiper_single.slideTo(start_id);
+  var video_id = $('.swiper-container_single').data('video-id');
+  var start_index = $('.video_id_' + video_id).data('slide-index');
+  swiper_single.slideTo(start_index);
 
   for(var i=0;i<$(".video_data").length;i++){
     if (i == start_id) {

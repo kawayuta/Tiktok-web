@@ -14,7 +14,6 @@ class VideosController < ApplicationController
     @trending_tags = cache_tags_trending.take(10)
 
     @videos = cache_videos_near
-    puts @videos
 
     @video_histries_posts_interaction_count = cache_videos_histories.select {|h|h.video_official_id == @video.video_official_id}.pluck(:created_at,:video_interction_count).map { |e| [ e[0].strftime("%Y-%m-%d"), e[1] ] }
     @video_histries_posts_share_count = cache_videos_histories.select {|h|h.video_official_id == @video.video_official_id}.pluck(:created_at,:video_share_count).map { |e| [ e[0].strftime("%Y-%m-%d"), e[1] ] }
@@ -99,8 +98,8 @@ class VideosController < ApplicationController
   end
 
   def cache_videos_histories
-    VideoHistory.all.to_a
-    # Rails.cache.fetch("cache_tags_histories", expired_in: 60.minutes) do
-    # end
+    Rails.cache.fetch("cache_tags_histories", expired_in: 60.minutes) do
+      VideoHistory.all.to_a
+    end
   end
 end

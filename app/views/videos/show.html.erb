@@ -2,7 +2,7 @@
 <style> aside { display: none; } </style>
 
 <article>
-  <div class="swiper-container_single" data-start-id="<%= @video.id %>">
+  <div class="swiper-container_single" data-video-id="<%= @video.id %>">
     <div class="swiper-wrapper">
       <div class="swiper-slide" style="height:600px;"><%= video_tag "", muted: true, controls: true, id:"video", class:"video_0", playsinline: true, autoplay: true %></div>
     </div>
@@ -70,6 +70,7 @@
           <%= image_tag video.video_cover_image, class: "video_data video_index_#{i}", alt: video.video_title,
                         data: {video_source: video.video_url,
                                video_index: i,
+                               video_id: video.id,
                                video_title: video.video_title,
                                video_tags: video.video_tags,
                                video_play_count: video.video_interaction_count,
