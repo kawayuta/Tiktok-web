@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     end
   end
   resources :users, only: :show
+  resources :videos, only: :show
   # resources :videos
   #
   # get 'tag/:keyword', to: 'tags#search'

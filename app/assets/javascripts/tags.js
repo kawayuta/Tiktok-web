@@ -10,7 +10,7 @@ $(document).ready(function () {
       '">#' +
       value +
       '</a>' +
-      '<p>');
+      '</p>');
   });
   $('.video_play_count').text(next_v.data('video-play-count'));
   $('.video_comment_count').text(next_v.data('video-comment-count'));
@@ -31,7 +31,7 @@ $(document).ready(function () {
     $('.swiper-wrapper').append('<div class="swiper-slide" style="height: 600px;">' +
       '<video muted="muted" controls="controls" id="video" class="video_' + i +'"playsinline="true"' +
       ' poster="' +
-      $(".video_index_" + i).data('video-cover-image') + '"' +
+      $(".video_index_" + i).attr('src') + '"' +
       '>' +
       '</video>' +
       '</div>');
@@ -120,7 +120,7 @@ $(document).ready(function () {
           '">#' +
           value +
           '</a>' +
-          '<p>');
+          '</p>');
       });
       $('.video_play_count').text(next_v.data('video-play-count'));
       $('.video_comment_count').text(next_v.data('video-comment-count'));
@@ -148,5 +148,99 @@ $(document).ready(function () {
     var next = page + 1;
     swiper.slideTo(next);
   });
+
+
+  var swiper_single = new Swiper('.swiper-container_single', {
+    effect: 'coverflow',
+    grabCursor: true,
+    centeredSlides: true,
+    slidesPerView: 'auto',
+    coverflowEffect: {
+      rotate: 15,
+      stretch: 0,
+      depth: 150,
+      modifier: 1,
+      slideShadows : false,
+    },
+    pagination: {
+      clickable: false,
+    },
+  });
+
+  var page = 0;
+  swiper_single.on('touchStart', function () {
+    for(var i=0;i<$(".video_data").length;i++){
+      $('.video_' + i).prop('muted', false);
+    }
+  });
+
+  swiper_single.on('slideChange', function () {
+    if(page != swiper.realIndex) {
+      $('.video_' + page).parent().css({
+        'opacity': '0.15'
+      });
+      $('.video_' + page).get(0).pause();
+      page = swiper_single.realIndex;
+      $('.video_' + page).parent().css({
+        'opacity': '1'
+      });
+      $('.video_' + page).attr('src', $(".video_index_" + page).data('video-source'));
+      $('.video_' + page).attr('loop','loop');
+      $('.video_' + page).get(0).load();
+      $('.video_' + page).get(0).play();
+
+      var next_v = $(".video_index_" + page);
+      $('.video_title').text(next_v.data('video-title'));
+      $('.video_content_meta_tag').remove();
+      $.each(next_v.data('video-tags'), function(index, value){
+        $('.video_content_meta_tags').append('<p class="video_content_meta_tag">' +
+          '<a href="/tags/search?keyword=' +
+          value +
+          '">#' +
+          value +
+          '</a>' +
+          '</p>');
+      });
+      $('.video_play_count').text(next_v.data('video-play-count'));
+      $('.video_comment_count').text(next_v.data('video-comment-count'));
+      $('.video_share_count').text(next_v.data('video-share-count'));
+      $('.video_user_covers img').attr('src', next_v.data('video-user-covers'));
+      $('.video_user_covers img').attr('alt', next_v.data('video-user-nick-name'));
+      $('.video_user_covers').attr('href', '/users/' + next_v.data('video-user-id'));
+      $('.video_user_nick_name').text(next_v.data('video-user-nick-name'));
+
+
+      $('.video_' + page).on('ended',function(){
+        var next = page + 1;
+        // swiper_single.slideTo(next);
+      });
+
+      var item_width = $('.video_content_item ul li img')[0].width;
+      var item_margin_left = $('.video_content_item ul li img').css('margin-left').replace('px', '');
+      $('.video_content_item ul').animate({
+        scrollLeft: (item_width + Number(item_margin_left)) * (page + 1)
+      }, 500);
+    }
+  });
+
+  $('.video_' + page).on('ended',function(){
+    var next = page + 1;
+    swiper_single.slideTo(next);
+  });
+
+  var start_id = $('.swiper-container_single').data('start-id') - 1;
+  swiper_single.slideTo(start_id);
+
+  for(var i=0;i<$(".video_data").length;i++){
+    if (i == start_id) {
+      $('.video_' + i).parent().css({
+        'opacity': '1'
+      });
+    } else {
+      $('.video_' + i).parent().css({
+        'opacity': '0.15'
+      });
+    }
+  }
 
 });

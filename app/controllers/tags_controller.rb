@@ -19,7 +19,7 @@ class TagsController < ApplicationController
 
     @videos_data = cache_videos
     @videos = @videos_data.select { |v| v.video_tags.include?(@tag.tag_title.downcase) || v.video_tags.include?(@tag.tag_title.upcase) unless v.video_tags.nil? }
-    @videos_rank = @videos.sort_by {|array| Integer(array.video_interaction_count)}.first(10).reverse.to_a
+    @videos_rank = @videos.sort_by {|array| Integer(array.video_interaction_count)}.reverse.first(10)
 
     @tag_histries_posts_trans_views_count = cache_tags_histories.select {|h|h.tag_title == @tag.tag_title}.pluck(:created_at,:tag_views_count).map { |e| [ e[0].strftime("%Y-%m-%d"), e[1] ] }
     @tag_histries_posts_trans_posts_count = cache_tags_histories.select {|h|h.tag_title == @tag.tag_title}.pluck(:created_at,:tag_posts_count).map { |e| [ e[0].strftime("%Y-%m-%d"), e[1] ] }
