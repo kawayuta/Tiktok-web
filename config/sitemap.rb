@@ -33,4 +33,7 @@ SitemapGenerator::Sitemap.create do
   User.find_each do |user|
     add user_path(user), :lastmod => user.updated_at, :changefreq => 'always'
   end
+  Video.find_each do |video|
+    add video_path(video), :lastmod => video.updated_at, :changefreq => 'always'
+  end
 end

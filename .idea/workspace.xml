@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a2e4aa1-93ac-4a71-a04c-86b144ad4cb1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/javascripts/tags.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/javascripts/tags.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/scaffolds.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/scaffolds.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/videos.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/videos.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/tags_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/tags_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/videos_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/videos_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/tags/show.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/tags/show.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/videos/show.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/videos/show.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/welcome/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/welcome/index.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/sitemap.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/sitemap.rb" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -68,7 +59,7 @@
           <entry key="lock" value="7" />
           <entry key="png" value="2" />
           <entry key="rake" value="11" />
-          <entry key="rb" value="228" />
+          <entry key="rb" value="229" />
           <entry key="ru" value="5" />
           <entry key="scss" value="28" />
           <entry key="svg" value="3" />
@@ -85,7 +76,7 @@
           <entry key="JavaScript" value="21" />
           <entry key="PLAIN_TEXT" value="22" />
           <entry key="RHTML" value="71" />
-          <entry key="Ruby" value="258" />
+          <entry key="Ruby" value="259" />
           <entry key="SCSS" value="28" />
           <entry key="SVG" value="3" />
           <entry key="YAML" value="21" />
@@ -97,12 +88,12 @@
           <entry key="Gemfile" value="151" />
           <entry key="cap" value="12" />
           <entry key="css" value="20" />
-          <entry key="erb" value="6706" />
+          <entry key="erb" value="6784" />
           <entry key="html" value="2" />
           <entry key="js" value="3155" />
           <entry key="lock" value="8" />
           <entry key="rake" value="7649" />
-          <entry key="rb" value="10404" />
+          <entry key="rb" value="10425" />
           <entry key="ru" value="12" />
           <entry key="scss" value="7311" />
           <entry key="txt" value="30" />
@@ -115,8 +106,8 @@
           <entry key="HTML" value="23" />
           <entry key="JavaScript" value="3134" />
           <entry key="PLAIN_TEXT" value="54" />
-          <entry key="RHTML" value="6706" />
-          <entry key="Ruby" value="18255" />
+          <entry key="RHTML" value="6784" />
+          <entry key="Ruby" value="18276" />
           <entry key="SCSS" value="7311" />
           <entry key="YAML" value="151" />
         </counts>
@@ -127,15 +118,6 @@
     <splitter split-orientation="horizontal" split-proportion="0.5182815">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/controllers/tags_controller.rb">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="353">
-                  <caret line="24" selection-start-line="24" selection-end-line="25" />
-                </state>
-              </provider>
-            </entry>
-          </file>
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/views/tags/ranking.html.erb">
               <provider selected="true" editor-type-id="text-editor">
@@ -173,15 +155,24 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/views/videos/show.html.erb">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="68">
-                  <caret line="4" column="92" selection-start-line="4" selection-start-column="92" selection-end-line="4" selection-end-column="92" />
+                  <caret line="4" column="52" selection-start-line="4" selection-start-column="52" selection-end-line="4" selection-end-column="52" />
                   <folding>
                     <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
                     <element signature="n#style#0;n#section#0;n#!!top" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/config/sitemap.rb">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="578">
+                  <caret line="34" column="5" lean-forward="true" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
                 </state>
               </provider>
             </entry>
@@ -364,7 +355,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/config.ru" />
         <option value="$PROJECT_DIR$/Capfile" />
         <option value="$PROJECT_DIR$/app/jobs/video_task_job.rb" />
         <option value="$PROJECT_DIR$/app/jobs/task_job.rb" />
@@ -415,6 +405,7 @@
         <option value="$PROJECT_DIR$/app/controllers/videos_controller.rb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/videos.scss" />
         <option value="$PROJECT_DIR$/app/views/videos/show.html.erb" />
+        <option value="$PROJECT_DIR$/config/sitemap.rb" />
       </list>
     </option>
   </component>
@@ -811,12 +802,12 @@
       <workItem from="1566972267611" duration="2142000" />
       <workItem from="1567024724645" duration="76160000" />
       <workItem from="1567664750309" duration="3384000" />
-      <workItem from="1568344892752" duration="15637000" />
+      <workItem from="1568344892752" duration="15969000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="466821000" />
+    <option name="totallyTimeSpent" value="467153000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="431" width="2560" height="1169" extended-state="0" />
@@ -854,16 +845,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/models/video.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="35" selection-start-line="35" selection-end-line="35" />
-          <folding>
-            <element signature="e#812#2677#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/environments/development.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="595">
@@ -1144,11 +1125,18 @@
     <entry file="file://$PROJECT_DIR$/app/views/videos/show.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
-          <caret line="4" column="92" selection-start-line="4" selection-start-column="92" selection-end-line="4" selection-end-column="92" />
+          <caret line="4" column="52" selection-start-line="4" selection-start-column="52" selection-end-line="4" selection-end-column="52" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#section#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/sitemap.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="34" column="5" lean-forward="true" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
         </state>
       </provider>
     </entry>
