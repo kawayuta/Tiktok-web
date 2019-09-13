@@ -28,7 +28,7 @@
 
 article {
   & .video_single {
-    width:100%;
+    width:100vw;
     max-width: 1000px;
     margin:0 auto;
     background-color: #1A1C20;
@@ -107,7 +107,7 @@ article {
   }
 
   & .video_content_item_transition{
-    width:100%;
+    width:100vw;
     max-width: 1000px;
     margin:0 auto;
     & h2 {
@@ -119,7 +119,7 @@ article {
 
   & .tracker-link {
     text-decoration: none;
-    width:100%;
+    width:100vw;
     max-width: 1000px;
     margin:0 auto;
     font-size: 25px;
@@ -130,4 +130,146 @@ article {
     border-radius: 8px;
     margin-bottom: 50px;
   }
+}
+
+
+
+@media screen and (max-width: 500px) {
+  .swiper-container_single {
+    width: 100vw;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    & .swiper-slide {
+      background-position: center;
+      background-size: cover;
+      width: 300px;
+      height: 300px;
+      & video {
+        width: 340px;
+        height: 600px
+      }
+      & img {
+        width: 340px;
+        height: 600px
+
+      }
+    }
+  }
+
+  section {
+    width:100vw;
+    overflow: hidden;
+  }
+  article {
+    & .video_single {
+      width:100vw;
+      max-width: 1000px;
+      margin:0;
+      background-color: #1A1C20;
+      padding: 30px;
+      border-radius: 5px;
+      margin-bottom: 50px;
+    }
+    & h1 {
+      font-size: 40px;
+      font-weight: bold;
+      text-align: center;
+    }
+    & .video_content_meta_tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center; /* 子要素をflexboxにより中央に配置する */
+      align-items: center;  /* 子要素をflexboxにより中央に配置する */
+      position: relative;
+      margin-top: 30px;
+      & a {
+        text-decoration: none;
+        color: #14EDEC;
+        border-radius: 5px;
+        padding: 5px;
+        margin: 8px;
+        font-size: 18px;
+      }
+    }
+    & .video_content_meta_info {
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: center; /* 子要素をflexboxにより中央に配置する */
+      align-items: center;  /* 子要素をflexboxにより中央に配置する */
+      position: relative;
+      margin-top: 30px;
+      & p {
+        border-radius: 5px;
+        padding: 15px;
+        margin: 8px;
+        font-size: 25px;
+        background-color: #222128;
+        &:nth-child(1) {
+          & i {
+            color:#F46375;
+          }
+        }
+        &:nth-child(2) {
+          & i {
+            color:#14EDEC;
+          }
+        }
+      }
+    }
+
+    & .video_content_profile {
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: center; /* 子要素をflexboxにより中央に配置する */
+      align-items: center;  /* 子要素をflexboxにより中央に配置する */
+      position: relative;
+      margin-top: 30px;
+      & .video_content_profile_image {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        overflow: hidden;
+        & img {
+          width: 100%;
+          height: auto;
+        }
+      }
+      & p {
+        margin-left: 20px;
+        font-size: 45px;
+      }
+    }
+
+    & .video_content_item_transition{
+      width:100vw;
+      max-width: 1000px;
+      margin:0;
+      & h2 {
+        margin-top:20px;
+        font-size: 28px;
+        font-weight: bold;
+        padding-left: 25px;
+      }
+    }
+
+    & .tracker-link {
+      text-decoration: none;
+      width:calc(100vw - 50px);
+      max-width: 1000px;
+      margin:0;
+      margin-left:25px;
+      margin-right:25px;
+      font-size: 25px;
+      color:#FFF;
+      background-color: #EE1D52;
+      padding: 15px;
+      text-align:center;
+      border-radius: 8px;
+      margin-bottom: 100px;
+    }
+  }
+
 }

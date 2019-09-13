@@ -1261,6 +1261,9 @@ p, a, h1, h2, h3, h4, li {
         padding-left: 20px;
         padding-right: 20px;
       }
+      & .video_content_item_tags {
+        display: none;
+      }
       & .video_content_item_ranking {
         display: none;
         width: calc((100vw - 640px) / 2 - 40px);
