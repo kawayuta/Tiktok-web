@@ -1,4 +1,5 @@
 <% set_meta_tags title: "🎉「#{@video.video_title}」 by #{@video.user.user_nick_name}", description: "#{@video.user.user_nick_name}さんの「#{@video.video_title}」をウェブで観よう！ いいね数「#{@video.video_interaction_count}」コメント数「#{@video.video_comment_count}」シェア数「#{@video.video_share_count}」- TikTok（ティックトック）アプリがパソコンでも観れるようになりました！TikTok Webでは人気クリエイターや動画のランキングから人気タグの情報をお届けします！現在、開発中です。" %>
+<style> aside { display: none; } </style>
 
 <article>
   <div class="swiper-container_single" data-start-id="<%= @video.id %>">
@@ -8,78 +9,74 @@
     <div class="swiper-pagination"></div>
   </div>
 
-  <% if @videos.present? %>
-    <div class="video_single">
-      <div class="video_content_meta">
-        <h1 class="video_title"></h1>
-        <div class="video_content_meta_tags">
-          <p class="video_content_meta_tag"><a href=""></a></p>
-        </div>
-        <div class="video_content_meta_info">
-          <p class="video_content_meta_info_play">
-            <i class="material-icons">favorite</i> <span class="video_play_count"></span>
-          </p>
-
-          <p class="video_content_meta_info_comment">
-            <i class="material-icons">comment</i> <span class="video_comment_count"></span>
-          </p>
-          <p class="video_content_meta_info_share">
-            <i class="material-icons">share</i> <span class="video_share_count"></span>
-          </p>
-        </div>
+  <div class="video_single">
+    <div class="video_content_meta">
+      <h1 class="video_title"></h1>
+      <div class="video_content_meta_tags">
+        <p class="video_content_meta_tag"><a href=""></a></p>
       </div>
+      <div class="video_content_meta_info">
+        <p class="video_content_meta_info_play">
+          <i class="material-icons">favorite</i> <span class="video_play_count"></span>
+        </p>
 
-      <div class="video_content_profile">
-        <div class="video_content_profile_image">
-          <a class="video_user_covers" href=""><img src="" alt=""/></a>
-        </div>
-        <p class="video_user_nick_name"></p>
+        <p class="video_content_meta_info_comment">
+          <i class="material-icons">comment</i> <span class="video_comment_count"></span>
+        </p>
+        <p class="video_content_meta_info_share">
+          <i class="material-icons">share</i> <span class="video_share_count"></span>
+        </p>
       </div>
     </div>
 
-    <section class="video_content_item_transition">
-      <h2><i class="material-icons">cake</i> <%= @video.video_title %>のいいね数 推移</h2>
-      <% cache @video_histries_posts_interaction_count do %>
-        <%= line_chart @video_histries_posts_interaction_count , xtitle: "日付", ytitle: "いいね数" %>
-      <% end %>
-    </section>
+    <div class="video_content_profile">
+      <div class="video_content_profile_image">
+        <a class="video_user_covers" href=""><img src="" alt=""/></a>
+      </div>
+      <p class="video_user_nick_name"></p>
+    </div>
+  </div>
 
-    <section class="video_content_item_transition">
-      <h2><i class="material-icons">cake</i> <%= @video.video_title %>のシェア数 推移</h2>
-      <% cache @video_histries_posts_share_count do %>
-        <%= line_chart @video_histries_posts_share_count , xtitle: "日付", ytitle: "シェア数" %>
-      <% end %>
-    </section>
+  <section class="video_content_item_transition">
+    <h2><i class="material-icons">cake</i> <%= @video.video_title %>のいいね数 推移</h2>
+    <% cache @video_histries_posts_interaction_count do %>
+      <%= line_chart @video_histries_posts_interaction_count , xtitle: "日付", ytitle: "いいね数" %>
+    <% end %>
+  </section>
 
-    <section class="video_content_item_transition">
-      <h2><i class="material-icons">cake</i> <%= @video.video_title %>のコメント数 推移</h2>
-      <% cache @video_histries_posts_comment_count do %>
-        <%= line_chart @video_histries_posts_comment_count , xtitle: "日付", ytitle: "コメント数" %>
-      <% end %>
-    </section>
-<% end %>
+  <section class="video_content_item_transition">
+    <h2><i class="material-icons">cake</i> <%= @video.video_title %>のシェア数 推移</h2>
+    <% cache @video_histries_posts_share_count do %>
+      <%= line_chart @video_histries_posts_share_count , xtitle: "日付", ytitle: "シェア数" %>
+    <% end %>
+  </section>
+
+  <section class="video_content_item_transition">
+    <h2><i class="material-icons">cake</i> <%= @video.video_title %>のコメント数 推移</h2>
+    <% cache @video_histries_posts_comment_count do %>
+      <%= line_chart @video_histries_posts_comment_count , xtitle: "日付", ytitle: "コメント数" %>
+    <% end %>
+  </section>
 
 </article>
 
 <div class="video_content_item" style="height:0px; overflow: hidden;">
   <ul>
-    <% if @videos.present? %>
-      <% @videos.each_with_index do |video, i| %>
-        <li>
-          <%= image_tag video.video_cover_image, class: "video_data video_index_#{i}", alt: video.video_title,
-                        data: {video_source: video.video_url,
-                               video_index: i,
-                               video_title: video.video_title,
-                               video_tags: video.video_tags,
-                               video_play_count: video.video_interaction_count,
-                               video_comment_count: video.video_comment_count,
-                               video_share_count: video.video_share_count,
-                               video_user_covers: video.user.user_covers,
-                               video_user_nick_name: video.user.user_nick_name,
-                               video_user_id: video.user.id,
-                        } %>
-        </li>
-      <% end %>
+    <% @videos.each_with_index do |video, i| %>
+      <li>
+        <%= image_tag video.video_cover_image, class: "video_data video_index_#{i}", alt: video.video_title,
+                      data: {video_source: video.video_url,
+                             video_index: i,
+                             video_title: video.video_title,
+                             video_tags: video.video_tags,
+                             video_play_count: video.video_interaction_count,
+                             video_comment_count: video.video_comment_count,
+                             video_share_count: video.video_share_count,
+                             video_user_covers: video.user.user_covers,
+                             video_user_nick_name: video.user.user_nick_name,
+                             video_user_id: video.user.id,
+                      } %>
+      </li>
     <% end %>
   </ul>
 </div>
