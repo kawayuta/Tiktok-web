@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :tag_inflows
+  
   root to: 'welcome#index'
   resources :tags, only: :show do
     collection do
