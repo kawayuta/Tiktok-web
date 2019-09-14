@@ -279,8 +279,8 @@ class Gc
     require 'open-uri'
 
     @videos = []
-    Tag.all.each do |tag|
-      Video.all.each do |v|
+    Tag.find_each do |tag|
+      Video.find_each do |v|
         if v.video_tags.try(:include?, tag.tag_title)
           @videos.push(v)
         end

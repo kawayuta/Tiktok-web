@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2a2e4aa1-93ac-4a71-a04c-86b144ad4cb1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/lib/tasks/task_database.rake" beforeDir="false" afterPath="$PROJECT_DIR$/lib/tasks/task_database.rake" afterDir="false" />
-    </list>
+    <list default="true" id="2a2e4aa1-93ac-4a71-a04c-86b144ad4cb1" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
     <ignored path="$PROJECT_DIR$/public/system/" />
@@ -94,7 +92,7 @@
           <entry key="html" value="2" />
           <entry key="js" value="3543" />
           <entry key="lock" value="8" />
-          <entry key="rake" value="7663" />
+          <entry key="rake" value="7666" />
           <entry key="rb" value="10658" />
           <entry key="ru" value="12" />
           <entry key="scss" value="7544" />
@@ -109,7 +107,7 @@
           <entry key="JavaScript" value="3522" />
           <entry key="PLAIN_TEXT" value="57" />
           <entry key="RHTML" value="6968" />
-          <entry key="Ruby" value="18523" />
+          <entry key="Ruby" value="18526" />
           <entry key="SCSS" value="7544" />
           <entry key="YAML" value="151" />
         </counts>
@@ -120,11 +118,11 @@
     <splitter split-orientation="horizontal" split-proportion="0.70584726">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/lib/tasks/task_database.rake">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="572">
-                  <caret line="299" column="16" selection-start-line="299" selection-start-column="16" selection-end-line="299" selection-end-column="158" />
+                <state relative-caret-position="100">
+                  <caret line="281" column="8" selection-start-line="281" selection-start-column="8" selection-end-line="281" selection-end-column="8" />
                 </state>
               </provider>
             </entry>
@@ -152,10 +150,10 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/config/deploy/production.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="626">
+                <state relative-caret-position="2550">
                   <caret line="150" column="12" selection-start-line="150" selection-start-column="12" selection-end-line="150" selection-end-column="12" />
                 </state>
               </provider>
@@ -829,22 +827,22 @@
       <workItem from="1566972267611" duration="2142000" />
       <workItem from="1567024724645" duration="76160000" />
       <workItem from="1567664750309" duration="3384000" />
-      <workItem from="1568344892752" duration="31540000" />
+      <workItem from="1568344892752" duration="33562000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="482724000" />
+    <option name="totallyTimeSpent" value="484746000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="33" width="2048" height="1247" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16450648" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16450648" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info active="true" anchor="bottom" id="Find" order="1" visible="true" weight="0.3271344" />
+      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.3271344" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -1143,13 +1141,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/deploy/production.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="626">
-          <caret line="150" column="12" selection-start-line="150" selection-start-column="12" selection-end-line="150" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="561">
@@ -1169,8 +1160,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/tasks/task_database.rake">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="299" column="16" selection-start-line="299" selection-start-column="16" selection-end-line="299" selection-end-column="158" />
+        <state relative-caret-position="100">
+          <caret line="281" column="8" selection-start-line="281" selection-start-column="8" selection-end-line="281" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/deploy/production.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2550">
+          <caret line="150" column="12" selection-start-line="150" selection-start-column="12" selection-end-line="150" selection-end-column="12" />
         </state>
       </provider>
     </entry>
