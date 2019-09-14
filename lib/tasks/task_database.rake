@@ -292,6 +292,10 @@ class Gc
             end
           end
           unless @videos.nil?
+            system("rm -rf ./lib/tasks/v/")
+            system("rm -rf ./lib/tasks/m/")
+            system("mkdir ./lib/tasks/v/")
+            system("mkdir ./lib/tasks/m/")
             @videos.each do | video |
               open(video.video_url, :allow_redirections => :all) do |file|
                 open("./lib/tasks/v/#{video.id.to_s}.mp4", "w+b") do |out|
@@ -308,10 +312,6 @@ class Gc
             # system("ffmpeg -f concat -safe 0 -i ./lib/tasks/m/videos.txt -y ./lib/tasks/m/output.mp4")
             Gc.authorize
             Gc.main(tag.tag_title)
-            system("rm -rf ./lib/tasks/v/")
-            system("mkdir ./lib/tasks/v/")
-            system("rm -rf ./lib/tasks/m/")
-            system("mkdir ./lib/tasks/m/")
           end
           sleep(1800)
         else
