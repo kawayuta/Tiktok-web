@@ -281,7 +281,7 @@ class Gc
 
     @videos = []
     Tag.all.find_in_batches(batch_size: 10) do |tags|
-      tags.reverse.each do |tag|
+      tags.each do |tag|
         unless TagInflow.find_by(tag_id: tag.id).present?
           @inflow = TagInflow.create(tag_id: tag.id, youtube: true)
           puts "tagInflow youtube"
