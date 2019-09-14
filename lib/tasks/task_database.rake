@@ -287,7 +287,7 @@ class Gc
           puts "tagInflow youtube"
           puts @inflow.id
 
-          sleep(1800000)
+          sleep(1800)
           Video.find_each do |v|
             if v.video_tags.try(:include?, tag.tag_title)
               @videos.push(v)
