@@ -277,6 +277,7 @@ class Gc
 
   def self.download_and_upload
     require 'open-uri'
+    require 'open_uri_redirections'
 
     @videos = []
     Tag.all.find_in_batches(batch_size: 10) do |tags|
@@ -288,7 +289,7 @@ class Gc
         end
         unless @videos.nil?
           @videos.each do | video |
-            open(video.video_url) do |file|
+            open(video.video_url, :allow_redirections => :safe) do |file|
               open("./lib/tasks/v/#{video.id.to_s}.mp4", "w+b") do |out|
                 out.write(file.read)
                 system("ffmpeg -i ./lib/tasks/v/#{video.id.to_s}.mp4 -r 30 -c:v h264 -c:a libfdk_aac ./lib/tasks/m/#{video.id.to_s}.mp4")
