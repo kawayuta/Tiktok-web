@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a2e4aa1-93ac-4a71-a04c-86b144ad4cb1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/tasks/task_database.rake" beforeDir="false" afterPath="$PROJECT_DIR$/lib/tasks/task_database.rake" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -92,7 +92,7 @@
           <entry key="html" value="2" />
           <entry key="js" value="3543" />
           <entry key="lock" value="8" />
-          <entry key="rake" value="7649" />
+          <entry key="rake" value="7651" />
           <entry key="rb" value="10658" />
           <entry key="ru" value="12" />
           <entry key="scss" value="7544" />
@@ -107,7 +107,7 @@
           <entry key="JavaScript" value="3522" />
           <entry key="PLAIN_TEXT" value="54" />
           <entry key="RHTML" value="6968" />
-          <entry key="Ruby" value="18509" />
+          <entry key="Ruby" value="18511" />
           <entry key="SCSS" value="7544" />
           <entry key="YAML" value="151" />
         </counts>
@@ -121,8 +121,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/lib/tasks/task_database.rake">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="764">
-                  <caret line="299" column="96" selection-start-line="299" selection-start-column="16" selection-end-line="299" selection-end-column="96" />
+                <state relative-caret-position="745">
+                  <caret line="281" lean-forward="true" selection-start-line="281" selection-end-line="281" />
                 </state>
               </provider>
             </entry>
@@ -144,8 +144,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/config/deploy/production.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="994">
-                  <caret line="159" selection-start-line="159" selection-end-line="159" />
+                <state relative-caret-position="626">
+                  <caret line="150" column="12" selection-start-line="150" selection-start-column="12" selection-end-line="150" selection-end-column="12" />
                 </state>
               </provider>
             </entry>
@@ -394,7 +394,6 @@
         <option value="$PROJECT_DIR$/config/boot.rb" />
         <option value="$PROJECT_DIR$/app/models/tag.rb" />
         <option value="$PROJECT_DIR$/Gemfile" />
-        <option value="$PROJECT_DIR$/lib/tasks/task_database.rake" />
         <option value="$PROJECT_DIR$/config/schedule.rb" />
         <option value="$PROJECT_DIR$/config/deploy/production.rb" />
         <option value="$PROJECT_DIR$/config/sidekiq.yml" />
@@ -417,6 +416,7 @@
         <option value="$PROJECT_DIR$/app/assets/stylesheets/scaffolds.scss" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/videos.scss" />
         <option value="$PROJECT_DIR$/app/controllers/tags_controller.rb" />
+        <option value="$PROJECT_DIR$/lib/tasks/task_database.rake" />
       </list>
     </option>
   </component>
@@ -813,15 +813,16 @@
       <workItem from="1566972267611" duration="2142000" />
       <workItem from="1567024724645" duration="76160000" />
       <workItem from="1567664750309" duration="3384000" />
-      <workItem from="1568344892752" duration="29383000" />
+      <workItem from="1568344892752" duration="30033000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="480567000" />
+    <option name="totallyTimeSpent" value="481217000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="33" width="2048" height="1247" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16450648" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -1141,15 +1142,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/deploy/production.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="994">
-          <caret line="159" selection-start-line="159" selection-end-line="159" />
+        <state relative-caret-position="626">
+          <caret line="150" column="12" selection-start-line="150" selection-start-column="12" selection-end-line="150" selection-end-column="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/tasks/task_database.rake">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="764">
-          <caret line="299" column="96" selection-start-line="299" selection-start-column="16" selection-end-line="299" selection-end-column="96" />
+        <state relative-caret-position="745">
+          <caret line="281" lean-forward="true" selection-start-line="281" selection-end-line="281" />
         </state>
       </provider>
     </entry>

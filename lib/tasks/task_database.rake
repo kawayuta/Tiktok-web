@@ -278,34 +278,9 @@ class Gc
   def self.download_and_upload
     require 'open-uri'
 
-    @videos = []
-    Tag.all.each do |tag|
-      Video.all.each do |v|
-        if v.video_tags.try(:include?, tag.tag_title)
-          @videos.push(v)
-        end
-      end
-      unless @videos.nil?
-        @videos.each do | video |
-          open(video.video_url) do |file|
-            open("./lib/tasks/v/#{video.id.to_s}.mp4", "w+b") do |out|
-              out.write(file.read)
-              system("ffmpeg -i ./lib/tasks/v/#{video.id.to_s}.mp4 -r 30 -c:v h264 -c:a libfdk_aac ./lib/tasks/m/#{video.id.to_s}.mp4")
-              system("echo file '#{video.id.to_s}.mp4' >> ./lib/tasks/m/videos.txt")
-            end
-          end
-        end
+    system("ffmpeg -f concat -safe 0 -i ./lib/tasks/m/videos.txt -y ./lib/tasks/m/output.mp4")
 
-        @videos = []
-        system("ffmpeg -f concat -safe 0 -i ./lib/tasks/m/videos.txt -y ./lib/tasks/m/output.mp4")
-        Gc.authorize
-        Gc.main(tag.tag_title)
-        system("rm -rf ./lib/tasks/v/")
-        system("mkdir ./lib/tasks/v/")
-        system("rm -rf ./lib/tasks/m/")
-        system("mkdir ./lib/tasks/m/")
-      end
-    end
+  end
 
     # Video.where(video_trending: true).each do | video |
     #   open(video.video_url) do |file|
