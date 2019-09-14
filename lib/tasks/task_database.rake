@@ -285,7 +285,7 @@ class Gc
         unless TagInflow.find_by(tag_id: tag.id).present?
           @inflow = TagInflow.create(tag_id: tag.id, youtube: true)
           puts "tagInflow youtube"
-          puts @inflow.id
+          puts @inflow.tag_id
 
           sleep(1800)
           Video.find_each do |v|
@@ -316,7 +316,7 @@ class Gc
             system("mkdir ./lib/tasks/m/")
           end
         else
-          puts "あるでんて"
+          puts "あるでんて #{tag.id}"
         end
       end
     end
