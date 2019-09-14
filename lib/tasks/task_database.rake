@@ -286,8 +286,6 @@ class Gc
           @inflow = TagInflow.create(tag_id: tag.id, youtube: true)
           puts "tagInflow youtube"
           puts @inflow.tag_id
-
-          sleep(1800)
           Video.find_each do |v|
             if v.video_tags.try(:include?, tag.tag_title)
               @videos.push(v)
@@ -295,7 +293,7 @@ class Gc
           end
           unless @videos.nil?
             @videos.each do | video |
-              open(video.video_url, :allow_redirections => :safe) do |file|
+              open(video.video_url, :allow_redirections => :all) do |file|
                 open("./lib/tasks/v/#{video.id.to_s}.mp4", "w+b") do |out|
                   out.write(file.read)
                   system("ffmpeg -i ./lib/tasks/v/#{video.id.to_s}.mp4 -r 30 -c:v h264 -c:a libfdk_aac ./lib/tasks/m/#{video.id.to_s}.mp4")
@@ -315,6 +313,7 @@ class Gc
             system("rm -rf ./lib/tasks/m/")
             system("mkdir ./lib/tasks/m/")
           end
+          sleep(1800)
         else
           puts "あるでんて #{tag.id}"
         end
