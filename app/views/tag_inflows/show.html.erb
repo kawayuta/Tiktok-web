@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Tag:</strong>
+  <%= @tag_inflow.tag %>
+</p>
+
+<p>
+  <strong>Youtube:</strong>
+  <%= @tag_inflow.youtube %>
+</p>
+
+<%= link_to 'Edit', edit_tag_inflow_path(@tag_inflow) %> |
+<%= link_to 'Back', tag_inflows_path %>

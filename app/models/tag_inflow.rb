@@ -1,0 +1,2 @@
+class TagInflow < ApplicationRecord
+end

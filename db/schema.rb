@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_07_174533) do
+ActiveRecord::Schema.define(version: 2019_09_14_150915) do
 
   create_table "tag_histories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.text "tag_official_id"
@@ -31,6 +31,14 @@ ActiveRecord::Schema.define(version: 2019_09_07_174533) do
     t.index ["tag_trending"], name: "index_tag_histories_on_tag_trending"
     t.index ["tag_url"], name: "index_tag_histories_on_tag_url", type: :fulltext
     t.index ["tag_views_count"], name: "index_tag_histories_on_tag_views_count", type: :fulltext
+  end
+
+  create_table "tag_inflows", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "tag_id"
+    t.boolean "youtube"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tag_id"], name: "index_tag_inflows_on_tag_id"
   end
 
   create_table "tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|

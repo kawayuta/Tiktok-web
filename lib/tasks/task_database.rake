@@ -282,32 +282,41 @@ class Gc
     @videos = []
     Tag.all.find_in_batches(batch_size: 10) do |tags|
       tags.reverse.each do |tag|
-        Video.find_each do |v|
-          if v.video_tags.try(:include?, tag.tag_title)
-            @videos.push(v)
-          end
-        end
-        unless @videos.nil?
-          @videos.each do | video |
-            open(video.video_url, :allow_redirections => :safe) do |file|
-              open("./lib/tasks/v/#{video.id.to_s}.mp4", "w+b") do |out|
-                out.write(file.read)
-                system("ffmpeg -i ./lib/tasks/v/#{video.id.to_s}.mp4 -r 30 -c:v h264 -c:a libfdk_aac ./lib/tasks/m/#{video.id.to_s}.mp4")
-                system("echo file '/var/www/sample-test/current/lib/tasks/m/#{video.id.to_s}.mp4' >> ./lib/tasks/m/videos.txt")
-              end
+        unless TagInflow.find_by(tag_id: tag.id).present?
+          @inflow = TagInflow.create(tag_id: tag.id, youtube: true)
+          puts "tagInflow youtube"
+          puts @inflow.id
+
+          sleep(1800000)
+          Video.find_each do |v|
+            if v.video_tags.try(:include?, tag.tag_title)
+              @videos.push(v)
             end
           end
+          unless @videos.nil?
+            @videos.each do | video |
+              open(video.video_url, :allow_redirections => :safe) do |file|
+                open("./lib/tasks/v/#{video.id.to_s}.mp4", "w+b") do |out|
+                  out.write(file.read)
+                  system("ffmpeg -i ./lib/tasks/v/#{video.id.to_s}.mp4 -r 30 -c:v h264 -c:a libfdk_aac ./lib/tasks/m/#{video.id.to_s}.mp4")
+                  system("echo file '/var/www/sample-test/current/lib/tasks/m/#{video.id.to_s}.mp4' >> ./lib/tasks/m/videos.txt")
+                end
+              end
+            end
 
-          @videos = []
-          # system("find /var/www/sample-test/current/lib/tasks/m/*.mp4 | sed 's:\ :\\\ :g'| sed 's/^/file /' >/var/www/sample-test/current/lib/tasks/m/videos.txt")
-          system("ffmpeg -f concat -safe 0 -i /var/www/sample-test/current/lib/tasks/m/videos.txt -y /var/www/sample-test/current/lib/tasks/m/output.mp4")
-          # system("ffmpeg -f concat -safe 0 -i ./lib/tasks/m/videos.txt -y ./lib/tasks/m/output.mp4")
-          Gc.authorize
-          Gc.main(tag.tag_title)
-          system("rm -rf ./lib/tasks/v/")
-          system("mkdir ./lib/tasks/v/")
-          system("rm -rf ./lib/tasks/m/")
-          system("mkdir ./lib/tasks/m/")
+            @videos = []
+            # system("find /var/www/sample-test/current/lib/tasks/m/*.mp4 | sed 's:\ :\\\ :g'| sed 's/^/file /' >/var/www/sample-test/current/lib/tasks/m/videos.txt")
+            system("ffmpeg -f concat -safe 0 -i /var/www/sample-test/current/lib/tasks/m/videos.txt -y /var/www/sample-test/current/lib/tasks/m/output.mp4")
+            # system("ffmpeg -f concat -safe 0 -i ./lib/tasks/m/videos.txt -y ./lib/tasks/m/output.mp4")
+            Gc.authorize
+            Gc.main(tag.tag_title)
+            system("rm -rf ./lib/tasks/v/")
+            system("mkdir ./lib/tasks/v/")
+            system("rm -rf ./lib/tasks/m/")
+            system("mkdir ./lib/tasks/m/")
+          end
+        else
+          puts "あるでんて"
         end
       end
     end
