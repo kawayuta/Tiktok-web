@@ -29,3 +29,7 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+/lib/tasks/m
+/lib/tasks/t
+/lib/tasks/v
