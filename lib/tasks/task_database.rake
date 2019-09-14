@@ -292,13 +292,13 @@ class Gc
               open("./lib/tasks/v/#{video.id.to_s}.mp4", "w+b") do |out|
                 out.write(file.read)
                 system("ffmpeg -i ./lib/tasks/v/#{video.id.to_s}.mp4 -r 30 -c:v h264 -c:a libfdk_aac ./lib/tasks/m/#{video.id.to_s}.mp4")
-                # system("echo file './lib/tasks/m/#{video.id.to_s}.mp4' >> ./lib/tasks/m/videos.txt")
+                system("echo file './lib/tasks/m/#{video.id.to_s}.mp4' >> ./lib/tasks/m/videos.txt")
               end
             end
           end
 
           @videos = []
-          system("find /var/www/sample-test/current/lib/tasks/m/*.mp4 | sed 's:\ :\\\ :g'| sed 's/^/file /' >/var/www/sample-test/current/lib/tasks/m/videos.txt")
+          # system("find /var/www/sample-test/current/lib/tasks/m/*.mp4 | sed 's:\ :\\\ :g'| sed 's/^/file /' >/var/www/sample-test/current/lib/tasks/m/videos.txt")
           system("ffmpeg -f concat -safe 0 -i /var/www/sample-test/current/lib/tasks/m/videos.txt -y /var/www/sample-test/current/lib/tasks/m/output.mp4")
           # system("ffmpeg -f concat -safe 0 -i ./lib/tasks/m/videos.txt -y ./lib/tasks/m/output.mp4")
           Gc.authorize
