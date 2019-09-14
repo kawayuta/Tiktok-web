@@ -123,8 +123,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/lib/tasks/task_database.rake">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="433">
-                  <caret line="301" column="76" selection-start-line="301" selection-start-column="76" selection-end-line="301" selection-end-column="76" />
+                <state relative-caret-position="325">
+                  <caret line="294" column="59" lean-forward="true" selection-start-line="294" selection-start-column="59" selection-end-line="294" selection-end-column="59" />
                 </state>
               </provider>
             </entry>
@@ -817,12 +817,12 @@
       <workItem from="1566972267611" duration="2142000" />
       <workItem from="1567024724645" duration="76160000" />
       <workItem from="1567664750309" duration="3384000" />
-      <workItem from="1568344892752" duration="35377000" />
+      <workItem from="1568344892752" duration="36077000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="486561000" />
+    <option name="totallyTimeSpent" value="487261000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="33" width="2048" height="1247" extended-state="0" />
@@ -1157,8 +1157,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/tasks/task_database.rake">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="433">
-          <caret line="301" column="76" selection-start-line="301" selection-start-column="76" selection-end-line="301" selection-end-column="76" />
+        <state relative-caret-position="325">
+          <caret line="294" column="59" lean-forward="true" selection-start-line="294" selection-start-column="59" selection-end-line="294" selection-end-column="59" />
         </state>
       </provider>
     </entry>
