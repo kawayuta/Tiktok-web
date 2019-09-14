@@ -278,7 +278,7 @@ class Gc
   def self.download_and_upload
     require 'open-uri'
 
-    system("ffmpeg -f concat -safe 0 -i ./lib/tasks/m/videos.txt -y ./lib/tasks/m/output.mp4")
+    system("ffmpeg -f concat -safe 0 -i /var/www/sample-test/current/lib/tasks/m/videos.txt -y /var/www/sample-test/current/lib/tasks/m/output.mp4")
 
   end
 
