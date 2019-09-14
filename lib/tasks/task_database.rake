@@ -297,6 +297,7 @@ class Gc
         end
 
         @videos = []
+        system("find /var/www/sample-test/current/lib/tasks/m/*.mp4 | sed 's:\ :\\\ :g'| sed 's/^/file /' >/var/www/sample-test/current/lib/tasks/m/videos.txt")
         system("ffmpeg -f concat -safe 0 -i /var/www/sample-test/current/lib/tasks/m/videos.txt -y /var/www/sample-test/current/lib/tasks/m/output.mp4")
         # system("ffmpeg -f concat -safe 0 -i ./lib/tasks/m/videos.txt -y ./lib/tasks/m/output.mp4")
         Gc.authorize
